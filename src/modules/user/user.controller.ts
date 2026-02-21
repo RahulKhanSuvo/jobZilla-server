@@ -5,7 +5,6 @@ import { Prisma } from "../../generated/prisma/client";
 const createUser: RequestHandler = async (req, res) => {
     try {
         const result = await userService.createUser(req.body);
-
         return res.status(201).json({
             success: true,
             result,
@@ -21,7 +20,6 @@ const createUser: RequestHandler = async (req, res) => {
                 });
             }
         }
-        console.error("Error creating user:", error);
         return res.status(500).json({
             success: false,
             message: "Failed to create user"
