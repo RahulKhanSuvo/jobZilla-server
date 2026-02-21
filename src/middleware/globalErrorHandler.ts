@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import { Prisma } from "../generated/prisma/client";
 import handlePrismaError from "../utils/handlePrismaError";
-
 export function errorHandler(
-  err: unknown,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  err: any,
   req: Request,
   res: Response,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
