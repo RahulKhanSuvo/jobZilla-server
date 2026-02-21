@@ -1,30 +1,43 @@
-/*
-  Warnings:
+-- CreateEnum
+CREATE TYPE "UserRole" AS ENUM ('USER', 'EMPLOYER', 'ADMIN');
 
-  - You are about to drop the column `ownerId` on the `Company` table. All the data in the column will be lost.
-  - Added the required column `employeeSize` to the `Company` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `industry` to the `Company` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `phone` to the `Company` table without a default value. This is not possible if the table is not empty.
-
-*/
 -- CreateEnum
 CREATE TYPE "JobType" AS ENUM ('FULL_TIME', 'PART_TIME', 'CONTRACT', 'INTERN', 'REMOTE');
 
 -- CreateEnum
 CREATE TYPE "AppStatus" AS ENUM ('PENDING', 'SHORTLISTED', 'REJECTED', 'HIRED');
 
--- DropForeignKey
-ALTER TABLE "Company" DROP CONSTRAINT "Company_ownerId_fkey";
+-- CreateTable
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL,
+    "fullName" VARCHAR(50) NOT NULL,
+    "email" TEXT NOT NULL,
+    "role" "UserRole" NOT NULL DEFAULT 'USER',
+    "password" TEXT NOT NULL,
+    "phone" VARBIT(20) NOT NULL,
+    "resumeUrl" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
--- DropIndex
-DROP INDEX "Company_ownerId_key";
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
 
--- AlterTable
-ALTER TABLE "Company" DROP COLUMN "ownerId",
-ADD COLUMN     "companyType" TEXT,
-ADD COLUMN     "employeeSize" TEXT NOT NULL,
-ADD COLUMN     "industry" TEXT NOT NULL,
-ADD COLUMN     "phone" TEXT NOT NULL;
+-- CreateTable
+CREATE TABLE "Company" (
+    "id" TEXT NOT NULL,
+    "name" VARCHAR(100) NOT NULL,
+    "description" TEXT,
+    "website" TEXT NOT NULL,
+    "industry" TEXT NOT NULL,
+    "phone" TEXT NOT NULL,
+    "location" VARCHAR(150) NOT NULL,
+    "companyType" TEXT,
+    "employeeSize" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Company_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "Job" (
@@ -56,6 +69,9 @@ CREATE TABLE "Application" (
 
     CONSTRAINT "Application_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
 ALTER TABLE "Job" ADD CONSTRAINT "Job_companyId_fkey" FOREIGN KEY ("companyId") REFERENCES "Company"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
