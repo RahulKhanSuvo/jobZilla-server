@@ -20,41 +20,49 @@ enum UserRole {
 }
 
 model User {
-  id        String    @id @default(uuid())
-  fullName  String    @db.VarChar(50)
-  email     String    @unique
-  role      UserRole  @default(USER)
-  password  String
-  phone     String    @db.VarBit(20)
-  resumeUrl String?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  companies Company[]
+  id           String        @id @default(uuid())
+  fullName     String        @db.VarChar(50)
+  email        String        @unique
+  role         UserRole      @default(USER)
+  password     String
+  phone        String        @db.VarBit(20)
+  resumeUrl    String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  applications Application[]
 }
 
 model Company {
-  id          String   @id @default(uuid())
-  name        String   @db.VarChar(100)
-  description String?
-  website     String
-  location    String   @db.VarChar(150)
-  ownerId     String   @unique
-  owner       User     @relation(fields: [ownerId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           String   @id @default(uuid())
+  name         String   @db.VarChar(100)
+  description  String?
+  website      String
+  industry     String
+  phone        String
+  location     String   @db.VarChar(150)
+  companyType  String?
+  employeeSize String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  jobs         Job[]
 }
 
 model Job {
-  id          String    @id @default(uuid())
-  title       String    @db.VarChar(100)
-  description String
-  location    String    @db.VarChar(150)
-  salaryMin   Int?
-  salaryMax   Int?
-  jobType     JobType
-  experience  String?   @db.VarChar(100)
-  deadline    DateTime?
-  skills      String?   @db.VarChar(200)
+  id           String        @id @default(uuid())
+  title        String        @db.VarChar(100)
+  description  String
+  location     String        @db.VarChar(150)
+  salaryMin    Int?
+  salaryMax    Int?
+  jobType      JobType
+  experience   String?       @db.VarChar(100)
+  deadline     DateTime?
+  skills       String?       @db.VarChar(200)
+  companyId    String
+  company      Company       @relation(fields: [companyId], references: [id])
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  applications Application[]
 }
 
 enum JobType {
@@ -63,4 +71,22 @@ enum JobType {
   CONTRACT
   INTERN
   REMOTE
+}
+
+model Application {
+  id        String    @id @default(uuid())
+  userId    String
+  jobId     String
+  status    AppStatus @default(PENDING)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  job       Job       @relation(fields: [jobId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
+}
+
+enum AppStatus {
+  PENDING
+  SHORTLISTED
+  REJECTED
+  HIRED
 }
