@@ -19,14 +19,48 @@ enum UserRole {
   ADMIN
 }
 
-model user {
-  id        String   @id @default(uuid())
-  fullName  String   @db.VarChar(50)
-  email     String   @unique
-  role      UserRole @default(USER)
+model User {
+  id        String    @id @default(uuid())
+  fullName  String    @db.VarChar(50)
+  email     String    @unique
+  role      UserRole  @default(USER)
   password  String
-  phone     String   @db.VarBit(20)
+  phone     String    @db.VarBit(20)
   resumeUrl String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  companies Company[]
+}
+
+model Company {
+  id          String   @id @default(uuid())
+  name        String   @db.VarChar(100)
+  description String?
+  website     String
+  location    String   @db.VarChar(150)
+  ownerId     String   @unique
+  owner       User     @relation(fields: [ownerId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Job {
+  id          String    @id @default(uuid())
+  title       String    @db.VarChar(100)
+  description String
+  location    String    @db.VarChar(150)
+  salaryMin   Int?
+  salaryMax   Int?
+  jobType     JobType
+  experience  String?   @db.VarChar(100)
+  deadline    DateTime?
+  skills      String?   @db.VarChar(200)
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERN
+  REMOTE
 }
