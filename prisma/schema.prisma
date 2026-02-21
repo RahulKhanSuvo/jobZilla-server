@@ -25,7 +25,7 @@ model User {
   email        String        @unique
   role         UserRole      @default(USER)
   password     String
-  phone        String        @db.VarBit(20)
+  phone        String        @db.VarChar(20)
   resumeUrl    String?
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
