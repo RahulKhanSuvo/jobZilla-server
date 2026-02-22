@@ -1,12 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response, NextFunction } from "express";
 import { Prisma } from "../generated/prisma/client";
 import handlePrismaError from "../utils/handlePrismaError";
 export function errorHandler(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   err: any,
   req: Request,
   res: Response,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction,
 ): void {
   if (err instanceof Prisma.PrismaClientKnownRequestError) {

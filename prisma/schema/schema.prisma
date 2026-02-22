@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  output   = "../../src/generated/prisma"
 }
 
 datasource db {
@@ -30,47 +30,6 @@ model User {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   applications Application[]
-}
-
-model Company {
-  id           String   @id @default(uuid())
-  name         String   @db.VarChar(100)
-  description  String?
-  website      String
-  industry     String
-  phone        String
-  location     String   @db.VarChar(150)
-  companyType  String?
-  employeeSize String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  jobs         Job[]
-}
-
-model Job {
-  id           String        @id @default(uuid())
-  title        String        @db.VarChar(100)
-  description  String
-  location     String        @db.VarChar(150)
-  salaryMin    Int?
-  salaryMax    Int?
-  jobType      JobType
-  experience   String?       @db.VarChar(100)
-  deadline     DateTime?
-  skills       String?       @db.VarChar(200)
-  companyId    String
-  company      Company       @relation(fields: [companyId], references: [id])
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  applications Application[]
-}
-
-enum JobType {
-  FULL_TIME
-  PART_TIME
-  CONTRACT
-  INTERN
-  REMOTE
 }
 
 model Application {

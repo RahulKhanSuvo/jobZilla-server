@@ -1,0 +1,14 @@
+model Company {
+    id           String   @id @default(uuid())
+    name         String   @db.VarChar(100)
+    description  String?
+    website      String
+    industry     String
+    phone        String
+    location     String   @db.VarChar(150)
+    companyType  String?
+    employeeSize String
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    jobs         Job[]
+}
