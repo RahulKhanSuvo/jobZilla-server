@@ -9,6 +9,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^20.4.2",
     "@types/bun": "latest",
     "@types/cors": "^2.8.19",
     "@types/node": "^25.3.0",
