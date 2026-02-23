@@ -114,7 +114,8 @@ export type JobScalarFieldEnum =
 
 export const UserScalarFieldEnum = {
   id: "id",
-  fullName: "fullName",
+  firstName: "firstName",
+  lastName: "lastName",
   email: "email",
   role: "role",
   password: "password",
