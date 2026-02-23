@@ -10,5 +10,6 @@ userRouter.post(
   userController.createUser,
 );
 userRouter.post("/login", validate(loginSchema), userController.loginUser);
+userRouter.post("/refresh", userController.userTokenRefresh);
 
 export default userRouter;

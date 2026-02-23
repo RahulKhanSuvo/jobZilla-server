@@ -27,4 +27,13 @@ const loginUser = catchAsync(async (req, res) => {
     message: "Login successfully complete",
   });
 });
-export const userController = { createUser, loginUser };
+const userTokenRefresh = catchAsync(async (req, res) => {
+  const refreshToken = req.cookies;
+  console.log(refreshToken);
+  return sendResponse(res, {
+    data: refreshToken,
+    statusCode: 200,
+    message: "Login successfully complete",
+  });
+});
+export const userController = { createUser, loginUser, userTokenRefresh };
