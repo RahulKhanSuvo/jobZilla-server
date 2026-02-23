@@ -3,6 +3,7 @@
 import { Request, Response, NextFunction } from "express";
 import { Prisma } from "../generated/prisma/client";
 import handlePrismaError from "../utils/handlePrismaError";
+import { ApiError } from "../errors/ApiError";
 export function errorHandler(
   err: any,
   req: Request,
@@ -11,6 +12,13 @@ export function errorHandler(
 ): void {
   if (err instanceof Prisma.PrismaClientKnownRequestError) {
     handlePrismaError(err, res);
+    return;
+  }
+  if (err instanceof ApiError) {
+    res.status(err.statusCode).json({
+      success: false,
+      message: err.message,
+    });
     return;
   }
 
