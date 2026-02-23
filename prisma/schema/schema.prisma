@@ -21,7 +21,8 @@ enum UserRole {
 
 model User {
   id           String        @id @default(uuid())
-  fullName     String        @db.VarChar(50)
+  firstName    String        @db.VarChar(25)
+  lastName     String        @db.VarChar(25)
   email        String        @unique
   role         UserRole      @default(USER)
   password     String
