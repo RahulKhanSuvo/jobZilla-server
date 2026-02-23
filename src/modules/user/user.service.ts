@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { prisma } from "../../lib/prisma";
 import bcrypt from "bcrypt";
 import { CreateUserInput, LoginFormData } from "./user.schema";
 import { ApiError } from "../../errors/ApiError";
-
+import { generateTokens } from "../../utils/generateTokens";
 const createUser = async (data: CreateUserInput) => {
   const isExist = await prisma.user.findUnique({
     where: {
@@ -30,13 +31,21 @@ const createUser = async (data: CreateUserInput) => {
   });
 };
 const loginUser = async (data: LoginFormData) => {
-  const isExist = await prisma.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: { email: data.email },
   });
-  console.log(isExist);
-  if (!isExist) {
+  if (!user) {
     throw new ApiError("User Not found", 404);
   }
-  return isExist;
+  const passwordValid = await bcrypt.compare(data.password, user.password);
+  if (!passwordValid) throw new ApiError("invalid credentials", 401);
+  const { refreshToken, accessToken } = generateTokens(user);
+  const { password, ...safeUser } = user;
+
+  return {
+    user: safeUser,
+    refreshToken,
+    accessToken,
+  };
 };
 export const userService = { createUser, loginUser };
