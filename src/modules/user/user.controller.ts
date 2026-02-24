@@ -53,9 +53,19 @@ const currentUser = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const userLogout = catchAsync(async (req, res) => {
+  const refreshToken = req.cookies.refreshToken;
+  if (!refreshToken) throw new ApiError("no user found", 400);
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+  });
+});
 export const userController = {
   createUser,
   loginUser,
   userTokenRefresh,
   currentUser,
+  userLogout,
 };
