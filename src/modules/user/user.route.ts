@@ -11,5 +11,6 @@ userRouter.post(
 );
 userRouter.post("/login", validate(loginSchema), userController.loginUser);
 userRouter.post("/refresh", userController.userTokenRefresh);
+userRouter.get("/me", userController.currentUser);
 
 export default userRouter;

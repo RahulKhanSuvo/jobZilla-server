@@ -51,24 +51,35 @@ const loginUser = async (data: LoginFormData) => {
   };
 };
 const refreshTokenAuth = async (data: string) => {
-  const decoded = jwt.verify(data, envConfig.ACCESS_TOKEN_SECRET) as JwtPayload;
+  const decoded = jwt.verify(
+    data,
+    envConfig.REFRESH_TOKEN_SECRET,
+  ) as JwtPayload;
 
   const user = await prisma.user.findUnique({
     where: { id: decoded.id },
   });
   if (!user) throw new ApiError("invalid", 404);
-  const accessToken = jwt.sign(
-    { id: user.id, email: user.email, role: user.role },
-    envConfig.ACCESS_TOKEN_SECRET,
-    { expiresIn: "15m" },
-  );
-
-  // Optionally: generate a new refresh token (rotate refresh tokens)
-  const newRefreshToken = jwt.sign(
-    { id: user.id, email: user.email, role: user.role },
-    envConfig.REFRESH_TOKEN_SECRET,
-    { expiresIn: "7d" },
-  );
-  return { accessToken, newRefreshToken };
+  const { accessToken, refreshToken } = generateTokens(user);
+  return { accessToken, newRefreshToken: refreshToken };
 };
-export const userService = { createUser, loginUser, refreshTokenAuth };
+const currentUser = async (data: string) => {
+  const decoded = jwt.verify(
+    data,
+    envConfig.REFRESH_TOKEN_SECRET,
+  ) as JwtPayload;
+  const user = await prisma.user.findUnique({
+    where: { id: decoded.id },
+    omit: {
+      password: true,
+    },
+  });
+  if (!user) throw new ApiError("user not found ", 404);
+  return user;
+};
+export const userService = {
+  createUser,
+  loginUser,
+  refreshTokenAuth,
+  currentUser,
+};

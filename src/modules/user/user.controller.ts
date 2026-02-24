@@ -44,4 +44,18 @@ const userTokenRefresh = catchAsync(async (req, res) => {
     accessToken,
   });
 });
-export const userController = { createUser, loginUser, userTokenRefresh };
+const currentUser = catchAsync(async (req, res) => {
+  const refreshToken = req.cookies.refreshToken;
+  const result = await userService.currentUser(refreshToken);
+  sendResponse(res, {
+    statusCode: 200,
+    message: "current user",
+    data: result,
+  });
+});
+export const userController = {
+  createUser,
+  loginUser,
+  userTokenRefresh,
+  currentUser,
+};
