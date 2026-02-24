@@ -4,9 +4,11 @@ import routes from "./routes";
 import { notFound } from "./middleware/notFoundLogger";
 import { errorHandler } from "./middleware/globalErrorHandler";
 import { envConfig } from "./config/env";
-
+import cookieParser from "cookie-parser";
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
+
 app.use(
   cors({
     origin: envConfig.FRONTEND_URL,

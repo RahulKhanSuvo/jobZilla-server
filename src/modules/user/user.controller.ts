@@ -3,6 +3,7 @@ import { userService } from "./user.service";
 import { catchAsync } from "../../shared/catchAsync";
 import { sendResponse } from "../../shared/sendResponse";
 import { envConfig } from "../../config/env";
+import { ApiError } from "../../errors/ApiError";
 const createUser: RequestHandler = catchAsync(async (req, res) => {
   const result = await userService.createUser(req.body);
   return sendResponse(res, {
@@ -28,11 +29,19 @@ const loginUser = catchAsync(async (req, res) => {
   });
 });
 const userTokenRefresh = catchAsync(async (req, res) => {
-  const refreshToken = req.cookies;
-  return sendResponse(res, {
-    data: refreshToken,
-    statusCode: 200,
-    message: "Login successfully complete",
+  const refreshToken = req.cookies.refreshToken;
+  if (!refreshToken) throw new ApiError("no refresh token", 401);
+  const { newRefreshToken, accessToken } =
+    await userService.refreshTokenAuth(refreshToken);
+  res.cookie("refreshToken", newRefreshToken, {
+    httpOnly: true,
+    secure: envConfig.NODE_ENV === "production",
+    sameSite: "strict",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  });
+  return res.status(200).json({
+    success: true,
+    accessToken,
   });
 });
 export const userController = { createUser, loginUser, userTokenRefresh };
