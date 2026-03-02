@@ -1,0 +1,33 @@
+model workExperience {
+    id          String    @id @default(uuid())
+    userId      String
+    user        User      @relation(fields: [userId], references: [id])
+    jobTitle    String    @db.VarChar(150)
+    companyName String    @db.VarChar(150)
+    industry    String
+    startData   DateTime
+    endData     DateTime?
+    Description String    @db.Text
+    isWorking   Boolean   @default(true)
+    createdId   DateTime  @default(now())
+}
+
+model skill {
+    id        String   @id @default(uuid())
+    skill     String
+    userId    String
+    user      User     @relation(fields: [userId], references: [id])
+    createdId DateTime @default(now())
+}
+
+model eduction {
+    id          String    @id @default(uuid())
+    institution String
+    major       String
+    field       String
+    gap         Decimal
+    startData   DateTime
+    endData     DateTime?
+    isStudying  Boolean   @default(false)
+    createdId   DateTime  @default(now())
+}

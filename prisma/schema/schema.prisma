@@ -20,17 +20,18 @@ enum UserRole {
 }
 
 model User {
-  id           String        @id @default(uuid())
-  firstName    String        @db.VarChar(25)
-  lastName     String        @db.VarChar(25)
-  email        String        @unique
-  role         UserRole      @default(USER)
-  password     String
-  phone        String        @db.VarChar(20)
-  resumeUrl    String?
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  applications Application[]
+  id              String           @id @default(uuid())
+  fullName        String           @db.VarChar(25)
+  email           String           @unique
+  role            UserRole         @default(USER)
+  password        String
+  phone           String           @db.VarChar(20)
+  resumeUrl       String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  applications    Application[]
+  workExperiences workExperience[]
+  skills          skill[]
 }
 
 model Application {

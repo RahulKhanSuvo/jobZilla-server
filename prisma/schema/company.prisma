@@ -12,3 +12,29 @@ model Company {
     updatedAt    DateTime @updatedAt
     jobs         Job[]
 }
+
+enum JobType {
+    FULL_TIME
+    PART_TIME
+    CONTRACT
+    INTERN
+    REMOTE
+}
+
+model Job {
+    id           String        @id @default(uuid())
+    title        String        @db.VarChar(100)
+    description  String
+    location     String        @db.VarChar(150)
+    salaryMin    Int?
+    salaryMax    Int?
+    jobType      JobType
+    experience   String?       @db.VarChar(100)
+    deadline     DateTime?
+    skills       String?       @db.VarChar(200)
+    companyId    String
+    company      Company       @relation(fields: [companyId], references: [id])
+    createdAt    DateTime      @default(now())
+    updatedAt    DateTime      @updatedAt
+    applications Application[]
+}
