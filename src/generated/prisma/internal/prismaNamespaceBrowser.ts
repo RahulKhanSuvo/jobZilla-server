@@ -54,10 +54,14 @@ export const JsonNull = runtime.JsonNull;
 export const AnyNull = runtime.AnyNull;
 
 export const ModelName = {
+  Candidate: "Candidate",
+  workExperience: "workExperience",
+  skill: "skill",
+  eduction: "eduction",
   Company: "Company",
   Job: "Job",
-  User: "User",
   Application: "Application",
+  User: "User",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -75,6 +79,56 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 
 export type TransactionIsolationLevel =
   (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
+
+export const CandidateScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  phone: "phone",
+} as const;
+
+export type CandidateScalarFieldEnum =
+  (typeof CandidateScalarFieldEnum)[keyof typeof CandidateScalarFieldEnum];
+
+export const WorkExperienceScalarFieldEnum = {
+  id: "id",
+  candideId: "candideId",
+  jobTitle: "jobTitle",
+  companyName: "companyName",
+  industry: "industry",
+  startData: "startData",
+  endData: "endData",
+  Description: "Description",
+  isWorking: "isWorking",
+  createdId: "createdId",
+} as const;
+
+export type WorkExperienceScalarFieldEnum =
+  (typeof WorkExperienceScalarFieldEnum)[keyof typeof WorkExperienceScalarFieldEnum];
+
+export const SkillScalarFieldEnum = {
+  id: "id",
+  skill: "skill",
+  candideId: "candideId",
+} as const;
+
+export type SkillScalarFieldEnum =
+  (typeof SkillScalarFieldEnum)[keyof typeof SkillScalarFieldEnum];
+
+export const EductionScalarFieldEnum = {
+  id: "id",
+  institution: "institution",
+  major: "major",
+  field: "field",
+  gap: "gap",
+  startData: "startData",
+  endData: "endData",
+  isStudying: "isStudying",
+  createdId: "createdId",
+  candideId: "candideId",
+} as const;
+
+export type EductionScalarFieldEnum =
+  (typeof EductionScalarFieldEnum)[keyof typeof EductionScalarFieldEnum];
 
 export const CompanyScalarFieldEnum = {
   id: "id",
@@ -112,22 +166,6 @@ export const JobScalarFieldEnum = {
 export type JobScalarFieldEnum =
   (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum];
 
-export const UserScalarFieldEnum = {
-  id: "id",
-  firstName: "firstName",
-  lastName: "lastName",
-  email: "email",
-  role: "role",
-  password: "password",
-  phone: "phone",
-  resumeUrl: "resumeUrl",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
-} as const;
-
-export type UserScalarFieldEnum =
-  (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
-
 export const ApplicationScalarFieldEnum = {
   id: "id",
   userId: "userId",
@@ -139,6 +177,19 @@ export const ApplicationScalarFieldEnum = {
 
 export type ApplicationScalarFieldEnum =
   (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum];
+
+export const UserScalarFieldEnum = {
+  id: "id",
+  name: "name",
+  email: "email",
+  role: "role",
+  password: "password",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type UserScalarFieldEnum =
+  (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
 
 export const SortOrder = {
   asc: "asc",

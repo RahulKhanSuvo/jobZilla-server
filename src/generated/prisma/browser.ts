@@ -17,6 +17,26 @@ export { Prisma };
 export * as $Enums from "./enums";
 export * from "./enums";
 /**
+ * Model Candidate
+ *
+ */
+export type Candidate = Prisma.CandidateModel;
+/**
+ * Model workExperience
+ *
+ */
+export type workExperience = Prisma.workExperienceModel;
+/**
+ * Model skill
+ *
+ */
+export type skill = Prisma.skillModel;
+/**
+ * Model eduction
+ *
+ */
+export type eduction = Prisma.eductionModel;
+/**
  * Model Company
  *
  */
@@ -27,12 +47,12 @@ export type Company = Prisma.CompanyModel;
  */
 export type Job = Prisma.JobModel;
 /**
- * Model User
- *
- */
-export type User = Prisma.UserModel;
-/**
  * Model Application
  *
  */
 export type Application = Prisma.ApplicationModel;
+/**
+ * Model User
+ *
+ */
+export type User = Prisma.UserModel;

@@ -28,8 +28,8 @@ export * from "./enums";
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Companies
- * const companies = await prisma.company.findMany()
+ * // Fetch zero or more Candidates
+ * const candidates = await prisma.candidate.findMany()
  * ```
  *
  * Read more in our [docs](https://pris.ly/d/client).
@@ -45,6 +45,26 @@ export type PrismaClient<
 export { Prisma };
 
 /**
+ * Model Candidate
+ *
+ */
+export type Candidate = Prisma.CandidateModel;
+/**
+ * Model workExperience
+ *
+ */
+export type workExperience = Prisma.workExperienceModel;
+/**
+ * Model skill
+ *
+ */
+export type skill = Prisma.skillModel;
+/**
+ * Model eduction
+ *
+ */
+export type eduction = Prisma.eductionModel;
+/**
  * Model Company
  *
  */
@@ -55,12 +75,12 @@ export type Company = Prisma.CompanyModel;
  */
 export type Job = Prisma.JobModel;
 /**
- * Model User
- *
- */
-export type User = Prisma.UserModel;
-/**
  * Model Application
  *
  */
 export type Application = Prisma.ApplicationModel;
+/**
+ * Model User
+ *
+ */
+export type User = Prisma.UserModel;

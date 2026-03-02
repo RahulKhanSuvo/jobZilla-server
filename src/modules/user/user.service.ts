@@ -21,12 +21,9 @@ const createUser = async (data: CreateUserInput) => {
     },
     select: {
       id: true,
-      firstName: true,
-      lastName: true,
+      name: true,
       email: true,
       role: true,
-      phone: true,
-      resumeUrl: true,
       createdAt: true,
       updatedAt: true,
     },

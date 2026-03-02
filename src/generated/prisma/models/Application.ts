@@ -470,6 +470,10 @@ export type ApplicationUncheckedUpdateManyWithoutJobNestedInput = {
     | Prisma.ApplicationScalarWhereInput[];
 };
 
+export type EnumAppStatusFieldUpdateOperationsInput = {
+  set?: $Enums.AppStatus;
+};
+
 export type ApplicationCreateNestedManyWithoutUserInput = {
   create?:
     | Prisma.XOR<
@@ -578,10 +582,6 @@ export type ApplicationUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?:
     | Prisma.ApplicationScalarWhereInput
     | Prisma.ApplicationScalarWhereInput[];
-};
-
-export type EnumAppStatusFieldUpdateOperationsInput = {
-  set?: $Enums.AppStatus;
 };
 
 export type ApplicationCreateWithoutJobInput = {
