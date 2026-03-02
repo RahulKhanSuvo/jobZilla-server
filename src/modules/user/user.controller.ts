@@ -61,6 +61,10 @@ const userLogout = catchAsync(async (req, res) => {
     secure: true,
     sameSite: "strict",
   });
+  sendResponse(res, {
+    statusCode: 200,
+    message: "logout success full",
+  });
 });
 export const userController = {
   createUser,
