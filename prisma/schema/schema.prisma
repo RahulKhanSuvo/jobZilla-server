@@ -20,29 +20,15 @@ enum UserRole {
 }
 
 model User {
-  id              String           @id @default(uuid())
-  fullName        String           @db.VarChar(25)
-  email           String           @unique
-  role            UserRole         @default(USER)
-  password        String
-  phone           String           @db.VarChar(20)
-  resumeUrl       String?
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  applications    Application[]
-  workExperiences workExperience[]
-  skills          skill[]
-}
-
-model Application {
-  id        String    @id @default(uuid())
-  userId    String
-  jobId     String
-  status    AppStatus @default(PENDING)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  job       Job       @relation(fields: [jobId], references: [id])
-  user      User      @relation(fields: [userId], references: [id])
+  id           String        @id @default(uuid())
+  name         String        @db.VarChar(25)
+  email        String        @unique
+  role         UserRole      @default(USER)
+  password     String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  candidates   Candidate[]
+  applications Application[]
 }
 
 enum AppStatus {

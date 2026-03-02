@@ -38,3 +38,14 @@ model Job {
     updatedAt    DateTime      @updatedAt
     applications Application[]
 }
+
+model Application {
+    id        String    @id @default(uuid())
+    userId    String
+    jobId     String
+    status    AppStatus @default(PENDING)
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    job       Job       @relation(fields: [jobId], references: [id])
+    user      User      @relation(fields: [userId], references: [id])
+}

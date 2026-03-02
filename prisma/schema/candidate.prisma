@@ -1,7 +1,17 @@
+model Candidate {
+    id              String           @id @default(uuid())
+    userId          String
+    user            User             @relation(fields: [userId], references: [id])
+    phone           String
+    workExperiences workExperience[]
+    skills          skill[]
+    eductions       eduction[]
+}
+
 model workExperience {
     id          String    @id @default(uuid())
-    userId      String
-    user        User      @relation(fields: [userId], references: [id])
+    candideId   String
+    candidate   Candidate @relation(fields: [candideId], references: [id])
     jobTitle    String    @db.VarChar(150)
     companyName String    @db.VarChar(150)
     industry    String
@@ -13,11 +23,10 @@ model workExperience {
 }
 
 model skill {
-    id        String   @id @default(uuid())
+    id        String    @id @default(uuid())
     skill     String
-    userId    String
-    user      User     @relation(fields: [userId], references: [id])
-    createdId DateTime @default(now())
+    candideId String
+    candidate Candidate @relation(fields: [candideId], references: [id])
 }
 
 model eduction {
@@ -30,4 +39,6 @@ model eduction {
     endData     DateTime?
     isStudying  Boolean   @default(false)
     createdId   DateTime  @default(now())
+    candideId   String
+    candidate   Candidate @relation(fields: [candideId], references: [id])
 }
