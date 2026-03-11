@@ -170,36 +170,36 @@ export type CandidateWhereInput = {
   id?: Prisma.StringFilter<"Candidate"> | string;
   userId?: Prisma.StringFilter<"Candidate"> | string;
   phone?: Prisma.StringFilter<"Candidate"> | string;
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   workExperiences?: Prisma.WorkExperienceListRelationFilter;
   skills?: Prisma.SkillListRelationFilter;
   eductions?: Prisma.EductionListRelationFilter;
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 
 export type CandidateOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   phone?: Prisma.SortOrder;
-  user?: Prisma.UserOrderByWithRelationInput;
   workExperiences?: Prisma.workExperienceOrderByRelationAggregateInput;
   skills?: Prisma.skillOrderByRelationAggregateInput;
   eductions?: Prisma.eductionOrderByRelationAggregateInput;
+  user?: Prisma.UserOrderByWithRelationInput;
 };
 
 export type CandidateWhereUniqueInput = Prisma.AtLeast<
   {
     id?: string;
+    userId?: string;
     AND?: Prisma.CandidateWhereInput | Prisma.CandidateWhereInput[];
     OR?: Prisma.CandidateWhereInput[];
     NOT?: Prisma.CandidateWhereInput | Prisma.CandidateWhereInput[];
-    userId?: Prisma.StringFilter<"Candidate"> | string;
     phone?: Prisma.StringFilter<"Candidate"> | string;
-    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
     workExperiences?: Prisma.WorkExperienceListRelationFilter;
     skills?: Prisma.SkillListRelationFilter;
     eductions?: Prisma.EductionListRelationFilter;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
-  "id"
+  "id" | "userId"
 >;
 
 export type CandidateOrderByWithAggregationInput = {
@@ -227,10 +227,10 @@ export type CandidateScalarWhereWithAggregatesInput = {
 export type CandidateCreateInput = {
   id?: string;
   phone: string;
-  user: Prisma.UserCreateNestedOneWithoutCandidatesInput;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
+  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
 };
 
 export type CandidateUncheckedCreateInput = {
@@ -245,10 +245,10 @@ export type CandidateUncheckedCreateInput = {
 export type CandidateUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  user?: Prisma.UserUpdateOneRequiredWithoutCandidatesNestedInput;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
 };
 
 export type CandidateUncheckedUpdateInput = {
@@ -300,14 +300,9 @@ export type CandidateScalarRelationFilter = {
   isNot?: Prisma.CandidateWhereInput;
 };
 
-export type CandidateListRelationFilter = {
-  every?: Prisma.CandidateWhereInput;
-  some?: Prisma.CandidateWhereInput;
-  none?: Prisma.CandidateWhereInput;
-};
-
-export type CandidateOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder;
+export type CandidateNullableScalarRelationFilter = {
+  is?: Prisma.CandidateWhereInput | null;
+  isNot?: Prisma.CandidateWhereInput | null;
 };
 
 export type StringFieldUpdateOperationsInput = {
@@ -392,118 +387,68 @@ export type CandidateUpdateOneRequiredWithoutEductionsNestedInput = {
   >;
 };
 
-export type CandidateCreateNestedManyWithoutUserInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.CandidateCreateWithoutUserInput,
-        Prisma.CandidateUncheckedCreateWithoutUserInput
-      >
-    | Prisma.CandidateCreateWithoutUserInput[]
-    | Prisma.CandidateUncheckedCreateWithoutUserInput[];
-  connectOrCreate?:
-    | Prisma.CandidateCreateOrConnectWithoutUserInput
-    | Prisma.CandidateCreateOrConnectWithoutUserInput[];
-  createMany?: Prisma.CandidateCreateManyUserInputEnvelope;
-  connect?:
-    | Prisma.CandidateWhereUniqueInput
-    | Prisma.CandidateWhereUniqueInput[];
+export type CandidateCreateNestedOneWithoutUserInput = {
+  create?: Prisma.XOR<
+    Prisma.CandidateCreateWithoutUserInput,
+    Prisma.CandidateUncheckedCreateWithoutUserInput
+  >;
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutUserInput;
+  connect?: Prisma.CandidateWhereUniqueInput;
 };
 
-export type CandidateUncheckedCreateNestedManyWithoutUserInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.CandidateCreateWithoutUserInput,
-        Prisma.CandidateUncheckedCreateWithoutUserInput
-      >
-    | Prisma.CandidateCreateWithoutUserInput[]
-    | Prisma.CandidateUncheckedCreateWithoutUserInput[];
-  connectOrCreate?:
-    | Prisma.CandidateCreateOrConnectWithoutUserInput
-    | Prisma.CandidateCreateOrConnectWithoutUserInput[];
-  createMany?: Prisma.CandidateCreateManyUserInputEnvelope;
-  connect?:
-    | Prisma.CandidateWhereUniqueInput
-    | Prisma.CandidateWhereUniqueInput[];
+export type CandidateUncheckedCreateNestedOneWithoutUserInput = {
+  create?: Prisma.XOR<
+    Prisma.CandidateCreateWithoutUserInput,
+    Prisma.CandidateUncheckedCreateWithoutUserInput
+  >;
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutUserInput;
+  connect?: Prisma.CandidateWhereUniqueInput;
 };
 
-export type CandidateUpdateManyWithoutUserNestedInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.CandidateCreateWithoutUserInput,
-        Prisma.CandidateUncheckedCreateWithoutUserInput
-      >
-    | Prisma.CandidateCreateWithoutUserInput[]
-    | Prisma.CandidateUncheckedCreateWithoutUserInput[];
-  connectOrCreate?:
-    | Prisma.CandidateCreateOrConnectWithoutUserInput
-    | Prisma.CandidateCreateOrConnectWithoutUserInput[];
-  upsert?:
-    | Prisma.CandidateUpsertWithWhereUniqueWithoutUserInput
-    | Prisma.CandidateUpsertWithWhereUniqueWithoutUserInput[];
-  createMany?: Prisma.CandidateCreateManyUserInputEnvelope;
-  set?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[];
-  disconnect?:
-    | Prisma.CandidateWhereUniqueInput
-    | Prisma.CandidateWhereUniqueInput[];
-  delete?:
-    | Prisma.CandidateWhereUniqueInput
-    | Prisma.CandidateWhereUniqueInput[];
-  connect?:
-    | Prisma.CandidateWhereUniqueInput
-    | Prisma.CandidateWhereUniqueInput[];
-  update?:
-    | Prisma.CandidateUpdateWithWhereUniqueWithoutUserInput
-    | Prisma.CandidateUpdateWithWhereUniqueWithoutUserInput[];
-  updateMany?:
-    | Prisma.CandidateUpdateManyWithWhereWithoutUserInput
-    | Prisma.CandidateUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?:
-    | Prisma.CandidateScalarWhereInput
-    | Prisma.CandidateScalarWhereInput[];
+export type CandidateUpdateOneWithoutUserNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.CandidateCreateWithoutUserInput,
+    Prisma.CandidateUncheckedCreateWithoutUserInput
+  >;
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutUserInput;
+  upsert?: Prisma.CandidateUpsertWithoutUserInput;
+  disconnect?: Prisma.CandidateWhereInput | boolean;
+  delete?: Prisma.CandidateWhereInput | boolean;
+  connect?: Prisma.CandidateWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.CandidateUpdateToOneWithWhereWithoutUserInput,
+      Prisma.CandidateUpdateWithoutUserInput
+    >,
+    Prisma.CandidateUncheckedUpdateWithoutUserInput
+  >;
 };
 
-export type CandidateUncheckedUpdateManyWithoutUserNestedInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.CandidateCreateWithoutUserInput,
-        Prisma.CandidateUncheckedCreateWithoutUserInput
-      >
-    | Prisma.CandidateCreateWithoutUserInput[]
-    | Prisma.CandidateUncheckedCreateWithoutUserInput[];
-  connectOrCreate?:
-    | Prisma.CandidateCreateOrConnectWithoutUserInput
-    | Prisma.CandidateCreateOrConnectWithoutUserInput[];
-  upsert?:
-    | Prisma.CandidateUpsertWithWhereUniqueWithoutUserInput
-    | Prisma.CandidateUpsertWithWhereUniqueWithoutUserInput[];
-  createMany?: Prisma.CandidateCreateManyUserInputEnvelope;
-  set?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[];
-  disconnect?:
-    | Prisma.CandidateWhereUniqueInput
-    | Prisma.CandidateWhereUniqueInput[];
-  delete?:
-    | Prisma.CandidateWhereUniqueInput
-    | Prisma.CandidateWhereUniqueInput[];
-  connect?:
-    | Prisma.CandidateWhereUniqueInput
-    | Prisma.CandidateWhereUniqueInput[];
-  update?:
-    | Prisma.CandidateUpdateWithWhereUniqueWithoutUserInput
-    | Prisma.CandidateUpdateWithWhereUniqueWithoutUserInput[];
-  updateMany?:
-    | Prisma.CandidateUpdateManyWithWhereWithoutUserInput
-    | Prisma.CandidateUpdateManyWithWhereWithoutUserInput[];
-  deleteMany?:
-    | Prisma.CandidateScalarWhereInput
-    | Prisma.CandidateScalarWhereInput[];
+export type CandidateUncheckedUpdateOneWithoutUserNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.CandidateCreateWithoutUserInput,
+    Prisma.CandidateUncheckedCreateWithoutUserInput
+  >;
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutUserInput;
+  upsert?: Prisma.CandidateUpsertWithoutUserInput;
+  disconnect?: Prisma.CandidateWhereInput | boolean;
+  delete?: Prisma.CandidateWhereInput | boolean;
+  connect?: Prisma.CandidateWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.CandidateUpdateToOneWithWhereWithoutUserInput,
+      Prisma.CandidateUpdateWithoutUserInput
+    >,
+    Prisma.CandidateUncheckedUpdateWithoutUserInput
+  >;
 };
 
 export type CandidateCreateWithoutWorkExperiencesInput = {
   id?: string;
   phone: string;
-  user: Prisma.UserCreateNestedOneWithoutCandidatesInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
+  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
 };
 
 export type CandidateUncheckedCreateWithoutWorkExperiencesInput = {
@@ -545,9 +490,9 @@ export type CandidateUpdateToOneWithWhereWithoutWorkExperiencesInput = {
 export type CandidateUpdateWithoutWorkExperiencesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  user?: Prisma.UserUpdateOneRequiredWithoutCandidatesNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
 };
 
 export type CandidateUncheckedUpdateWithoutWorkExperiencesInput = {
@@ -561,9 +506,9 @@ export type CandidateUncheckedUpdateWithoutWorkExperiencesInput = {
 export type CandidateCreateWithoutSkillsInput = {
   id?: string;
   phone: string;
-  user: Prisma.UserCreateNestedOneWithoutCandidatesInput;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
+  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
 };
 
 export type CandidateUncheckedCreateWithoutSkillsInput = {
@@ -605,9 +550,9 @@ export type CandidateUpdateToOneWithWhereWithoutSkillsInput = {
 export type CandidateUpdateWithoutSkillsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  user?: Prisma.UserUpdateOneRequiredWithoutCandidatesNestedInput;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
 };
 
 export type CandidateUncheckedUpdateWithoutSkillsInput = {
@@ -621,9 +566,9 @@ export type CandidateUncheckedUpdateWithoutSkillsInput = {
 export type CandidateCreateWithoutEductionsInput = {
   id?: string;
   phone: string;
-  user: Prisma.UserCreateNestedOneWithoutCandidatesInput;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
+  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
 };
 
 export type CandidateUncheckedCreateWithoutEductionsInput = {
@@ -665,9 +610,9 @@ export type CandidateUpdateToOneWithWhereWithoutEductionsInput = {
 export type CandidateUpdateWithoutEductionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  user?: Prisma.UserUpdateOneRequiredWithoutCandidatesNestedInput;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
 };
 
 export type CandidateUncheckedUpdateWithoutEductionsInput = {
@@ -702,15 +647,7 @@ export type CandidateCreateOrConnectWithoutUserInput = {
   >;
 };
 
-export type CandidateCreateManyUserInputEnvelope = {
-  data:
-    | Prisma.CandidateCreateManyUserInput
-    | Prisma.CandidateCreateManyUserInput[];
-  skipDuplicates?: boolean;
-};
-
-export type CandidateUpsertWithWhereUniqueWithoutUserInput = {
-  where: Prisma.CandidateWhereUniqueInput;
+export type CandidateUpsertWithoutUserInput = {
   update: Prisma.XOR<
     Prisma.CandidateUpdateWithoutUserInput,
     Prisma.CandidateUncheckedUpdateWithoutUserInput
@@ -719,36 +656,15 @@ export type CandidateUpsertWithWhereUniqueWithoutUserInput = {
     Prisma.CandidateCreateWithoutUserInput,
     Prisma.CandidateUncheckedCreateWithoutUserInput
   >;
+  where?: Prisma.CandidateWhereInput;
 };
 
-export type CandidateUpdateWithWhereUniqueWithoutUserInput = {
-  where: Prisma.CandidateWhereUniqueInput;
+export type CandidateUpdateToOneWithWhereWithoutUserInput = {
+  where?: Prisma.CandidateWhereInput;
   data: Prisma.XOR<
     Prisma.CandidateUpdateWithoutUserInput,
     Prisma.CandidateUncheckedUpdateWithoutUserInput
   >;
-};
-
-export type CandidateUpdateManyWithWhereWithoutUserInput = {
-  where: Prisma.CandidateScalarWhereInput;
-  data: Prisma.XOR<
-    Prisma.CandidateUpdateManyMutationInput,
-    Prisma.CandidateUncheckedUpdateManyWithoutUserInput
-  >;
-};
-
-export type CandidateScalarWhereInput = {
-  AND?: Prisma.CandidateScalarWhereInput | Prisma.CandidateScalarWhereInput[];
-  OR?: Prisma.CandidateScalarWhereInput[];
-  NOT?: Prisma.CandidateScalarWhereInput | Prisma.CandidateScalarWhereInput[];
-  id?: Prisma.StringFilter<"Candidate"> | string;
-  userId?: Prisma.StringFilter<"Candidate"> | string;
-  phone?: Prisma.StringFilter<"Candidate"> | string;
-};
-
-export type CandidateCreateManyUserInput = {
-  id?: string;
-  phone: string;
 };
 
 export type CandidateUpdateWithoutUserInput = {
@@ -765,11 +681,6 @@ export type CandidateUncheckedUpdateWithoutUserInput = {
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateUncheckedUpdateManyWithoutUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
 /**
@@ -842,10 +753,10 @@ export type CandidateSelect<
     id?: boolean;
     userId?: boolean;
     phone?: boolean;
-    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     workExperiences?: boolean | Prisma.Candidate$workExperiencesArgs<ExtArgs>;
     skills?: boolean | Prisma.Candidate$skillsArgs<ExtArgs>;
     eductions?: boolean | Prisma.Candidate$eductionsArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     _count?: boolean | Prisma.CandidateCountOutputTypeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["candidate"]
@@ -894,10 +805,10 @@ export type CandidateInclude<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   workExperiences?: boolean | Prisma.Candidate$workExperiencesArgs<ExtArgs>;
   skills?: boolean | Prisma.Candidate$skillsArgs<ExtArgs>;
   eductions?: boolean | Prisma.Candidate$eductionsArgs<ExtArgs>;
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   _count?: boolean | Prisma.CandidateCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type CandidateIncludeCreateManyAndReturn<
@@ -919,10 +830,10 @@ export type $CandidatePayload<
 > = {
   name: "Candidate";
   objects: {
-    user: Prisma.$UserPayload<ExtArgs>;
     workExperiences: Prisma.$workExperiencePayload<ExtArgs>[];
     skills: Prisma.$skillPayload<ExtArgs>[];
     eductions: Prisma.$eductionPayload<ExtArgs>[];
+    user: Prisma.$UserPayload<ExtArgs>;
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
@@ -1479,20 +1390,6 @@ export interface Prisma__CandidateClient<
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise";
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>,
-  ): Prisma.Prisma__UserClient<
-    | runtime.Types.Result.GetResult<
-        Prisma.$UserPayload<ExtArgs>,
-        T,
-        "findUniqueOrThrow",
-        GlobalOmitOptions
-      >
-    | Null,
-    Null,
-    ExtArgs,
-    GlobalOmitOptions
-  >;
   workExperiences<T extends Prisma.Candidate$workExperiencesArgs<ExtArgs> = {}>(
     args?: Prisma.Subset<T, Prisma.Candidate$workExperiencesArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<
@@ -1525,6 +1422,20 @@ export interface Prisma__CandidateClient<
         GlobalOmitOptions
       >
     | Null
+  >;
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>,
+  ): Prisma.Prisma__UserClient<
+    | runtime.Types.Result.GetResult<
+        Prisma.$UserPayload<ExtArgs>,
+        T,
+        "findUniqueOrThrow",
+        GlobalOmitOptions
+      >
+    | Null,
+    Null,
+    ExtArgs,
+    GlobalOmitOptions
   >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.

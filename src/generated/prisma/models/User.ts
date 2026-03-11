@@ -201,8 +201,15 @@ export type UserWhereInput = {
   password?: Prisma.StringFilter<"User"> | string;
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string;
-  candidates?: Prisma.CandidateListRelationFilter;
   applications?: Prisma.ApplicationListRelationFilter;
+  candidate?: Prisma.XOR<
+    Prisma.CandidateNullableScalarRelationFilter,
+    Prisma.CandidateWhereInput
+  > | null;
+  company?: Prisma.XOR<
+    Prisma.CompanyNullableScalarRelationFilter,
+    Prisma.CompanyWhereInput
+  > | null;
 };
 
 export type UserOrderByWithRelationInput = {
@@ -213,8 +220,9 @@ export type UserOrderByWithRelationInput = {
   password?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
-  candidates?: Prisma.CandidateOrderByRelationAggregateInput;
   applications?: Prisma.ApplicationOrderByRelationAggregateInput;
+  candidate?: Prisma.CandidateOrderByWithRelationInput;
+  company?: Prisma.CompanyOrderByWithRelationInput;
 };
 
 export type UserWhereUniqueInput = Prisma.AtLeast<
@@ -229,8 +237,15 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
     password?: Prisma.StringFilter<"User"> | string;
     createdAt?: Prisma.DateTimeFilter<"User"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string;
-    candidates?: Prisma.CandidateListRelationFilter;
     applications?: Prisma.ApplicationListRelationFilter;
+    candidate?: Prisma.XOR<
+      Prisma.CandidateNullableScalarRelationFilter,
+      Prisma.CandidateWhereInput
+    > | null;
+    company?: Prisma.XOR<
+      Prisma.CompanyNullableScalarRelationFilter,
+      Prisma.CompanyWhereInput
+    > | null;
   },
   "id" | "email"
 >;
@@ -273,8 +288,9 @@ export type UserCreateInput = {
   password: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
-  candidates?: Prisma.CandidateCreateNestedManyWithoutUserInput;
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
 };
 
 export type UserUncheckedCreateInput = {
@@ -285,8 +301,9 @@ export type UserUncheckedCreateInput = {
   password: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
-  candidates?: Prisma.CandidateUncheckedCreateNestedManyWithoutUserInput;
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
 };
 
 export type UserUpdateInput = {
@@ -297,8 +314,9 @@ export type UserUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  candidates?: Prisma.CandidateUpdateManyWithoutUserNestedInput;
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateInput = {
@@ -309,8 +327,9 @@ export type UserUncheckedUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  candidates?: Prisma.CandidateUncheckedUpdateManyWithoutUserNestedInput;
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
 };
 
 export type UserCreateManyInput = {
@@ -378,29 +397,55 @@ export type UserMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder;
 };
 
-export type UserCreateNestedOneWithoutCandidatesInput = {
+export type UserCreateNestedOneWithoutCandidateInput = {
   create?: Prisma.XOR<
-    Prisma.UserCreateWithoutCandidatesInput,
-    Prisma.UserUncheckedCreateWithoutCandidatesInput
+    Prisma.UserCreateWithoutCandidateInput,
+    Prisma.UserUncheckedCreateWithoutCandidateInput
   >;
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCandidatesInput;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCandidateInput;
   connect?: Prisma.UserWhereUniqueInput;
 };
 
-export type UserUpdateOneRequiredWithoutCandidatesNestedInput = {
+export type UserUpdateOneRequiredWithoutCandidateNestedInput = {
   create?: Prisma.XOR<
-    Prisma.UserCreateWithoutCandidatesInput,
-    Prisma.UserUncheckedCreateWithoutCandidatesInput
+    Prisma.UserCreateWithoutCandidateInput,
+    Prisma.UserUncheckedCreateWithoutCandidateInput
   >;
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCandidatesInput;
-  upsert?: Prisma.UserUpsertWithoutCandidatesInput;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCandidateInput;
+  upsert?: Prisma.UserUpsertWithoutCandidateInput;
   connect?: Prisma.UserWhereUniqueInput;
   update?: Prisma.XOR<
     Prisma.XOR<
-      Prisma.UserUpdateToOneWithWhereWithoutCandidatesInput,
-      Prisma.UserUpdateWithoutCandidatesInput
+      Prisma.UserUpdateToOneWithWhereWithoutCandidateInput,
+      Prisma.UserUpdateWithoutCandidateInput
     >,
-    Prisma.UserUncheckedUpdateWithoutCandidatesInput
+    Prisma.UserUncheckedUpdateWithoutCandidateInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutCompanyInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutCompanyInput,
+    Prisma.UserUncheckedCreateWithoutCompanyInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCompanyInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutCompanyNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutCompanyInput,
+    Prisma.UserUncheckedCreateWithoutCompanyInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCompanyInput;
+  upsert?: Prisma.UserUpsertWithoutCompanyInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutCompanyInput,
+      Prisma.UserUpdateWithoutCompanyInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutCompanyInput
   >;
 };
 
@@ -434,7 +479,7 @@ export type EnumUserRoleFieldUpdateOperationsInput = {
   set?: $Enums.UserRole;
 };
 
-export type UserCreateWithoutCandidatesInput = {
+export type UserCreateWithoutCandidateInput = {
   id?: string;
   name: string;
   email: string;
@@ -443,9 +488,10 @@ export type UserCreateWithoutCandidatesInput = {
   createdAt?: Date | string;
   updatedAt?: Date | string;
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput;
+  company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
 };
 
-export type UserUncheckedCreateWithoutCandidatesInput = {
+export type UserUncheckedCreateWithoutCandidateInput = {
   id?: string;
   name: string;
   email: string;
@@ -454,37 +500,38 @@ export type UserUncheckedCreateWithoutCandidatesInput = {
   createdAt?: Date | string;
   updatedAt?: Date | string;
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput;
+  company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
 };
 
-export type UserCreateOrConnectWithoutCandidatesInput = {
+export type UserCreateOrConnectWithoutCandidateInput = {
   where: Prisma.UserWhereUniqueInput;
   create: Prisma.XOR<
-    Prisma.UserCreateWithoutCandidatesInput,
-    Prisma.UserUncheckedCreateWithoutCandidatesInput
+    Prisma.UserCreateWithoutCandidateInput,
+    Prisma.UserUncheckedCreateWithoutCandidateInput
   >;
 };
 
-export type UserUpsertWithoutCandidatesInput = {
+export type UserUpsertWithoutCandidateInput = {
   update: Prisma.XOR<
-    Prisma.UserUpdateWithoutCandidatesInput,
-    Prisma.UserUncheckedUpdateWithoutCandidatesInput
+    Prisma.UserUpdateWithoutCandidateInput,
+    Prisma.UserUncheckedUpdateWithoutCandidateInput
   >;
   create: Prisma.XOR<
-    Prisma.UserCreateWithoutCandidatesInput,
-    Prisma.UserUncheckedCreateWithoutCandidatesInput
+    Prisma.UserCreateWithoutCandidateInput,
+    Prisma.UserUncheckedCreateWithoutCandidateInput
   >;
   where?: Prisma.UserWhereInput;
 };
 
-export type UserUpdateToOneWithWhereWithoutCandidatesInput = {
+export type UserUpdateToOneWithWhereWithoutCandidateInput = {
   where?: Prisma.UserWhereInput;
   data: Prisma.XOR<
-    Prisma.UserUpdateWithoutCandidatesInput,
-    Prisma.UserUncheckedUpdateWithoutCandidatesInput
+    Prisma.UserUpdateWithoutCandidateInput,
+    Prisma.UserUncheckedUpdateWithoutCandidateInput
   >;
 };
 
-export type UserUpdateWithoutCandidatesInput = {
+export type UserUpdateWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   email?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -493,9 +540,10 @@ export type UserUpdateWithoutCandidatesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput;
+  company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
 };
 
-export type UserUncheckedUpdateWithoutCandidatesInput = {
+export type UserUncheckedUpdateWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   email?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -504,6 +552,83 @@ export type UserUncheckedUpdateWithoutCandidatesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput;
+  company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
+};
+
+export type UserCreateWithoutCompanyInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
+};
+
+export type UserUncheckedCreateWithoutCompanyInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
+};
+
+export type UserCreateOrConnectWithoutCompanyInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutCompanyInput,
+    Prisma.UserUncheckedCreateWithoutCompanyInput
+  >;
+};
+
+export type UserUpsertWithoutCompanyInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutCompanyInput,
+    Prisma.UserUncheckedUpdateWithoutCompanyInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutCompanyInput,
+    Prisma.UserUncheckedCreateWithoutCompanyInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutCompanyInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutCompanyInput,
+    Prisma.UserUncheckedUpdateWithoutCompanyInput
+  >;
+};
+
+export type UserUpdateWithoutCompanyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutCompanyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutApplicationsInput = {
@@ -514,7 +639,8 @@ export type UserCreateWithoutApplicationsInput = {
   password: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
-  candidates?: Prisma.CandidateCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutApplicationsInput = {
@@ -525,7 +651,8 @@ export type UserUncheckedCreateWithoutApplicationsInput = {
   password: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
-  candidates?: Prisma.CandidateUncheckedCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutApplicationsInput = {
@@ -564,7 +691,8 @@ export type UserUpdateWithoutApplicationsInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  candidates?: Prisma.CandidateUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutApplicationsInput = {
@@ -575,7 +703,8 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  candidates?: Prisma.CandidateUncheckedUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
 };
 
 /**
@@ -583,7 +712,6 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
  */
 
 export type UserCountOutputType = {
-  candidates: number;
   applications: number;
 };
 
@@ -591,7 +719,6 @@ export type UserCountOutputTypeSelect<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  candidates?: boolean | UserCountOutputTypeCountCandidatesArgs;
   applications?: boolean | UserCountOutputTypeCountApplicationsArgs;
 };
 
@@ -606,16 +733,6 @@ export type UserCountOutputTypeDefaultArgs<
    * Select specific fields to fetch from the UserCountOutputType
    */
   select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null;
-};
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountCandidatesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  where?: Prisma.CandidateWhereInput;
 };
 
 /**
@@ -640,8 +757,9 @@ export type UserSelect<
     password?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
-    candidates?: boolean | Prisma.User$candidatesArgs<ExtArgs>;
     applications?: boolean | Prisma.User$applicationsArgs<ExtArgs>;
+    candidate?: boolean | Prisma.User$candidateArgs<ExtArgs>;
+    company?: boolean | Prisma.User$companyArgs<ExtArgs>;
     _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["user"]
@@ -700,8 +818,9 @@ export type UserInclude<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  candidates?: boolean | Prisma.User$candidatesArgs<ExtArgs>;
   applications?: boolean | Prisma.User$applicationsArgs<ExtArgs>;
+  candidate?: boolean | Prisma.User$candidateArgs<ExtArgs>;
+  company?: boolean | Prisma.User$companyArgs<ExtArgs>;
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type UserIncludeCreateManyAndReturn<
@@ -719,8 +838,9 @@ export type $UserPayload<
 > = {
   name: "User";
   objects: {
-    candidates: Prisma.$CandidatePayload<ExtArgs>[];
     applications: Prisma.$ApplicationPayload<ExtArgs>[];
+    candidate: Prisma.$CandidatePayload<ExtArgs> | null;
+    company: Prisma.$CompanyPayload<ExtArgs> | null;
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
@@ -1281,17 +1401,6 @@ export interface Prisma__UserClient<
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise";
-  candidates<T extends Prisma.User$candidatesArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.User$candidatesArgs<ExtArgs>>,
-  ): Prisma.PrismaPromise<
-    | runtime.Types.Result.GetResult<
-        Prisma.$CandidatePayload<ExtArgs>,
-        T,
-        "findMany",
-        GlobalOmitOptions
-      >
-    | Null
-  >;
   applications<T extends Prisma.User$applicationsArgs<ExtArgs> = {}>(
     args?: Prisma.Subset<T, Prisma.User$applicationsArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<
@@ -1302,6 +1411,32 @@ export interface Prisma__UserClient<
         GlobalOmitOptions
       >
     | Null
+  >;
+  candidate<T extends Prisma.User$candidateArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$candidateArgs<ExtArgs>>,
+  ): Prisma.Prisma__CandidateClient<
+    runtime.Types.Result.GetResult<
+      Prisma.$CandidatePayload<ExtArgs>,
+      T,
+      "findUniqueOrThrow",
+      GlobalOmitOptions
+    > | null,
+    null,
+    ExtArgs,
+    GlobalOmitOptions
+  >;
+  company<T extends Prisma.User$companyArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$companyArgs<ExtArgs>>,
+  ): Prisma.Prisma__CompanyClient<
+    runtime.Types.Result.GetResult<
+      Prisma.$CompanyPayload<ExtArgs>,
+      T,
+      "findUniqueOrThrow",
+      GlobalOmitOptions
+    > | null,
+    null,
+    ExtArgs,
+    GlobalOmitOptions
   >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1793,37 +1928,6 @@ export type UserDeleteManyArgs<
 };
 
 /**
- * User.candidates
- */
-export type User$candidatesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the Candidate
-   */
-  select?: Prisma.CandidateSelect<ExtArgs> | null;
-  /**
-   * Omit specific fields from the Candidate
-   */
-  omit?: Prisma.CandidateOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CandidateInclude<ExtArgs> | null;
-  where?: Prisma.CandidateWhereInput;
-  orderBy?:
-    | Prisma.CandidateOrderByWithRelationInput
-    | Prisma.CandidateOrderByWithRelationInput[];
-  cursor?: Prisma.CandidateWhereUniqueInput;
-  take?: number;
-  skip?: number;
-  distinct?:
-    | Prisma.CandidateScalarFieldEnum
-    | Prisma.CandidateScalarFieldEnum[];
-};
-
-/**
  * User.applications
  */
 export type User$applicationsArgs<
@@ -1852,6 +1956,50 @@ export type User$applicationsArgs<
   distinct?:
     | Prisma.ApplicationScalarFieldEnum
     | Prisma.ApplicationScalarFieldEnum[];
+};
+
+/**
+ * User.candidate
+ */
+export type User$candidateArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Candidate
+   */
+  select?: Prisma.CandidateSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Candidate
+   */
+  omit?: Prisma.CandidateOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CandidateInclude<ExtArgs> | null;
+  where?: Prisma.CandidateWhereInput;
+};
+
+/**
+ * User.company
+ */
+export type User$companyArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Company
+   */
+  select?: Prisma.CompanySelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Company
+   */
+  omit?: Prisma.CompanyOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompanyInclude<ExtArgs> | null;
+  where?: Prisma.CompanyWhereInput;
 };
 
 /**

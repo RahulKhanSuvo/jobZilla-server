@@ -1,51 +1,64 @@
 model Company {
-    id           String   @id @default(uuid())
-    name         String   @db.VarChar(100)
-    description  String?
-    website      String
-    industry     String
-    phone        String
-    location     String   @db.VarChar(150)
-    companyType  String?
-    employeeSize String
-    createdAt    DateTime @default(now())
-    updatedAt    DateTime @updatedAt
-    jobs         Job[]
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  description  String?
+  website      String
+  industry     String
+  phone        String
+  location     String   @db.VarChar(150)
+  companyType  String?
+  employeeSize String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  jobs         Job[]
+  user         User     @relation(fields: [userId], references: [id])
 }
 
 enum JobType {
-    FULL_TIME
-    PART_TIME
-    CONTRACT
-    INTERN
-    REMOTE
+  FULL_TIME
+  PART_TIME
+  FREELANCE
+  CONTRACT
+  INTERN
+  REMOTE
 }
 
 model Job {
-    id           String        @id @default(uuid())
-    title        String        @db.VarChar(100)
-    description  String
-    location     String        @db.VarChar(150)
-    salaryMin    Int?
-    salaryMax    Int?
-    jobType      JobType
-    experience   String?       @db.VarChar(100)
-    deadline     DateTime?
-    skills       String?       @db.VarChar(200)
-    companyId    String
-    company      Company       @relation(fields: [companyId], references: [id])
-    createdAt    DateTime      @default(now())
-    updatedAt    DateTime      @updatedAt
-    applications Application[]
+  id            String        @id @default(uuid())
+  title         String        @db.VarChar(100)
+  description   String        @db.Text
+  featuredImage String?
+  category      String?
+  tags          String[]
+  gender        String?
+  applyType     String?
+  externalUrl   String?
+  applyEmail    String?
+  salaryType    String?
+  location      String?       @db.VarChar(150)
+  salaryMin     Int?
+  salaryMax     Int?
+  jobType       JobType?
+  experience    String?       @db.VarChar(100)
+  careerLevel   String?
+  qualification String?
+  videoUrl      String?
+  deadline      DateTime?
+  skills        String?       @db.VarChar(200)
+  companyId     String
+  company       Company       @relation(fields: [companyId], references: [id])
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  applications  Application[]
 }
 
 model Application {
-    id        String    @id @default(uuid())
-    userId    String
-    jobId     String
-    status    AppStatus @default(PENDING)
-    createdAt DateTime  @default(now())
-    updatedAt DateTime  @updatedAt
-    job       Job       @relation(fields: [jobId], references: [id])
-    user      User      @relation(fields: [userId], references: [id])
+  id        String    @id @default(uuid())
+  userId    String
+  jobId     String
+  status    AppStatus @default(PENDING)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  job       Job       @relation(fields: [jobId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
 }

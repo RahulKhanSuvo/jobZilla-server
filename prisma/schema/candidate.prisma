@@ -1,44 +1,44 @@
 model Candidate {
-    id              String           @id @default(uuid())
-    userId          String
-    user            User             @relation(fields: [userId], references: [id])
-    phone           String
-    workExperiences workExperience[]
-    skills          skill[]
-    eductions       eduction[]
+  id              String           @id @default(uuid())
+  userId          String           @unique
+  phone           String
+  workExperiences workExperience[]
+  skills          skill[]
+  eductions       eduction[]
+  user            User             @relation(fields: [userId], references: [id])
 }
 
 model workExperience {
-    id          String    @id @default(uuid())
-    candideId   String
-    candidate   Candidate @relation(fields: [candideId], references: [id])
-    jobTitle    String    @db.VarChar(150)
-    companyName String    @db.VarChar(150)
-    industry    String
-    startData   DateTime
-    endData     DateTime?
-    Description String    @db.Text
-    isWorking   Boolean   @default(true)
-    createdId   DateTime  @default(now())
+  id          String    @id @default(uuid())
+  candideId   String
+  candidate   Candidate @relation(fields: [candideId], references: [id])
+  jobTitle    String    @db.VarChar(150)
+  companyName String    @db.VarChar(150)
+  industry    String
+  startData   DateTime
+  endData     DateTime?
+  Description String    @db.Text
+  isWorking   Boolean   @default(true)
+  createdId   DateTime  @default(now())
 }
 
 model skill {
-    id        String    @id @default(uuid())
-    skill     String
-    candideId String
-    candidate Candidate @relation(fields: [candideId], references: [id])
+  id        String    @id @default(uuid())
+  skill     String
+  candideId String
+  candidate Candidate @relation(fields: [candideId], references: [id])
 }
 
 model eduction {
-    id          String    @id @default(uuid())
-    institution String
-    major       String
-    field       String
-    gap         Decimal
-    startData   DateTime
-    endData     DateTime?
-    isStudying  Boolean   @default(false)
-    createdId   DateTime  @default(now())
-    candideId   String
-    candidate   Candidate @relation(fields: [candideId], references: [id])
+  id          String    @id @default(uuid())
+  institution String
+  major       String
+  field       String
+  gap         Decimal
+  startData   DateTime
+  endData     DateTime?
+  isStudying  Boolean   @default(false)
+  createdId   DateTime  @default(now())
+  candideId   String
+  candidate   Candidate @relation(fields: [candideId], references: [id])
 }
