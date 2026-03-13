@@ -4,7 +4,7 @@ export const createUserSchema = z.object({
   name: z.string().min(1, " name is required").trim(),
   email: z.string().email("Invalid email address").trim().toLowerCase(),
   password: z.string().min(6, "Password must be at least 6 characters"),
-  role: z.enum(["USER", "EMPLOYER", "ADMIN"]).optional(),
+  role: z.enum(["CANDIDATE", "EMPLOYER", "ADMIN"]).optional(),
 });
 export type CreateUserInput = z.infer<typeof createUserSchema>;
 
