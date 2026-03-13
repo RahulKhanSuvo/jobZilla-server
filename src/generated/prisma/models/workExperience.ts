@@ -597,10 +597,6 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string;
 };
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null;
-};
-
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean;
 };

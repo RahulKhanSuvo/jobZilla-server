@@ -84,6 +84,19 @@ export const CandidateScalarFieldEnum = {
   id: "id",
   userId: "userId",
   phone: "phone",
+  location: "location",
+  dob: "dob",
+  gender: "gender",
+  maritalStatus: "maritalStatus",
+  language: "language",
+  aboutMe: "aboutMe",
+  profileImage: "profileImage",
+  facebook: "facebook",
+  linkedin: "linkedin",
+  twitter: "twitter",
+  pinterest: "pinterest",
+  instagram: "instagram",
+  youtube: "youtube",
 } as const;
 
 export type CandidateScalarFieldEnum =

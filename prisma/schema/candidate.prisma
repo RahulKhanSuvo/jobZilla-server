@@ -1,7 +1,22 @@
 model Candidate {
-  id              String           @id @default(uuid())
-  userId          String           @unique
-  phone           String
+  id     String @id @default(uuid())
+  userId String @unique
+  phone  String
+
+  // Profile Info
+  location      String?
+  dob           DateTime?
+  gender        String?
+  maritalStatus String?
+  language      String?
+  aboutMe       String?   @db.Text
+  profileImage  String?
+
+  // Social Links
+  facebook String?
+  linkedin String?
+  twitter  String?
+
   workExperiences workExperience[]
   skills          skill[]
   eductions       eduction[]

@@ -28,18 +28,57 @@ export type CandidateMinAggregateOutputType = {
   id: string | null;
   userId: string | null;
   phone: string | null;
+  location: string | null;
+  dob: Date | null;
+  gender: string | null;
+  maritalStatus: string | null;
+  language: string | null;
+  aboutMe: string | null;
+  profileImage: string | null;
+  facebook: string | null;
+  linkedin: string | null;
+  twitter: string | null;
+  pinterest: string | null;
+  instagram: string | null;
+  youtube: string | null;
 };
 
 export type CandidateMaxAggregateOutputType = {
   id: string | null;
   userId: string | null;
   phone: string | null;
+  location: string | null;
+  dob: Date | null;
+  gender: string | null;
+  maritalStatus: string | null;
+  language: string | null;
+  aboutMe: string | null;
+  profileImage: string | null;
+  facebook: string | null;
+  linkedin: string | null;
+  twitter: string | null;
+  pinterest: string | null;
+  instagram: string | null;
+  youtube: string | null;
 };
 
 export type CandidateCountAggregateOutputType = {
   id: number;
   userId: number;
   phone: number;
+  location: number;
+  dob: number;
+  gender: number;
+  maritalStatus: number;
+  language: number;
+  aboutMe: number;
+  profileImage: number;
+  facebook: number;
+  linkedin: number;
+  twitter: number;
+  pinterest: number;
+  instagram: number;
+  youtube: number;
   _all: number;
 };
 
@@ -47,18 +86,57 @@ export type CandidateMinAggregateInputType = {
   id?: true;
   userId?: true;
   phone?: true;
+  location?: true;
+  dob?: true;
+  gender?: true;
+  maritalStatus?: true;
+  language?: true;
+  aboutMe?: true;
+  profileImage?: true;
+  facebook?: true;
+  linkedin?: true;
+  twitter?: true;
+  pinterest?: true;
+  instagram?: true;
+  youtube?: true;
 };
 
 export type CandidateMaxAggregateInputType = {
   id?: true;
   userId?: true;
   phone?: true;
+  location?: true;
+  dob?: true;
+  gender?: true;
+  maritalStatus?: true;
+  language?: true;
+  aboutMe?: true;
+  profileImage?: true;
+  facebook?: true;
+  linkedin?: true;
+  twitter?: true;
+  pinterest?: true;
+  instagram?: true;
+  youtube?: true;
 };
 
 export type CandidateCountAggregateInputType = {
   id?: true;
   userId?: true;
   phone?: true;
+  location?: true;
+  dob?: true;
+  gender?: true;
+  maritalStatus?: true;
+  language?: true;
+  aboutMe?: true;
+  profileImage?: true;
+  facebook?: true;
+  linkedin?: true;
+  twitter?: true;
+  pinterest?: true;
+  instagram?: true;
+  youtube?: true;
   _all?: true;
 };
 
@@ -145,6 +223,19 @@ export type CandidateGroupByOutputType = {
   id: string;
   userId: string;
   phone: string;
+  location: string | null;
+  dob: Date | null;
+  gender: string | null;
+  maritalStatus: string | null;
+  language: string | null;
+  aboutMe: string | null;
+  profileImage: string | null;
+  facebook: string | null;
+  linkedin: string | null;
+  twitter: string | null;
+  pinterest: string | null;
+  instagram: string | null;
+  youtube: string | null;
   _count: CandidateCountAggregateOutputType | null;
   _min: CandidateMinAggregateOutputType | null;
   _max: CandidateMaxAggregateOutputType | null;
@@ -170,6 +261,19 @@ export type CandidateWhereInput = {
   id?: Prisma.StringFilter<"Candidate"> | string;
   userId?: Prisma.StringFilter<"Candidate"> | string;
   phone?: Prisma.StringFilter<"Candidate"> | string;
+  location?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  dob?: Prisma.DateTimeNullableFilter<"Candidate"> | Date | string | null;
+  gender?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  maritalStatus?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  language?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  aboutMe?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  profileImage?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  facebook?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  linkedin?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  twitter?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  pinterest?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  instagram?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  youtube?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   workExperiences?: Prisma.WorkExperienceListRelationFilter;
   skills?: Prisma.SkillListRelationFilter;
   eductions?: Prisma.EductionListRelationFilter;
@@ -180,6 +284,19 @@ export type CandidateOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   phone?: Prisma.SortOrder;
+  location?: Prisma.SortOrderInput | Prisma.SortOrder;
+  dob?: Prisma.SortOrderInput | Prisma.SortOrder;
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder;
+  maritalStatus?: Prisma.SortOrderInput | Prisma.SortOrder;
+  language?: Prisma.SortOrderInput | Prisma.SortOrder;
+  aboutMe?: Prisma.SortOrderInput | Prisma.SortOrder;
+  profileImage?: Prisma.SortOrderInput | Prisma.SortOrder;
+  facebook?: Prisma.SortOrderInput | Prisma.SortOrder;
+  linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
+  twitter?: Prisma.SortOrderInput | Prisma.SortOrder;
+  pinterest?: Prisma.SortOrderInput | Prisma.SortOrder;
+  instagram?: Prisma.SortOrderInput | Prisma.SortOrder;
+  youtube?: Prisma.SortOrderInput | Prisma.SortOrder;
   workExperiences?: Prisma.workExperienceOrderByRelationAggregateInput;
   skills?: Prisma.skillOrderByRelationAggregateInput;
   eductions?: Prisma.eductionOrderByRelationAggregateInput;
@@ -194,6 +311,19 @@ export type CandidateWhereUniqueInput = Prisma.AtLeast<
     OR?: Prisma.CandidateWhereInput[];
     NOT?: Prisma.CandidateWhereInput | Prisma.CandidateWhereInput[];
     phone?: Prisma.StringFilter<"Candidate"> | string;
+    location?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    dob?: Prisma.DateTimeNullableFilter<"Candidate"> | Date | string | null;
+    gender?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    maritalStatus?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    language?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    aboutMe?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    profileImage?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    facebook?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    linkedin?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    twitter?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    pinterest?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    instagram?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    youtube?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     workExperiences?: Prisma.WorkExperienceListRelationFilter;
     skills?: Prisma.SkillListRelationFilter;
     eductions?: Prisma.EductionListRelationFilter;
@@ -206,6 +336,19 @@ export type CandidateOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   phone?: Prisma.SortOrder;
+  location?: Prisma.SortOrderInput | Prisma.SortOrder;
+  dob?: Prisma.SortOrderInput | Prisma.SortOrder;
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder;
+  maritalStatus?: Prisma.SortOrderInput | Prisma.SortOrder;
+  language?: Prisma.SortOrderInput | Prisma.SortOrder;
+  aboutMe?: Prisma.SortOrderInput | Prisma.SortOrder;
+  profileImage?: Prisma.SortOrderInput | Prisma.SortOrder;
+  facebook?: Prisma.SortOrderInput | Prisma.SortOrder;
+  linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
+  twitter?: Prisma.SortOrderInput | Prisma.SortOrder;
+  pinterest?: Prisma.SortOrderInput | Prisma.SortOrder;
+  instagram?: Prisma.SortOrderInput | Prisma.SortOrder;
+  youtube?: Prisma.SortOrderInput | Prisma.SortOrder;
   _count?: Prisma.CandidateCountOrderByAggregateInput;
   _max?: Prisma.CandidateMaxOrderByAggregateInput;
   _min?: Prisma.CandidateMinOrderByAggregateInput;
@@ -222,11 +365,77 @@ export type CandidateScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Candidate"> | string;
   userId?: Prisma.StringWithAggregatesFilter<"Candidate"> | string;
   phone?: Prisma.StringWithAggregatesFilter<"Candidate"> | string;
+  location?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  dob?:
+    | Prisma.DateTimeNullableWithAggregatesFilter<"Candidate">
+    | Date
+    | string
+    | null;
+  gender?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  maritalStatus?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  language?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  aboutMe?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  profileImage?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  facebook?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  linkedin?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  twitter?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  pinterest?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  instagram?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
+  youtube?:
+    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
+    | string
+    | null;
 };
 
 export type CandidateCreateInput = {
   id?: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
@@ -237,6 +446,19 @@ export type CandidateUncheckedCreateInput = {
   id?: string;
   userId: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
@@ -245,6 +467,29 @@ export type CandidateUncheckedCreateInput = {
 export type CandidateUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
@@ -255,6 +500,29 @@ export type CandidateUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
@@ -264,35 +532,133 @@ export type CandidateCreateManyInput = {
   id?: string;
   userId: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
 };
 
 export type CandidateUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 
 export type CandidateUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 
 export type CandidateCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   phone?: Prisma.SortOrder;
+  location?: Prisma.SortOrder;
+  dob?: Prisma.SortOrder;
+  gender?: Prisma.SortOrder;
+  maritalStatus?: Prisma.SortOrder;
+  language?: Prisma.SortOrder;
+  aboutMe?: Prisma.SortOrder;
+  profileImage?: Prisma.SortOrder;
+  facebook?: Prisma.SortOrder;
+  linkedin?: Prisma.SortOrder;
+  twitter?: Prisma.SortOrder;
+  pinterest?: Prisma.SortOrder;
+  instagram?: Prisma.SortOrder;
+  youtube?: Prisma.SortOrder;
 };
 
 export type CandidateMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   phone?: Prisma.SortOrder;
+  location?: Prisma.SortOrder;
+  dob?: Prisma.SortOrder;
+  gender?: Prisma.SortOrder;
+  maritalStatus?: Prisma.SortOrder;
+  language?: Prisma.SortOrder;
+  aboutMe?: Prisma.SortOrder;
+  profileImage?: Prisma.SortOrder;
+  facebook?: Prisma.SortOrder;
+  linkedin?: Prisma.SortOrder;
+  twitter?: Prisma.SortOrder;
+  pinterest?: Prisma.SortOrder;
+  instagram?: Prisma.SortOrder;
+  youtube?: Prisma.SortOrder;
 };
 
 export type CandidateMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   phone?: Prisma.SortOrder;
+  location?: Prisma.SortOrder;
+  dob?: Prisma.SortOrder;
+  gender?: Prisma.SortOrder;
+  maritalStatus?: Prisma.SortOrder;
+  language?: Prisma.SortOrder;
+  aboutMe?: Prisma.SortOrder;
+  profileImage?: Prisma.SortOrder;
+  facebook?: Prisma.SortOrder;
+  linkedin?: Prisma.SortOrder;
+  twitter?: Prisma.SortOrder;
+  pinterest?: Prisma.SortOrder;
+  instagram?: Prisma.SortOrder;
+  youtube?: Prisma.SortOrder;
 };
 
 export type CandidateScalarRelationFilter = {
@@ -307,6 +673,14 @@ export type CandidateNullableScalarRelationFilter = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string;
+};
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null;
+};
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null;
 };
 
 export type CandidateCreateNestedOneWithoutWorkExperiencesInput = {
@@ -446,6 +820,19 @@ export type CandidateUncheckedUpdateOneWithoutUserNestedInput = {
 export type CandidateCreateWithoutWorkExperiencesInput = {
   id?: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
@@ -455,6 +842,19 @@ export type CandidateUncheckedCreateWithoutWorkExperiencesInput = {
   id?: string;
   userId: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
 };
@@ -490,6 +890,29 @@ export type CandidateUpdateToOneWithWhereWithoutWorkExperiencesInput = {
 export type CandidateUpdateWithoutWorkExperiencesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
@@ -499,6 +922,29 @@ export type CandidateUncheckedUpdateWithoutWorkExperiencesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
 };
@@ -506,6 +952,19 @@ export type CandidateUncheckedUpdateWithoutWorkExperiencesInput = {
 export type CandidateCreateWithoutSkillsInput = {
   id?: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
@@ -515,6 +974,19 @@ export type CandidateUncheckedCreateWithoutSkillsInput = {
   id?: string;
   userId: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
 };
@@ -550,6 +1022,29 @@ export type CandidateUpdateToOneWithWhereWithoutSkillsInput = {
 export type CandidateUpdateWithoutSkillsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
@@ -559,6 +1054,29 @@ export type CandidateUncheckedUpdateWithoutSkillsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
 };
@@ -566,6 +1084,19 @@ export type CandidateUncheckedUpdateWithoutSkillsInput = {
 export type CandidateCreateWithoutEductionsInput = {
   id?: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
@@ -575,6 +1106,19 @@ export type CandidateUncheckedCreateWithoutEductionsInput = {
   id?: string;
   userId: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
 };
@@ -610,6 +1154,29 @@ export type CandidateUpdateToOneWithWhereWithoutEductionsInput = {
 export type CandidateUpdateWithoutEductionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
@@ -619,6 +1186,29 @@ export type CandidateUncheckedUpdateWithoutEductionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
 };
@@ -626,6 +1216,19 @@ export type CandidateUncheckedUpdateWithoutEductionsInput = {
 export type CandidateCreateWithoutUserInput = {
   id?: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
@@ -634,6 +1237,19 @@ export type CandidateCreateWithoutUserInput = {
 export type CandidateUncheckedCreateWithoutUserInput = {
   id?: string;
   phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  pinterest?: string | null;
+  instagram?: string | null;
+  youtube?: string | null;
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
@@ -670,6 +1286,29 @@ export type CandidateUpdateToOneWithWhereWithoutUserInput = {
 export type CandidateUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
@@ -678,6 +1317,29 @@ export type CandidateUpdateWithoutUserInput = {
 export type CandidateUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
@@ -753,6 +1415,19 @@ export type CandidateSelect<
     id?: boolean;
     userId?: boolean;
     phone?: boolean;
+    location?: boolean;
+    dob?: boolean;
+    gender?: boolean;
+    maritalStatus?: boolean;
+    language?: boolean;
+    aboutMe?: boolean;
+    profileImage?: boolean;
+    facebook?: boolean;
+    linkedin?: boolean;
+    twitter?: boolean;
+    pinterest?: boolean;
+    instagram?: boolean;
+    youtube?: boolean;
     workExperiences?: boolean | Prisma.Candidate$workExperiencesArgs<ExtArgs>;
     skills?: boolean | Prisma.Candidate$skillsArgs<ExtArgs>;
     eductions?: boolean | Prisma.Candidate$eductionsArgs<ExtArgs>;
@@ -770,6 +1445,19 @@ export type CandidateSelectCreateManyAndReturn<
     id?: boolean;
     userId?: boolean;
     phone?: boolean;
+    location?: boolean;
+    dob?: boolean;
+    gender?: boolean;
+    maritalStatus?: boolean;
+    language?: boolean;
+    aboutMe?: boolean;
+    profileImage?: boolean;
+    facebook?: boolean;
+    linkedin?: boolean;
+    twitter?: boolean;
+    pinterest?: boolean;
+    instagram?: boolean;
+    youtube?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["candidate"]
@@ -783,6 +1471,19 @@ export type CandidateSelectUpdateManyAndReturn<
     id?: boolean;
     userId?: boolean;
     phone?: boolean;
+    location?: boolean;
+    dob?: boolean;
+    gender?: boolean;
+    maritalStatus?: boolean;
+    language?: boolean;
+    aboutMe?: boolean;
+    profileImage?: boolean;
+    facebook?: boolean;
+    linkedin?: boolean;
+    twitter?: boolean;
+    pinterest?: boolean;
+    instagram?: boolean;
+    youtube?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["candidate"]
@@ -792,13 +1493,41 @@ export type CandidateSelectScalar = {
   id?: boolean;
   userId?: boolean;
   phone?: boolean;
+  location?: boolean;
+  dob?: boolean;
+  gender?: boolean;
+  maritalStatus?: boolean;
+  language?: boolean;
+  aboutMe?: boolean;
+  profileImage?: boolean;
+  facebook?: boolean;
+  linkedin?: boolean;
+  twitter?: boolean;
+  pinterest?: boolean;
+  instagram?: boolean;
+  youtube?: boolean;
 };
 
 export type CandidateOmit<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  "id" | "userId" | "phone",
+  | "id"
+  | "userId"
+  | "phone"
+  | "location"
+  | "dob"
+  | "gender"
+  | "maritalStatus"
+  | "language"
+  | "aboutMe"
+  | "profileImage"
+  | "facebook"
+  | "linkedin"
+  | "twitter"
+  | "pinterest"
+  | "instagram"
+  | "youtube",
   ExtArgs["result"]["candidate"]
 >;
 export type CandidateInclude<
@@ -840,6 +1569,19 @@ export type $CandidatePayload<
       id: string;
       userId: string;
       phone: string;
+      location: string | null;
+      dob: Date | null;
+      gender: string | null;
+      maritalStatus: string | null;
+      language: string | null;
+      aboutMe: string | null;
+      profileImage: string | null;
+      facebook: string | null;
+      linkedin: string | null;
+      twitter: string | null;
+      pinterest: string | null;
+      instagram: string | null;
+      youtube: string | null;
     },
     ExtArgs["result"]["candidate"]
   >;
@@ -1482,6 +2224,19 @@ export interface CandidateFieldRefs {
   readonly id: Prisma.FieldRef<"Candidate", "String">;
   readonly userId: Prisma.FieldRef<"Candidate", "String">;
   readonly phone: Prisma.FieldRef<"Candidate", "String">;
+  readonly location: Prisma.FieldRef<"Candidate", "String">;
+  readonly dob: Prisma.FieldRef<"Candidate", "DateTime">;
+  readonly gender: Prisma.FieldRef<"Candidate", "String">;
+  readonly maritalStatus: Prisma.FieldRef<"Candidate", "String">;
+  readonly language: Prisma.FieldRef<"Candidate", "String">;
+  readonly aboutMe: Prisma.FieldRef<"Candidate", "String">;
+  readonly profileImage: Prisma.FieldRef<"Candidate", "String">;
+  readonly facebook: Prisma.FieldRef<"Candidate", "String">;
+  readonly linkedin: Prisma.FieldRef<"Candidate", "String">;
+  readonly twitter: Prisma.FieldRef<"Candidate", "String">;
+  readonly pinterest: Prisma.FieldRef<"Candidate", "String">;
+  readonly instagram: Prisma.FieldRef<"Candidate", "String">;
+  readonly youtube: Prisma.FieldRef<"Candidate", "String">;
 }
 
 // Custom InputTypes
