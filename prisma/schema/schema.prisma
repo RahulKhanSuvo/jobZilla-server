@@ -14,7 +14,7 @@ datasource db {
 }
 
 enum UserRole {
-  USER
+  CANDIDATE
   EMPLOYER
   ADMIN
 }
@@ -23,7 +23,7 @@ model User {
   id           String        @id @default(uuid())
   name         String        @db.VarChar(100)
   email        String        @unique
-  role         UserRole      @default(USER)
+  role         UserRole      @default(CANDIDATE)
   password     String
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt

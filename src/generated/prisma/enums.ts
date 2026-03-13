@@ -20,7 +20,7 @@ export const JobType = {
 export type JobType = (typeof JobType)[keyof typeof JobType];
 
 export const UserRole = {
-  USER: "USER",
+  CANDIDATE: "CANDIDATE",
   EMPLOYER: "EMPLOYER",
   ADMIN: "ADMIN",
 } as const;

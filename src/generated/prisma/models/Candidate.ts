@@ -38,9 +38,6 @@ export type CandidateMinAggregateOutputType = {
   facebook: string | null;
   linkedin: string | null;
   twitter: string | null;
-  pinterest: string | null;
-  instagram: string | null;
-  youtube: string | null;
 };
 
 export type CandidateMaxAggregateOutputType = {
@@ -57,9 +54,6 @@ export type CandidateMaxAggregateOutputType = {
   facebook: string | null;
   linkedin: string | null;
   twitter: string | null;
-  pinterest: string | null;
-  instagram: string | null;
-  youtube: string | null;
 };
 
 export type CandidateCountAggregateOutputType = {
@@ -76,9 +70,6 @@ export type CandidateCountAggregateOutputType = {
   facebook: number;
   linkedin: number;
   twitter: number;
-  pinterest: number;
-  instagram: number;
-  youtube: number;
   _all: number;
 };
 
@@ -96,9 +87,6 @@ export type CandidateMinAggregateInputType = {
   facebook?: true;
   linkedin?: true;
   twitter?: true;
-  pinterest?: true;
-  instagram?: true;
-  youtube?: true;
 };
 
 export type CandidateMaxAggregateInputType = {
@@ -115,9 +103,6 @@ export type CandidateMaxAggregateInputType = {
   facebook?: true;
   linkedin?: true;
   twitter?: true;
-  pinterest?: true;
-  instagram?: true;
-  youtube?: true;
 };
 
 export type CandidateCountAggregateInputType = {
@@ -134,9 +119,6 @@ export type CandidateCountAggregateInputType = {
   facebook?: true;
   linkedin?: true;
   twitter?: true;
-  pinterest?: true;
-  instagram?: true;
-  youtube?: true;
   _all?: true;
 };
 
@@ -233,9 +215,6 @@ export type CandidateGroupByOutputType = {
   facebook: string | null;
   linkedin: string | null;
   twitter: string | null;
-  pinterest: string | null;
-  instagram: string | null;
-  youtube: string | null;
   _count: CandidateCountAggregateOutputType | null;
   _min: CandidateMinAggregateOutputType | null;
   _max: CandidateMaxAggregateOutputType | null;
@@ -271,9 +250,6 @@ export type CandidateWhereInput = {
   facebook?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   linkedin?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   twitter?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-  pinterest?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-  instagram?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-  youtube?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   workExperiences?: Prisma.WorkExperienceListRelationFilter;
   skills?: Prisma.SkillListRelationFilter;
   eductions?: Prisma.EductionListRelationFilter;
@@ -294,9 +270,6 @@ export type CandidateOrderByWithRelationInput = {
   facebook?: Prisma.SortOrderInput | Prisma.SortOrder;
   linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
   twitter?: Prisma.SortOrderInput | Prisma.SortOrder;
-  pinterest?: Prisma.SortOrderInput | Prisma.SortOrder;
-  instagram?: Prisma.SortOrderInput | Prisma.SortOrder;
-  youtube?: Prisma.SortOrderInput | Prisma.SortOrder;
   workExperiences?: Prisma.workExperienceOrderByRelationAggregateInput;
   skills?: Prisma.skillOrderByRelationAggregateInput;
   eductions?: Prisma.eductionOrderByRelationAggregateInput;
@@ -321,9 +294,6 @@ export type CandidateWhereUniqueInput = Prisma.AtLeast<
     facebook?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     linkedin?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     twitter?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-    pinterest?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-    instagram?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-    youtube?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     workExperiences?: Prisma.WorkExperienceListRelationFilter;
     skills?: Prisma.SkillListRelationFilter;
     eductions?: Prisma.EductionListRelationFilter;
@@ -346,9 +316,6 @@ export type CandidateOrderByWithAggregationInput = {
   facebook?: Prisma.SortOrderInput | Prisma.SortOrder;
   linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
   twitter?: Prisma.SortOrderInput | Prisma.SortOrder;
-  pinterest?: Prisma.SortOrderInput | Prisma.SortOrder;
-  instagram?: Prisma.SortOrderInput | Prisma.SortOrder;
-  youtube?: Prisma.SortOrderInput | Prisma.SortOrder;
   _count?: Prisma.CandidateCountOrderByAggregateInput;
   _max?: Prisma.CandidateMaxOrderByAggregateInput;
   _min?: Prisma.CandidateMinOrderByAggregateInput;
@@ -406,18 +373,6 @@ export type CandidateScalarWhereWithAggregatesInput = {
     | Prisma.StringNullableWithAggregatesFilter<"Candidate">
     | string
     | null;
-  pinterest?:
-    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
-    | string
-    | null;
-  instagram?:
-    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
-    | string
-    | null;
-  youtube?:
-    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
-    | string
-    | null;
 };
 
 export type CandidateCreateInput = {
@@ -433,9 +388,6 @@ export type CandidateCreateInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
@@ -456,9 +408,6 @@ export type CandidateUncheckedCreateInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
@@ -487,9 +436,6 @@ export type CandidateUpdateInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
@@ -520,9 +466,6 @@ export type CandidateUncheckedUpdateInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
@@ -542,9 +485,6 @@ export type CandidateCreateManyInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
 };
 
 export type CandidateUpdateManyMutationInput = {
@@ -570,9 +510,6 @@ export type CandidateUpdateManyMutationInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 
 export type CandidateUncheckedUpdateManyInput = {
@@ -599,9 +536,6 @@ export type CandidateUncheckedUpdateManyInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 
 export type CandidateCountOrderByAggregateInput = {
@@ -618,9 +552,6 @@ export type CandidateCountOrderByAggregateInput = {
   facebook?: Prisma.SortOrder;
   linkedin?: Prisma.SortOrder;
   twitter?: Prisma.SortOrder;
-  pinterest?: Prisma.SortOrder;
-  instagram?: Prisma.SortOrder;
-  youtube?: Prisma.SortOrder;
 };
 
 export type CandidateMaxOrderByAggregateInput = {
@@ -637,9 +568,6 @@ export type CandidateMaxOrderByAggregateInput = {
   facebook?: Prisma.SortOrder;
   linkedin?: Prisma.SortOrder;
   twitter?: Prisma.SortOrder;
-  pinterest?: Prisma.SortOrder;
-  instagram?: Prisma.SortOrder;
-  youtube?: Prisma.SortOrder;
 };
 
 export type CandidateMinOrderByAggregateInput = {
@@ -656,9 +584,6 @@ export type CandidateMinOrderByAggregateInput = {
   facebook?: Prisma.SortOrder;
   linkedin?: Prisma.SortOrder;
   twitter?: Prisma.SortOrder;
-  pinterest?: Prisma.SortOrder;
-  instagram?: Prisma.SortOrder;
-  youtube?: Prisma.SortOrder;
 };
 
 export type CandidateScalarRelationFilter = {
@@ -830,9 +755,6 @@ export type CandidateCreateWithoutWorkExperiencesInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
@@ -852,9 +774,6 @@ export type CandidateUncheckedCreateWithoutWorkExperiencesInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
 };
@@ -910,9 +829,6 @@ export type CandidateUpdateWithoutWorkExperiencesInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
@@ -942,9 +858,6 @@ export type CandidateUncheckedUpdateWithoutWorkExperiencesInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
 };
@@ -962,9 +875,6 @@ export type CandidateCreateWithoutSkillsInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
@@ -984,9 +894,6 @@ export type CandidateUncheckedCreateWithoutSkillsInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
 };
@@ -1042,9 +949,6 @@ export type CandidateUpdateWithoutSkillsInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
@@ -1074,9 +978,6 @@ export type CandidateUncheckedUpdateWithoutSkillsInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
 };
@@ -1094,9 +995,6 @@ export type CandidateCreateWithoutEductionsInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
@@ -1116,9 +1014,6 @@ export type CandidateUncheckedCreateWithoutEductionsInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
 };
@@ -1174,9 +1069,6 @@ export type CandidateUpdateWithoutEductionsInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
@@ -1206,9 +1098,6 @@ export type CandidateUncheckedUpdateWithoutEductionsInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
 };
@@ -1226,9 +1115,6 @@ export type CandidateCreateWithoutUserInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
@@ -1247,9 +1133,6 @@ export type CandidateUncheckedCreateWithoutUserInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  pinterest?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
@@ -1306,9 +1189,6 @@ export type CandidateUpdateWithoutUserInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
@@ -1337,9 +1217,6 @@ export type CandidateUncheckedUpdateWithoutUserInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  pinterest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
@@ -1425,9 +1302,6 @@ export type CandidateSelect<
     facebook?: boolean;
     linkedin?: boolean;
     twitter?: boolean;
-    pinterest?: boolean;
-    instagram?: boolean;
-    youtube?: boolean;
     workExperiences?: boolean | Prisma.Candidate$workExperiencesArgs<ExtArgs>;
     skills?: boolean | Prisma.Candidate$skillsArgs<ExtArgs>;
     eductions?: boolean | Prisma.Candidate$eductionsArgs<ExtArgs>;
@@ -1455,9 +1329,6 @@ export type CandidateSelectCreateManyAndReturn<
     facebook?: boolean;
     linkedin?: boolean;
     twitter?: boolean;
-    pinterest?: boolean;
-    instagram?: boolean;
-    youtube?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["candidate"]
@@ -1481,9 +1352,6 @@ export type CandidateSelectUpdateManyAndReturn<
     facebook?: boolean;
     linkedin?: boolean;
     twitter?: boolean;
-    pinterest?: boolean;
-    instagram?: boolean;
-    youtube?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["candidate"]
@@ -1503,9 +1371,6 @@ export type CandidateSelectScalar = {
   facebook?: boolean;
   linkedin?: boolean;
   twitter?: boolean;
-  pinterest?: boolean;
-  instagram?: boolean;
-  youtube?: boolean;
 };
 
 export type CandidateOmit<
@@ -1524,10 +1389,7 @@ export type CandidateOmit<
   | "profileImage"
   | "facebook"
   | "linkedin"
-  | "twitter"
-  | "pinterest"
-  | "instagram"
-  | "youtube",
+  | "twitter",
   ExtArgs["result"]["candidate"]
 >;
 export type CandidateInclude<
@@ -1579,9 +1441,6 @@ export type $CandidatePayload<
       facebook: string | null;
       linkedin: string | null;
       twitter: string | null;
-      pinterest: string | null;
-      instagram: string | null;
-      youtube: string | null;
     },
     ExtArgs["result"]["candidate"]
   >;
@@ -2234,9 +2093,6 @@ export interface CandidateFieldRefs {
   readonly facebook: Prisma.FieldRef<"Candidate", "String">;
   readonly linkedin: Prisma.FieldRef<"Candidate", "String">;
   readonly twitter: Prisma.FieldRef<"Candidate", "String">;
-  readonly pinterest: Prisma.FieldRef<"Candidate", "String">;
-  readonly instagram: Prisma.FieldRef<"Candidate", "String">;
-  readonly youtube: Prisma.FieldRef<"Candidate", "String">;
 }
 
 // Custom InputTypes

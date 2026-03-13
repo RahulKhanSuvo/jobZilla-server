@@ -1114,9 +1114,6 @@ export const CandidateScalarFieldEnum = {
   facebook: "facebook",
   linkedin: "linkedin",
   twitter: "twitter",
-  pinterest: "pinterest",
-  instagram: "instagram",
-  youtube: "youtube",
 } as const;
 
 export type CandidateScalarFieldEnum =
