@@ -5,15 +5,17 @@ import { notFound } from "./middleware/notFoundLogger";
 import { errorHandler } from "./middleware/globalErrorHandler";
 import { envConfig } from "./config/env";
 import cookieParser from "cookie-parser";
+import path from "path";
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 app.use(
   cors({
     origin: envConfig.FRONTEND_URL,
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );

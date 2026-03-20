@@ -65,11 +65,20 @@ const currentUser = async (data: string) => {
     data,
     envConfig.REFRESH_TOKEN_SECRET,
   ) as JwtPayload;
+  const role = decoded.role;
+  const includeRelation =
+    role === "CANDIDATE"
+      ? { candidate: true }
+      : role === "RECRUITER"
+        ? { recruiter: true }
+        : {};
+
   const user = await prisma.user.findUnique({
     where: { id: decoded.id },
     omit: {
       password: true,
     },
+    include: includeRelation,
   });
   if (!user) throw new ApiError("user not found ", 404);
   return user;

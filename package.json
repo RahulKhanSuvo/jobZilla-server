@@ -13,6 +13,7 @@
     "@types/bun": "latest",
     "@types/cors": "^2.8.19",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.1.0",
     "@types/node": "^25.3.0",
     "@types/pg": "^8.16.0",
     "globals": "^17.3.0",
@@ -30,6 +31,7 @@
     "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
+    "axios": "^1.13.6",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
@@ -39,6 +41,7 @@
     "husky": "^9.1.7",
     "jsonwebtoken": "^9.0.3",
     "lint-staged": "^16.2.7",
+    "multer": "^2.1.1",
     "pg": "^8.18.0",
     "typescript-eslint": "^8.56.0",
     "zod": "^4.3.6"

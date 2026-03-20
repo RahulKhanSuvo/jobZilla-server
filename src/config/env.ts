@@ -8,6 +8,7 @@ const envSchema = z.object({
   ACCESS_TOKEN_SECRET: z.string(),
   FRONTEND_URL: z.string(),
   REFRESH_TOKEN_SECRET: z.string(),
+  IMGBB_API_KEY: z.string().optional(),
 });
 const parsedEnv = envSchema.safeParse(process.env);
 if (!parsedEnv.success) {
