@@ -1,11 +1,7 @@
 import { envConfig } from "../config/env";
 import jwt from "jsonwebtoken";
-type JwtPayload = {
-  id: string;
-  email: string;
-  role: "CANDIDATE" | "EMPLOYER" | "ADMIN";
-};
-export const generateTokens = (user: JwtPayload) => {
+import { CustomJwtPayload } from "../types";
+export const generateTokens = (user: CustomJwtPayload) => {
   const payload = {
     id: user.id,
     email: user.email,
