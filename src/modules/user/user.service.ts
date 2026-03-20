@@ -2,7 +2,8 @@
 import { prisma } from "../../lib/prisma";
 import bcrypt from "bcrypt";
 import { CreateUserInput, LoginFormData } from "./user.schema";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+import { CustomJwtPayload } from "../../types";
 import { ApiError } from "../../errors/ApiError";
 import { generateTokens } from "../../utils/generateTokens";
 import { envConfig } from "../../config/env";
@@ -51,7 +52,7 @@ const refreshTokenAuth = async (data: string) => {
   const decoded = jwt.verify(
     data,
     envConfig.REFRESH_TOKEN_SECRET,
-  ) as JwtPayload;
+  ) as CustomJwtPayload;
 
   const user = await prisma.user.findUnique({
     where: { id: decoded.id },
@@ -64,13 +65,13 @@ const currentUser = async (data: string) => {
   const decoded = jwt.verify(
     data,
     envConfig.REFRESH_TOKEN_SECRET,
-  ) as JwtPayload;
+  ) as CustomJwtPayload;
   const role = decoded.role;
   const includeRelation =
     role === "CANDIDATE"
       ? { candidate: true }
-      : role === "RECRUITER"
-        ? { recruiter: true }
+      : role === "EMPLOYER"
+        ? { company: true }
         : {};
 
   const user = await prisma.user.findUnique({
