@@ -45,8 +45,8 @@ const userTokenRefresh = catchAsync(async (req, res) => {
   });
 });
 const currentUser = catchAsync(async (req, res) => {
-  const refreshToken = req.cookies.refreshToken;
-  const result = await userService.currentUser(refreshToken);
+  const userId = req.user?.id;
+  const result = await userService.currentUserById(userId as string);
   sendResponse(res, {
     statusCode: 200,
     message: "current user",

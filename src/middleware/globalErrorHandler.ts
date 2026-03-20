@@ -22,6 +22,14 @@ export function errorHandler(
     return;
   }
 
+  if (err.name === "TokenExpiredError" || err.name === "JsonWebTokenError") {
+    res.status(401).json({
+      success: false,
+      message: "Unauthorized: Token expired or invalid",
+    });
+    return;
+  }
+
   if (err instanceof Error) {
     res.status(500).json({
       success: false,

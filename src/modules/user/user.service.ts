@@ -61,25 +61,16 @@ const refreshTokenAuth = async (data: string) => {
   const { accessToken, refreshToken } = generateTokens(user);
   return { accessToken, newRefreshToken: refreshToken };
 };
-const currentUser = async (data: string) => {
-  const decoded = jwt.verify(
-    data,
-    envConfig.REFRESH_TOKEN_SECRET,
-  ) as CustomJwtPayload;
-  const role = decoded.role;
-  const includeRelation =
-    role === "CANDIDATE"
-      ? { candidate: true }
-      : role === "EMPLOYER"
-        ? { company: true }
-        : {};
-
+const currentUserById = async (id: string) => {
   const user = await prisma.user.findUnique({
-    where: { id: decoded.id },
+    where: { id },
     omit: {
       password: true,
     },
-    include: includeRelation,
+    include: {
+      candidate: true,
+      company: true,
+    },
   });
   if (!user) throw new ApiError("user not found ", 404);
   return user;
@@ -88,5 +79,5 @@ export const userService = {
   createUser,
   loginUser,
   refreshTokenAuth,
-  currentUser,
+  currentUserById,
 };
