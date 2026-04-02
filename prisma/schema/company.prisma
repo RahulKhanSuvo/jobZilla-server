@@ -1,17 +1,25 @@
 model Company {
-  id           String   @id @default(uuid())
-  userId       String   @unique
-  description  String?
-  website      String
-  industry     String
-  phone        String
-  location     String   @db.VarChar(150)
-  companyType  String?
-  employeeSize String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  jobs         Job[]
-  user         User     @relation(fields: [userId], references: [id])
+  id          String    @id @default(uuid())
+  userId      String    @unique
+  description String?
+  website     String
+  industry    String
+  phone       String
+  location    String    @db.VarChar(150)
+  companyType String?
+  companySize String
+  logo        String?
+  coverImage  String?
+  facebook    String?
+  linkedin    String?
+  twitter     String?
+  address     String?
+  foundedDate DateTime?
+  showProfile Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  jobs        Job[]
+  user        User      @relation(fields: [userId], references: [id])
 }
 
 enum JobType {

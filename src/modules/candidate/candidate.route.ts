@@ -10,7 +10,7 @@ const candidateRouter = Router();
 
 candidateRouter.get("/", candidateController.getCandidate);
 candidateRouter.patch(
-  "/",
+  "/update",
   authGard(UserRole.CANDIDATE),
   upload.single("avatar"),
   validate(candidateSchema),

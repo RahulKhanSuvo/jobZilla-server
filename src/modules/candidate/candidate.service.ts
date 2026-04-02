@@ -3,6 +3,14 @@ import { ICandidate } from "./candidate.schema";
 
 const updateCandidate = async (userId: string, payload: ICandidate) => {
   console.log("Image", payload.avatar);
+  const user = await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      name: payload.fullName,
+    },
+  });
   const reuslt = await prisma.candidate.upsert({
     where: { userId: userId },
     update: {
@@ -91,7 +99,7 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       },
     },
   });
-  return reuslt;
+  return { ...user, candidate: reuslt };
 };
 
 export const candidateService = {
