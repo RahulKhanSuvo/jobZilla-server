@@ -149,7 +149,6 @@ export const CompanyScalarFieldEnum = {
   phone: "phone",
   location: "location",
   companySize: "companySize",
-  phoneNumber: "phoneNumber",
   logo: "logo",
   foundedDate: "foundedDate",
   coverImage: "coverImage",
