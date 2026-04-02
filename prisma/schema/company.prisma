@@ -34,22 +34,18 @@ model Job {
   id            String        @id @default(uuid())
   title         String        @db.VarChar(100)
   description   String        @db.Text
-  featuredImage String?
   category      String?
   tags          String[]
   gender        String?
-  applyType     String?
   externalUrl   String?
   applyEmail    String?
   salaryType    String?
-  location      String?       @db.VarChar(150)
   salaryMin     Int?
   salaryMax     Int?
   jobType       JobType?
   experience    String?       @db.VarChar(100)
   careerLevel   String?
   qualification String?
-  videoUrl      String?
   deadline      DateTime?
   skills        String?       @db.VarChar(200)
   companyId     String
