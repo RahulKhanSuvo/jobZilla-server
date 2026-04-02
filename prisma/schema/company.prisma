@@ -56,7 +56,7 @@ model Job {
   deadline      DateTime?
   skills        String?       @db.VarChar(200)
   companyId     String
-  company       Company       @relation(fields: [companyId], references: [id])
+  company       Company       @relation(fields: [companyId], references: [userId])
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
   applications  Application[]
