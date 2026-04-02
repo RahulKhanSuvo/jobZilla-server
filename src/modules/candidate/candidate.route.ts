@@ -13,20 +13,6 @@ candidateRouter.patch(
   "/",
   authGard(UserRole.CANDIDATE),
   upload.single("avatar"),
-  (req, res, next) => {
-    if (req.body.data) {
-      try {
-        req.body = JSON.parse(req.body.data);
-      } catch (e) {
-        console.log(e);
-        res
-          .status(400)
-          .json({ success: false, message: "Invalid JSON in data field" });
-        return;
-      }
-    }
-    next();
-  },
   validate(candidateSchema),
   candidateController.updateCandidate,
 );
