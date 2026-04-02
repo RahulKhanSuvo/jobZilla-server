@@ -1168,7 +1168,6 @@ export const CompanyScalarFieldEnum = {
   industry: "industry",
   phone: "phone",
   location: "location",
-  companyType: "companyType",
   companySize: "companySize",
   logo: "logo",
   coverImage: "coverImage",
