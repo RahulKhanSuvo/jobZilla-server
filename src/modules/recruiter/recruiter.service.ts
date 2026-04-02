@@ -27,7 +27,6 @@ const updateRecruiter = async (userId: string, payload: IRecruiter) => {
       linkedin: payload.linkedin,
       twitter: payload.twitter,
       address: payload.address,
-      foundedDate: payload.foundedDate,
       showProfile: payload.showProfile,
     },
     create: {
@@ -44,7 +43,6 @@ const updateRecruiter = async (userId: string, payload: IRecruiter) => {
       linkedin: payload.linkedin,
       twitter: payload.twitter,
       address: payload.address,
-      foundedDate: payload.foundedDate,
       showProfile: payload.showProfile,
     },
   });
