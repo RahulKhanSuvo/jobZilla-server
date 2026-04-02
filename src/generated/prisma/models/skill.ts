@@ -150,17 +150,18 @@ export type SkillGroupByOutputType = {
   _max: SkillMaxAggregateOutputType | null;
 };
 
-type GetSkillGroupByPayload<T extends skillGroupByArgs> = Prisma.PrismaPromise<
-  Array<
-    Prisma.PickEnumerable<SkillGroupByOutputType, T["by"]> & {
-      [P in keyof T & keyof SkillGroupByOutputType]: P extends "_count"
-        ? T[P] extends boolean
-          ? number
-          : Prisma.GetScalarType<T[P], SkillGroupByOutputType[P]>
-        : Prisma.GetScalarType<T[P], SkillGroupByOutputType[P]>;
-    }
-  >
->;
+export type GetSkillGroupByPayload<T extends skillGroupByArgs> =
+  Prisma.PrismaPromise<
+    Array<
+      Prisma.PickEnumerable<SkillGroupByOutputType, T["by"]> & {
+        [P in keyof T & keyof SkillGroupByOutputType]: P extends "_count"
+          ? T[P] extends boolean
+            ? number
+            : Prisma.GetScalarType<T[P], SkillGroupByOutputType[P]>
+          : Prisma.GetScalarType<T[P], SkillGroupByOutputType[P]>;
+      }
+    >
+  >;
 
 export type skillWhereInput = {
   AND?: Prisma.skillWhereInput | Prisma.skillWhereInput[];
@@ -1366,6 +1367,11 @@ export type skillFindManyArgs<
    * Skip the first `n` skills.
    */
   skip?: number;
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   *
+   * Filter by unique combinations of skills.
+   */
   distinct?: Prisma.SkillScalarFieldEnum | Prisma.SkillScalarFieldEnum[];
 };
 

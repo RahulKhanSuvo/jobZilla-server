@@ -203,19 +203,19 @@ export type WorkExperienceGroupByOutputType = {
   _max: WorkExperienceMaxAggregateOutputType | null;
 };
 
-type GetWorkExperienceGroupByPayload<T extends workExperienceGroupByArgs> =
-  Prisma.PrismaPromise<
-    Array<
-      Prisma.PickEnumerable<WorkExperienceGroupByOutputType, T["by"]> & {
-        [P in keyof T &
-          keyof WorkExperienceGroupByOutputType]: P extends "_count"
-          ? T[P] extends boolean
-            ? number
-            : Prisma.GetScalarType<T[P], WorkExperienceGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], WorkExperienceGroupByOutputType[P]>;
-      }
-    >
-  >;
+export type GetWorkExperienceGroupByPayload<
+  T extends workExperienceGroupByArgs,
+> = Prisma.PrismaPromise<
+  Array<
+    Prisma.PickEnumerable<WorkExperienceGroupByOutputType, T["by"]> & {
+      [P in keyof T & keyof WorkExperienceGroupByOutputType]: P extends "_count"
+        ? T[P] extends boolean
+          ? number
+          : Prisma.GetScalarType<T[P], WorkExperienceGroupByOutputType[P]>
+        : Prisma.GetScalarType<T[P], WorkExperienceGroupByOutputType[P]>;
+    }
+  >
+>;
 
 export type workExperienceWhereInput = {
   AND?: Prisma.workExperienceWhereInput | Prisma.workExperienceWhereInput[];
@@ -1728,6 +1728,11 @@ export type workExperienceFindManyArgs<
    * Skip the first `n` workExperiences.
    */
   skip?: number;
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   *
+   * Filter by unique combinations of workExperiences.
+   */
   distinct?:
     | Prisma.WorkExperienceScalarFieldEnum
     | Prisma.WorkExperienceScalarFieldEnum[];

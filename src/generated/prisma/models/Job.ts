@@ -331,17 +331,18 @@ export type JobGroupByOutputType = {
   _max: JobMaxAggregateOutputType | null;
 };
 
-type GetJobGroupByPayload<T extends JobGroupByArgs> = Prisma.PrismaPromise<
-  Array<
-    Prisma.PickEnumerable<JobGroupByOutputType, T["by"]> & {
-      [P in keyof T & keyof JobGroupByOutputType]: P extends "_count"
-        ? T[P] extends boolean
-          ? number
-          : Prisma.GetScalarType<T[P], JobGroupByOutputType[P]>
-        : Prisma.GetScalarType<T[P], JobGroupByOutputType[P]>;
-    }
-  >
->;
+export type GetJobGroupByPayload<T extends JobGroupByArgs> =
+  Prisma.PrismaPromise<
+    Array<
+      Prisma.PickEnumerable<JobGroupByOutputType, T["by"]> & {
+        [P in keyof T & keyof JobGroupByOutputType]: P extends "_count"
+          ? T[P] extends boolean
+            ? number
+            : Prisma.GetScalarType<T[P], JobGroupByOutputType[P]>
+          : Prisma.GetScalarType<T[P], JobGroupByOutputType[P]>;
+      }
+    >
+  >;
 
 export type JobWhereInput = {
   AND?: Prisma.JobWhereInput | Prisma.JobWhereInput[];
@@ -2563,6 +2564,11 @@ export type JobFindManyArgs<
    * Skip the first `n` Jobs.
    */
   skip?: number;
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   *
+   * Filter by unique combinations of Jobs.
+   */
   distinct?: Prisma.JobScalarFieldEnum | Prisma.JobScalarFieldEnum[];
 };
 

@@ -155,7 +155,6 @@ export const CompanyScalarFieldEnum = {
   linkedin: "linkedin",
   twitter: "twitter",
   address: "address",
-  foundedDate: "foundedDate",
   showProfile: "showProfile",
   createdAt: "createdAt",
   updatedAt: "updatedAt",

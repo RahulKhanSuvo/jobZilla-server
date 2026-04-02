@@ -39,7 +39,6 @@ export type CompanyMinAggregateOutputType = {
   linkedin: string | null;
   twitter: string | null;
   address: string | null;
-  foundedDate: Date | null;
   showProfile: boolean | null;
   createdAt: Date | null;
   updatedAt: Date | null;
@@ -60,7 +59,6 @@ export type CompanyMaxAggregateOutputType = {
   linkedin: string | null;
   twitter: string | null;
   address: string | null;
-  foundedDate: Date | null;
   showProfile: boolean | null;
   createdAt: Date | null;
   updatedAt: Date | null;
@@ -81,7 +79,6 @@ export type CompanyCountAggregateOutputType = {
   linkedin: number;
   twitter: number;
   address: number;
-  foundedDate: number;
   showProfile: number;
   createdAt: number;
   updatedAt: number;
@@ -103,7 +100,6 @@ export type CompanyMinAggregateInputType = {
   linkedin?: true;
   twitter?: true;
   address?: true;
-  foundedDate?: true;
   showProfile?: true;
   createdAt?: true;
   updatedAt?: true;
@@ -124,7 +120,6 @@ export type CompanyMaxAggregateInputType = {
   linkedin?: true;
   twitter?: true;
   address?: true;
-  foundedDate?: true;
   showProfile?: true;
   createdAt?: true;
   updatedAt?: true;
@@ -145,7 +140,6 @@ export type CompanyCountAggregateInputType = {
   linkedin?: true;
   twitter?: true;
   address?: true;
-  foundedDate?: true;
   showProfile?: true;
   createdAt?: true;
   updatedAt?: true;
@@ -246,7 +240,6 @@ export type CompanyGroupByOutputType = {
   linkedin: string | null;
   twitter: string | null;
   address: string | null;
-  foundedDate: Date | null;
   showProfile: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -255,7 +248,7 @@ export type CompanyGroupByOutputType = {
   _max: CompanyMaxAggregateOutputType | null;
 };
 
-type GetCompanyGroupByPayload<T extends CompanyGroupByArgs> =
+export type GetCompanyGroupByPayload<T extends CompanyGroupByArgs> =
   Prisma.PrismaPromise<
     Array<
       Prisma.PickEnumerable<CompanyGroupByOutputType, T["by"]> & {
@@ -286,7 +279,6 @@ export type CompanyWhereInput = {
   linkedin?: Prisma.StringNullableFilter<"Company"> | string | null;
   twitter?: Prisma.StringNullableFilter<"Company"> | string | null;
   address?: Prisma.StringNullableFilter<"Company"> | string | null;
-  foundedDate?: Prisma.DateTimeNullableFilter<"Company"> | Date | string | null;
   showProfile?: Prisma.BoolFilter<"Company"> | boolean;
   createdAt?: Prisma.DateTimeFilter<"Company"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string;
@@ -309,7 +301,6 @@ export type CompanyOrderByWithRelationInput = {
   linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
   twitter?: Prisma.SortOrderInput | Prisma.SortOrder;
   address?: Prisma.SortOrderInput | Prisma.SortOrder;
-  foundedDate?: Prisma.SortOrderInput | Prisma.SortOrder;
   showProfile?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -336,11 +327,6 @@ export type CompanyWhereUniqueInput = Prisma.AtLeast<
     linkedin?: Prisma.StringNullableFilter<"Company"> | string | null;
     twitter?: Prisma.StringNullableFilter<"Company"> | string | null;
     address?: Prisma.StringNullableFilter<"Company"> | string | null;
-    foundedDate?:
-      | Prisma.DateTimeNullableFilter<"Company">
-      | Date
-      | string
-      | null;
     showProfile?: Prisma.BoolFilter<"Company"> | boolean;
     createdAt?: Prisma.DateTimeFilter<"Company"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string;
@@ -365,7 +351,6 @@ export type CompanyOrderByWithAggregationInput = {
   linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
   twitter?: Prisma.SortOrderInput | Prisma.SortOrder;
   address?: Prisma.SortOrderInput | Prisma.SortOrder;
-  foundedDate?: Prisma.SortOrderInput | Prisma.SortOrder;
   showProfile?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -414,11 +399,6 @@ export type CompanyScalarWhereWithAggregatesInput = {
     | Prisma.StringNullableWithAggregatesFilter<"Company">
     | string
     | null;
-  foundedDate?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<"Company">
-    | Date
-    | string
-    | null;
   showProfile?: Prisma.BoolWithAggregatesFilter<"Company"> | boolean;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Company"> | Date | string;
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Company"> | Date | string;
@@ -438,7 +418,6 @@ export type CompanyCreateInput = {
   linkedin?: string | null;
   twitter?: string | null;
   address?: string | null;
-  foundedDate?: Date | string | null;
   showProfile?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -461,7 +440,6 @@ export type CompanyUncheckedCreateInput = {
   linkedin?: string | null;
   twitter?: string | null;
   address?: string | null;
-  foundedDate?: Date | string | null;
   showProfile?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -482,11 +460,6 @@ export type CompanyUpdateInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  foundedDate?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
   showProfile?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -509,11 +482,6 @@ export type CompanyUncheckedUpdateInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  foundedDate?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
   showProfile?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -535,7 +503,6 @@ export type CompanyCreateManyInput = {
   linkedin?: string | null;
   twitter?: string | null;
   address?: string | null;
-  foundedDate?: Date | string | null;
   showProfile?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -555,11 +522,6 @@ export type CompanyUpdateManyMutationInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  foundedDate?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
   showProfile?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -580,11 +542,6 @@ export type CompanyUncheckedUpdateManyInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  foundedDate?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
   showProfile?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -605,7 +562,6 @@ export type CompanyCountOrderByAggregateInput = {
   linkedin?: Prisma.SortOrder;
   twitter?: Prisma.SortOrder;
   address?: Prisma.SortOrder;
-  foundedDate?: Prisma.SortOrder;
   showProfile?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -626,7 +582,6 @@ export type CompanyMaxOrderByAggregateInput = {
   linkedin?: Prisma.SortOrder;
   twitter?: Prisma.SortOrder;
   address?: Prisma.SortOrder;
-  foundedDate?: Prisma.SortOrder;
   showProfile?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -647,7 +602,6 @@ export type CompanyMinOrderByAggregateInput = {
   linkedin?: Prisma.SortOrder;
   twitter?: Prisma.SortOrder;
   address?: Prisma.SortOrder;
-  foundedDate?: Prisma.SortOrder;
   showProfile?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -759,7 +713,6 @@ export type CompanyCreateWithoutJobsInput = {
   linkedin?: string | null;
   twitter?: string | null;
   address?: string | null;
-  foundedDate?: Date | string | null;
   showProfile?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -781,7 +734,6 @@ export type CompanyUncheckedCreateWithoutJobsInput = {
   linkedin?: string | null;
   twitter?: string | null;
   address?: string | null;
-  foundedDate?: Date | string | null;
   showProfile?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -829,11 +781,6 @@ export type CompanyUpdateWithoutJobsInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  foundedDate?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
   showProfile?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -855,11 +802,6 @@ export type CompanyUncheckedUpdateWithoutJobsInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  foundedDate?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
   showProfile?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -879,7 +821,6 @@ export type CompanyCreateWithoutUserInput = {
   linkedin?: string | null;
   twitter?: string | null;
   address?: string | null;
-  foundedDate?: Date | string | null;
   showProfile?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -900,7 +841,6 @@ export type CompanyUncheckedCreateWithoutUserInput = {
   linkedin?: string | null;
   twitter?: string | null;
   address?: string | null;
-  foundedDate?: Date | string | null;
   showProfile?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -949,11 +889,6 @@ export type CompanyUpdateWithoutUserInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  foundedDate?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
   showProfile?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -974,11 +909,6 @@ export type CompanyUncheckedUpdateWithoutUserInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  foundedDate?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
   showProfile?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -1042,7 +972,6 @@ export type CompanySelect<
     linkedin?: boolean;
     twitter?: boolean;
     address?: boolean;
-    foundedDate?: boolean;
     showProfile?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
@@ -1072,7 +1001,6 @@ export type CompanySelectCreateManyAndReturn<
     linkedin?: boolean;
     twitter?: boolean;
     address?: boolean;
-    foundedDate?: boolean;
     showProfile?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
@@ -1100,7 +1028,6 @@ export type CompanySelectUpdateManyAndReturn<
     linkedin?: boolean;
     twitter?: boolean;
     address?: boolean;
-    foundedDate?: boolean;
     showProfile?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
@@ -1124,7 +1051,6 @@ export type CompanySelectScalar = {
   linkedin?: boolean;
   twitter?: boolean;
   address?: boolean;
-  foundedDate?: boolean;
   showProfile?: boolean;
   createdAt?: boolean;
   updatedAt?: boolean;
@@ -1148,7 +1074,6 @@ export type CompanyOmit<
   | "linkedin"
   | "twitter"
   | "address"
-  | "foundedDate"
   | "showProfile"
   | "createdAt"
   | "updatedAt",
@@ -1200,7 +1125,6 @@ export type $CompanyPayload<
       linkedin: string | null;
       twitter: string | null;
       address: string | null;
-      foundedDate: Date | null;
       showProfile: boolean;
       createdAt: Date;
       updatedAt: Date;
@@ -1835,7 +1759,6 @@ export interface CompanyFieldRefs {
   readonly linkedin: Prisma.FieldRef<"Company", "String">;
   readonly twitter: Prisma.FieldRef<"Company", "String">;
   readonly address: Prisma.FieldRef<"Company", "String">;
-  readonly foundedDate: Prisma.FieldRef<"Company", "DateTime">;
   readonly showProfile: Prisma.FieldRef<"Company", "Boolean">;
   readonly createdAt: Prisma.FieldRef<"Company", "DateTime">;
   readonly updatedAt: Prisma.FieldRef<"Company", "DateTime">;
@@ -2055,6 +1978,11 @@ export type CompanyFindManyArgs<
    * Skip the first `n` Companies.
    */
   skip?: number;
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   *
+   * Filter by unique combinations of Companies.
+   */
   distinct?: Prisma.CompanyScalarFieldEnum | Prisma.CompanyScalarFieldEnum[];
 };
 

@@ -233,7 +233,7 @@ export type EductionGroupByOutputType = {
   _max: EductionMaxAggregateOutputType | null;
 };
 
-type GetEductionGroupByPayload<T extends eductionGroupByArgs> =
+export type GetEductionGroupByPayload<T extends eductionGroupByArgs> =
   Prisma.PrismaPromise<
     Array<
       Prisma.PickEnumerable<EductionGroupByOutputType, T["by"]> & {
@@ -1768,6 +1768,11 @@ export type eductionFindManyArgs<
    * Skip the first `n` eductions.
    */
   skip?: number;
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   *
+   * Filter by unique combinations of eductions.
+   */
   distinct?: Prisma.EductionScalarFieldEnum | Prisma.EductionScalarFieldEnum[];
 };
 
