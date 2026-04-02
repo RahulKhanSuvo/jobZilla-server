@@ -2,6 +2,7 @@ import { prisma } from "../../lib/prisma";
 import { ICandidate } from "./candidate.schema";
 
 const updateCandidate = async (userId: string, payload: ICandidate) => {
+  console.log("Image", payload.avatar);
   const reuslt = await prisma.candidate.upsert({
     where: { userId: userId },
     update: {

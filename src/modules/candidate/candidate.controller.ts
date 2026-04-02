@@ -17,9 +17,10 @@ const getCandidate = catchAsync(async (req, res) => {
 const updateCandidate = catchAsync(async (req, res) => {
   const { id: userId } = req.user!;
   const body = req.body;
+  console.log("body", body);
   if (req.file) {
     const imageUrl = await uploadToImgBB(req.file.buffer);
-    body.avatar = imageUrl;
+    body.avatar = imageUrl.url;
   }
 
   const result = await candidateService.updateCandidate(userId, body);
