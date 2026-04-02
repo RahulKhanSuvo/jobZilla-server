@@ -46,8 +46,7 @@ const updateRecruiter = async (userId: string, payload: IRecruiter) => {
       showProfile: payload.showProfile,
     },
   });
-  console.log("result", result);
-  console.log("recruiter", recruiter);
+
   return { ...result, company: recruiter };
 };
 
