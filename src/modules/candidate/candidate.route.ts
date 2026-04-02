@@ -4,7 +4,7 @@ import { authGard } from "../../middleware/authGard";
 import { UserRole } from "../../generated/prisma/enums";
 import { upload } from "../../middleware/upload";
 import { validate } from "../../middleware/validate.middleware";
-import { candidateSchema } from "../user/candidate.schema";
+import { candidateSchema } from "./candidate.schema";
 
 const candidateRouter = Router();
 

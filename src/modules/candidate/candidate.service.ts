@@ -1,88 +1,96 @@
 import { prisma } from "../../lib/prisma";
-import { ICandidate } from "../user/candidate.schema";
+import { ICandidate } from "./candidate.schema";
 
 const updateCandidate = async (userId: string, payload: ICandidate) => {
-  console.log("candidate service", payload);
-  const {
-    fullName,
-    email,
-    avatar,
-    skills,
-    educationList,
-    experienceList,
-    ...rest
-  } = payload;
+  const reuslt = await prisma.candidate.upsert({
+    where: { userId: userId },
+    update: {
+      phone: payload.phone,
+      location: payload.location,
+      dob: payload.dob ? new Date(payload.dob) : null,
+      gender: payload.gender,
+      maritalStatus: payload.maritalStatus,
+      language: payload.language,
+      aboutMe: payload.aboutMe,
+      profileImage: payload.avatar,
+      facebook: payload.facebook,
+      linkedin: payload.linkedin,
+      twitter: payload.twitter,
+      skills: {
+        deleteMany: {},
+        create: payload.skills.map((skill) => ({
+          skill: skill,
+        })),
+      },
+      eductions: {
+        deleteMany: {},
+        create: payload.educationList.map((education) => ({
+          institution: education.institution,
+          major: education.major,
+          field: education.field,
+          gap: education.gap,
+          startData: new Date(education.startData),
+          endData: education.endData ? new Date(education.endData) : null,
+          isStudying: education.isStudying,
+        })),
+      },
+      workExperiences: {
+        deleteMany: {},
+        create: payload.experienceList.map((experience) => ({
+          jobTitle: experience.jobTitle,
+          companyName: experience.companyName,
+          industry: experience.industry,
+          startData: new Date(experience.startData),
+          endData: experience.endData ? new Date(experience.endData) : null,
+          isWorking: experience.isWorking,
+          Description: experience.Description,
+        })),
+      },
+    },
 
-  // 1. Update User (name and email)
-  await prisma.user.update({
-    where: { id: userId },
-    data: {
-      name: fullName,
-      email,
+    create: {
+      userId,
+      phone: payload.phone,
+      location: payload.location,
+      dob: payload.dob ? new Date(payload.dob) : null,
+      gender: payload.gender,
+      maritalStatus: payload.maritalStatus,
+      language: payload.language,
+      aboutMe: payload.aboutMe,
+      profileImage: payload.avatar,
+      facebook: payload.facebook,
+      linkedin: payload.linkedin,
+      twitter: payload.twitter,
+      skills: {
+        create: payload.skills.map((skill) => ({
+          skill: skill,
+        })),
+      },
+      eductions: {
+        create: payload.educationList.map((education) => ({
+          institution: education.institution,
+          major: education.major,
+          field: education.field,
+          gap: education.gap,
+          startData: new Date(education.startData),
+          endData: education.endData ? new Date(education.endData) : null,
+          isStudying: education.isStudying,
+        })),
+      },
+      workExperiences: {
+        create: payload.experienceList.map((experience) => ({
+          jobTitle: experience.jobTitle,
+          companyName: experience.companyName,
+          industry: experience.industry,
+          startData: new Date(experience.startData),
+          endData: experience.endData ? new Date(experience.endData) : null,
+          isWorking: experience.isWorking,
+          Description: experience.Description,
+        })),
+      },
     },
   });
-
-  const commonData = {
-    ...rest,
-    profileImage: avatar,
-    dob: rest.dob ? new Date(rest.dob) : null,
-  };
-
-  const candidateUpdateData = {
-    ...commonData,
-    skills: {
-      deleteMany: {},
-      create: skills.map((s) => ({ skill: s })),
-    },
-    eductions: {
-      deleteMany: {},
-      create: educationList.map((e) => ({
-        ...e,
-        gap: Number(e.gap),
-        startData: new Date(e.startData),
-        endData: e.endData ? new Date(e.endData) : null,
-      })),
-    },
-    workExperiences: {
-      deleteMany: {},
-      create: experienceList.map((ex) => ({
-        ...ex,
-        startData: new Date(ex.startData),
-        endData: ex.endData ? new Date(ex.endData) : null,
-      })),
-    },
-  };
-
-  const candidateCreateData = {
-    userId,
-    ...commonData,
-    skills: {
-      create: skills.map((s) => ({ skill: s })),
-    },
-    eductions: {
-      create: educationList.map((e) => ({
-        ...e,
-        gap: Number(e.gap),
-        startData: new Date(e.startData),
-        endData: e.endData ? new Date(e.endData) : null,
-      })),
-    },
-    workExperiences: {
-      create: experienceList.map((ex) => ({
-        ...ex,
-        startData: new Date(ex.startData),
-        endData: ex.endData ? new Date(ex.endData) : null,
-      })),
-    },
-  };
-
-  // 3. Upsert Candidate
-  const result = await prisma.candidate.upsert({
-    where: { userId },
-    update: candidateUpdateData,
-    create: candidateCreateData,
-  });
-  return result;
+  return reuslt;
 };
 
 export const candidateService = {

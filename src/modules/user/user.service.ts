@@ -68,7 +68,13 @@ const currentUserById = async (id: string) => {
       password: true,
     },
     include: {
-      candidate: true,
+      candidate: {
+        include: {
+          skills: true,
+          eductions: true,
+          workExperiences: true,
+        },
+      },
       company: true,
     },
   });
