@@ -27,7 +27,17 @@ const getAllJobs = async () => {
   return result;
 };
 
+const getMyJobs = async (userId: string) => {
+  const result = await prisma.job.findMany({
+    where: {
+      companyId: userId,
+    },
+  });
+  return result;
+};
+
 export const jobsService = {
   createJob,
   getAllJobs,
+  getMyJobs,
 };
