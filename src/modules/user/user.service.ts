@@ -61,21 +61,25 @@ const refreshTokenAuth = async (data: string) => {
   const { accessToken, refreshToken } = generateTokens(user);
   return { accessToken, newRefreshToken: refreshToken };
 };
-const currentUserById = async (id: string) => {
+const currentUserById = async (id: string, userRole: string) => {
   const user = await prisma.user.findUnique({
     where: { id },
     omit: {
       password: true,
     },
     include: {
-      candidate: {
-        include: {
-          skills: true,
-          eductions: true,
-          workExperiences: true,
+      ...(userRole === "CANDIDATE" && {
+        candidate: {
+          include: {
+            skills: true,
+            eductions: true,
+            workExperiences: true,
+          },
         },
-      },
-      company: true,
+      }),
+      ...(userRole === "EMPLOYER" && {
+        company: true,
+      }),
     },
   });
   if (!user) throw new ApiError("user not found ", 404);

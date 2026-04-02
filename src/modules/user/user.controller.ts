@@ -46,7 +46,11 @@ const userTokenRefresh = catchAsync(async (req, res) => {
 });
 const currentUser = catchAsync(async (req, res) => {
   const userId = req.user?.id;
-  const result = await userService.currentUserById(userId as string);
+  const userRole = req.user?.role;
+  const result = await userService.currentUserById(
+    userId as string,
+    userRole as string,
+  );
   sendResponse(res, {
     statusCode: 200,
     message: "current user",
