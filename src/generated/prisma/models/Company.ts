@@ -33,7 +33,9 @@ export type CompanyMinAggregateOutputType = {
   phone: string | null;
   location: string | null;
   companySize: string | null;
+  phoneNumber: string | null;
   logo: string | null;
+  foundedDate: string | null;
   coverImage: string | null;
   facebook: string | null;
   linkedin: string | null;
@@ -53,7 +55,9 @@ export type CompanyMaxAggregateOutputType = {
   phone: string | null;
   location: string | null;
   companySize: string | null;
+  phoneNumber: string | null;
   logo: string | null;
+  foundedDate: string | null;
   coverImage: string | null;
   facebook: string | null;
   linkedin: string | null;
@@ -73,7 +77,9 @@ export type CompanyCountAggregateOutputType = {
   phone: number;
   location: number;
   companySize: number;
+  phoneNumber: number;
   logo: number;
+  foundedDate: number;
   coverImage: number;
   facebook: number;
   linkedin: number;
@@ -94,7 +100,9 @@ export type CompanyMinAggregateInputType = {
   phone?: true;
   location?: true;
   companySize?: true;
+  phoneNumber?: true;
   logo?: true;
+  foundedDate?: true;
   coverImage?: true;
   facebook?: true;
   linkedin?: true;
@@ -114,7 +122,9 @@ export type CompanyMaxAggregateInputType = {
   phone?: true;
   location?: true;
   companySize?: true;
+  phoneNumber?: true;
   logo?: true;
+  foundedDate?: true;
   coverImage?: true;
   facebook?: true;
   linkedin?: true;
@@ -134,7 +144,9 @@ export type CompanyCountAggregateInputType = {
   phone?: true;
   location?: true;
   companySize?: true;
+  phoneNumber?: true;
   logo?: true;
+  foundedDate?: true;
   coverImage?: true;
   facebook?: true;
   linkedin?: true;
@@ -234,7 +246,9 @@ export type CompanyGroupByOutputType = {
   phone: string;
   location: string;
   companySize: string;
+  phoneNumber: string | null;
   logo: string | null;
+  foundedDate: string | null;
   coverImage: string | null;
   facebook: string | null;
   linkedin: string | null;
@@ -273,7 +287,9 @@ export type CompanyWhereInput = {
   phone?: Prisma.StringFilter<"Company"> | string;
   location?: Prisma.StringFilter<"Company"> | string;
   companySize?: Prisma.StringFilter<"Company"> | string;
+  phoneNumber?: Prisma.StringNullableFilter<"Company"> | string | null;
   logo?: Prisma.StringNullableFilter<"Company"> | string | null;
+  foundedDate?: Prisma.StringNullableFilter<"Company"> | string | null;
   coverImage?: Prisma.StringNullableFilter<"Company"> | string | null;
   facebook?: Prisma.StringNullableFilter<"Company"> | string | null;
   linkedin?: Prisma.StringNullableFilter<"Company"> | string | null;
@@ -295,7 +311,9 @@ export type CompanyOrderByWithRelationInput = {
   phone?: Prisma.SortOrder;
   location?: Prisma.SortOrder;
   companySize?: Prisma.SortOrder;
+  phoneNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
   logo?: Prisma.SortOrderInput | Prisma.SortOrder;
+  foundedDate?: Prisma.SortOrderInput | Prisma.SortOrder;
   coverImage?: Prisma.SortOrderInput | Prisma.SortOrder;
   facebook?: Prisma.SortOrderInput | Prisma.SortOrder;
   linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
@@ -321,7 +339,9 @@ export type CompanyWhereUniqueInput = Prisma.AtLeast<
     phone?: Prisma.StringFilter<"Company"> | string;
     location?: Prisma.StringFilter<"Company"> | string;
     companySize?: Prisma.StringFilter<"Company"> | string;
+    phoneNumber?: Prisma.StringNullableFilter<"Company"> | string | null;
     logo?: Prisma.StringNullableFilter<"Company"> | string | null;
+    foundedDate?: Prisma.StringNullableFilter<"Company"> | string | null;
     coverImage?: Prisma.StringNullableFilter<"Company"> | string | null;
     facebook?: Prisma.StringNullableFilter<"Company"> | string | null;
     linkedin?: Prisma.StringNullableFilter<"Company"> | string | null;
@@ -345,7 +365,9 @@ export type CompanyOrderByWithAggregationInput = {
   phone?: Prisma.SortOrder;
   location?: Prisma.SortOrder;
   companySize?: Prisma.SortOrder;
+  phoneNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
   logo?: Prisma.SortOrderInput | Prisma.SortOrder;
+  foundedDate?: Prisma.SortOrderInput | Prisma.SortOrder;
   coverImage?: Prisma.SortOrderInput | Prisma.SortOrder;
   facebook?: Prisma.SortOrderInput | Prisma.SortOrder;
   linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
@@ -378,7 +400,15 @@ export type CompanyScalarWhereWithAggregatesInput = {
   phone?: Prisma.StringWithAggregatesFilter<"Company"> | string;
   location?: Prisma.StringWithAggregatesFilter<"Company"> | string;
   companySize?: Prisma.StringWithAggregatesFilter<"Company"> | string;
+  phoneNumber?:
+    | Prisma.StringNullableWithAggregatesFilter<"Company">
+    | string
+    | null;
   logo?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null;
+  foundedDate?:
+    | Prisma.StringNullableWithAggregatesFilter<"Company">
+    | string
+    | null;
   coverImage?:
     | Prisma.StringNullableWithAggregatesFilter<"Company">
     | string
@@ -412,7 +442,9 @@ export type CompanyCreateInput = {
   phone: string;
   location: string;
   companySize: string;
+  phoneNumber?: string | null;
   logo?: string | null;
+  foundedDate?: string | null;
   coverImage?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
@@ -434,7 +466,9 @@ export type CompanyUncheckedCreateInput = {
   phone: string;
   location: string;
   companySize: string;
+  phoneNumber?: string | null;
   logo?: string | null;
+  foundedDate?: string | null;
   coverImage?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
@@ -454,7 +488,9 @@ export type CompanyUpdateInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
   location?: Prisma.StringFieldUpdateOperationsInput | string;
   companySize?: Prisma.StringFieldUpdateOperationsInput | string;
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  foundedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -476,7 +512,9 @@ export type CompanyUncheckedUpdateInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
   location?: Prisma.StringFieldUpdateOperationsInput | string;
   companySize?: Prisma.StringFieldUpdateOperationsInput | string;
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  foundedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -497,7 +535,9 @@ export type CompanyCreateManyInput = {
   phone: string;
   location: string;
   companySize: string;
+  phoneNumber?: string | null;
   logo?: string | null;
+  foundedDate?: string | null;
   coverImage?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
@@ -516,7 +556,9 @@ export type CompanyUpdateManyMutationInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
   location?: Prisma.StringFieldUpdateOperationsInput | string;
   companySize?: Prisma.StringFieldUpdateOperationsInput | string;
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  foundedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -536,7 +578,9 @@ export type CompanyUncheckedUpdateManyInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
   location?: Prisma.StringFieldUpdateOperationsInput | string;
   companySize?: Prisma.StringFieldUpdateOperationsInput | string;
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  foundedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -556,7 +600,9 @@ export type CompanyCountOrderByAggregateInput = {
   phone?: Prisma.SortOrder;
   location?: Prisma.SortOrder;
   companySize?: Prisma.SortOrder;
+  phoneNumber?: Prisma.SortOrder;
   logo?: Prisma.SortOrder;
+  foundedDate?: Prisma.SortOrder;
   coverImage?: Prisma.SortOrder;
   facebook?: Prisma.SortOrder;
   linkedin?: Prisma.SortOrder;
@@ -576,7 +622,9 @@ export type CompanyMaxOrderByAggregateInput = {
   phone?: Prisma.SortOrder;
   location?: Prisma.SortOrder;
   companySize?: Prisma.SortOrder;
+  phoneNumber?: Prisma.SortOrder;
   logo?: Prisma.SortOrder;
+  foundedDate?: Prisma.SortOrder;
   coverImage?: Prisma.SortOrder;
   facebook?: Prisma.SortOrder;
   linkedin?: Prisma.SortOrder;
@@ -596,7 +644,9 @@ export type CompanyMinOrderByAggregateInput = {
   phone?: Prisma.SortOrder;
   location?: Prisma.SortOrder;
   companySize?: Prisma.SortOrder;
+  phoneNumber?: Prisma.SortOrder;
   logo?: Prisma.SortOrder;
+  foundedDate?: Prisma.SortOrder;
   coverImage?: Prisma.SortOrder;
   facebook?: Prisma.SortOrder;
   linkedin?: Prisma.SortOrder;
@@ -707,7 +757,9 @@ export type CompanyCreateWithoutJobsInput = {
   phone: string;
   location: string;
   companySize: string;
+  phoneNumber?: string | null;
   logo?: string | null;
+  foundedDate?: string | null;
   coverImage?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
@@ -728,7 +780,9 @@ export type CompanyUncheckedCreateWithoutJobsInput = {
   phone: string;
   location: string;
   companySize: string;
+  phoneNumber?: string | null;
   logo?: string | null;
+  foundedDate?: string | null;
   coverImage?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
@@ -775,7 +829,9 @@ export type CompanyUpdateWithoutJobsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
   location?: Prisma.StringFieldUpdateOperationsInput | string;
   companySize?: Prisma.StringFieldUpdateOperationsInput | string;
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  foundedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -796,7 +852,9 @@ export type CompanyUncheckedUpdateWithoutJobsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
   location?: Prisma.StringFieldUpdateOperationsInput | string;
   companySize?: Prisma.StringFieldUpdateOperationsInput | string;
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  foundedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -815,7 +873,9 @@ export type CompanyCreateWithoutUserInput = {
   phone: string;
   location: string;
   companySize: string;
+  phoneNumber?: string | null;
   logo?: string | null;
+  foundedDate?: string | null;
   coverImage?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
@@ -835,7 +895,9 @@ export type CompanyUncheckedCreateWithoutUserInput = {
   phone: string;
   location: string;
   companySize: string;
+  phoneNumber?: string | null;
   logo?: string | null;
+  foundedDate?: string | null;
   coverImage?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
@@ -883,7 +945,9 @@ export type CompanyUpdateWithoutUserInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
   location?: Prisma.StringFieldUpdateOperationsInput | string;
   companySize?: Prisma.StringFieldUpdateOperationsInput | string;
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  foundedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -903,7 +967,9 @@ export type CompanyUncheckedUpdateWithoutUserInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string;
   location?: Prisma.StringFieldUpdateOperationsInput | string;
   companySize?: Prisma.StringFieldUpdateOperationsInput | string;
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  foundedDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -966,7 +1032,9 @@ export type CompanySelect<
     phone?: boolean;
     location?: boolean;
     companySize?: boolean;
+    phoneNumber?: boolean;
     logo?: boolean;
+    foundedDate?: boolean;
     coverImage?: boolean;
     facebook?: boolean;
     linkedin?: boolean;
@@ -995,7 +1063,9 @@ export type CompanySelectCreateManyAndReturn<
     phone?: boolean;
     location?: boolean;
     companySize?: boolean;
+    phoneNumber?: boolean;
     logo?: boolean;
+    foundedDate?: boolean;
     coverImage?: boolean;
     facebook?: boolean;
     linkedin?: boolean;
@@ -1022,7 +1092,9 @@ export type CompanySelectUpdateManyAndReturn<
     phone?: boolean;
     location?: boolean;
     companySize?: boolean;
+    phoneNumber?: boolean;
     logo?: boolean;
+    foundedDate?: boolean;
     coverImage?: boolean;
     facebook?: boolean;
     linkedin?: boolean;
@@ -1045,7 +1117,9 @@ export type CompanySelectScalar = {
   phone?: boolean;
   location?: boolean;
   companySize?: boolean;
+  phoneNumber?: boolean;
   logo?: boolean;
+  foundedDate?: boolean;
   coverImage?: boolean;
   facebook?: boolean;
   linkedin?: boolean;
@@ -1068,7 +1142,9 @@ export type CompanyOmit<
   | "phone"
   | "location"
   | "companySize"
+  | "phoneNumber"
   | "logo"
+  | "foundedDate"
   | "coverImage"
   | "facebook"
   | "linkedin"
@@ -1119,7 +1195,9 @@ export type $CompanyPayload<
       phone: string;
       location: string;
       companySize: string;
+      phoneNumber: string | null;
       logo: string | null;
+      foundedDate: string | null;
       coverImage: string | null;
       facebook: string | null;
       linkedin: string | null;
@@ -1753,7 +1831,9 @@ export interface CompanyFieldRefs {
   readonly phone: Prisma.FieldRef<"Company", "String">;
   readonly location: Prisma.FieldRef<"Company", "String">;
   readonly companySize: Prisma.FieldRef<"Company", "String">;
+  readonly phoneNumber: Prisma.FieldRef<"Company", "String">;
   readonly logo: Prisma.FieldRef<"Company", "String">;
+  readonly foundedDate: Prisma.FieldRef<"Company", "String">;
   readonly coverImage: Prisma.FieldRef<"Company", "String">;
   readonly facebook: Prisma.FieldRef<"Company", "String">;
   readonly linkedin: Prisma.FieldRef<"Company", "String">;
