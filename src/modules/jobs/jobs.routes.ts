@@ -7,9 +7,7 @@ import { validate } from "../../middleware/validate.middleware";
 
 const jobsRoutes = Router();
 
-jobsRoutes.get("/", (req, res) => {
-  res.send("Jobs routes");
-});
+jobsRoutes.get("/", jobsController.getAllJobs);
 
 jobsRoutes.post(
   "/",

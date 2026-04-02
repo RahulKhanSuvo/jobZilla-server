@@ -12,6 +12,17 @@ const createJob = catchAsync(async (req, res) => {
   });
 });
 
+const getAllJobs = catchAsync(async (req, res) => {
+  const result = await jobsService.getAllJobs();
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Jobs fetched successfully",
+    data: result,
+  });
+});
+
 export const jobsController = {
   createJob,
+  getAllJobs,
 };
