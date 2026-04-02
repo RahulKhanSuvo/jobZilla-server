@@ -8,6 +8,11 @@ import { validate } from "../../middleware/validate.middleware";
 const jobsRoutes = Router();
 
 jobsRoutes.get("/", jobsController.getAllJobs);
+jobsRoutes.get(
+  "/my-jobs",
+  authGard(UserRole.EMPLOYER),
+  jobsController.getMyJobs,
+);
 
 jobsRoutes.post(
   "/",
