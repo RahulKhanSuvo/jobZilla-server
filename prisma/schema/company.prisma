@@ -7,7 +7,6 @@ model Company {
   phone       String
   location    String   @db.VarChar(150)
   companySize String
-  phoneNumber String?
   logo        String?
   foundedDate String?
   coverImage  String?
