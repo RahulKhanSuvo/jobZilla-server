@@ -2,7 +2,6 @@ import { ApiError } from "../../errors/ApiError";
 import { catchAsync } from "../../shared/catchAsync";
 import { sendResponse } from "../../shared/sendResponse";
 import { uploadToImgBB } from "../../utils/imgbb";
-import { recruiterSchema } from "./recruiter.schema";
 import { recruiterService } from "./recruiter.service";
 
 const updateRecruiter = catchAsync(async (req, res) => {
@@ -11,24 +10,35 @@ const updateRecruiter = catchAsync(async (req, res) => {
   if (!userId) {
     throw new ApiError("User not found", 404);
   }
-  if (req.files) {
-    const files = req.files as {
+
+  const files =
+    (req.files as {
       logo?: Express.Multer.File[];
       coverImage?: Express.Multer.File[];
-    };
-    console.log("files", files);
-    if (files.logo) {
-      const logoUrl = await uploadToImgBB(files.logo[0].buffer);
-      body.logo = logoUrl.url;
-    }
-    if (files.coverImage) {
-      const coverImageUrl = await uploadToImgBB(files.coverImage[0].buffer);
-      body.coverImage = coverImageUrl.url;
-    }
+    }) || {};
+
+  // Handle logo: multer file OR base64 string
+  if (files.logo) {
+    const logoUrl = await uploadToImgBB(files.logo[0].buffer);
+    body.logo = logoUrl.url;
+  } else if (body.logo && body.logo.startsWith("data:")) {
+    const base64Data = body.logo.split(",")[1];
+    const buffer = Buffer.from(base64Data, "base64");
+    const logoUrl = await uploadToImgBB(buffer);
+    body.logo = logoUrl.url;
   }
 
-  const validatedBody = recruiterSchema.parse(body);
-  const result = await recruiterService.updateRecruiter(userId, validatedBody);
+  if (files.coverImage) {
+    const coverImageUrl = await uploadToImgBB(files.coverImage[0].buffer);
+    body.coverImage = coverImageUrl.url;
+  } else if (body.coverImage && body.coverImage.startsWith("data:")) {
+    const base64Data = body.coverImage.split(",")[1];
+    const buffer = Buffer.from(base64Data, "base64");
+    const coverImageUrl = await uploadToImgBB(buffer);
+    body.coverImage = coverImageUrl.url;
+  }
+
+  const result = await recruiterService.updateRecruiter(userId, body);
 
   sendResponse(res, {
     statusCode: 200,

@@ -7,7 +7,10 @@ export const recruiterSchema = z.object({
   website: z.string().url("Invalid website URL").optional().or(z.literal("")),
   foundedDate: z.string().optional(),
   companySize: z.string().optional(),
-  showProfile: z.boolean().default(true).optional(),
+  showProfile: z
+    .preprocess((val) => val === "true" || val === true, z.boolean())
+    .default(true)
+    .optional(),
   logo: z.string().optional().or(z.literal("")),
   coverImage: z.string().optional().or(z.literal("")),
   industry: z.string().min(1, "At least one category is required"),
