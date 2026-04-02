@@ -1,6 +1,7 @@
 import { ApiError } from "../../errors/ApiError";
 import { prisma } from "../../lib/prisma";
 import { IJob } from "./job.schema";
+import { Prisma } from "../../generated/prisma/client";
 
 const createJob = async (userId: string, payload: IJob) => {
   const company = await prisma.company.findUnique({
@@ -27,13 +28,70 @@ const getAllJobs = async () => {
   return result;
 };
 
-const getMyJobs = async (userId: string) => {
+export interface IJobOptions {
+  page?: number | string;
+  limit?: number | string;
+  sortBy?: string;
+  sortOrder?: "asc" | "desc";
+  searchTerm?: string;
+  [key: string]: string | number | boolean | undefined | string[];
+}
+
+const getMyJobs = async (userId: string, options: IJobOptions) => {
+  const {
+    page = 1,
+    limit = 10,
+    sortBy = "createdAt",
+    sortOrder = "desc",
+    searchTerm,
+    ...filters
+  } = options;
+
+  const skip = (Number(page) - 1) * Number(limit);
+  const take = Number(limit);
+
+  const andConditions: Prisma.JobWhereInput[] = [{ companyId: userId }];
+
+  if (searchTerm) {
+    andConditions.push({
+      OR: [
+        { title: { contains: searchTerm, mode: "insensitive" } },
+        { description: { contains: searchTerm, mode: "insensitive" } },
+      ],
+    });
+  }
+
+  if (Object.keys(filters).length > 0) {
+    andConditions.push({
+      AND: Object.keys(filters).map((key) => ({
+        [key]: { equals: filters[key] },
+      })),
+    });
+  }
+
+  const whereConditions: Prisma.JobWhereInput = { AND: andConditions };
+
   const result = await prisma.job.findMany({
-    where: {
-      companyId: userId,
+    where: whereConditions,
+    skip,
+    take,
+    orderBy: {
+      [sortBy]: sortOrder,
     },
   });
-  return result;
+
+  const total = await prisma.job.count({
+    where: whereConditions,
+  });
+
+  return {
+    meta: {
+      page: Number(page),
+      limit: Number(limit),
+      total,
+    },
+    data: result,
+  };
 };
 
 export const jobsService = {

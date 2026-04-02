@@ -1,6 +1,8 @@
 import { catchAsync } from "../../shared/catchAsync";
-import { jobsService } from "./jobs.service";
+import { jobsService, IJobOptions } from "./jobs.service";
 import { sendResponse } from "../../shared/sendResponse";
+import pick from "../../shared/pick";
+import { jobFilterableFields } from "./job.constant";
 
 const createJob = catchAsync(async (req, res) => {
   const result = await jobsService.createJob(req.user?.id as string, req.body);
@@ -23,7 +25,15 @@ const getAllJobs = catchAsync(async (req, res) => {
 });
 
 const getMyJobs = catchAsync(async (req, res) => {
-  const result = await jobsService.getMyJobs(req.user?.id as string);
+  const filters = pick(req.query, jobFilterableFields);
+  const options = pick(req.query, ["page", "limit", "sortBy", "sortOrder"]);
+  const result = await jobsService.getMyJobs(
+    req.user?.id as string,
+    {
+      ...filters,
+      ...options,
+    } as IJobOptions,
+  );
   sendResponse(res, {
     statusCode: 200,
     success: true,
