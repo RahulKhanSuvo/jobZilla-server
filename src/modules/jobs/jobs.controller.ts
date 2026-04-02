@@ -3,7 +3,8 @@ import { jobsService } from "./jobs.service";
 import { sendResponse } from "../../shared/sendResponse";
 
 const createJob = catchAsync(async (req, res) => {
-  const result = await jobsService.createJob(req.body);
+  console.log(req.user?.id);
+  const result = await jobsService.createJob(req.user?.id as string, req.body);
   sendResponse(res, {
     statusCode: 200,
     success: true,

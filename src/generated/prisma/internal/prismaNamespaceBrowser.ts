@@ -174,6 +174,7 @@ export const JobScalarFieldEnum = {
   externalUrl: "externalUrl",
   applyEmail: "applyEmail",
   salaryType: "salaryType",
+  applyType: "applyType",
   salaryMin: "salaryMin",
   salaryMax: "salaryMax",
   jobType: "jobType",

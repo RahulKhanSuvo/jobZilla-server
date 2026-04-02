@@ -40,6 +40,7 @@ model Job {
   externalUrl   String?
   applyEmail    String?
   salaryType    String?
+  applyType     String?
   salaryMin     Int?
   salaryMax     Int?
   jobType       JobType?
