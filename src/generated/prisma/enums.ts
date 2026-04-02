@@ -19,6 +19,13 @@ export const JobType = {
 
 export type JobType = (typeof JobType)[keyof typeof JobType];
 
+export const JobStatus = {
+  OPEN: "OPEN",
+  CLOSED: "CLOSED",
+} as const;
+
+export type JobStatus = (typeof JobStatus)[keyof typeof JobStatus];
+
 export const UserRole = {
   CANDIDATE: "CANDIDATE",
   EMPLOYER: "EMPLOYER",

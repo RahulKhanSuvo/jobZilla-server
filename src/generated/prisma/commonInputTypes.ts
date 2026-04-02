@@ -291,6 +291,25 @@ export type IntNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedIntNullableFilter<$PrismaModel> | number | null;
 };
 
+export type EnumJobStatusNullableFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.JobStatus
+    | Prisma.EnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.JobStatus[]
+    | Prisma.ListEnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.JobStatus[]
+    | Prisma.ListEnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumJobStatusNullableFilter<$PrismaModel>
+    | $Enums.JobStatus
+    | null;
+};
+
 export type EnumJobTypeNullableFilter<$PrismaModel = never> = {
   equals?:
     | $Enums.JobType
@@ -327,6 +346,28 @@ export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedIntNullableFilter<$PrismaModel>;
   _min?: Prisma.NestedIntNullableFilter<$PrismaModel>;
   _max?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+};
+
+export type EnumJobStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.JobStatus
+    | Prisma.EnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.JobStatus[]
+    | Prisma.ListEnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.JobStatus[]
+    | Prisma.ListEnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumJobStatusNullableWithAggregatesFilter<$PrismaModel>
+    | $Enums.JobStatus
+    | null;
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumJobStatusNullableFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumJobStatusNullableFilter<$PrismaModel>;
 };
 
 export type EnumJobTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -678,6 +719,25 @@ export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>;
 };
 
+export type NestedEnumJobStatusNullableFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.JobStatus
+    | Prisma.EnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.JobStatus[]
+    | Prisma.ListEnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.JobStatus[]
+    | Prisma.ListEnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumJobStatusNullableFilter<$PrismaModel>
+    | $Enums.JobStatus
+    | null;
+};
+
 export type NestedEnumJobTypeNullableFilter<$PrismaModel = never> = {
   equals?:
     | $Enums.JobType
@@ -725,6 +785,30 @@ export type NestedFloatNullableFilter<$PrismaModel = never> = {
   gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>;
   gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>;
   not?: Prisma.NestedFloatNullableFilter<$PrismaModel> | number | null;
+};
+
+export type NestedEnumJobStatusNullableWithAggregatesFilter<
+  $PrismaModel = never,
+> = {
+  equals?:
+    | $Enums.JobStatus
+    | Prisma.EnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.JobStatus[]
+    | Prisma.ListEnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.JobStatus[]
+    | Prisma.ListEnumJobStatusFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumJobStatusNullableWithAggregatesFilter<$PrismaModel>
+    | $Enums.JobStatus
+    | null;
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumJobStatusNullableFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumJobStatusNullableFilter<$PrismaModel>;
 };
 
 export type NestedEnumJobTypeNullableWithAggregatesFilter<

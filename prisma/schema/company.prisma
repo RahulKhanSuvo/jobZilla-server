@@ -30,6 +30,11 @@ enum JobType {
   REMOTE
 }
 
+enum JobStatus {
+  OPEN
+  CLOSED
+}
+
 model Job {
   id            String        @id @default(uuid())
   title         String        @db.VarChar(100)
@@ -43,6 +48,7 @@ model Job {
   applyType     String?
   salaryMin     Int?
   salaryMax     Int?
+  status        JobStatus?    @default(OPEN)
   jobType       JobType?
   experience    String?       @db.VarChar(100)
   careerLevel   String?

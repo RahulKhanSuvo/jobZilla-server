@@ -177,6 +177,7 @@ export const JobScalarFieldEnum = {
   applyType: "applyType",
   salaryMin: "salaryMin",
   salaryMax: "salaryMax",
+  status: "status",
   jobType: "jobType",
   experience: "experience",
   careerLevel: "careerLevel",
