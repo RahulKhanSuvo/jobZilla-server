@@ -10,6 +10,12 @@ const createJob = async (payload: IJob) => {
   return result;
 };
 
+const getAllJobs = async () => {
+  const result = await prisma.job.findMany();
+  return result;
+};
+
 export const jobsService = {
   createJob,
+  getAllJobs,
 };
