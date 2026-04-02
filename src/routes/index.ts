@@ -8,5 +8,5 @@ const routes = Router();
 routes.use("/auth", userRouter);
 routes.use("/candidate", candidateRouter);
 routes.use("/recruiter", recruiterRouter);
-routes.use("/jobs", jobsRoutes);
+routes.use("/job", jobsRoutes);
 export default routes;
