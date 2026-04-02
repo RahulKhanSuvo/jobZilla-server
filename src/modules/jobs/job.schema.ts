@@ -11,7 +11,6 @@ export const JobTypeEnum = z.enum([
 
 export const JobSchema = z.object({
   title: z.string().min(1, "Job title is required"),
-  companyId: z.string().min(1, "Company ID is required"),
   description: z.string().min(1, "Job description is required"),
   category: z.string().min(1, "Job category is required"),
   tags: z.array(z.string()).min(1, "Job tags are required"),
@@ -29,6 +28,7 @@ export const JobSchema = z.object({
   skills: z.string().max(200).optional().nullable(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
+  applyType: z.string().optional().nullable(),
 });
 
 export type IJob = z.infer<typeof JobSchema>;
