@@ -60,6 +60,7 @@ model Job {
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
   applications  Application[]
+  savedJobs     SavedJob[]
 }
 
 model Application {
@@ -71,4 +72,15 @@ model Application {
   updatedAt DateTime  @updatedAt
   job       Job       @relation(fields: [jobId], references: [id])
   user      User      @relation(fields: [userId], references: [id])
+}
+
+// save job
+model SavedJob {
+  id        String   @id @default(uuid())
+  userId    String
+  jobId     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  job       Job      @relation(fields: [jobId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }
