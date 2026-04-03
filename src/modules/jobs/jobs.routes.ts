@@ -22,6 +22,10 @@ jobsRoutes.post(
 );
 jobsRoutes.get("/:id", jobsController.jobById);
 // save job
-jobsRoutes.post("/save-job", jobsController.saveJob);
+jobsRoutes.post(
+  "/save-job",
+  authGard(UserRole.CANDIDATE),
+  jobsController.saveJob,
+);
 
 export default jobsRoutes;
