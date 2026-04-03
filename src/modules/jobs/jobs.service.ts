@@ -38,11 +38,15 @@ const getAllJobs = async (userId: string) => {
           logo: true,
         },
       },
-      savedJobs: {
-        where: {
-          userId: userId,
-        },
-      },
+      ...(userId
+        ? {
+            savedJobs: {
+              where: {
+                userId: userId,
+              },
+            },
+          }
+        : {}),
     },
   });
 
@@ -50,7 +54,7 @@ const getAllJobs = async (userId: string) => {
     const { savedJobs, ...jobData } = job;
     return {
       ...jobData,
-      isSaved: savedJobs.length > 0,
+      isSaved: savedJobs?.length > 0,
     };
   });
 };
