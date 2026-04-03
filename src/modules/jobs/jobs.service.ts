@@ -24,12 +24,6 @@ const createJob = async (userId: string, payload: IJob) => {
 };
 
 const getAllJobs = async (userId: string) => {
-  const saveJob = await prisma.savedJob.findMany({
-    where: {
-      userId,
-    },
-  });
-  console.log(saveJob);
   const result = await prisma.job.findMany({
     include: {
       company: {
@@ -44,9 +38,21 @@ const getAllJobs = async (userId: string) => {
           logo: true,
         },
       },
+      savedJobs: {
+        where: {
+          userId: userId,
+        },
+      },
     },
   });
-  return result;
+
+  return result.map((job) => {
+    const { savedJobs, ...jobData } = job;
+    return {
+      ...jobData,
+      isSaved: savedJobs.length > 0,
+    };
+  });
 };
 
 export interface IJobOptions {
