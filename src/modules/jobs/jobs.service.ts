@@ -23,7 +23,13 @@ const createJob = async (userId: string, payload: IJob) => {
   return result;
 };
 
-const getAllJobs = async () => {
+const getAllJobs = async (userId: string) => {
+  const saveJob = await prisma.savedJob.findMany({
+    where: {
+      userId,
+    },
+  });
+  console.log(saveJob);
   const result = await prisma.job.findMany();
   return result;
 };
