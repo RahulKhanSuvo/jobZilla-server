@@ -42,8 +42,21 @@ const getMyJobs = catchAsync(async (req, res) => {
   });
 });
 
+const saveJob = catchAsync(async (req, res) => {
+  const result = await jobsService.saveJob(
+    req.user?.id as string,
+    req.body.jobId,
+  );
+  sendResponse(res, {
+    statusCode: 201,
+    success: true,
+    message: "Job save successfully",
+    data: result,
+  });
+});
 export const jobsController = {
   createJob,
   getAllJobs,
   getMyJobs,
+  saveJob,
 };

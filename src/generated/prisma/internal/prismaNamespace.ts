@@ -419,6 +419,7 @@ export const ModelName = {
   Company: "Company",
   Job: "Job",
   Application: "Application",
+  SavedJob: "SavedJob",
   User: "User",
 } as const;
 
@@ -449,6 +450,7 @@ export type TypeMap<
       | "company"
       | "job"
       | "application"
+      | "savedJob"
       | "user";
     txIsolationLevel: TransactionIsolationLevel;
   };
@@ -985,6 +987,82 @@ export type TypeMap<
         };
       };
     };
+    SavedJob: {
+      payload: Prisma.$SavedJobPayload<ExtArgs>;
+      fields: Prisma.SavedJobFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.SavedJobFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.SavedJobFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload>;
+        };
+        findFirst: {
+          args: Prisma.SavedJobFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.SavedJobFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload>;
+        };
+        findMany: {
+          args: Prisma.SavedJobFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload>[];
+        };
+        create: {
+          args: Prisma.SavedJobCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload>;
+        };
+        createMany: {
+          args: Prisma.SavedJobCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.SavedJobCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload>[];
+        };
+        delete: {
+          args: Prisma.SavedJobDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload>;
+        };
+        update: {
+          args: Prisma.SavedJobUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload>;
+        };
+        deleteMany: {
+          args: Prisma.SavedJobDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.SavedJobUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.SavedJobUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload>[];
+        };
+        upsert: {
+          args: Prisma.SavedJobUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedJobPayload>;
+        };
+        aggregate: {
+          args: Prisma.SavedJobAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSavedJob>;
+        };
+        groupBy: {
+          args: Prisma.SavedJobGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.SavedJobGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.SavedJobCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.SavedJobCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
     User: {
       payload: Prisma.$UserPayload<ExtArgs>;
       fields: Prisma.UserFieldRefs;
@@ -1223,6 +1301,17 @@ export const ApplicationScalarFieldEnum = {
 
 export type ApplicationScalarFieldEnum =
   (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum];
+
+export const SavedJobScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  jobId: "jobId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type SavedJobScalarFieldEnum =
+  (typeof SavedJobScalarFieldEnum)[keyof typeof SavedJobScalarFieldEnum];
 
 export const UserScalarFieldEnum = {
   id: "id",
@@ -1524,6 +1613,7 @@ export type GlobalOmitConfig = {
   company?: Prisma.CompanyOmit;
   job?: Prisma.JobOmit;
   application?: Prisma.ApplicationOmit;
+  savedJob?: Prisma.SavedJobOmit;
   user?: Prisma.UserOmit;
 };
 

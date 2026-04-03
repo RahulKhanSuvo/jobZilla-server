@@ -61,6 +61,7 @@ export const ModelName = {
   Company: "Company",
   Job: "Job",
   Application: "Application",
+  SavedJob: "SavedJob",
   User: "User",
 } as const;
 
@@ -203,6 +204,17 @@ export const ApplicationScalarFieldEnum = {
 
 export type ApplicationScalarFieldEnum =
   (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum];
+
+export const SavedJobScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  jobId: "jobId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type SavedJobScalarFieldEnum =
+  (typeof SavedJobScalarFieldEnum)[keyof typeof SavedJobScalarFieldEnum];
 
 export const UserScalarFieldEnum = {
   id: "id",

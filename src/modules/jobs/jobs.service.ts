@@ -93,9 +93,21 @@ const getMyJobs = async (userId: string, options: IJobOptions) => {
     data: result,
   };
 };
+// save job
+
+const saveJob = async (userId: string, jobId: string) => {
+  const result = await prisma.savedJob.create({
+    data: {
+      userId,
+      jobId,
+    },
+  });
+  return result;
+};
 
 export const jobsService = {
   createJob,
   getAllJobs,
   getMyJobs,
+  saveJob,
 };

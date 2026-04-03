@@ -20,5 +20,7 @@ jobsRoutes.post(
   validate(JobSchema),
   jobsController.createJob,
 );
+// save job
+jobsRoutes.post("/save-job");
 
 export default jobsRoutes;
