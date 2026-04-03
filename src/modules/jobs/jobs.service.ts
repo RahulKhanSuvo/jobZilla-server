@@ -117,6 +117,20 @@ const getMyJobs = async (userId: string, options: IJobOptions) => {
 // save job
 
 const saveJob = async (userId: string, jobId: string) => {
+  const existing = await prisma.savedJob.findFirst({
+    where: {
+      userId,
+      jobId,
+    },
+  });
+  if (existing) {
+    const result = await prisma.savedJob.delete({
+      where: {
+        id: existing.id,
+      },
+    });
+    return result;
+  }
   const result = await prisma.savedJob.create({
     data: {
       userId,

@@ -24,7 +24,7 @@ jobsRoutes.get("/:id", authGard({ optional: true }), jobsController.jobById);
 // save job
 jobsRoutes.post(
   "/save-job",
-  authGard({ roles: [UserRole.CANDIDATE] }),
+  authGard({ roles: [UserRole.CANDIDATE, UserRole.EMPLOYER] }),
   jobsController.saveJob,
 );
 
