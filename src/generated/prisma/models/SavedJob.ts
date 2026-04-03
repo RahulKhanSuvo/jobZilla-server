@@ -203,6 +203,7 @@ export type SavedJobOrderByWithRelationInput = {
 export type SavedJobWhereUniqueInput = Prisma.AtLeast<
   {
     id?: string;
+    userId_jobId?: Prisma.SavedJobUserIdJobIdCompoundUniqueInput;
     AND?: Prisma.SavedJobWhereInput | Prisma.SavedJobWhereInput[];
     OR?: Prisma.SavedJobWhereInput[];
     NOT?: Prisma.SavedJobWhereInput | Prisma.SavedJobWhereInput[];
@@ -213,7 +214,7 @@ export type SavedJobWhereUniqueInput = Prisma.AtLeast<
     job?: Prisma.XOR<Prisma.JobScalarRelationFilter, Prisma.JobWhereInput>;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
-  "id"
+  "id" | "userId_jobId"
 >;
 
 export type SavedJobOrderByWithAggregationInput = {
@@ -304,6 +305,11 @@ export type SavedJobListRelationFilter = {
 
 export type SavedJobOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder;
+};
+
+export type SavedJobUserIdJobIdCompoundUniqueInput = {
+  userId: string;
+  jobId: string;
 };
 
 export type SavedJobCountOrderByAggregateInput = {

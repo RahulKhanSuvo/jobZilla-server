@@ -106,12 +106,28 @@ const saveJob = async (userId: string, jobId: string) => {
 };
 
 // get job by id
-const getJobById = async (jobId: string) => {
-  return await prisma.job.findUnique({
+const getJobById = async (userId: string, jobId: string) => {
+  let isSaved = false;
+  if (userId) {
+    const savedJob = await prisma.savedJob.findUnique({
+      where: {
+        userId_jobId: {
+          userId: userId,
+          jobId: jobId,
+        },
+      },
+    });
+    isSaved = !!savedJob;
+  }
+  const job = await prisma.job.findUnique({
     where: {
       id: jobId,
     },
   });
+  return {
+    ...job,
+    isSaved,
+  };
 };
 
 export const jobsService = {

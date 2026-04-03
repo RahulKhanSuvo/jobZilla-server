@@ -10,21 +10,21 @@ const jobsRoutes = Router();
 jobsRoutes.get("/", jobsController.getAllJobs);
 jobsRoutes.get(
   "/my-jobs",
-  authGard(UserRole.EMPLOYER),
+  authGard({ roles: [UserRole.EMPLOYER] }),
   jobsController.getMyJobs,
 );
 
 jobsRoutes.post(
   "/",
-  authGard(UserRole.EMPLOYER),
+  authGard({ roles: [UserRole.EMPLOYER] }),
   validate(JobSchema),
   jobsController.createJob,
 );
-jobsRoutes.get("/:id", jobsController.jobById);
+jobsRoutes.get("/:id", authGard({ optional: true }), jobsController.jobById);
 // save job
 jobsRoutes.post(
   "/save-job",
-  authGard(UserRole.CANDIDATE),
+  authGard({ roles: [UserRole.CANDIDATE] }),
   jobsController.saveJob,
 );
 
