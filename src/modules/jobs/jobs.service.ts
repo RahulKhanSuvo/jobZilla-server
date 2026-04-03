@@ -30,7 +30,22 @@ const getAllJobs = async (userId: string) => {
     },
   });
   console.log(saveJob);
-  const result = await prisma.job.findMany();
+  const result = await prisma.job.findMany({
+    include: {
+      company: {
+        select: {
+          user: {
+            select: {
+              name: true,
+              email: true,
+            },
+          },
+          location: true,
+          logo: true,
+        },
+      },
+    },
+  });
   return result;
 };
 
