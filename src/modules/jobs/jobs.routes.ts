@@ -21,6 +21,6 @@ jobsRoutes.post(
   jobsController.createJob,
 );
 // save job
-jobsRoutes.post("/save-job");
+jobsRoutes.post("/save-job", jobsController.saveJob);
 
 export default jobsRoutes;
