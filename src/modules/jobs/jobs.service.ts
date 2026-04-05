@@ -23,7 +23,9 @@ const createJob = async (userId: string, payload: IJob) => {
   return result;
 };
 
-const getAllJobs = async (userId: string) => {
+const getAllJobs = async (userId: string, page: string, limit: string) => {
+  const skip = (Number(page) - 1) * Number(limit);
+  const take = Number(limit);
   const result = await prisma.job.findMany({
     include: {
       company: {
@@ -48,6 +50,8 @@ const getAllJobs = async (userId: string) => {
           }
         : {}),
     },
+    skip,
+    take,
   });
 
   return result.map((job) => {

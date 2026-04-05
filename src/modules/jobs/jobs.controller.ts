@@ -16,7 +16,13 @@ const createJob = catchAsync(async (req, res) => {
 
 const getAllJobs = catchAsync(async (req, res) => {
   const userId = req.user?.id as string;
-  const result = await jobsService.getAllJobs(userId);
+  const { page, limit } = req.query;
+
+  const result = await jobsService.getAllJobs(
+    userId,
+    page as string,
+    limit as string,
+  );
   sendResponse(res, {
     statusCode: 200,
     success: true,
