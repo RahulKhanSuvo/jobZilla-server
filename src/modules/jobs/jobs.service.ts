@@ -23,10 +23,23 @@ const createJob = async (userId: string, payload: IJob) => {
   return result;
 };
 
-const getAllJobs = async (userId: string, page: string, limit: string) => {
+const getAllJobs = async (
+  userId: string,
+  page: string,
+  limit: string,
+  searchTerm: string,
+) => {
   const skip = (Number(page) - 1) * Number(limit);
   const take = Number(limit);
   const result = await prisma.job.findMany({
+    where: searchTerm
+      ? {
+          OR: [
+            { title: { contains: searchTerm, mode: "insensitive" } },
+            { description: { contains: searchTerm, mode: "insensitive" } },
+          ],
+        }
+      : {},
     include: {
       company: {
         select: {
