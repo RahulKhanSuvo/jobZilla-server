@@ -27,7 +27,8 @@ const getAllJobs = catchAsync(async (req, res) => {
     statusCode: 200,
     success: true,
     message: "Jobs fetched successfully",
-    data: result,
+    data: result.data,
+    meta: result.meta,
   });
 });
 

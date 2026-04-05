@@ -53,14 +53,22 @@ const getAllJobs = async (userId: string, page: string, limit: string) => {
     skip,
     take,
   });
-
-  return result.map((job) => {
-    const { savedJobs, ...jobData } = job;
-    return {
-      ...jobData,
-      isSaved: savedJobs?.length > 0,
-    };
-  });
+  const total = await prisma.job.count();
+  return {
+    meta: {
+      page: Number(page),
+      limit: Number(limit),
+      total,
+      totalPage: Math.ceil(total / Number(limit)),
+    },
+    data: result.map((job) => {
+      const { savedJobs, ...jobData } = job;
+      return {
+        ...jobData,
+        isSaved: savedJobs?.length > 0,
+      };
+    }),
+  };
 };
 
 export interface IJobOptions {
