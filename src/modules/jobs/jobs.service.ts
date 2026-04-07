@@ -22,12 +22,13 @@ const createJob = async (userId: string, payload: IJob) => {
   });
   return result;
 };
-
+type SortOrder = "asc" | "desc";
 const getAllJobs = async (
   userId: string,
   page: string,
   limit: string,
   searchTerm: string,
+  sortBy: SortOrder = "desc",
 ) => {
   const skip = (Number(page) - 1) * Number(limit);
   const take = Number(limit);
@@ -62,6 +63,9 @@ const getAllJobs = async (
             },
           }
         : {}),
+    },
+    orderBy: {
+      createdAt: sortBy,
     },
     skip,
     take,

@@ -16,13 +16,14 @@ const createJob = catchAsync(async (req, res) => {
 
 const getAllJobs = catchAsync(async (req, res) => {
   const userId = req.user?.id as string;
-  const { page, limit, searchTerm } = req.query;
+  const { page, limit, searchTerm, sortBy } = req.query;
 
   const result = await jobsService.getAllJobs(
     userId,
     page as string,
     limit as string,
     searchTerm as string,
+    sortBy as "asc" | "desc",
   );
   sendResponse(res, {
     statusCode: 200,
