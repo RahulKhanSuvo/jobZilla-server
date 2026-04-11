@@ -5,14 +5,16 @@ import { UserRole } from "../../generated/prisma/enums";
 import { upload } from "../../middleware/upload";
 import { validate } from "../../middleware/validate.middleware";
 import { candidateSchema } from "./candidate.schema";
+import { parseFormData } from "../../middleware/FromParse";
 
 const candidateRouter = Router();
 
 candidateRouter.get("/", candidateController.getCandidate);
 candidateRouter.patch(
   "/update",
-  authGard(UserRole.CANDIDATE),
+  authGard({ roles: [UserRole.CANDIDATE] }),
   upload.single("avatar"),
+  parseFormData,
   validate(candidateSchema),
   candidateController.updateCandidate,
 );
