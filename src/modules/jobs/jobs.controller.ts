@@ -99,6 +99,9 @@ const saveJob = catchAsync(async (req, res) => {
 // get save job
 const getSaveJob = catchAsync(async (req, res) => {
   const { page, limit, sortBy, sortOrder, searchTerm } = req.query;
+  console.log(req.query);
+  console.log(req.user?.id);
+
   const result = await jobsService.getSaveJob(req.user?.id as string, {
     page: page as string,
     limit: limit as string,
@@ -113,6 +116,20 @@ const getSaveJob = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
+// unsave job
+const unSaveJob = catchAsync(async (req, res) => {
+  const result = await jobsService.unSaveJob(
+    req.user?.id as string,
+    req.params.id as string,
+  );
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Job unsave successfully",
+    data: result,
+  });
+});
 export const jobsController = {
   createJob,
   getAllJobs,
@@ -120,4 +137,5 @@ export const jobsController = {
   saveJob,
   jobById,
   getSaveJob,
+  unSaveJob,
 };

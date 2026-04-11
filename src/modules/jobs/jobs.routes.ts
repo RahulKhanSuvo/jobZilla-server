@@ -20,10 +20,6 @@ jobsRoutes.post(
   validate(JobSchema),
   jobsController.createJob,
 );
-// get job by id
-
-jobsRoutes.get("/:id", authGard({ optional: true }), jobsController.jobById);
-
 // save job
 jobsRoutes.post(
   "/save-job",
@@ -37,5 +33,15 @@ jobsRoutes.get(
   authGard({ roles: [UserRole.CANDIDATE, UserRole.EMPLOYER] }),
   jobsController.getSaveJob,
 );
+
+// unsave job
+jobsRoutes.delete(
+  "/save-job/:id",
+  authGard({ roles: [UserRole.CANDIDATE, UserRole.EMPLOYER] }),
+  jobsController.unSaveJob,
+);
+
+// get job by id
+jobsRoutes.get("/:id", authGard({ optional: true }), jobsController.jobById);
 
 export default jobsRoutes;

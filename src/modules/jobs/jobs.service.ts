@@ -362,6 +362,19 @@ const getSaveJob = async (userId: string, options: IJobOptions) => {
   return result;
 };
 
+// unsave job
+const unSaveJob = async (userId: string, jobId: string) => {
+  const result = await prisma.savedJob.delete({
+    where: {
+      userId_jobId: {
+        userId: userId,
+        jobId: jobId,
+      },
+    },
+  });
+  return result;
+};
+
 export const jobsService = {
   createJob,
   getAllJobs,
@@ -369,4 +382,5 @@ export const jobsService = {
   saveJob,
   getJobById,
   getSaveJob,
+  unSaveJob,
 };
