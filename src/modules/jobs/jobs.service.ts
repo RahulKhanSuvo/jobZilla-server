@@ -1,7 +1,7 @@
 import { ApiError } from "../../errors/ApiError";
 import { prisma } from "../../lib/prisma";
 import { IJob } from "./job.schema";
-import { Prisma } from "../../generated/prisma/client";
+import { JobType, Prisma } from "../../generated/prisma/client";
 
 const createJob = async (userId: string, payload: IJob) => {
   const company = await prisma.company.findUnique({
@@ -29,18 +29,109 @@ const getAllJobs = async (
   limit: string,
   searchTerm: string,
   sortBy: SortOrder = "desc",
+  location: string,
+  jobType: string = "",
+  salary: string,
+  postedAnytime: string,
+  seniorityLevel: string,
 ) => {
   const skip = (Number(page) - 1) * Number(limit);
   const take = Number(limit);
-  const result = await prisma.job.findMany({
-    where: searchTerm
-      ? {
-          OR: [
-            { title: { contains: searchTerm, mode: "insensitive" } },
-            { description: { contains: searchTerm, mode: "insensitive" } },
-          ],
+
+  const andConditions: Prisma.JobWhereInput[] = [];
+
+  // Search Term (Existing logic integrated into andConditions)
+  if (searchTerm) {
+    andConditions.push({
+      OR: [
+        { title: { contains: searchTerm, mode: "insensitive" } },
+        { description: { contains: searchTerm, mode: "insensitive" } },
+      ],
+    });
+  }
+
+  // Location filter - search in company location
+  if (location && location !== "all") {
+    andConditions.push({
+      company: {
+        location: {
+          contains: location,
+          mode: "insensitive",
+        },
+      },
+    });
+  }
+
+  // Job Type filter
+  if (jobType && jobType !== "all") {
+    andConditions.push({ jobType: jobType as JobType });
+  }
+
+  // Seniority Level filter
+  if (seniorityLevel && seniorityLevel !== "all") {
+    andConditions.push({
+      careerLevel: {
+        contains: seniorityLevel,
+        mode: "insensitive",
+      },
+    });
+  }
+
+  // Salary Range filter (s1, s2, s3, s4, s5)
+  if (salary) {
+    const salaryRanges: Record<string, { min: number; max: number }> = {
+      s1: { min: 0, max: 5000 },
+      s2: { min: 5000, max: 10000 },
+      s3: { min: 10000, max: 15000 },
+      s4: { min: 15000, max: 20000 },
+      s5: { min: 20000, max: 1000000 },
+    };
+
+    // Handle multiple salaries if passed as string "s1,s2"
+    const ids = salary.split(",");
+    const salaryConditions = ids
+      .map((id) => {
+        const range = salaryRanges[id];
+        if (range) {
+          return {
+            AND: [
+              { salaryMin: { lte: range.max } },
+              { salaryMax: { gte: range.min } },
+            ],
+          };
         }
-      : {},
+        return null;
+      })
+      .filter(Boolean) as Prisma.JobWhereInput[];
+
+    if (salaryConditions.length > 0) {
+      andConditions.push({ OR: salaryConditions });
+    }
+  }
+
+  // Posted Anytime (today, week, month)
+  if (postedAnytime && postedAnytime !== "anytime") {
+    const daysMap: Record<string, number> = {
+      today: 1,
+      week: 7,
+      month: 30,
+    };
+    const days = daysMap[postedAnytime.toLowerCase()];
+    if (days) {
+      const date = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
+      andConditions.push({
+        createdAt: {
+          gte: date,
+        },
+      });
+    }
+  }
+
+  const whereCondition: Prisma.JobWhereInput =
+    andConditions.length > 0 ? { AND: andConditions } : {};
+
+  const result = await prisma.job.findMany({
+    where: whereCondition,
     include: {
       company: {
         select: {
@@ -70,7 +161,11 @@ const getAllJobs = async (
     skip,
     take,
   });
-  const total = await prisma.job.count();
+
+  const total = await prisma.job.count({
+    where: whereCondition,
+  });
+
   return {
     meta: {
       page: Number(page),
@@ -82,7 +177,7 @@ const getAllJobs = async (
       const { savedJobs, ...jobData } = job;
       return {
         ...jobData,
-        isSaved: savedJobs?.length > 0,
+        isSaved: savedJobs ? savedJobs.length > 0 : false,
       };
     }),
   };
