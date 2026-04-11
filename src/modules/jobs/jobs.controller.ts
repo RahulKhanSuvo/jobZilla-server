@@ -17,6 +17,8 @@ const createJob = catchAsync(async (req, res) => {
 const getAllJobs = catchAsync(async (req, res) => {
   const userId = req.user?.id as string;
   const { page, limit, searchTerm, sortBy } = req.query;
+  const query = req.query;
+  console.log(query);
 
   const result = await jobsService.getAllJobs(
     userId,
