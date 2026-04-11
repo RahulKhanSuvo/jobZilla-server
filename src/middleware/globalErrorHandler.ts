@@ -10,6 +10,7 @@ export function errorHandler(
   res: Response,
   next: NextFunction,
 ): void {
+  console.error("error from errorhandler", err);
   if (err instanceof Prisma.PrismaClientKnownRequestError) {
     handlePrismaError(err, res);
     return;

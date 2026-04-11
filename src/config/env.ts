@@ -9,6 +9,9 @@ const envSchema = z.object({
   FRONTEND_URL: z.string(),
   REFRESH_TOKEN_SECRET: z.string(),
   IMGBB_API_KEY: z.string().optional(),
+  CLOUDINARY_CLOUD_NAME: z.string(),
+  CLOUDINARY_API_KEY: z.string(),
+  CLOUDINARY_API_SECRET: z.string(),
 });
 const parsedEnv = envSchema.safeParse(process.env);
 if (!parsedEnv.success) {

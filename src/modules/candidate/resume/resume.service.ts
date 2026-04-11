@@ -19,7 +19,7 @@ const createResume = async (userId: string, file: Express.Multer.File) => {
   // 3. Save metadata to DB
   const result = await prisma.resume.create({
     data: {
-      title: file.originalname.replace(".pdf", ""),
+      title: file.originalname.replace(/\.pdf$/i, ""),
       fileUrl: uploadResult.secure_url,
       candidateId: candidate.id,
       isPrimary: resumeCount === 0,
