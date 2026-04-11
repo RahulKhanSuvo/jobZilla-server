@@ -291,6 +291,20 @@ const getJobById = async (userId: string, jobId: string) => {
     where: {
       id: jobId,
     },
+    include: {
+      company: {
+        select: {
+          user: {
+            select: {
+              name: true,
+              email: true,
+            },
+          },
+          location: true,
+          logo: true,
+        },
+      },
+    },
   });
   return {
     ...job,
