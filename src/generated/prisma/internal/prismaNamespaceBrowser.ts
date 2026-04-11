@@ -55,6 +55,7 @@ export const AnyNull = runtime.AnyNull;
 
 export const ModelName = {
   Candidate: "Candidate",
+  Resume: "Resume",
   workExperience: "workExperience",
   skill: "skill",
   eduction: "eduction",
@@ -99,6 +100,20 @@ export const CandidateScalarFieldEnum = {
 
 export type CandidateScalarFieldEnum =
   (typeof CandidateScalarFieldEnum)[keyof typeof CandidateScalarFieldEnum];
+
+export const ResumeScalarFieldEnum = {
+  id: "id",
+  title: "title",
+  fileUrl: "fileUrl",
+  isPrimary: "isPrimary",
+  isDraft: "isDraft",
+  candidateId: "candidateId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type ResumeScalarFieldEnum =
+  (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum];
 
 export const WorkExperienceScalarFieldEnum = {
   id: "id",

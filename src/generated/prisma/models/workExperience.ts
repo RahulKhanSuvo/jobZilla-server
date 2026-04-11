@@ -593,14 +593,6 @@ export type workExperienceUncheckedUpdateManyWithoutCandidateNestedInput = {
     | Prisma.workExperienceScalarWhereInput[];
 };
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string;
-};
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean;
-};
-
 export type workExperienceCreateWithoutCandidateInput = {
   id?: string;
   jobTitle: string;

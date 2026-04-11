@@ -52,6 +52,11 @@ export { Prisma };
  */
 export type Candidate = Prisma.CandidateModel;
 /**
+ * Model Resume
+ *
+ */
+export type Resume = Prisma.ResumeModel;
+/**
  * Model workExperience
  *
  */

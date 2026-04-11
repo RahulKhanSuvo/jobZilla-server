@@ -413,6 +413,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never
 
 export const ModelName = {
   Candidate: "Candidate",
+  Resume: "Resume",
   workExperience: "workExperience",
   skill: "skill",
   eduction: "eduction",
@@ -444,6 +445,7 @@ export type TypeMap<
   meta: {
     modelProps:
       | "candidate"
+      | "resume"
       | "workExperience"
       | "skill"
       | "eduction"
@@ -527,6 +529,82 @@ export type TypeMap<
           args: Prisma.CandidateCountArgs<ExtArgs>;
           result:
             | runtime.Types.Utils.Optional<Prisma.CandidateCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
+    Resume: {
+      payload: Prisma.$ResumePayload<ExtArgs>;
+      fields: Prisma.ResumeFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.ResumeFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.ResumeFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>;
+        };
+        findFirst: {
+          args: Prisma.ResumeFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.ResumeFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>;
+        };
+        findMany: {
+          args: Prisma.ResumeFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>[];
+        };
+        create: {
+          args: Prisma.ResumeCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>;
+        };
+        createMany: {
+          args: Prisma.ResumeCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.ResumeCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>[];
+        };
+        delete: {
+          args: Prisma.ResumeDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>;
+        };
+        update: {
+          args: Prisma.ResumeUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>;
+        };
+        deleteMany: {
+          args: Prisma.ResumeDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.ResumeUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.ResumeUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>[];
+        };
+        upsert: {
+          args: Prisma.ResumeUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>;
+        };
+        aggregate: {
+          args: Prisma.ResumeAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateResume>;
+        };
+        groupBy: {
+          args: Prisma.ResumeGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.ResumeGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.ResumeCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.ResumeCountAggregateOutputType>
             | number;
         };
       };
@@ -1197,6 +1275,20 @@ export const CandidateScalarFieldEnum = {
 export type CandidateScalarFieldEnum =
   (typeof CandidateScalarFieldEnum)[keyof typeof CandidateScalarFieldEnum];
 
+export const ResumeScalarFieldEnum = {
+  id: "id",
+  title: "title",
+  fileUrl: "fileUrl",
+  isPrimary: "isPrimary",
+  isDraft: "isDraft",
+  candidateId: "candidateId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type ResumeScalarFieldEnum =
+  (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum];
+
 export const WorkExperienceScalarFieldEnum = {
   id: "id",
   candideId: "candideId",
@@ -1607,6 +1699,7 @@ export type PrismaClientOptions = (
 };
 export type GlobalOmitConfig = {
   candidate?: Prisma.CandidateOmit;
+  resume?: Prisma.ResumeOmit;
   workExperience?: Prisma.workExperienceOmit;
   skill?: Prisma.skillOmit;
   eduction?: Prisma.eductionOmit;

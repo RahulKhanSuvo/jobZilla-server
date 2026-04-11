@@ -253,6 +253,7 @@ export type CandidateWhereInput = {
   workExperiences?: Prisma.WorkExperienceListRelationFilter;
   skills?: Prisma.SkillListRelationFilter;
   eductions?: Prisma.EductionListRelationFilter;
+  resumes?: Prisma.ResumeListRelationFilter;
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 
@@ -273,6 +274,7 @@ export type CandidateOrderByWithRelationInput = {
   workExperiences?: Prisma.workExperienceOrderByRelationAggregateInput;
   skills?: Prisma.skillOrderByRelationAggregateInput;
   eductions?: Prisma.eductionOrderByRelationAggregateInput;
+  resumes?: Prisma.ResumeOrderByRelationAggregateInput;
   user?: Prisma.UserOrderByWithRelationInput;
 };
 
@@ -297,6 +299,7 @@ export type CandidateWhereUniqueInput = Prisma.AtLeast<
     workExperiences?: Prisma.WorkExperienceListRelationFilter;
     skills?: Prisma.SkillListRelationFilter;
     eductions?: Prisma.EductionListRelationFilter;
+    resumes?: Prisma.ResumeListRelationFilter;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
   "id" | "userId"
@@ -391,6 +394,7 @@ export type CandidateCreateInput = {
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
+  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
 };
 
@@ -411,6 +415,7 @@ export type CandidateUncheckedCreateInput = {
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
+  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
 };
 
 export type CandidateUpdateInput = {
@@ -439,6 +444,7 @@ export type CandidateUpdateInput = {
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
+  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
 };
 
@@ -469,6 +475,7 @@ export type CandidateUncheckedUpdateInput = {
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
+  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
 };
 
 export type CandidateCreateManyInput = {
@@ -608,6 +615,32 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null;
 };
 
+export type CandidateCreateNestedOneWithoutResumesInput = {
+  create?: Prisma.XOR<
+    Prisma.CandidateCreateWithoutResumesInput,
+    Prisma.CandidateUncheckedCreateWithoutResumesInput
+  >;
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutResumesInput;
+  connect?: Prisma.CandidateWhereUniqueInput;
+};
+
+export type CandidateUpdateOneRequiredWithoutResumesNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.CandidateCreateWithoutResumesInput,
+    Prisma.CandidateUncheckedCreateWithoutResumesInput
+  >;
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutResumesInput;
+  upsert?: Prisma.CandidateUpsertWithoutResumesInput;
+  connect?: Prisma.CandidateWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.CandidateUpdateToOneWithWhereWithoutResumesInput,
+      Prisma.CandidateUpdateWithoutResumesInput
+    >,
+    Prisma.CandidateUncheckedUpdateWithoutResumesInput
+  >;
+};
+
 export type CandidateCreateNestedOneWithoutWorkExperiencesInput = {
   create?: Prisma.XOR<
     Prisma.CandidateCreateWithoutWorkExperiencesInput,
@@ -742,6 +775,130 @@ export type CandidateUncheckedUpdateOneWithoutUserNestedInput = {
   >;
 };
 
+export type CandidateCreateWithoutResumesInput = {
+  id?: string;
+  phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
+  skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
+  eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
+  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
+};
+
+export type CandidateUncheckedCreateWithoutResumesInput = {
+  id?: string;
+  userId: string;
+  phone: string;
+  location?: string | null;
+  dob?: Date | string | null;
+  gender?: string | null;
+  maritalStatus?: string | null;
+  language?: string | null;
+  aboutMe?: string | null;
+  profileImage?: string | null;
+  facebook?: string | null;
+  linkedin?: string | null;
+  twitter?: string | null;
+  workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
+  skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
+  eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
+};
+
+export type CandidateCreateOrConnectWithoutResumesInput = {
+  where: Prisma.CandidateWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.CandidateCreateWithoutResumesInput,
+    Prisma.CandidateUncheckedCreateWithoutResumesInput
+  >;
+};
+
+export type CandidateUpsertWithoutResumesInput = {
+  update: Prisma.XOR<
+    Prisma.CandidateUpdateWithoutResumesInput,
+    Prisma.CandidateUncheckedUpdateWithoutResumesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.CandidateCreateWithoutResumesInput,
+    Prisma.CandidateUncheckedCreateWithoutResumesInput
+  >;
+  where?: Prisma.CandidateWhereInput;
+};
+
+export type CandidateUpdateToOneWithWhereWithoutResumesInput = {
+  where?: Prisma.CandidateWhereInput;
+  data: Prisma.XOR<
+    Prisma.CandidateUpdateWithoutResumesInput,
+    Prisma.CandidateUncheckedUpdateWithoutResumesInput
+  >;
+};
+
+export type CandidateUpdateWithoutResumesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
+  skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
+  eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
+};
+
+export type CandidateUncheckedUpdateWithoutResumesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.StringFieldUpdateOperationsInput | string;
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dob?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  maritalStatus?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  profileImage?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
+  skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
+  eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
+};
+
 export type CandidateCreateWithoutWorkExperiencesInput = {
   id?: string;
   phone: string;
@@ -757,6 +914,7 @@ export type CandidateCreateWithoutWorkExperiencesInput = {
   twitter?: string | null;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
+  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
 };
 
@@ -776,6 +934,7 @@ export type CandidateUncheckedCreateWithoutWorkExperiencesInput = {
   twitter?: string | null;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
+  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
 };
 
 export type CandidateCreateOrConnectWithoutWorkExperiencesInput = {
@@ -831,6 +990,7 @@ export type CandidateUpdateWithoutWorkExperiencesInput = {
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
+  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
 };
 
@@ -860,6 +1020,7 @@ export type CandidateUncheckedUpdateWithoutWorkExperiencesInput = {
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
+  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
 };
 
 export type CandidateCreateWithoutSkillsInput = {
@@ -877,6 +1038,7 @@ export type CandidateCreateWithoutSkillsInput = {
   twitter?: string | null;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
+  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
 };
 
@@ -896,6 +1058,7 @@ export type CandidateUncheckedCreateWithoutSkillsInput = {
   twitter?: string | null;
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
+  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
 };
 
 export type CandidateCreateOrConnectWithoutSkillsInput = {
@@ -951,6 +1114,7 @@ export type CandidateUpdateWithoutSkillsInput = {
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
+  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
 };
 
@@ -980,6 +1144,7 @@ export type CandidateUncheckedUpdateWithoutSkillsInput = {
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
+  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
 };
 
 export type CandidateCreateWithoutEductionsInput = {
@@ -997,6 +1162,7 @@ export type CandidateCreateWithoutEductionsInput = {
   twitter?: string | null;
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
+  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
 };
 
@@ -1016,6 +1182,7 @@ export type CandidateUncheckedCreateWithoutEductionsInput = {
   twitter?: string | null;
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
+  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
 };
 
 export type CandidateCreateOrConnectWithoutEductionsInput = {
@@ -1071,6 +1238,7 @@ export type CandidateUpdateWithoutEductionsInput = {
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
+  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
 };
 
@@ -1100,6 +1268,7 @@ export type CandidateUncheckedUpdateWithoutEductionsInput = {
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
+  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
 };
 
 export type CandidateCreateWithoutUserInput = {
@@ -1118,6 +1287,7 @@ export type CandidateCreateWithoutUserInput = {
   workExperiences?: Prisma.workExperienceCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionCreateNestedManyWithoutCandidateInput;
+  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
 };
 
 export type CandidateUncheckedCreateWithoutUserInput = {
@@ -1136,6 +1306,7 @@ export type CandidateUncheckedCreateWithoutUserInput = {
   workExperiences?: Prisma.workExperienceUncheckedCreateNestedManyWithoutCandidateInput;
   skills?: Prisma.skillUncheckedCreateNestedManyWithoutCandidateInput;
   eductions?: Prisma.eductionUncheckedCreateNestedManyWithoutCandidateInput;
+  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
 };
 
 export type CandidateCreateOrConnectWithoutUserInput = {
@@ -1192,6 +1363,7 @@ export type CandidateUpdateWithoutUserInput = {
   workExperiences?: Prisma.workExperienceUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUpdateManyWithoutCandidateNestedInput;
+  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
 };
 
 export type CandidateUncheckedUpdateWithoutUserInput = {
@@ -1220,6 +1392,7 @@ export type CandidateUncheckedUpdateWithoutUserInput = {
   workExperiences?: Prisma.workExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
   skills?: Prisma.skillUncheckedUpdateManyWithoutCandidateNestedInput;
   eductions?: Prisma.eductionUncheckedUpdateManyWithoutCandidateNestedInput;
+  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
 };
 
 /**
@@ -1230,6 +1403,7 @@ export type CandidateCountOutputType = {
   workExperiences: number;
   skills: number;
   eductions: number;
+  resumes: number;
 };
 
 export type CandidateCountOutputTypeSelect<
@@ -1239,6 +1413,7 @@ export type CandidateCountOutputTypeSelect<
   workExperiences?: boolean | CandidateCountOutputTypeCountWorkExperiencesArgs;
   skills?: boolean | CandidateCountOutputTypeCountSkillsArgs;
   eductions?: boolean | CandidateCountOutputTypeCountEductionsArgs;
+  resumes?: boolean | CandidateCountOutputTypeCountResumesArgs;
 };
 
 /**
@@ -1284,6 +1459,16 @@ export type CandidateCountOutputTypeCountEductionsArgs<
   where?: Prisma.eductionWhereInput;
 };
 
+/**
+ * CandidateCountOutputType without action
+ */
+export type CandidateCountOutputTypeCountResumesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.ResumeWhereInput;
+};
+
 export type CandidateSelect<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
@@ -1305,6 +1490,7 @@ export type CandidateSelect<
     workExperiences?: boolean | Prisma.Candidate$workExperiencesArgs<ExtArgs>;
     skills?: boolean | Prisma.Candidate$skillsArgs<ExtArgs>;
     eductions?: boolean | Prisma.Candidate$eductionsArgs<ExtArgs>;
+    resumes?: boolean | Prisma.Candidate$resumesArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     _count?: boolean | Prisma.CandidateCountOutputTypeDefaultArgs<ExtArgs>;
   },
@@ -1399,6 +1585,7 @@ export type CandidateInclude<
   workExperiences?: boolean | Prisma.Candidate$workExperiencesArgs<ExtArgs>;
   skills?: boolean | Prisma.Candidate$skillsArgs<ExtArgs>;
   eductions?: boolean | Prisma.Candidate$eductionsArgs<ExtArgs>;
+  resumes?: boolean | Prisma.Candidate$resumesArgs<ExtArgs>;
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   _count?: boolean | Prisma.CandidateCountOutputTypeDefaultArgs<ExtArgs>;
 };
@@ -1424,6 +1611,7 @@ export type $CandidatePayload<
     workExperiences: Prisma.$workExperiencePayload<ExtArgs>[];
     skills: Prisma.$skillPayload<ExtArgs>[];
     eductions: Prisma.$eductionPayload<ExtArgs>[];
+    resumes: Prisma.$ResumePayload<ExtArgs>[];
     user: Prisma.$UserPayload<ExtArgs>;
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
@@ -2018,6 +2206,17 @@ export interface Prisma__CandidateClient<
   ): Prisma.PrismaPromise<
     | runtime.Types.Result.GetResult<
         Prisma.$eductionPayload<ExtArgs>,
+        T,
+        "findMany",
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  resumes<T extends Prisma.Candidate$resumesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.Candidate$resumesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ResumePayload<ExtArgs>,
         T,
         "findMany",
         GlobalOmitOptions
@@ -2651,6 +2850,35 @@ export type Candidate$eductionsArgs<
   take?: number;
   skip?: number;
   distinct?: Prisma.EductionScalarFieldEnum | Prisma.EductionScalarFieldEnum[];
+};
+
+/**
+ * Candidate.resumes
+ */
+export type Candidate$resumesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Resume
+   */
+  select?: Prisma.ResumeSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Resume
+   */
+  omit?: Prisma.ResumeOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ResumeInclude<ExtArgs> | null;
+  where?: Prisma.ResumeWhereInput;
+  orderBy?:
+    | Prisma.ResumeOrderByWithRelationInput
+    | Prisma.ResumeOrderByWithRelationInput[];
+  cursor?: Prisma.ResumeWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.ResumeScalarFieldEnum | Prisma.ResumeScalarFieldEnum[];
 };
 
 /**
