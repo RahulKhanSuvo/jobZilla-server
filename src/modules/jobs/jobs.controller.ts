@@ -98,7 +98,13 @@ const saveJob = catchAsync(async (req, res) => {
 
 // get save job
 const getSaveJob = catchAsync(async (req, res) => {
-  const result = await jobsService.getSaveJob(req.user?.id as string);
+  const { page, limit, sortBy, sortOrder } = req.query;
+  const result = await jobsService.getSaveJob(req.user?.id as string, {
+    page: page as string,
+    limit: limit as string,
+    sortBy: sortBy as string,
+    sortOrder: sortOrder as "asc" | "desc",
+  });
   sendResponse(res, {
     statusCode: 200,
     success: true,

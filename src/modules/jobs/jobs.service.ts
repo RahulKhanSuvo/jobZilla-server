@@ -313,7 +313,15 @@ const getJobById = async (userId: string, jobId: string) => {
 };
 
 // get save job
-const getSaveJob = async (userId: string) => {
+const getSaveJob = async (userId: string, options: IJobOptions) => {
+  const {
+    page = 1,
+    limit = 10,
+    sortBy = "createdAt",
+    sortOrder = "desc",
+  } = options;
+  const skip = (Number(page) - 1) * Number(limit);
+  const take = Number(limit);
   const result = await prisma.savedJob.findMany({
     where: {
       userId,
@@ -335,6 +343,11 @@ const getSaveJob = async (userId: string) => {
           },
         },
       },
+    },
+    skip,
+    take,
+    orderBy: {
+      [sortBy]: sortOrder,
     },
   });
   return result;
