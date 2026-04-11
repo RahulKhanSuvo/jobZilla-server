@@ -312,10 +312,39 @@ const getJobById = async (userId: string, jobId: string) => {
   };
 };
 
+// get save job
+const getSaveJob = async (userId: string) => {
+  const result = await prisma.savedJob.findMany({
+    where: {
+      userId,
+    },
+    include: {
+      job: {
+        include: {
+          company: {
+            select: {
+              user: {
+                select: {
+                  name: true,
+                  email: true,
+                },
+              },
+              location: true,
+              logo: true,
+            },
+          },
+        },
+      },
+    },
+  });
+  return result;
+};
+
 export const jobsService = {
   createJob,
   getAllJobs,
   getMyJobs,
   saveJob,
   getJobById,
+  getSaveJob,
 };
