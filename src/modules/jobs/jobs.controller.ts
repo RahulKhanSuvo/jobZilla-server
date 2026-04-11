@@ -98,11 +98,12 @@ const saveJob = catchAsync(async (req, res) => {
 
 // get save job
 const getSaveJob = catchAsync(async (req, res) => {
-  const { page, limit, sortBy, sortOrder } = req.query;
+  const { page, limit, sortBy, sortOrder, searchTerm } = req.query;
   const result = await jobsService.getSaveJob(req.user?.id as string, {
     page: page as string,
     limit: limit as string,
     sortBy: sortBy as string,
+    searchTerm: searchTerm as string,
     sortOrder: sortOrder as "asc" | "desc",
   });
   sendResponse(res, {

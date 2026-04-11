@@ -319,12 +319,21 @@ const getSaveJob = async (userId: string, options: IJobOptions) => {
     limit = 10,
     sortBy = "createdAt",
     sortOrder = "desc",
+    searchTerm,
   } = options;
   const skip = (Number(page) - 1) * Number(limit);
   const take = Number(limit);
   const result = await prisma.savedJob.findMany({
     where: {
       userId,
+      ...(searchTerm && {
+        job: {
+          title: {
+            contains: searchTerm,
+            mode: "insensitive",
+          },
+        },
+      }),
     },
     include: {
       job: {
