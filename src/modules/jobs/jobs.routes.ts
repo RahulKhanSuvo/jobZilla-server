@@ -20,7 +20,10 @@ jobsRoutes.post(
   validate(JobSchema),
   jobsController.createJob,
 );
+// get job by id
+
 jobsRoutes.get("/:id", authGard({ optional: true }), jobsController.jobById);
+
 // save job
 jobsRoutes.post(
   "/save-job",
