@@ -40,7 +40,6 @@ const getAllJobs = async (
 
   const andConditions: Prisma.JobWhereInput[] = [];
 
-  // Search Term (Existing logic integrated into andConditions)
   if (searchTerm) {
     andConditions.push({
       OR: [
