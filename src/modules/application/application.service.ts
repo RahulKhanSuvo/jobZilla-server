@@ -68,12 +68,14 @@ const createApplication = async (
     },
   });
   if (result.id) {
-    await prisma.job.update({
+    const updateJob = await prisma.job.update({
       where: { id: jobId },
       data: {
         totalApplications: { increment: 1 },
       },
     });
+    console.log(updateJob);
+    if (!updateJob) throw new ApiError("Failed to update job", 500);
   }
   return result;
 };
