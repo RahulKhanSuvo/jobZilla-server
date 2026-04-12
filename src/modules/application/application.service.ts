@@ -8,10 +8,13 @@ const createApplication = async (
   resumeId: string,
   file: Express.Multer.File,
 ) => {
-  const company = await prisma.company.findUnique({
-    where: { userId },
+  const job = await prisma.job.findUnique({
+    where: { id: jobId },
+    include: { company: true },
   });
-  if (!company) throw new ApiError("Company not found", 404);
+  console.log(job);
+
+  if (!job) throw new ApiError("Job not found", 404);
   if (file) {
     const candidate = await prisma.candidate.findUnique({
       where: { userId },
@@ -44,7 +47,7 @@ const createApplication = async (
       data: {
         userId,
         jobId,
-        companyId: company?.id,
+        companyId: job.company.id,
         resumeId: resume.id,
       },
     });
@@ -54,7 +57,7 @@ const createApplication = async (
     data: {
       userId,
       jobId,
-      companyId: company.id,
+      companyId: job.company.id,
       resumeId,
     },
   });
