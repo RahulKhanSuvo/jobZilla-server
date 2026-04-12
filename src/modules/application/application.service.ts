@@ -101,6 +101,7 @@ const getAllApplications = async (userId: string) => {
           candidate: {
             select: {
               location: true,
+              profileImage: true,
             },
           },
         },
