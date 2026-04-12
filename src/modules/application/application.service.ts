@@ -1,3 +1,4 @@
+import { ApiError } from "../../errors/ApiError";
 import { prisma } from "../../lib/prisma";
 import { uploadToCloudinary } from "../../utils/cloudinary";
 
@@ -7,6 +8,10 @@ const createApplication = async (
   resumeId: string,
   file: Express.Multer.File,
 ) => {
+  const company = await prisma.company.findUnique({
+    where: { userId },
+  });
+  if (!company) throw new ApiError("Company not found", 404);
   if (file) {
     const candidate = await prisma.candidate.findUnique({
       where: { userId },
@@ -34,10 +39,12 @@ const createApplication = async (
         isPrimary: resumeCount === 0,
       },
     });
+
     const result = await prisma.application.create({
       data: {
         userId,
         jobId,
+        companyId: company?.id,
         resumeId: resume.id,
       },
     });
@@ -47,6 +54,7 @@ const createApplication = async (
     data: {
       userId,
       jobId,
+      companyId: company.id,
       resumeId,
     },
   });
@@ -54,8 +62,12 @@ const createApplication = async (
 };
 
 const getAllApplications = async (userId: string) => {
-  const applications = await prisma.application.findMany({
+  const company = await prisma.company.findUnique({
     where: { userId },
+  });
+  if (!company) throw new ApiError("Company not found", 404);
+  const applications = await prisma.application.findMany({
+    where: { companyId: company.id },
     include: {
       job: {
         select: {

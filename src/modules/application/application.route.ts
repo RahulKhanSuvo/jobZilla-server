@@ -15,7 +15,7 @@ router.post(
 
 router.get(
   "/",
-  authGard({ roles: [UserRole.CANDIDATE] }),
+  authGard({ roles: [UserRole.CANDIDATE, UserRole.EMPLOYER] }),
   ApplicationController.getAllApplications,
 );
 

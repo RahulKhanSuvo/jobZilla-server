@@ -1,24 +1,25 @@
 model Company {
-  id          String   @id @default(uuid())
-  userId      String   @unique
-  description String?
-  website     String
-  industry    String
-  phone       String
-  location    String   @db.VarChar(150)
-  companySize String
-  logo        String?
-  foundedDate String?
-  coverImage  String?
-  facebook    String?
-  linkedin    String?
-  twitter     String?
-  address     String?
-  showProfile Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  jobs        Job[]
-  user        User     @relation(fields: [userId], references: [id])
+  id           String        @id @default(uuid())
+  userId       String        @unique
+  description  String?
+  website      String
+  industry     String
+  phone        String
+  location     String        @db.VarChar(150)
+  companySize  String
+  logo         String?
+  foundedDate  String?
+  coverImage   String?
+  facebook     String?
+  linkedin     String?
+  twitter      String?
+  address      String?
+  showProfile  Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  jobs         Job[]
+  user         User          @relation(fields: [userId], references: [id])
+  applications Application[]
 }
 
 enum JobType {
@@ -68,12 +69,14 @@ model Application {
   userId    String
   jobId     String
   resumeId  String
+  companyId String
   status    AppStatus @default(PENDING)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   job       Job       @relation(fields: [jobId], references: [id])
   user      User      @relation(fields: [userId], references: [id])
   resume    Resume    @relation(fields: [resumeId], references: [id])
+  company   Company   @relation(fields: [companyId], references: [id])
 }
 
 // save job
