@@ -22,7 +22,7 @@ router.get(
   ApplicationController.getAllApplications,
 );
 router.patch(
-  "status/:id",
+  "/status/:id",
   authGard({ roles: [UserRole.EMPLOYER] }),
   validate(ApplicationSchema.updateApplicationStatusSchema),
   ApplicationController.updateApplicationStatus,
