@@ -28,7 +28,6 @@ export const JobSchema = z.object({
   skills: z.string().max(200).optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  applyType: z.string().optional().nullable(),
 });
 
 export type IJob = z.infer<typeof JobSchema>;

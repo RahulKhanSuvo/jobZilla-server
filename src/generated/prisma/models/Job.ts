@@ -42,10 +42,7 @@ export type JobMinAggregateOutputType = {
   description: string | null;
   category: string | null;
   gender: string | null;
-  externalUrl: string | null;
-  applyEmail: string | null;
   salaryType: string | null;
-  applyType: string | null;
   salaryMin: number | null;
   salaryMax: number | null;
   status: $Enums.JobStatus | null;
@@ -66,10 +63,7 @@ export type JobMaxAggregateOutputType = {
   description: string | null;
   category: string | null;
   gender: string | null;
-  externalUrl: string | null;
-  applyEmail: string | null;
   salaryType: string | null;
-  applyType: string | null;
   salaryMin: number | null;
   salaryMax: number | null;
   status: $Enums.JobStatus | null;
@@ -91,10 +85,7 @@ export type JobCountAggregateOutputType = {
   category: number;
   tags: number;
   gender: number;
-  externalUrl: number;
-  applyEmail: number;
   salaryType: number;
-  applyType: number;
   salaryMin: number;
   salaryMax: number;
   status: number;
@@ -126,10 +117,7 @@ export type JobMinAggregateInputType = {
   description?: true;
   category?: true;
   gender?: true;
-  externalUrl?: true;
-  applyEmail?: true;
   salaryType?: true;
-  applyType?: true;
   salaryMin?: true;
   salaryMax?: true;
   status?: true;
@@ -150,10 +138,7 @@ export type JobMaxAggregateInputType = {
   description?: true;
   category?: true;
   gender?: true;
-  externalUrl?: true;
-  applyEmail?: true;
   salaryType?: true;
-  applyType?: true;
   salaryMin?: true;
   salaryMax?: true;
   status?: true;
@@ -175,10 +160,7 @@ export type JobCountAggregateInputType = {
   category?: true;
   tags?: true;
   gender?: true;
-  externalUrl?: true;
-  applyEmail?: true;
   salaryType?: true;
-  applyType?: true;
   salaryMin?: true;
   salaryMax?: true;
   status?: true;
@@ -294,10 +276,7 @@ export type JobGroupByOutputType = {
   category: string | null;
   tags: string[];
   gender: string | null;
-  externalUrl: string | null;
-  applyEmail: string | null;
   salaryType: string | null;
-  applyType: string | null;
   salaryMin: number | null;
   salaryMax: number | null;
   status: $Enums.JobStatus | null;
@@ -340,10 +319,7 @@ export type JobWhereInput = {
   category?: Prisma.StringNullableFilter<"Job"> | string | null;
   tags?: Prisma.StringNullableListFilter<"Job">;
   gender?: Prisma.StringNullableFilter<"Job"> | string | null;
-  externalUrl?: Prisma.StringNullableFilter<"Job"> | string | null;
-  applyEmail?: Prisma.StringNullableFilter<"Job"> | string | null;
   salaryType?: Prisma.StringNullableFilter<"Job"> | string | null;
-  applyType?: Prisma.StringNullableFilter<"Job"> | string | null;
   salaryMin?: Prisma.IntNullableFilter<"Job"> | number | null;
   salaryMax?: Prisma.IntNullableFilter<"Job"> | number | null;
   status?: Prisma.EnumJobStatusNullableFilter<"Job"> | $Enums.JobStatus | null;
@@ -371,10 +347,7 @@ export type JobOrderByWithRelationInput = {
   category?: Prisma.SortOrderInput | Prisma.SortOrder;
   tags?: Prisma.SortOrder;
   gender?: Prisma.SortOrderInput | Prisma.SortOrder;
-  externalUrl?: Prisma.SortOrderInput | Prisma.SortOrder;
-  applyEmail?: Prisma.SortOrderInput | Prisma.SortOrder;
   salaryType?: Prisma.SortOrderInput | Prisma.SortOrder;
-  applyType?: Prisma.SortOrderInput | Prisma.SortOrder;
   salaryMin?: Prisma.SortOrderInput | Prisma.SortOrder;
   salaryMax?: Prisma.SortOrderInput | Prisma.SortOrder;
   status?: Prisma.SortOrderInput | Prisma.SortOrder;
@@ -403,10 +376,7 @@ export type JobWhereUniqueInput = Prisma.AtLeast<
     category?: Prisma.StringNullableFilter<"Job"> | string | null;
     tags?: Prisma.StringNullableListFilter<"Job">;
     gender?: Prisma.StringNullableFilter<"Job"> | string | null;
-    externalUrl?: Prisma.StringNullableFilter<"Job"> | string | null;
-    applyEmail?: Prisma.StringNullableFilter<"Job"> | string | null;
     salaryType?: Prisma.StringNullableFilter<"Job"> | string | null;
-    applyType?: Prisma.StringNullableFilter<"Job"> | string | null;
     salaryMin?: Prisma.IntNullableFilter<"Job"> | number | null;
     salaryMax?: Prisma.IntNullableFilter<"Job"> | number | null;
     status?:
@@ -439,10 +409,7 @@ export type JobOrderByWithAggregationInput = {
   category?: Prisma.SortOrderInput | Prisma.SortOrder;
   tags?: Prisma.SortOrder;
   gender?: Prisma.SortOrderInput | Prisma.SortOrder;
-  externalUrl?: Prisma.SortOrderInput | Prisma.SortOrder;
-  applyEmail?: Prisma.SortOrderInput | Prisma.SortOrder;
   salaryType?: Prisma.SortOrderInput | Prisma.SortOrder;
-  applyType?: Prisma.SortOrderInput | Prisma.SortOrder;
   salaryMin?: Prisma.SortOrderInput | Prisma.SortOrder;
   salaryMax?: Prisma.SortOrderInput | Prisma.SortOrder;
   status?: Prisma.SortOrderInput | Prisma.SortOrder;
@@ -476,13 +443,7 @@ export type JobScalarWhereWithAggregatesInput = {
   category?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null;
   tags?: Prisma.StringNullableListFilter<"Job">;
   gender?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null;
-  externalUrl?:
-    | Prisma.StringNullableWithAggregatesFilter<"Job">
-    | string
-    | null;
-  applyEmail?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null;
   salaryType?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null;
-  applyType?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null;
   salaryMin?: Prisma.IntNullableWithAggregatesFilter<"Job"> | number | null;
   salaryMax?: Prisma.IntNullableWithAggregatesFilter<"Job"> | number | null;
   status?:
@@ -520,10 +481,7 @@ export type JobCreateInput = {
   category?: string | null;
   tags?: Prisma.JobCreatetagsInput | string[];
   gender?: string | null;
-  externalUrl?: string | null;
-  applyEmail?: string | null;
   salaryType?: string | null;
-  applyType?: string | null;
   salaryMin?: number | null;
   salaryMax?: number | null;
   status?: $Enums.JobStatus | null;
@@ -547,10 +505,7 @@ export type JobUncheckedCreateInput = {
   category?: string | null;
   tags?: Prisma.JobCreatetagsInput | string[];
   gender?: string | null;
-  externalUrl?: string | null;
-  applyEmail?: string | null;
   salaryType?: string | null;
-  applyType?: string | null;
   salaryMin?: number | null;
   salaryMax?: number | null;
   status?: $Enums.JobStatus | null;
@@ -574,10 +529,7 @@ export type JobUpdateInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -614,10 +566,7 @@ export type JobUncheckedUpdateInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -654,10 +603,7 @@ export type JobCreateManyInput = {
   category?: string | null;
   tags?: Prisma.JobCreatetagsInput | string[];
   gender?: string | null;
-  externalUrl?: string | null;
-  applyEmail?: string | null;
   salaryType?: string | null;
-  applyType?: string | null;
   salaryMin?: number | null;
   salaryMax?: number | null;
   status?: $Enums.JobStatus | null;
@@ -679,10 +625,7 @@ export type JobUpdateManyMutationInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -716,10 +659,7 @@ export type JobUncheckedUpdateManyInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -772,10 +712,7 @@ export type JobCountOrderByAggregateInput = {
   category?: Prisma.SortOrder;
   tags?: Prisma.SortOrder;
   gender?: Prisma.SortOrder;
-  externalUrl?: Prisma.SortOrder;
-  applyEmail?: Prisma.SortOrder;
   salaryType?: Prisma.SortOrder;
-  applyType?: Prisma.SortOrder;
   salaryMin?: Prisma.SortOrder;
   salaryMax?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
@@ -801,10 +738,7 @@ export type JobMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder;
   category?: Prisma.SortOrder;
   gender?: Prisma.SortOrder;
-  externalUrl?: Prisma.SortOrder;
-  applyEmail?: Prisma.SortOrder;
   salaryType?: Prisma.SortOrder;
-  applyType?: Prisma.SortOrder;
   salaryMin?: Prisma.SortOrder;
   salaryMax?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
@@ -825,10 +759,7 @@ export type JobMinOrderByAggregateInput = {
   description?: Prisma.SortOrder;
   category?: Prisma.SortOrder;
   gender?: Prisma.SortOrder;
-  externalUrl?: Prisma.SortOrder;
-  applyEmail?: Prisma.SortOrder;
   salaryType?: Prisma.SortOrder;
-  applyType?: Prisma.SortOrder;
   salaryMin?: Prisma.SortOrder;
   salaryMax?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
@@ -1023,10 +954,7 @@ export type JobCreateWithoutCompanyInput = {
   category?: string | null;
   tags?: Prisma.JobCreatetagsInput | string[];
   gender?: string | null;
-  externalUrl?: string | null;
-  applyEmail?: string | null;
   salaryType?: string | null;
-  applyType?: string | null;
   salaryMin?: number | null;
   salaryMax?: number | null;
   status?: $Enums.JobStatus | null;
@@ -1049,10 +977,7 @@ export type JobUncheckedCreateWithoutCompanyInput = {
   category?: string | null;
   tags?: Prisma.JobCreatetagsInput | string[];
   gender?: string | null;
-  externalUrl?: string | null;
-  applyEmail?: string | null;
   salaryType?: string | null;
-  applyType?: string | null;
   salaryMin?: number | null;
   salaryMax?: number | null;
   status?: $Enums.JobStatus | null;
@@ -1119,10 +1044,7 @@ export type JobScalarWhereInput = {
   category?: Prisma.StringNullableFilter<"Job"> | string | null;
   tags?: Prisma.StringNullableListFilter<"Job">;
   gender?: Prisma.StringNullableFilter<"Job"> | string | null;
-  externalUrl?: Prisma.StringNullableFilter<"Job"> | string | null;
-  applyEmail?: Prisma.StringNullableFilter<"Job"> | string | null;
   salaryType?: Prisma.StringNullableFilter<"Job"> | string | null;
-  applyType?: Prisma.StringNullableFilter<"Job"> | string | null;
   salaryMin?: Prisma.IntNullableFilter<"Job"> | number | null;
   salaryMax?: Prisma.IntNullableFilter<"Job"> | number | null;
   status?: Prisma.EnumJobStatusNullableFilter<"Job"> | $Enums.JobStatus | null;
@@ -1144,10 +1066,7 @@ export type JobCreateWithoutApplicationsInput = {
   category?: string | null;
   tags?: Prisma.JobCreatetagsInput | string[];
   gender?: string | null;
-  externalUrl?: string | null;
-  applyEmail?: string | null;
   salaryType?: string | null;
-  applyType?: string | null;
   salaryMin?: number | null;
   salaryMax?: number | null;
   status?: $Enums.JobStatus | null;
@@ -1170,10 +1089,7 @@ export type JobUncheckedCreateWithoutApplicationsInput = {
   category?: string | null;
   tags?: Prisma.JobCreatetagsInput | string[];
   gender?: string | null;
-  externalUrl?: string | null;
-  applyEmail?: string | null;
   salaryType?: string | null;
-  applyType?: string | null;
   salaryMin?: number | null;
   salaryMax?: number | null;
   status?: $Enums.JobStatus | null;
@@ -1224,10 +1140,7 @@ export type JobUpdateWithoutApplicationsInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -1263,10 +1176,7 @@ export type JobUncheckedUpdateWithoutApplicationsInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -1302,10 +1212,7 @@ export type JobCreateWithoutSavedJobsInput = {
   category?: string | null;
   tags?: Prisma.JobCreatetagsInput | string[];
   gender?: string | null;
-  externalUrl?: string | null;
-  applyEmail?: string | null;
   salaryType?: string | null;
-  applyType?: string | null;
   salaryMin?: number | null;
   salaryMax?: number | null;
   status?: $Enums.JobStatus | null;
@@ -1328,10 +1235,7 @@ export type JobUncheckedCreateWithoutSavedJobsInput = {
   category?: string | null;
   tags?: Prisma.JobCreatetagsInput | string[];
   gender?: string | null;
-  externalUrl?: string | null;
-  applyEmail?: string | null;
   salaryType?: string | null;
-  applyType?: string | null;
   salaryMin?: number | null;
   salaryMax?: number | null;
   status?: $Enums.JobStatus | null;
@@ -1382,10 +1286,7 @@ export type JobUpdateWithoutSavedJobsInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -1421,10 +1322,7 @@ export type JobUncheckedUpdateWithoutSavedJobsInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -1460,10 +1358,7 @@ export type JobCreateManyCompanyInput = {
   category?: string | null;
   tags?: Prisma.JobCreatetagsInput | string[];
   gender?: string | null;
-  externalUrl?: string | null;
-  applyEmail?: string | null;
   salaryType?: string | null;
-  applyType?: string | null;
   salaryMin?: number | null;
   salaryMax?: number | null;
   status?: $Enums.JobStatus | null;
@@ -1484,10 +1379,7 @@ export type JobUpdateWithoutCompanyInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -1523,10 +1415,7 @@ export type JobUncheckedUpdateWithoutCompanyInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -1562,10 +1451,7 @@ export type JobUncheckedUpdateManyWithoutCompanyInput = {
   category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   tags?: Prisma.JobUpdatetagsInput | string[];
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  externalUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  applyType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   salaryMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   salaryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   status?:
@@ -1653,10 +1539,7 @@ export type JobSelect<
     category?: boolean;
     tags?: boolean;
     gender?: boolean;
-    externalUrl?: boolean;
-    applyEmail?: boolean;
     salaryType?: boolean;
-    applyType?: boolean;
     salaryMin?: boolean;
     salaryMax?: boolean;
     status?: boolean;
@@ -1688,10 +1571,7 @@ export type JobSelectCreateManyAndReturn<
     category?: boolean;
     tags?: boolean;
     gender?: boolean;
-    externalUrl?: boolean;
-    applyEmail?: boolean;
     salaryType?: boolean;
-    applyType?: boolean;
     salaryMin?: boolean;
     salaryMax?: boolean;
     status?: boolean;
@@ -1720,10 +1600,7 @@ export type JobSelectUpdateManyAndReturn<
     category?: boolean;
     tags?: boolean;
     gender?: boolean;
-    externalUrl?: boolean;
-    applyEmail?: boolean;
     salaryType?: boolean;
-    applyType?: boolean;
     salaryMin?: boolean;
     salaryMax?: boolean;
     status?: boolean;
@@ -1748,10 +1625,7 @@ export type JobSelectScalar = {
   category?: boolean;
   tags?: boolean;
   gender?: boolean;
-  externalUrl?: boolean;
-  applyEmail?: boolean;
   salaryType?: boolean;
-  applyType?: boolean;
   salaryMin?: boolean;
   salaryMax?: boolean;
   status?: boolean;
@@ -1776,10 +1650,7 @@ export type JobOmit<
   | "category"
   | "tags"
   | "gender"
-  | "externalUrl"
-  | "applyEmail"
   | "salaryType"
-  | "applyType"
   | "salaryMin"
   | "salaryMax"
   | "status"
@@ -1834,10 +1705,7 @@ export type $JobPayload<
       category: string | null;
       tags: string[];
       gender: string | null;
-      externalUrl: string | null;
-      applyEmail: string | null;
       salaryType: string | null;
-      applyType: string | null;
       salaryMin: number | null;
       salaryMax: number | null;
       status: $Enums.JobStatus | null;
@@ -2484,10 +2352,7 @@ export interface JobFieldRefs {
   readonly category: Prisma.FieldRef<"Job", "String">;
   readonly tags: Prisma.FieldRef<"Job", "String[]">;
   readonly gender: Prisma.FieldRef<"Job", "String">;
-  readonly externalUrl: Prisma.FieldRef<"Job", "String">;
-  readonly applyEmail: Prisma.FieldRef<"Job", "String">;
   readonly salaryType: Prisma.FieldRef<"Job", "String">;
-  readonly applyType: Prisma.FieldRef<"Job", "String">;
   readonly salaryMin: Prisma.FieldRef<"Job", "Int">;
   readonly salaryMax: Prisma.FieldRef<"Job", "Int">;
   readonly status: Prisma.FieldRef<"Job", "JobStatus">;
