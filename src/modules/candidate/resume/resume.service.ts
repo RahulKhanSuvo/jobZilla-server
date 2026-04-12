@@ -1,3 +1,4 @@
+import { ApiError } from "../../../errors/ApiError";
 import { prisma } from "../../../lib/prisma";
 import { uploadToCloudinary } from "../../../utils/cloudinary";
 
@@ -47,7 +48,7 @@ const deleteResume = async (userId: string, id: string) => {
     where: { userId },
   });
 
-  if (!candidate) throw new Error("Candidate not found");
+  if (!candidate) throw new ApiError("Candidate not found", 404);
 
   return await prisma.resume.delete({
     where: { id, candidateId: candidate.id },
@@ -59,7 +60,7 @@ const setPrimaryResume = async (userId: string, id: string) => {
     where: { userId },
   });
 
-  if (!candidate) throw new Error("Candidate not found");
+  if (!candidate) throw new ApiError("Candidate not found", 404);
 
   // Unset current primary
   await prisma.resume.updateMany({
