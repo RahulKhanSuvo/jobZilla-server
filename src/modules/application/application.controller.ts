@@ -9,6 +9,7 @@ const createApplication = catchAsync(async (req, res) => {
     userId,
     jobId,
     resumeId,
+    req.file as Express.Multer.File,
   );
   sendResponse(res, {
     statusCode: 200,
