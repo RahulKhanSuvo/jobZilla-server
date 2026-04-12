@@ -9,12 +9,12 @@ export const candidateSchema = z.object({
   gender: z.string().min(1, "Gender is required"),
   maritalStatus: z.string().min(1, "Marital status is required"),
   language: z.string().min(1, "Language is required"),
-  skills: z.array(z.string()),
-  aboutMe: z.string().min(1, "About me is required"),
-  careerFinding: z.string().min(1, "Career finding is required"),
-  facebook: z.string().min(1, "Facebook is required"),
-  linkedin: z.string().min(1, "Linkedin is required"),
-  twitter: z.string().min(1, "Twitter is required"),
+  skills: z.array(z.string()).optional(),
+  aboutMe: z.string().optional(),
+  careerFinding: z.string().optional(),
+  facebook: z.string().optional(),
+  linkedin: z.string().optional(),
+  twitter: z.string().optional(),
   avatar: z.string().optional(),
   educationList: z.array(
     z.object({
