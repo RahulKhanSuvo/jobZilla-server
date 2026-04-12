@@ -10,5 +10,5 @@ routes.use("/auth", userRouter);
 routes.use("/candidate", candidateRouter);
 routes.use("/recruiter", recruiterRouter);
 routes.use("/jobs", jobsRoutes);
-routes.use("/application", ApplicationRoutes);
+routes.use("/applications", ApplicationRoutes);
 export default routes;
