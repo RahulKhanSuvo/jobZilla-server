@@ -62,9 +62,21 @@ const getApplicationById = catchAsync(async (req, res) => {
   });
 });
 
+const getCandidateAppliedJobs = catchAsync(async (req, res) => {
+  const { id: userId } = req.user!;
+  const result = await applicationService.getCandidateAppliedJobs(userId);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Candidate applied jobs fetched successfully",
+    data: result,
+  });
+});
+
 export const ApplicationController = {
   createApplication,
   getAllApplications,
   getApplicationById,
   updateApplicationStatus,
+  getCandidateAppliedJobs,
 };

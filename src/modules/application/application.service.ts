@@ -176,9 +176,44 @@ const updateApplicationStatus = async (
   return result;
 };
 
+const getCandidateAppliedJobs = async (userId: string) => {
+  const applications = await prisma.application.findMany({
+    where: { userId },
+    include: {
+      job: {
+        select: {
+          title: true,
+          company: {
+            include: { user: true },
+          },
+        },
+      },
+      user: {
+        select: {
+          name: true,
+          candidate: {
+            select: {
+              location: true,
+              profileImage: true,
+            },
+          },
+        },
+      },
+      resume: {
+        select: {
+          title: true,
+          fileUrl: true,
+        },
+      },
+    },
+  });
+  return applications;
+};
+
 export const applicationService = {
   createApplication,
   getAllApplications,
   getApplicationById,
   updateApplicationStatus,
+  getCandidateAppliedJobs,
 };

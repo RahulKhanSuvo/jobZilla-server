@@ -33,4 +33,10 @@ router.patch(
   ApplicationController.updateApplicationStatus,
 );
 
+router.get(
+  "/candidate/applied",
+  authGard({ roles: [UserRole.CANDIDATE] }),
+  ApplicationController.getCandidateAppliedJobs,
+);
+
 export const ApplicationRoutes = router;
