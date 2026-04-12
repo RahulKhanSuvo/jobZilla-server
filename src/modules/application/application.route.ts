@@ -18,5 +18,10 @@ router.get(
   authGard({ roles: [UserRole.EMPLOYER] }),
   ApplicationController.getAllApplications,
 );
+router.patch(
+  "status/:id",
+  authGard({ roles: [UserRole.EMPLOYER] }),
+  ApplicationController.updateApplicationStatus,
+);
 
 export const ApplicationRoutes = router;

@@ -1,4 +1,5 @@
 import { ApiError } from "../../errors/ApiError";
+import { AppStatus } from "../../generated/prisma/enums";
 import { prisma } from "../../lib/prisma";
 import { uploadToCloudinary } from "../../utils/cloudinary";
 
@@ -117,7 +118,28 @@ const getAllApplications = async (userId: string) => {
   return applications;
 };
 
+const updateApplicationStatus = async (
+  userId: string,
+  applicationId: string,
+  status: AppStatus,
+) => {
+  const company = await prisma.company.findUnique({
+    where: { userId },
+  });
+  if (!company) throw new ApiError("Company not found", 404);
+  const application = await prisma.application.findUnique({
+    where: { id: applicationId },
+  });
+  if (!application) throw new ApiError("Application not found", 404);
+  const result = await prisma.application.update({
+    where: { id: applicationId },
+    data: { status },
+  });
+  return result;
+};
+
 export const applicationService = {
   createApplication,
   getAllApplications,
+  updateApplicationStatus,
 };
