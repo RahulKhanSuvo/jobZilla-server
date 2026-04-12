@@ -74,7 +74,6 @@ const createApplication = async (
         totalApplications: { increment: 1 },
       },
     });
-    console.log(updateJob);
     if (!updateJob) throw new ApiError("Failed to update job", 500);
   }
   return result;
