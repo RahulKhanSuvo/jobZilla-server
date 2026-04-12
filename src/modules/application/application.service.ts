@@ -142,6 +142,7 @@ const getApplicationById = async (userId: string, applicationId: string) => {
               skills: true,
               eductions: true,
               workExperiences: true,
+              aboutMe: true,
             },
           },
         },
