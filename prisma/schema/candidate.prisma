@@ -11,6 +11,7 @@ model Candidate {
   language      String?
   aboutMe       String?   @db.Text
   profileImage  String?
+  careerFinding String?
 
   // Social Links
   facebook String?

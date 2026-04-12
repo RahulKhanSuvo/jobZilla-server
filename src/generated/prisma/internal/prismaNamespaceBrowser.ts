@@ -93,6 +93,7 @@ export const CandidateScalarFieldEnum = {
   language: "language",
   aboutMe: "aboutMe",
   profileImage: "profileImage",
+  careerFinding: "careerFinding",
   facebook: "facebook",
   linkedin: "linkedin",
   twitter: "twitter",
