@@ -118,6 +118,43 @@ const getAllApplications = async (userId: string) => {
   return applications;
 };
 
+const getApplicationById = async (userId: string, applicationId: string) => {
+  const company = await prisma.company.findUnique({ where: { userId } });
+  if (!company) throw new ApiError("Company not found", 404);
+
+  const application = await prisma.application.findUnique({
+    where: { id: applicationId, companyId: company.id },
+    include: {
+      job: {
+        select: {
+          title: true,
+          company: { include: { user: true } },
+        },
+      },
+      user: {
+        select: {
+          name: true,
+          email: true,
+          candidate: {
+            select: {
+              location: true,
+              profileImage: true,
+              skills: true,
+              eductions: true,
+              workExperiences: true,
+            },
+          },
+        },
+      },
+      resume: {
+        select: { title: true, fileUrl: true },
+      },
+    },
+  });
+  if (!application) throw new ApiError("Application not found", 404);
+  return application;
+};
+
 const updateApplicationStatus = async (
   userId: string,
   applicationId: string,
@@ -141,5 +178,6 @@ const updateApplicationStatus = async (
 export const applicationService = {
   createApplication,
   getAllApplications,
+  getApplicationById,
   updateApplicationStatus,
 };

@@ -21,6 +21,11 @@ router.get(
   authGard({ roles: [UserRole.EMPLOYER] }),
   ApplicationController.getAllApplications,
 );
+router.get(
+  "/:id",
+  authGard({ roles: [UserRole.EMPLOYER] }),
+  ApplicationController.getApplicationById,
+);
 router.patch(
   "/status/:id",
   authGard({ roles: [UserRole.EMPLOYER] }),

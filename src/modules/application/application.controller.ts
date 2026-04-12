@@ -47,8 +47,24 @@ const updateApplicationStatus = catchAsync(async (req, res) => {
   });
 });
 
+const getApplicationById = catchAsync(async (req, res) => {
+  const { id: userId } = req.user!;
+  const { id: applicationId } = req.params;
+  const result = await applicationService.getApplicationById(
+    userId,
+    applicationId as string,
+  );
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Application fetched successfully",
+    data: result,
+  });
+});
+
 export const ApplicationController = {
   createApplication,
   getAllApplications,
+  getApplicationById,
   updateApplicationStatus,
 };
