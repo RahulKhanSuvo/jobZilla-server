@@ -304,11 +304,26 @@ const getJobById = async (userId: string, jobId: string) => {
           logo: true,
         },
       },
+      ...(userId
+        ? {
+            applications: {
+              where: {
+                userId: userId,
+              },
+            },
+          }
+        : {}),
     },
   });
+  if (!job) {
+    throw new ApiError("Job not found", 404);
+  }
+
   return {
     ...job,
     isSaved,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    isApplied: (job as any).applications?.length > 0,
   };
 };
 

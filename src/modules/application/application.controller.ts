@@ -19,6 +19,18 @@ const createApplication = catchAsync(async (req, res) => {
   });
 });
 
+const getAllApplications = catchAsync(async (req, res) => {
+  const { id: userId } = req.user!;
+  const result = await applicationService.getAllApplications(userId);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Applications fetched successfully",
+    data: result,
+  });
+});
+
 export const ApplicationController = {
   createApplication,
+  getAllApplications,
 };

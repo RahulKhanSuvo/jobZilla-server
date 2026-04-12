@@ -13,4 +13,10 @@ router.post(
   ApplicationController.createApplication,
 );
 
+router.get(
+  "/",
+  authGard({ roles: [UserRole.CANDIDATE] }),
+  ApplicationController.getAllApplications,
+);
+
 export const ApplicationRoutes = router;

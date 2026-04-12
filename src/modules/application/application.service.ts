@@ -53,6 +53,30 @@ const createApplication = async (
   return result;
 };
 
+const getAllApplications = async (userId: string) => {
+  const applications = await prisma.application.findMany({
+    where: { userId },
+    include: {
+      job: {
+        select: {
+          title: true,
+          company: {
+            include: { user: true },
+          },
+        },
+      },
+      resume: {
+        select: {
+          title: true,
+          fileUrl: true,
+        },
+      },
+    },
+  });
+  return applications;
+};
+
 export const applicationService = {
   createApplication,
+  getAllApplications,
 };
