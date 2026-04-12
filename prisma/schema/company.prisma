@@ -43,10 +43,7 @@ model Job {
   category      String?
   tags          String[]
   gender        String?
-  externalUrl   String?
-  applyEmail    String?
   salaryType    String?
-  applyType     String?
   salaryMin     Int?
   salaryMax     Int?
   status        JobStatus?    @default(OPEN)
