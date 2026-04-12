@@ -28,6 +28,7 @@ export type ApplicationMinAggregateOutputType = {
   id: string | null;
   userId: string | null;
   jobId: string | null;
+  resumeId: string | null;
   status: $Enums.AppStatus | null;
   createdAt: Date | null;
   updatedAt: Date | null;
@@ -37,6 +38,7 @@ export type ApplicationMaxAggregateOutputType = {
   id: string | null;
   userId: string | null;
   jobId: string | null;
+  resumeId: string | null;
   status: $Enums.AppStatus | null;
   createdAt: Date | null;
   updatedAt: Date | null;
@@ -46,6 +48,7 @@ export type ApplicationCountAggregateOutputType = {
   id: number;
   userId: number;
   jobId: number;
+  resumeId: number;
   status: number;
   createdAt: number;
   updatedAt: number;
@@ -56,6 +59,7 @@ export type ApplicationMinAggregateInputType = {
   id?: true;
   userId?: true;
   jobId?: true;
+  resumeId?: true;
   status?: true;
   createdAt?: true;
   updatedAt?: true;
@@ -65,6 +69,7 @@ export type ApplicationMaxAggregateInputType = {
   id?: true;
   userId?: true;
   jobId?: true;
+  resumeId?: true;
   status?: true;
   createdAt?: true;
   updatedAt?: true;
@@ -74,6 +79,7 @@ export type ApplicationCountAggregateInputType = {
   id?: true;
   userId?: true;
   jobId?: true;
+  resumeId?: true;
   status?: true;
   createdAt?: true;
   updatedAt?: true;
@@ -163,6 +169,7 @@ export type ApplicationGroupByOutputType = {
   id: string;
   userId: string;
   jobId: string;
+  resumeId: string;
   status: $Enums.AppStatus;
   createdAt: Date;
   updatedAt: Date;
@@ -191,22 +198,29 @@ export type ApplicationWhereInput = {
   id?: Prisma.StringFilter<"Application"> | string;
   userId?: Prisma.StringFilter<"Application"> | string;
   jobId?: Prisma.StringFilter<"Application"> | string;
+  resumeId?: Prisma.StringFilter<"Application"> | string;
   status?: Prisma.EnumAppStatusFilter<"Application"> | $Enums.AppStatus;
   createdAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
   job?: Prisma.XOR<Prisma.JobScalarRelationFilter, Prisma.JobWhereInput>;
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+  resume?: Prisma.XOR<
+    Prisma.ResumeScalarRelationFilter,
+    Prisma.ResumeWhereInput
+  >;
 };
 
 export type ApplicationOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   jobId?: Prisma.SortOrder;
+  resumeId?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
   job?: Prisma.JobOrderByWithRelationInput;
   user?: Prisma.UserOrderByWithRelationInput;
+  resume?: Prisma.ResumeOrderByWithRelationInput;
 };
 
 export type ApplicationWhereUniqueInput = Prisma.AtLeast<
@@ -217,11 +231,16 @@ export type ApplicationWhereUniqueInput = Prisma.AtLeast<
     NOT?: Prisma.ApplicationWhereInput | Prisma.ApplicationWhereInput[];
     userId?: Prisma.StringFilter<"Application"> | string;
     jobId?: Prisma.StringFilter<"Application"> | string;
+    resumeId?: Prisma.StringFilter<"Application"> | string;
     status?: Prisma.EnumAppStatusFilter<"Application"> | $Enums.AppStatus;
     createdAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
     job?: Prisma.XOR<Prisma.JobScalarRelationFilter, Prisma.JobWhereInput>;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    resume?: Prisma.XOR<
+      Prisma.ResumeScalarRelationFilter,
+      Prisma.ResumeWhereInput
+    >;
   },
   "id"
 >;
@@ -230,6 +249,7 @@ export type ApplicationOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   jobId?: Prisma.SortOrder;
+  resumeId?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -249,6 +269,7 @@ export type ApplicationScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Application"> | string;
   userId?: Prisma.StringWithAggregatesFilter<"Application"> | string;
   jobId?: Prisma.StringWithAggregatesFilter<"Application"> | string;
+  resumeId?: Prisma.StringWithAggregatesFilter<"Application"> | string;
   status?:
     | Prisma.EnumAppStatusWithAggregatesFilter<"Application">
     | $Enums.AppStatus;
@@ -269,12 +290,14 @@ export type ApplicationCreateInput = {
   updatedAt?: Date | string;
   job: Prisma.JobCreateNestedOneWithoutApplicationsInput;
   user: Prisma.UserCreateNestedOneWithoutApplicationsInput;
+  resume: Prisma.ResumeCreateNestedOneWithoutApplicationsInput;
 };
 
 export type ApplicationUncheckedCreateInput = {
   id?: string;
   userId: string;
   jobId: string;
+  resumeId: string;
   status?: $Enums.AppStatus;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -287,12 +310,14 @@ export type ApplicationUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   job?: Prisma.JobUpdateOneRequiredWithoutApplicationsNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutApplicationsNestedInput;
+  resume?: Prisma.ResumeUpdateOneRequiredWithoutApplicationsNestedInput;
 };
 
 export type ApplicationUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   jobId?: Prisma.StringFieldUpdateOperationsInput | string;
+  resumeId?: Prisma.StringFieldUpdateOperationsInput | string;
   status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -302,6 +327,7 @@ export type ApplicationCreateManyInput = {
   id?: string;
   userId: string;
   jobId: string;
+  resumeId: string;
   status?: $Enums.AppStatus;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -318,6 +344,7 @@ export type ApplicationUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   jobId?: Prisma.StringFieldUpdateOperationsInput | string;
+  resumeId?: Prisma.StringFieldUpdateOperationsInput | string;
   status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -337,6 +364,7 @@ export type ApplicationCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   jobId?: Prisma.SortOrder;
+  resumeId?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -346,6 +374,7 @@ export type ApplicationMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   jobId?: Prisma.SortOrder;
+  resumeId?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -355,9 +384,120 @@ export type ApplicationMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
   jobId?: Prisma.SortOrder;
+  resumeId?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+};
+
+export type ApplicationCreateNestedManyWithoutResumeInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.ApplicationCreateWithoutResumeInput,
+        Prisma.ApplicationUncheckedCreateWithoutResumeInput
+      >
+    | Prisma.ApplicationCreateWithoutResumeInput[]
+    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
+  connectOrCreate?:
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
+  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
+  connect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+};
+
+export type ApplicationUncheckedCreateNestedManyWithoutResumeInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.ApplicationCreateWithoutResumeInput,
+        Prisma.ApplicationUncheckedCreateWithoutResumeInput
+      >
+    | Prisma.ApplicationCreateWithoutResumeInput[]
+    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
+  connectOrCreate?:
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
+  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
+  connect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+};
+
+export type ApplicationUpdateManyWithoutResumeNestedInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.ApplicationCreateWithoutResumeInput,
+        Prisma.ApplicationUncheckedCreateWithoutResumeInput
+      >
+    | Prisma.ApplicationCreateWithoutResumeInput[]
+    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
+  connectOrCreate?:
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
+  upsert?:
+    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput
+    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput[];
+  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
+  set?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  disconnect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  delete?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  connect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  update?:
+    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput
+    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput[];
+  updateMany?:
+    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput
+    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput[];
+  deleteMany?:
+    | Prisma.ApplicationScalarWhereInput
+    | Prisma.ApplicationScalarWhereInput[];
+};
+
+export type ApplicationUncheckedUpdateManyWithoutResumeNestedInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.ApplicationCreateWithoutResumeInput,
+        Prisma.ApplicationUncheckedCreateWithoutResumeInput
+      >
+    | Prisma.ApplicationCreateWithoutResumeInput[]
+    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
+  connectOrCreate?:
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
+  upsert?:
+    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput
+    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput[];
+  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
+  set?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  disconnect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  delete?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  connect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  update?:
+    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput
+    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput[];
+  updateMany?:
+    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput
+    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput[];
+  deleteMany?:
+    | Prisma.ApplicationScalarWhereInput
+    | Prisma.ApplicationScalarWhereInput[];
 };
 
 export type ApplicationCreateNestedManyWithoutJobInput = {
@@ -584,17 +724,97 @@ export type ApplicationUncheckedUpdateManyWithoutUserNestedInput = {
     | Prisma.ApplicationScalarWhereInput[];
 };
 
+export type ApplicationCreateWithoutResumeInput = {
+  id?: string;
+  status?: $Enums.AppStatus;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  job: Prisma.JobCreateNestedOneWithoutApplicationsInput;
+  user: Prisma.UserCreateNestedOneWithoutApplicationsInput;
+};
+
+export type ApplicationUncheckedCreateWithoutResumeInput = {
+  id?: string;
+  userId: string;
+  jobId: string;
+  status?: $Enums.AppStatus;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+};
+
+export type ApplicationCreateOrConnectWithoutResumeInput = {
+  where: Prisma.ApplicationWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.ApplicationCreateWithoutResumeInput,
+    Prisma.ApplicationUncheckedCreateWithoutResumeInput
+  >;
+};
+
+export type ApplicationCreateManyResumeInputEnvelope = {
+  data:
+    | Prisma.ApplicationCreateManyResumeInput
+    | Prisma.ApplicationCreateManyResumeInput[];
+  skipDuplicates?: boolean;
+};
+
+export type ApplicationUpsertWithWhereUniqueWithoutResumeInput = {
+  where: Prisma.ApplicationWhereUniqueInput;
+  update: Prisma.XOR<
+    Prisma.ApplicationUpdateWithoutResumeInput,
+    Prisma.ApplicationUncheckedUpdateWithoutResumeInput
+  >;
+  create: Prisma.XOR<
+    Prisma.ApplicationCreateWithoutResumeInput,
+    Prisma.ApplicationUncheckedCreateWithoutResumeInput
+  >;
+};
+
+export type ApplicationUpdateWithWhereUniqueWithoutResumeInput = {
+  where: Prisma.ApplicationWhereUniqueInput;
+  data: Prisma.XOR<
+    Prisma.ApplicationUpdateWithoutResumeInput,
+    Prisma.ApplicationUncheckedUpdateWithoutResumeInput
+  >;
+};
+
+export type ApplicationUpdateManyWithWhereWithoutResumeInput = {
+  where: Prisma.ApplicationScalarWhereInput;
+  data: Prisma.XOR<
+    Prisma.ApplicationUpdateManyMutationInput,
+    Prisma.ApplicationUncheckedUpdateManyWithoutResumeInput
+  >;
+};
+
+export type ApplicationScalarWhereInput = {
+  AND?:
+    | Prisma.ApplicationScalarWhereInput
+    | Prisma.ApplicationScalarWhereInput[];
+  OR?: Prisma.ApplicationScalarWhereInput[];
+  NOT?:
+    | Prisma.ApplicationScalarWhereInput
+    | Prisma.ApplicationScalarWhereInput[];
+  id?: Prisma.StringFilter<"Application"> | string;
+  userId?: Prisma.StringFilter<"Application"> | string;
+  jobId?: Prisma.StringFilter<"Application"> | string;
+  resumeId?: Prisma.StringFilter<"Application"> | string;
+  status?: Prisma.EnumAppStatusFilter<"Application"> | $Enums.AppStatus;
+  createdAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
+  updatedAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
+};
+
 export type ApplicationCreateWithoutJobInput = {
   id?: string;
   status?: $Enums.AppStatus;
   createdAt?: Date | string;
   updatedAt?: Date | string;
   user: Prisma.UserCreateNestedOneWithoutApplicationsInput;
+  resume: Prisma.ResumeCreateNestedOneWithoutApplicationsInput;
 };
 
 export type ApplicationUncheckedCreateWithoutJobInput = {
   id?: string;
   userId: string;
+  resumeId: string;
   status?: $Enums.AppStatus;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -643,33 +863,19 @@ export type ApplicationUpdateManyWithWhereWithoutJobInput = {
   >;
 };
 
-export type ApplicationScalarWhereInput = {
-  AND?:
-    | Prisma.ApplicationScalarWhereInput
-    | Prisma.ApplicationScalarWhereInput[];
-  OR?: Prisma.ApplicationScalarWhereInput[];
-  NOT?:
-    | Prisma.ApplicationScalarWhereInput
-    | Prisma.ApplicationScalarWhereInput[];
-  id?: Prisma.StringFilter<"Application"> | string;
-  userId?: Prisma.StringFilter<"Application"> | string;
-  jobId?: Prisma.StringFilter<"Application"> | string;
-  status?: Prisma.EnumAppStatusFilter<"Application"> | $Enums.AppStatus;
-  createdAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
-  updatedAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
-};
-
 export type ApplicationCreateWithoutUserInput = {
   id?: string;
   status?: $Enums.AppStatus;
   createdAt?: Date | string;
   updatedAt?: Date | string;
   job: Prisma.JobCreateNestedOneWithoutApplicationsInput;
+  resume: Prisma.ResumeCreateNestedOneWithoutApplicationsInput;
 };
 
 export type ApplicationUncheckedCreateWithoutUserInput = {
   id?: string;
   jobId: string;
+  resumeId: string;
   status?: $Enums.AppStatus;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -718,9 +924,46 @@ export type ApplicationUpdateManyWithWhereWithoutUserInput = {
   >;
 };
 
+export type ApplicationCreateManyResumeInput = {
+  id?: string;
+  userId: string;
+  jobId: string;
+  status?: $Enums.AppStatus;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+};
+
+export type ApplicationUpdateWithoutResumeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  job?: Prisma.JobUpdateOneRequiredWithoutApplicationsNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutApplicationsNestedInput;
+};
+
+export type ApplicationUncheckedUpdateWithoutResumeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
+  jobId?: Prisma.StringFieldUpdateOperationsInput | string;
+  status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+
+export type ApplicationUncheckedUpdateManyWithoutResumeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
+  jobId?: Prisma.StringFieldUpdateOperationsInput | string;
+  status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+
 export type ApplicationCreateManyJobInput = {
   id?: string;
   userId: string;
+  resumeId: string;
   status?: $Enums.AppStatus;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -732,11 +975,13 @@ export type ApplicationUpdateWithoutJobInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   user?: Prisma.UserUpdateOneRequiredWithoutApplicationsNestedInput;
+  resume?: Prisma.ResumeUpdateOneRequiredWithoutApplicationsNestedInput;
 };
 
 export type ApplicationUncheckedUpdateWithoutJobInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
+  resumeId?: Prisma.StringFieldUpdateOperationsInput | string;
   status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -745,6 +990,7 @@ export type ApplicationUncheckedUpdateWithoutJobInput = {
 export type ApplicationUncheckedUpdateManyWithoutJobInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
+  resumeId?: Prisma.StringFieldUpdateOperationsInput | string;
   status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -753,6 +999,7 @@ export type ApplicationUncheckedUpdateManyWithoutJobInput = {
 export type ApplicationCreateManyUserInput = {
   id?: string;
   jobId: string;
+  resumeId: string;
   status?: $Enums.AppStatus;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -764,11 +1011,13 @@ export type ApplicationUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   job?: Prisma.JobUpdateOneRequiredWithoutApplicationsNestedInput;
+  resume?: Prisma.ResumeUpdateOneRequiredWithoutApplicationsNestedInput;
 };
 
 export type ApplicationUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   jobId?: Prisma.StringFieldUpdateOperationsInput | string;
+  resumeId?: Prisma.StringFieldUpdateOperationsInput | string;
   status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -777,6 +1026,7 @@ export type ApplicationUncheckedUpdateWithoutUserInput = {
 export type ApplicationUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   jobId?: Prisma.StringFieldUpdateOperationsInput | string;
+  resumeId?: Prisma.StringFieldUpdateOperationsInput | string;
   status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -790,11 +1040,13 @@ export type ApplicationSelect<
     id?: boolean;
     userId?: boolean;
     jobId?: boolean;
+    resumeId?: boolean;
     status?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     job?: boolean | Prisma.JobDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    resume?: boolean | Prisma.ResumeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["application"]
 >;
@@ -807,11 +1059,13 @@ export type ApplicationSelectCreateManyAndReturn<
     id?: boolean;
     userId?: boolean;
     jobId?: boolean;
+    resumeId?: boolean;
     status?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     job?: boolean | Prisma.JobDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    resume?: boolean | Prisma.ResumeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["application"]
 >;
@@ -824,11 +1078,13 @@ export type ApplicationSelectUpdateManyAndReturn<
     id?: boolean;
     userId?: boolean;
     jobId?: boolean;
+    resumeId?: boolean;
     status?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     job?: boolean | Prisma.JobDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    resume?: boolean | Prisma.ResumeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["application"]
 >;
@@ -837,6 +1093,7 @@ export type ApplicationSelectScalar = {
   id?: boolean;
   userId?: boolean;
   jobId?: boolean;
+  resumeId?: boolean;
   status?: boolean;
   createdAt?: boolean;
   updatedAt?: boolean;
@@ -846,7 +1103,7 @@ export type ApplicationOmit<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  "id" | "userId" | "jobId" | "status" | "createdAt" | "updatedAt",
+  "id" | "userId" | "jobId" | "resumeId" | "status" | "createdAt" | "updatedAt",
   ExtArgs["result"]["application"]
 >;
 export type ApplicationInclude<
@@ -855,6 +1112,7 @@ export type ApplicationInclude<
 > = {
   job?: boolean | Prisma.JobDefaultArgs<ExtArgs>;
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+  resume?: boolean | Prisma.ResumeDefaultArgs<ExtArgs>;
 };
 export type ApplicationIncludeCreateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
@@ -862,6 +1120,7 @@ export type ApplicationIncludeCreateManyAndReturn<
 > = {
   job?: boolean | Prisma.JobDefaultArgs<ExtArgs>;
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+  resume?: boolean | Prisma.ResumeDefaultArgs<ExtArgs>;
 };
 export type ApplicationIncludeUpdateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
@@ -869,6 +1128,7 @@ export type ApplicationIncludeUpdateManyAndReturn<
 > = {
   job?: boolean | Prisma.JobDefaultArgs<ExtArgs>;
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+  resume?: boolean | Prisma.ResumeDefaultArgs<ExtArgs>;
 };
 
 export type $ApplicationPayload<
@@ -879,12 +1139,14 @@ export type $ApplicationPayload<
   objects: {
     job: Prisma.$JobPayload<ExtArgs>;
     user: Prisma.$UserPayload<ExtArgs>;
+    resume: Prisma.$ResumePayload<ExtArgs>;
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
       id: string;
       userId: string;
       jobId: string;
+      resumeId: string;
       status: $Enums.AppStatus;
       createdAt: Date;
       updatedAt: Date;
@@ -1469,6 +1731,20 @@ export interface Prisma__ApplicationClient<
     ExtArgs,
     GlobalOmitOptions
   >;
+  resume<T extends Prisma.ResumeDefaultArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.ResumeDefaultArgs<ExtArgs>>,
+  ): Prisma.Prisma__ResumeClient<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ResumePayload<ExtArgs>,
+        T,
+        "findUniqueOrThrow",
+        GlobalOmitOptions
+      >
+    | Null,
+    Null,
+    ExtArgs,
+    GlobalOmitOptions
+  >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1514,6 +1790,7 @@ export interface ApplicationFieldRefs {
   readonly id: Prisma.FieldRef<"Application", "String">;
   readonly userId: Prisma.FieldRef<"Application", "String">;
   readonly jobId: Prisma.FieldRef<"Application", "String">;
+  readonly resumeId: Prisma.FieldRef<"Application", "String">;
   readonly status: Prisma.FieldRef<"Application", "AppStatus">;
   readonly createdAt: Prisma.FieldRef<"Application", "DateTime">;
   readonly updatedAt: Prisma.FieldRef<"Application", "DateTime">;
