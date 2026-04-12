@@ -12,6 +12,7 @@ router.post(
   "/",
   authGard({ roles: [UserRole.CANDIDATE] }),
   upload.single("file"),
+  validate(ApplicationSchema.createApplicationSchema),
   ApplicationController.createApplication,
 );
 
