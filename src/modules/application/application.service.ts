@@ -95,6 +95,16 @@ const getAllApplications = async (userId: string) => {
           },
         },
       },
+      user: {
+        select: {
+          name: true,
+          candidate: {
+            select: {
+              location: true,
+            },
+          },
+        },
+      },
       resume: {
         select: {
           title: true,
