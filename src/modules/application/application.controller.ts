@@ -36,7 +36,7 @@ const updateApplicationStatus = catchAsync(async (req, res) => {
   const { status } = req.body;
   const result = await applicationService.updateApplicationStatus(
     userId,
-    applicationId,
+    applicationId as string,
     status,
   );
   sendResponse(res, {
