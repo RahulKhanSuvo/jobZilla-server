@@ -12,8 +12,6 @@ const createApplication = async (
     where: { id: jobId },
     include: { company: true },
   });
-  console.log(job);
-
   if (!job) throw new ApiError("Job not found", 404);
   if (file) {
     const candidate = await prisma.candidate.findUnique({
@@ -51,6 +49,14 @@ const createApplication = async (
         resumeId: resume.id,
       },
     });
+    if (result.id) {
+      await prisma.job.update({
+        where: { id: jobId },
+        data: {
+          totalApplications: { increment: 1 },
+        },
+      });
+    }
     return result;
   }
   const result = await prisma.application.create({
@@ -61,6 +67,14 @@ const createApplication = async (
       resumeId,
     },
   });
+  if (result.id) {
+    await prisma.job.update({
+      where: { id: jobId },
+      data: {
+        totalApplications: { increment: 1 },
+      },
+    });
+  }
   return result;
 };
 

@@ -37,28 +37,29 @@ enum JobStatus {
 }
 
 model Job {
-  id            String        @id @default(uuid())
-  title         String        @db.VarChar(100)
-  description   String        @db.Text
-  category      String?
-  tags          String[]
-  gender        String?
-  salaryType    String?
-  salaryMin     Int?
-  salaryMax     Int?
-  status        JobStatus?    @default(OPEN)
-  jobType       JobType?
-  experience    String?       @db.VarChar(100)
-  careerLevel   String?
-  qualification String?
-  deadline      DateTime?
-  skills        String?       @db.VarChar(200)
-  companyId     String
-  company       Company       @relation(fields: [companyId], references: [userId])
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  applications  Application[]
-  savedJobs     SavedJob[]
+  id                String        @id @default(uuid())
+  title             String        @db.VarChar(100)
+  description       String        @db.Text
+  category          String?
+  tags              String[]
+  gender            String?
+  salaryType        String?
+  salaryMin         Int?
+  salaryMax         Int?
+  totalApplications Int?          @default(0)
+  status            JobStatus?    @default(OPEN)
+  jobType           JobType?
+  experience        String?       @db.VarChar(100)
+  careerLevel       String?
+  qualification     String?
+  deadline          DateTime?
+  skills            String?       @db.VarChar(200)
+  companyId         String
+  company           Company       @relation(fields: [companyId], references: [userId])
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  applications      Application[]
+  savedJobs         SavedJob[]
 }
 
 model Application {
