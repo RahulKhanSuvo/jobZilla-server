@@ -80,8 +80,8 @@ erDiagram
     User {
         String   id        PK
         String   name
-        String   email     UK
-        UserRole role
+        String   email
+        String   role
         String   password
         DateTime createdAt
         DateTime updatedAt
@@ -89,7 +89,7 @@ erDiagram
 
     Candidate {
         String   id            PK
-        String   userId        UK_FK
+        String   userId        FK
         String   phone
         String   location
         DateTime dob
@@ -130,8 +130,8 @@ erDiagram
 
     skill {
         String id        PK
-        String skill
         String candideId FK
+        String skillName
     }
 
     eduction {
@@ -149,7 +149,7 @@ erDiagram
 
     Company {
         String   id          PK
-        String   userId      UK_FK
+        String   userId      FK
         String   description
         String   website
         String   industry
@@ -169,37 +169,37 @@ erDiagram
     }
 
     Job {
-        String    id                PK
-        String    title
-        String    description
-        String    category
-        String    tags
-        String    gender
-        String    salaryType
-        Int       salaryMin
-        Int       salaryMax
-        Int       totalApplications
-        JobStatus status
-        JobType   jobType
-        String    experience
-        String    careerLevel
-        String    qualification
-        DateTime  deadline
-        String    skills
-        String    companyId         FK
-        DateTime  createdAt
-        DateTime  updatedAt
+        String   id                PK
+        String   title
+        String   description
+        String   category
+        String   tags
+        String   gender
+        String   salaryType
+        Int      salaryMin
+        Int      salaryMax
+        Int      totalApplications
+        String   status
+        String   jobType
+        String   experience
+        String   careerLevel
+        String   qualification
+        DateTime deadline
+        String   skills
+        String   companyId         FK
+        DateTime createdAt
+        DateTime updatedAt
     }
 
     Application {
-        String    id        PK
-        String    userId    FK
-        String    jobId     FK
-        String    resumeId  FK
-        String    companyId FK
-        AppStatus status
-        DateTime  createdAt
-        DateTime  updatedAt
+        String   id        PK
+        String   userId    FK
+        String   jobId     FK
+        String   resumeId  FK
+        String   companyId FK
+        String   status
+        DateTime createdAt
+        DateTime updatedAt
     }
 
     SavedJob {
