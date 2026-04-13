@@ -1,9 +1,10 @@
 import { prisma } from "../src/lib/prisma";
 import bcrypt from "bcrypt";
+import { envConfig } from "../src/config/env";
 
 async function main() {
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@jobzilla.com";
-  const adminPassword = process.env.ADMIN_PASSWORD || "Admin@123";
+  const adminEmail = envConfig.ADMIN_EMAIL;
+  const adminPassword = envConfig.ADMIN_PASSWORD;
 
   console.log("Seeding super admin...");
 
