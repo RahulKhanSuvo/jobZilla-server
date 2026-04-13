@@ -2,7 +2,7 @@ import { prisma } from "../../lib/prisma";
 import { ICandidate } from "./candidate.schema";
 
 const updateCandidate = async (userId: string, payload: ICandidate) => {
-  console.log("Image", payload.avatar);
+  console.log("payload", payload);
   const user = await prisma.user.update({
     where: {
       id: userId,
@@ -27,7 +27,7 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       twitter: payload.twitter,
       skills: {
         deleteMany: {},
-        create: payload.skills.map((skill) => ({
+        create: payload.skills?.map((skill) => ({
           skill: skill,
         })),
       },
@@ -71,7 +71,7 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       linkedin: payload.linkedin,
       twitter: payload.twitter,
       skills: {
-        create: payload.skills.map((skill) => ({
+        create: payload.skills?.map((skill) => ({
           skill: skill,
         })),
       },
