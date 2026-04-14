@@ -11,12 +11,10 @@ model Candidate {
   language      String?
   aboutMe       String?   @db.Text
   profileImage  String?
-  careerFinding String?
-
   // Social Links
-  facebook String?
-  linkedin String?
-  twitter  String?
+  facebook      String?
+  linkedin      String?
+  twitter       String?
 
   workExperiences workExperience[]
   skills          skill[]
