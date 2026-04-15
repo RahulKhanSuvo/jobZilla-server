@@ -28,18 +28,24 @@ export type FollowCompanyMinAggregateOutputType = {
   id: string | null;
   candideId: string | null;
   companyId: string | null;
+  createdAt: Date | null;
+  updatedAt: Date | null;
 };
 
 export type FollowCompanyMaxAggregateOutputType = {
   id: string | null;
   candideId: string | null;
   companyId: string | null;
+  createdAt: Date | null;
+  updatedAt: Date | null;
 };
 
 export type FollowCompanyCountAggregateOutputType = {
   id: number;
   candideId: number;
   companyId: number;
+  createdAt: number;
+  updatedAt: number;
   _all: number;
 };
 
@@ -47,18 +53,24 @@ export type FollowCompanyMinAggregateInputType = {
   id?: true;
   candideId?: true;
   companyId?: true;
+  createdAt?: true;
+  updatedAt?: true;
 };
 
 export type FollowCompanyMaxAggregateInputType = {
   id?: true;
   candideId?: true;
   companyId?: true;
+  createdAt?: true;
+  updatedAt?: true;
 };
 
 export type FollowCompanyCountAggregateInputType = {
   id?: true;
   candideId?: true;
   companyId?: true;
+  createdAt?: true;
+  updatedAt?: true;
   _all?: true;
 };
 
@@ -149,6 +161,8 @@ export type FollowCompanyGroupByOutputType = {
   id: string;
   candideId: string;
   companyId: string;
+  createdAt: Date;
+  updatedAt: Date;
   _count: FollowCompanyCountAggregateOutputType | null;
   _min: FollowCompanyMinAggregateOutputType | null;
   _max: FollowCompanyMaxAggregateOutputType | null;
@@ -175,6 +189,8 @@ export type FollowCompanyWhereInput = {
   id?: Prisma.StringFilter<"FollowCompany"> | string;
   candideId?: Prisma.StringFilter<"FollowCompany"> | string;
   companyId?: Prisma.StringFilter<"FollowCompany"> | string;
+  createdAt?: Prisma.DateTimeFilter<"FollowCompany"> | Date | string;
+  updatedAt?: Prisma.DateTimeFilter<"FollowCompany"> | Date | string;
   candidate?: Prisma.XOR<
     Prisma.CandidateScalarRelationFilter,
     Prisma.CandidateWhereInput
@@ -189,6 +205,8 @@ export type FollowCompanyOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
   companyId?: Prisma.SortOrder;
+  createdAt?: Prisma.SortOrder;
+  updatedAt?: Prisma.SortOrder;
   candidate?: Prisma.CandidateOrderByWithRelationInput;
   company?: Prisma.CompanyOrderByWithRelationInput;
 };
@@ -196,11 +214,14 @@ export type FollowCompanyOrderByWithRelationInput = {
 export type FollowCompanyWhereUniqueInput = Prisma.AtLeast<
   {
     id?: string;
+    candideId_companyId?: Prisma.FollowCompanyCandideIdCompanyIdCompoundUniqueInput;
     AND?: Prisma.FollowCompanyWhereInput | Prisma.FollowCompanyWhereInput[];
     OR?: Prisma.FollowCompanyWhereInput[];
     NOT?: Prisma.FollowCompanyWhereInput | Prisma.FollowCompanyWhereInput[];
     candideId?: Prisma.StringFilter<"FollowCompany"> | string;
     companyId?: Prisma.StringFilter<"FollowCompany"> | string;
+    createdAt?: Prisma.DateTimeFilter<"FollowCompany"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"FollowCompany"> | Date | string;
     candidate?: Prisma.XOR<
       Prisma.CandidateScalarRelationFilter,
       Prisma.CandidateWhereInput
@@ -210,13 +231,15 @@ export type FollowCompanyWhereUniqueInput = Prisma.AtLeast<
       Prisma.CompanyWhereInput
     >;
   },
-  "id"
+  "id" | "candideId_companyId"
 >;
 
 export type FollowCompanyOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
   companyId?: Prisma.SortOrder;
+  createdAt?: Prisma.SortOrder;
+  updatedAt?: Prisma.SortOrder;
   _count?: Prisma.FollowCompanyCountOrderByAggregateInput;
   _max?: Prisma.FollowCompanyMaxOrderByAggregateInput;
   _min?: Prisma.FollowCompanyMinOrderByAggregateInput;
@@ -233,10 +256,20 @@ export type FollowCompanyScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"FollowCompany"> | string;
   candideId?: Prisma.StringWithAggregatesFilter<"FollowCompany"> | string;
   companyId?: Prisma.StringWithAggregatesFilter<"FollowCompany"> | string;
+  createdAt?:
+    | Prisma.DateTimeWithAggregatesFilter<"FollowCompany">
+    | Date
+    | string;
+  updatedAt?:
+    | Prisma.DateTimeWithAggregatesFilter<"FollowCompany">
+    | Date
+    | string;
 };
 
 export type FollowCompanyCreateInput = {
   id?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
   candidate: Prisma.CandidateCreateNestedOneWithoutFollowCompaniesInput;
   company: Prisma.CompanyCreateNestedOneWithoutFollowCompaniesInput;
 };
@@ -245,10 +278,14 @@ export type FollowCompanyUncheckedCreateInput = {
   id?: string;
   candideId: string;
   companyId: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 };
 
 export type FollowCompanyUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   candidate?: Prisma.CandidateUpdateOneRequiredWithoutFollowCompaniesNestedInput;
   company?: Prisma.CompanyUpdateOneRequiredWithoutFollowCompaniesNestedInput;
 };
@@ -257,22 +294,30 @@ export type FollowCompanyUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   candideId?: Prisma.StringFieldUpdateOperationsInput | string;
   companyId?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type FollowCompanyCreateManyInput = {
   id?: string;
   candideId: string;
   companyId: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 };
 
 export type FollowCompanyUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type FollowCompanyUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   candideId?: Prisma.StringFieldUpdateOperationsInput | string;
   companyId?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type FollowCompanyListRelationFilter = {
@@ -285,22 +330,33 @@ export type FollowCompanyOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder;
 };
 
+export type FollowCompanyCandideIdCompanyIdCompoundUniqueInput = {
+  candideId: string;
+  companyId: string;
+};
+
 export type FollowCompanyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
   companyId?: Prisma.SortOrder;
+  createdAt?: Prisma.SortOrder;
+  updatedAt?: Prisma.SortOrder;
 };
 
 export type FollowCompanyMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
   companyId?: Prisma.SortOrder;
+  createdAt?: Prisma.SortOrder;
+  updatedAt?: Prisma.SortOrder;
 };
 
 export type FollowCompanyMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
   companyId?: Prisma.SortOrder;
+  createdAt?: Prisma.SortOrder;
+  updatedAt?: Prisma.SortOrder;
 };
 
 export type FollowCompanyCreateNestedManyWithoutCandidateInput = {
@@ -525,12 +581,16 @@ export type FollowCompanyUncheckedUpdateManyWithoutCompanyNestedInput = {
 
 export type FollowCompanyCreateWithoutCandidateInput = {
   id?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
   company: Prisma.CompanyCreateNestedOneWithoutFollowCompaniesInput;
 };
 
 export type FollowCompanyUncheckedCreateWithoutCandidateInput = {
   id?: string;
   companyId: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 };
 
 export type FollowCompanyCreateOrConnectWithoutCandidateInput = {
@@ -587,16 +647,22 @@ export type FollowCompanyScalarWhereInput = {
   id?: Prisma.StringFilter<"FollowCompany"> | string;
   candideId?: Prisma.StringFilter<"FollowCompany"> | string;
   companyId?: Prisma.StringFilter<"FollowCompany"> | string;
+  createdAt?: Prisma.DateTimeFilter<"FollowCompany"> | Date | string;
+  updatedAt?: Prisma.DateTimeFilter<"FollowCompany"> | Date | string;
 };
 
 export type FollowCompanyCreateWithoutCompanyInput = {
   id?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
   candidate: Prisma.CandidateCreateNestedOneWithoutFollowCompaniesInput;
 };
 
 export type FollowCompanyUncheckedCreateWithoutCompanyInput = {
   id?: string;
   candideId: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 };
 
 export type FollowCompanyCreateOrConnectWithoutCompanyInput = {
@@ -645,41 +711,57 @@ export type FollowCompanyUpdateManyWithWhereWithoutCompanyInput = {
 export type FollowCompanyCreateManyCandidateInput = {
   id?: string;
   companyId: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 };
 
 export type FollowCompanyUpdateWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   company?: Prisma.CompanyUpdateOneRequiredWithoutFollowCompaniesNestedInput;
 };
 
 export type FollowCompanyUncheckedUpdateWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   companyId?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type FollowCompanyUncheckedUpdateManyWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   companyId?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type FollowCompanyCreateManyCompanyInput = {
   id?: string;
   candideId: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 };
 
 export type FollowCompanyUpdateWithoutCompanyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   candidate?: Prisma.CandidateUpdateOneRequiredWithoutFollowCompaniesNestedInput;
 };
 
 export type FollowCompanyUncheckedUpdateWithoutCompanyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   candideId?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type FollowCompanyUncheckedUpdateManyWithoutCompanyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   candideId?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type FollowCompanySelect<
@@ -690,6 +772,8 @@ export type FollowCompanySelect<
     id?: boolean;
     candideId?: boolean;
     companyId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
     candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
     company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>;
   },
@@ -704,6 +788,8 @@ export type FollowCompanySelectCreateManyAndReturn<
     id?: boolean;
     candideId?: boolean;
     companyId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
     candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
     company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>;
   },
@@ -718,6 +804,8 @@ export type FollowCompanySelectUpdateManyAndReturn<
     id?: boolean;
     candideId?: boolean;
     companyId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
     candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
     company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>;
   },
@@ -728,13 +816,15 @@ export type FollowCompanySelectScalar = {
   id?: boolean;
   candideId?: boolean;
   companyId?: boolean;
+  createdAt?: boolean;
+  updatedAt?: boolean;
 };
 
 export type FollowCompanyOmit<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  "id" | "candideId" | "companyId",
+  "id" | "candideId" | "companyId" | "createdAt" | "updatedAt",
   ExtArgs["result"]["followCompany"]
 >;
 export type FollowCompanyInclude<
@@ -773,6 +863,8 @@ export type $FollowCompanyPayload<
       id: string;
       candideId: string;
       companyId: string;
+      createdAt: Date;
+      updatedAt: Date;
     },
     ExtArgs["result"]["followCompany"]
   >;
@@ -1405,6 +1497,8 @@ export interface FollowCompanyFieldRefs {
   readonly id: Prisma.FieldRef<"FollowCompany", "String">;
   readonly candideId: Prisma.FieldRef<"FollowCompany", "String">;
   readonly companyId: Prisma.FieldRef<"FollowCompany", "String">;
+  readonly createdAt: Prisma.FieldRef<"FollowCompany", "DateTime">;
+  readonly updatedAt: Prisma.FieldRef<"FollowCompany", "DateTime">;
 }
 
 // Custom InputTypes

@@ -236,6 +236,8 @@ export const FollowCompanyScalarFieldEnum = {
   id: "id",
   candideId: "candideId",
   companyId: "companyId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
 } as const;
 
 export type FollowCompanyScalarFieldEnum =
