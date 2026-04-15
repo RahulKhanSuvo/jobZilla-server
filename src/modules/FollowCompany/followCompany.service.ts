@@ -75,7 +75,35 @@ const followACompany = async (userId: string, companyId: string) => {
   });
   return followCompany;
 };
+const unFollowACompany = async (userId: string, companyId: string) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+  if (!user) {
+    throw new ApiError("User not found", 404);
+  }
+  const company = await prisma.user.findUnique({
+    where: {
+      id: companyId,
+    },
+  });
+  if (!company) {
+    throw new ApiError("Company not found", 404);
+  }
+  const followCompany = await prisma.followCompany.delete({
+    where: {
+      candideId_companyId: {
+        candideId: userId,
+        companyId: company.id,
+      },
+    },
+  });
+  return followCompany;
+};
 export const followACompanyService = {
   getAllFollwedCompany,
   followACompany,
+  unFollowACompany,
 };
