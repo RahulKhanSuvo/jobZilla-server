@@ -11,7 +11,7 @@ followCompanyRoutes.get(
   followCompanyController.getAllFollwedCompany,
 );
 followCompanyRoutes.post(
-  "/",
+  "/:companyId",
   authGard({ roles: [UserRole.CANDIDATE] }),
   followCompanyController.followACompany,
 );
