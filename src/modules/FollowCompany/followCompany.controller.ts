@@ -1,12 +1,20 @@
 import { catchAsync } from "../../shared/catchAsync";
 import { sendResponse } from "../../shared/sendResponse";
+import { followACompanyService } from "./followCompany.service";
+import { getPagination } from "../../utils/pagination";
 
 const getAllFollwedCompany = catchAsync(async (req, res) => {
+  const { id: userId } = req.user!;
+  const pagination = getPagination(req.query);
+  const result = await followACompanyService.getAllFollwedCompany(
+    userId,
+    pagination,
+  );
   sendResponse(res, {
     statusCode: 200,
     success: true,
     message: "Followed companies fetched successfully",
-    data: [],
+    data: result,
   });
 });
 const followACompany = catchAsync(async (req, res) => {
