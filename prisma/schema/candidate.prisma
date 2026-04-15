@@ -21,6 +21,7 @@ model Candidate {
   eductions       eduction[]
   resumes         Resume[]
   user            User             @relation(fields: [userId], references: [id])
+  followCompanies FollowCompany[]
 }
 
 model Resume {
