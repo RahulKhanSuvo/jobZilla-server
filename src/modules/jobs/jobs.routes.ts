@@ -47,7 +47,7 @@ jobsRoutes.get("/:id", authGard({ optional: true }), jobsController.jobById);
 // get company jobs
 jobsRoutes.get(
   "/company/:id",
-  authGard({ roles: [UserRole.EMPLOYER] }),
+  authGard({ roles: [UserRole.CANDIDATE, UserRole.EMPLOYER] }),
   jobsController.getCompanyJobs,
 );
 
