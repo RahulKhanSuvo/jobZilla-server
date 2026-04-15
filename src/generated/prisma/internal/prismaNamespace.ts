@@ -421,6 +421,7 @@ export const ModelName = {
   Job: "Job",
   Application: "Application",
   SavedJob: "SavedJob",
+  FollowCompany: "FollowCompany",
   User: "User",
 } as const;
 
@@ -453,6 +454,7 @@ export type TypeMap<
       | "job"
       | "application"
       | "savedJob"
+      | "followCompany"
       | "user";
     txIsolationLevel: TransactionIsolationLevel;
   };
@@ -1141,6 +1143,82 @@ export type TypeMap<
         };
       };
     };
+    FollowCompany: {
+      payload: Prisma.$FollowCompanyPayload<ExtArgs>;
+      fields: Prisma.FollowCompanyFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.FollowCompanyFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.FollowCompanyFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
+        };
+        findFirst: {
+          args: Prisma.FollowCompanyFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.FollowCompanyFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
+        };
+        findMany: {
+          args: Prisma.FollowCompanyFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>[];
+        };
+        create: {
+          args: Prisma.FollowCompanyCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
+        };
+        createMany: {
+          args: Prisma.FollowCompanyCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.FollowCompanyCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>[];
+        };
+        delete: {
+          args: Prisma.FollowCompanyDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
+        };
+        update: {
+          args: Prisma.FollowCompanyUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
+        };
+        deleteMany: {
+          args: Prisma.FollowCompanyDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.FollowCompanyUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.FollowCompanyUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>[];
+        };
+        upsert: {
+          args: Prisma.FollowCompanyUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
+        };
+        aggregate: {
+          args: Prisma.FollowCompanyAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFollowCompany>;
+        };
+        groupBy: {
+          args: Prisma.FollowCompanyGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.FollowCompanyGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.FollowCompanyCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.FollowCompanyCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
     User: {
       payload: Prisma.$UserPayload<ExtArgs>;
       fields: Prisma.UserFieldRefs;
@@ -1267,7 +1345,6 @@ export const CandidateScalarFieldEnum = {
   language: "language",
   aboutMe: "aboutMe",
   profileImage: "profileImage",
-  careerFinding: "careerFinding",
   facebook: "facebook",
   linkedin: "linkedin",
   twitter: "twitter",
@@ -1405,6 +1482,15 @@ export const SavedJobScalarFieldEnum = {
 
 export type SavedJobScalarFieldEnum =
   (typeof SavedJobScalarFieldEnum)[keyof typeof SavedJobScalarFieldEnum];
+
+export const FollowCompanyScalarFieldEnum = {
+  id: "id",
+  candideId: "candideId",
+  companyId: "companyId",
+} as const;
+
+export type FollowCompanyScalarFieldEnum =
+  (typeof FollowCompanyScalarFieldEnum)[keyof typeof FollowCompanyScalarFieldEnum];
 
 export const UserScalarFieldEnum = {
   id: "id",
@@ -1708,6 +1794,7 @@ export type GlobalOmitConfig = {
   job?: Prisma.JobOmit;
   application?: Prisma.ApplicationOmit;
   savedJob?: Prisma.SavedJobOmit;
+  followCompany?: Prisma.FollowCompanyOmit;
   user?: Prisma.UserOmit;
 };
 

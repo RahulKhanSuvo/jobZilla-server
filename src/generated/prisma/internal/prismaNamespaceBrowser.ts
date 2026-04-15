@@ -63,6 +63,7 @@ export const ModelName = {
   Job: "Job",
   Application: "Application",
   SavedJob: "SavedJob",
+  FollowCompany: "FollowCompany",
   User: "User",
 } as const;
 
@@ -93,7 +94,6 @@ export const CandidateScalarFieldEnum = {
   language: "language",
   aboutMe: "aboutMe",
   profileImage: "profileImage",
-  careerFinding: "careerFinding",
   facebook: "facebook",
   linkedin: "linkedin",
   twitter: "twitter",
@@ -231,6 +231,15 @@ export const SavedJobScalarFieldEnum = {
 
 export type SavedJobScalarFieldEnum =
   (typeof SavedJobScalarFieldEnum)[keyof typeof SavedJobScalarFieldEnum];
+
+export const FollowCompanyScalarFieldEnum = {
+  id: "id",
+  candideId: "candideId",
+  companyId: "companyId",
+} as const;
+
+export type FollowCompanyScalarFieldEnum =
+  (typeof FollowCompanyScalarFieldEnum)[keyof typeof FollowCompanyScalarFieldEnum];
 
 export const UserScalarFieldEnum = {
   id: "id",

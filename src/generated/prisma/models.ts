@@ -16,5 +16,6 @@ export type * from "./models/Company";
 export type * from "./models/Job";
 export type * from "./models/Application";
 export type * from "./models/SavedJob";
+export type * from "./models/FollowCompany";
 export type * from "./models/User";
 export type * from "./commonInputTypes";

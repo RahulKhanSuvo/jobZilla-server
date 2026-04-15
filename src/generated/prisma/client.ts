@@ -92,6 +92,11 @@ export type Application = Prisma.ApplicationModel;
  */
 export type SavedJob = Prisma.SavedJobModel;
 /**
+ * Model FollowCompany
+ *
+ */
+export type FollowCompany = Prisma.FollowCompanyModel;
+/**
  * Model User
  *
  */
