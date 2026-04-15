@@ -12,30 +12,23 @@ const getAllFollwedCompany = async (userId: string, pagination: Pagination) => {
   if (!user) {
     throw new ApiError("User not found", 404);
   }
-  const candidate = await prisma.candidate.findUnique({
-    where: {
-      userId: userId,
-    },
-  });
-  if (!candidate) {
-    throw new ApiError("Candidate not found", 404);
-  }
+
   const [data, total] = await Promise.all([
     prisma.followCompany.findMany({
       where: {
-        candideId: candidate.id,
+        candideId: userId,
       },
     }),
     prisma.followCompany.count({
       where: {
-        candideId: candidate.id,
+        candideId: userId,
       },
       skip,
       take: limit,
     }),
     prisma.followCompany.count({
       where: {
-        candideId: candidate.id,
+        candideId: userId,
       },
     }),
   ]);
