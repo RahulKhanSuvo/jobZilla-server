@@ -287,6 +287,7 @@ const getJobById = async (userId: string, jobId: string) => {
     });
     isSaved = !!savedJob;
   }
+
   const job = await prisma.job.findUnique({
     where: {
       id: jobId,
@@ -296,6 +297,7 @@ const getJobById = async (userId: string, jobId: string) => {
         select: {
           user: {
             select: {
+              id: true,
               name: true,
               email: true,
             },
@@ -318,10 +320,20 @@ const getJobById = async (userId: string, jobId: string) => {
   if (!job) {
     throw new ApiError("Job not found", 404);
   }
+  const followedCompany = await prisma.followCompany.findUnique({
+    where: {
+      candideId_companyId: {
+        candideId: userId,
+        companyId: job.company.user.id,
+      },
+    },
+  });
+  const isFollowed = !!followedCompany;
 
   return {
     ...job,
     isSaved,
+    isFollowed,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     isApplied: (job as any).applications?.length > 0,
   };
