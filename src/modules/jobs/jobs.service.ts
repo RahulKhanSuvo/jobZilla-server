@@ -402,6 +402,30 @@ const unSaveJob = async (userId: string, jobId: string) => {
   return result;
 };
 
+// get company jobs
+const getCompanyJobs = async (companyId: string) => {
+  const result = await prisma.job.findMany({
+    where: {
+      companyId,
+    },
+    include: {
+      company: {
+        select: {
+          user: {
+            select: {
+              name: true,
+              email: true,
+            },
+          },
+          location: true,
+          logo: true,
+        },
+      },
+    },
+  });
+  return result;
+};
+
 export const jobsService = {
   createJob,
   getAllJobs,
@@ -410,4 +434,5 @@ export const jobsService = {
   getJobById,
   getSaveJob,
   unSaveJob,
+  getCompanyJobs,
 };

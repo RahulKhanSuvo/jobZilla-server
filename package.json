@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc",
+    "build": "prisma generate && tsc",
+    "start": "bun src/server.ts",
     "prepare": "husky"
   },
   "prisma": {

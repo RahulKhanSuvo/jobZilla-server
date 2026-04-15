@@ -130,6 +130,17 @@ const unSaveJob = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
+// get company jobs
+const getCompanyJobs = catchAsync(async (req, res) => {
+  const result = await jobsService.getCompanyJobs(req.params.id as string);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Company jobs fetched successfully",
+    data: result,
+  });
+});
 export const jobsController = {
   createJob,
   getAllJobs,
@@ -138,4 +149,5 @@ export const jobsController = {
   jobById,
   getSaveJob,
   unSaveJob,
+  getCompanyJobs,
 };
