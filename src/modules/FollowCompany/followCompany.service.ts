@@ -49,7 +49,39 @@ const getAllFollwedCompany = async (userId: string, pagination: Pagination) => {
     },
   };
 };
-const followACompany = async () => {};
+const followACompany = async (userId: string, companyId: string) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+  if (!user) {
+    throw new ApiError("User not found", 404);
+  }
+  const candidate = await prisma.candidate.findUnique({
+    where: {
+      userId: userId,
+    },
+  });
+  if (!candidate) {
+    throw new ApiError("Candidate not found", 404);
+  }
+  const company = await prisma.company.findUnique({
+    where: {
+      userId: companyId,
+    },
+  });
+  if (!company) {
+    throw new ApiError("Company not found", 404);
+  }
+  const followCompany = await prisma.followCompany.create({
+    data: {
+      candideId: candidate.id,
+      companyId: company.id,
+    },
+  });
+  return followCompany;
+};
 export const followACompanyService = {
   getAllFollwedCompany,
   followACompany,
