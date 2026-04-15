@@ -43,6 +43,7 @@ const getAllFollwedCompany = async (userId: string, pagination: Pagination) => {
   };
 };
 const followACompany = async (userId: string, companyId: string) => {
+  if (!userId) throw new ApiError("no user id", 400);
   const user = await prisma.user.findUnique({
     where: {
       id: userId,
@@ -53,7 +54,7 @@ const followACompany = async (userId: string, companyId: string) => {
   }
   const candidate = await prisma.candidate.findUnique({
     where: {
-      userId: userId,
+      userId: user.id,
     },
   });
   if (!candidate) {

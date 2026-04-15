@@ -20,7 +20,10 @@ const getAllFollwedCompany = catchAsync(async (req, res) => {
 });
 const followACompany = catchAsync(async (req, res) => {
   const { id: userId } = req.user!;
-  const { id: companyId } = req.params;
+  const companyId = req.params.companyId || req.params.id;
+  console.log(userId);
+
+  if (!userId) throw new ApiError("no user id", 400);
   if (companyId === userId) {
     throw new ApiError("You can not follow yourself", 400);
   }
