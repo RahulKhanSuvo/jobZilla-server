@@ -29,6 +29,8 @@ enum JobType {
   CONTRACT
   INTERN
   REMOTE
+  ON_SITE
+  HYBRID
 }
 
 enum JobStatus {
