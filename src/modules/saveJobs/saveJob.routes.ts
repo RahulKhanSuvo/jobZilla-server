@@ -10,5 +10,10 @@ saveJobRouter.post(
   authGard({ roles: [UserRole.CANDIDATE, UserRole.EMPLOYER] }),
   saveJobController.saveAJob,
 );
+saveJobRouter.get(
+  "/",
+  authGard({ roles: [UserRole.CANDIDATE, UserRole.EMPLOYER] }),
+  saveJobController.getSavedJobs,
+);
 
 export default saveJobRouter;

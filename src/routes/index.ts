@@ -5,6 +5,7 @@ import recruiterRouter from "../modules/recruiter/recruiter.route";
 import jobsRoutes from "../modules/jobs/jobs.routes";
 import { ApplicationRoutes } from "../modules/application/application.route";
 import followCompanyRoutes from "../modules/FollowCompany/followCompany.route";
+import saveJobRouter from "../modules/saveJobs/saveJob.routes";
 
 const routes = Router();
 routes.use("/auth", userRouter);
@@ -13,5 +14,5 @@ routes.use("/recruiter", recruiterRouter);
 routes.use("/jobs", jobsRoutes);
 routes.use("/applications", ApplicationRoutes);
 routes.use("/follow-company", followCompanyRoutes);
-routes.use("/save-job");
+routes.use("/save-job", saveJobRouter);
 export default routes;

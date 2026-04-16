@@ -9,6 +9,15 @@ const saveJob = async (userId: string, jobId: string) => {
   });
   return result;
 };
+const getSavedJobs = async (userId: string) => {
+  const result = await prisma.savedJob.findMany({
+    where: {
+      userId,
+    },
+  });
+  return result;
+};
 export const saveJobService = {
   saveJob,
+  getSavedJobs,
 };
