@@ -8,15 +8,6 @@ import cookieParser from "cookie-parser";
 import path from "path";
 const app = express();
 
-app.use(
-  cors({
-    origin: envConfig.FRONTEND_URL,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  }),
-);
-
 app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
