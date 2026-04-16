@@ -1,7 +1,7 @@
 import { ApiError } from "../../errors/ApiError";
 import { prisma } from "../../lib/prisma";
 import { IJob } from "./job.schema";
-import { JobType, Prisma } from "../../generated/prisma/client";
+import { CareerLevel, JobType, Prisma } from "../../generated/prisma/client";
 
 const createJob = async (userId: string, payload: IJob) => {
   const company = await prisma.company.findUnique({
@@ -70,12 +70,10 @@ const getAllJobs = async (
   if (seniorityLevel && seniorityLevel !== "all") {
     andConditions.push({
       careerLevel: {
-        contains: seniorityLevel,
-        mode: "insensitive",
+        equals: seniorityLevel.toUpperCase() as CareerLevel,
       },
     });
   }
-
   // Salary Range filter (s1, s2, s3, s4, s5)
   if (salary) {
     const salaryRanges: Record<string, { min: number; max: number }> = {
