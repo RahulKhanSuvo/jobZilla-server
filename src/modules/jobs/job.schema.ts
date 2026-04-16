@@ -15,17 +15,17 @@ export const CareerLevelEnum = z.enum([
   "SENIOR_LEVEL",
   "EXECUTIVE_LEVEL",
 ]);
+export const GenderEnum = z.enum(["MALE", "FEMALE", "OTHER", "ANY"]);
+export const SalaryTypeEnum = z.enum(["MONTHLY", "YEARLY", "HOURLY"]);
+
 export const JobSchema = z.object({
   title: z.string().min(1, "Job title is required"),
   description: z.string().min(1, "Job description is required"),
   category: z.string().min(1, "Job category is required"),
-  tags: z.array(z.string()).min(1, "Job tags are required"),
-  gender: z.string().optional().nullable(),
-  externalUrl: z.string().url().optional().nullable(),
-  applyEmail: z.string().email().optional().nullable(),
-  salaryType: z.string().optional().nullable(),
-  salaryMin: z.coerce.number().int().optional().nullable(),
-  salaryMax: z.coerce.number().int().optional().nullable(),
+  gender: GenderEnum.optional().nullable(),
+  salaryType: SalaryTypeEnum.optional().nullable(),
+  salaryMin: z.coerce.number().int(),
+  salaryMax: z.coerce.number().int(),
   jobType: JobTypeEnum.optional().nullable(),
   experience: z.string().max(100).optional().nullable(),
   careerLevel: CareerLevelEnum.optional().nullable(),
