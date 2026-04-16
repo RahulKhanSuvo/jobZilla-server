@@ -377,16 +377,6 @@ export type ApplicationUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
-export type ApplicationListRelationFilter = {
-  every?: Prisma.ApplicationWhereInput;
-  some?: Prisma.ApplicationWhereInput;
-  none?: Prisma.ApplicationWhereInput;
-};
-
-export type ApplicationOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder;
-};
-
 export type ApplicationCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
@@ -420,114 +410,26 @@ export type ApplicationMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder;
 };
 
-export type ApplicationCreateNestedManyWithoutResumeInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.ApplicationCreateWithoutResumeInput,
-        Prisma.ApplicationUncheckedCreateWithoutResumeInput
-      >
-    | Prisma.ApplicationCreateWithoutResumeInput[]
-    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
-  connectOrCreate?:
-    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
-    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
-  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
-  connect?:
-    | Prisma.ApplicationWhereUniqueInput
-    | Prisma.ApplicationWhereUniqueInput[];
+export type ApplicationListRelationFilter = {
+  every?: Prisma.ApplicationWhereInput;
+  some?: Prisma.ApplicationWhereInput;
+  none?: Prisma.ApplicationWhereInput;
 };
 
-export type ApplicationUncheckedCreateNestedManyWithoutResumeInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.ApplicationCreateWithoutResumeInput,
-        Prisma.ApplicationUncheckedCreateWithoutResumeInput
-      >
-    | Prisma.ApplicationCreateWithoutResumeInput[]
-    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
-  connectOrCreate?:
-    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
-    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
-  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
-  connect?:
-    | Prisma.ApplicationWhereUniqueInput
-    | Prisma.ApplicationWhereUniqueInput[];
+export type ApplicationOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder;
 };
 
-export type ApplicationUpdateManyWithoutResumeNestedInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.ApplicationCreateWithoutResumeInput,
-        Prisma.ApplicationUncheckedCreateWithoutResumeInput
-      >
-    | Prisma.ApplicationCreateWithoutResumeInput[]
-    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
-  connectOrCreate?:
-    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
-    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
-  upsert?:
-    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput
-    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput[];
-  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
-  set?:
-    | Prisma.ApplicationWhereUniqueInput
-    | Prisma.ApplicationWhereUniqueInput[];
-  disconnect?:
-    | Prisma.ApplicationWhereUniqueInput
-    | Prisma.ApplicationWhereUniqueInput[];
-  delete?:
-    | Prisma.ApplicationWhereUniqueInput
-    | Prisma.ApplicationWhereUniqueInput[];
-  connect?:
-    | Prisma.ApplicationWhereUniqueInput
-    | Prisma.ApplicationWhereUniqueInput[];
-  update?:
-    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput
-    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput[];
-  updateMany?:
-    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput
-    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput[];
-  deleteMany?:
-    | Prisma.ApplicationScalarWhereInput
-    | Prisma.ApplicationScalarWhereInput[];
+export type StringFieldUpdateOperationsInput = {
+  set?: string;
 };
 
-export type ApplicationUncheckedUpdateManyWithoutResumeNestedInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.ApplicationCreateWithoutResumeInput,
-        Prisma.ApplicationUncheckedCreateWithoutResumeInput
-      >
-    | Prisma.ApplicationCreateWithoutResumeInput[]
-    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
-  connectOrCreate?:
-    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
-    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
-  upsert?:
-    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput
-    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput[];
-  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
-  set?:
-    | Prisma.ApplicationWhereUniqueInput
-    | Prisma.ApplicationWhereUniqueInput[];
-  disconnect?:
-    | Prisma.ApplicationWhereUniqueInput
-    | Prisma.ApplicationWhereUniqueInput[];
-  delete?:
-    | Prisma.ApplicationWhereUniqueInput
-    | Prisma.ApplicationWhereUniqueInput[];
-  connect?:
-    | Prisma.ApplicationWhereUniqueInput
-    | Prisma.ApplicationWhereUniqueInput[];
-  update?:
-    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput
-    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput[];
-  updateMany?:
-    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput
-    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput[];
-  deleteMany?:
-    | Prisma.ApplicationScalarWhereInput
-    | Prisma.ApplicationScalarWhereInput[];
+export type EnumAppStatusFieldUpdateOperationsInput = {
+  set?: $Enums.AppStatus;
+};
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string;
 };
 
 export type ApplicationCreateNestedManyWithoutCompanyInput = {
@@ -750,8 +652,114 @@ export type ApplicationUncheckedUpdateManyWithoutJobNestedInput = {
     | Prisma.ApplicationScalarWhereInput[];
 };
 
-export type EnumAppStatusFieldUpdateOperationsInput = {
-  set?: $Enums.AppStatus;
+export type ApplicationCreateNestedManyWithoutResumeInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.ApplicationCreateWithoutResumeInput,
+        Prisma.ApplicationUncheckedCreateWithoutResumeInput
+      >
+    | Prisma.ApplicationCreateWithoutResumeInput[]
+    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
+  connectOrCreate?:
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
+  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
+  connect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+};
+
+export type ApplicationUncheckedCreateNestedManyWithoutResumeInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.ApplicationCreateWithoutResumeInput,
+        Prisma.ApplicationUncheckedCreateWithoutResumeInput
+      >
+    | Prisma.ApplicationCreateWithoutResumeInput[]
+    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
+  connectOrCreate?:
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
+  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
+  connect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+};
+
+export type ApplicationUpdateManyWithoutResumeNestedInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.ApplicationCreateWithoutResumeInput,
+        Prisma.ApplicationUncheckedCreateWithoutResumeInput
+      >
+    | Prisma.ApplicationCreateWithoutResumeInput[]
+    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
+  connectOrCreate?:
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
+  upsert?:
+    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput
+    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput[];
+  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
+  set?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  disconnect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  delete?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  connect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  update?:
+    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput
+    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput[];
+  updateMany?:
+    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput
+    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput[];
+  deleteMany?:
+    | Prisma.ApplicationScalarWhereInput
+    | Prisma.ApplicationScalarWhereInput[];
+};
+
+export type ApplicationUncheckedUpdateManyWithoutResumeNestedInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.ApplicationCreateWithoutResumeInput,
+        Prisma.ApplicationUncheckedCreateWithoutResumeInput
+      >
+    | Prisma.ApplicationCreateWithoutResumeInput[]
+    | Prisma.ApplicationUncheckedCreateWithoutResumeInput[];
+  connectOrCreate?:
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput
+    | Prisma.ApplicationCreateOrConnectWithoutResumeInput[];
+  upsert?:
+    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput
+    | Prisma.ApplicationUpsertWithWhereUniqueWithoutResumeInput[];
+  createMany?: Prisma.ApplicationCreateManyResumeInputEnvelope;
+  set?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  disconnect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  delete?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  connect?:
+    | Prisma.ApplicationWhereUniqueInput
+    | Prisma.ApplicationWhereUniqueInput[];
+  update?:
+    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput
+    | Prisma.ApplicationUpdateWithWhereUniqueWithoutResumeInput[];
+  updateMany?:
+    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput
+    | Prisma.ApplicationUpdateManyWithWhereWithoutResumeInput[];
+  deleteMany?:
+    | Prisma.ApplicationScalarWhereInput
+    | Prisma.ApplicationScalarWhereInput[];
 };
 
 export type ApplicationCreateNestedManyWithoutUserInput = {
@@ -864,87 +872,6 @@ export type ApplicationUncheckedUpdateManyWithoutUserNestedInput = {
     | Prisma.ApplicationScalarWhereInput[];
 };
 
-export type ApplicationCreateWithoutResumeInput = {
-  id?: string;
-  status?: $Enums.AppStatus;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  job: Prisma.JobCreateNestedOneWithoutApplicationsInput;
-  user: Prisma.UserCreateNestedOneWithoutApplicationsInput;
-  company: Prisma.CompanyCreateNestedOneWithoutApplicationsInput;
-};
-
-export type ApplicationUncheckedCreateWithoutResumeInput = {
-  id?: string;
-  userId: string;
-  jobId: string;
-  companyId: string;
-  status?: $Enums.AppStatus;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-};
-
-export type ApplicationCreateOrConnectWithoutResumeInput = {
-  where: Prisma.ApplicationWhereUniqueInput;
-  create: Prisma.XOR<
-    Prisma.ApplicationCreateWithoutResumeInput,
-    Prisma.ApplicationUncheckedCreateWithoutResumeInput
-  >;
-};
-
-export type ApplicationCreateManyResumeInputEnvelope = {
-  data:
-    | Prisma.ApplicationCreateManyResumeInput
-    | Prisma.ApplicationCreateManyResumeInput[];
-  skipDuplicates?: boolean;
-};
-
-export type ApplicationUpsertWithWhereUniqueWithoutResumeInput = {
-  where: Prisma.ApplicationWhereUniqueInput;
-  update: Prisma.XOR<
-    Prisma.ApplicationUpdateWithoutResumeInput,
-    Prisma.ApplicationUncheckedUpdateWithoutResumeInput
-  >;
-  create: Prisma.XOR<
-    Prisma.ApplicationCreateWithoutResumeInput,
-    Prisma.ApplicationUncheckedCreateWithoutResumeInput
-  >;
-};
-
-export type ApplicationUpdateWithWhereUniqueWithoutResumeInput = {
-  where: Prisma.ApplicationWhereUniqueInput;
-  data: Prisma.XOR<
-    Prisma.ApplicationUpdateWithoutResumeInput,
-    Prisma.ApplicationUncheckedUpdateWithoutResumeInput
-  >;
-};
-
-export type ApplicationUpdateManyWithWhereWithoutResumeInput = {
-  where: Prisma.ApplicationScalarWhereInput;
-  data: Prisma.XOR<
-    Prisma.ApplicationUpdateManyMutationInput,
-    Prisma.ApplicationUncheckedUpdateManyWithoutResumeInput
-  >;
-};
-
-export type ApplicationScalarWhereInput = {
-  AND?:
-    | Prisma.ApplicationScalarWhereInput
-    | Prisma.ApplicationScalarWhereInput[];
-  OR?: Prisma.ApplicationScalarWhereInput[];
-  NOT?:
-    | Prisma.ApplicationScalarWhereInput
-    | Prisma.ApplicationScalarWhereInput[];
-  id?: Prisma.StringFilter<"Application"> | string;
-  userId?: Prisma.StringFilter<"Application"> | string;
-  jobId?: Prisma.StringFilter<"Application"> | string;
-  resumeId?: Prisma.StringFilter<"Application"> | string;
-  companyId?: Prisma.StringFilter<"Application"> | string;
-  status?: Prisma.EnumAppStatusFilter<"Application"> | $Enums.AppStatus;
-  createdAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
-  updatedAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
-};
-
 export type ApplicationCreateWithoutCompanyInput = {
   id?: string;
   status?: $Enums.AppStatus;
@@ -1006,6 +933,24 @@ export type ApplicationUpdateManyWithWhereWithoutCompanyInput = {
     Prisma.ApplicationUpdateManyMutationInput,
     Prisma.ApplicationUncheckedUpdateManyWithoutCompanyInput
   >;
+};
+
+export type ApplicationScalarWhereInput = {
+  AND?:
+    | Prisma.ApplicationScalarWhereInput
+    | Prisma.ApplicationScalarWhereInput[];
+  OR?: Prisma.ApplicationScalarWhereInput[];
+  NOT?:
+    | Prisma.ApplicationScalarWhereInput
+    | Prisma.ApplicationScalarWhereInput[];
+  id?: Prisma.StringFilter<"Application"> | string;
+  userId?: Prisma.StringFilter<"Application"> | string;
+  jobId?: Prisma.StringFilter<"Application"> | string;
+  resumeId?: Prisma.StringFilter<"Application"> | string;
+  companyId?: Prisma.StringFilter<"Application"> | string;
+  status?: Prisma.EnumAppStatusFilter<"Application"> | $Enums.AppStatus;
+  createdAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
+  updatedAt?: Prisma.DateTimeFilter<"Application"> | Date | string;
 };
 
 export type ApplicationCreateWithoutJobInput = {
@@ -1071,6 +1016,69 @@ export type ApplicationUpdateManyWithWhereWithoutJobInput = {
   >;
 };
 
+export type ApplicationCreateWithoutResumeInput = {
+  id?: string;
+  status?: $Enums.AppStatus;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  job: Prisma.JobCreateNestedOneWithoutApplicationsInput;
+  user: Prisma.UserCreateNestedOneWithoutApplicationsInput;
+  company: Prisma.CompanyCreateNestedOneWithoutApplicationsInput;
+};
+
+export type ApplicationUncheckedCreateWithoutResumeInput = {
+  id?: string;
+  userId: string;
+  jobId: string;
+  companyId: string;
+  status?: $Enums.AppStatus;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+};
+
+export type ApplicationCreateOrConnectWithoutResumeInput = {
+  where: Prisma.ApplicationWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.ApplicationCreateWithoutResumeInput,
+    Prisma.ApplicationUncheckedCreateWithoutResumeInput
+  >;
+};
+
+export type ApplicationCreateManyResumeInputEnvelope = {
+  data:
+    | Prisma.ApplicationCreateManyResumeInput
+    | Prisma.ApplicationCreateManyResumeInput[];
+  skipDuplicates?: boolean;
+};
+
+export type ApplicationUpsertWithWhereUniqueWithoutResumeInput = {
+  where: Prisma.ApplicationWhereUniqueInput;
+  update: Prisma.XOR<
+    Prisma.ApplicationUpdateWithoutResumeInput,
+    Prisma.ApplicationUncheckedUpdateWithoutResumeInput
+  >;
+  create: Prisma.XOR<
+    Prisma.ApplicationCreateWithoutResumeInput,
+    Prisma.ApplicationUncheckedCreateWithoutResumeInput
+  >;
+};
+
+export type ApplicationUpdateWithWhereUniqueWithoutResumeInput = {
+  where: Prisma.ApplicationWhereUniqueInput;
+  data: Prisma.XOR<
+    Prisma.ApplicationUpdateWithoutResumeInput,
+    Prisma.ApplicationUncheckedUpdateWithoutResumeInput
+  >;
+};
+
+export type ApplicationUpdateManyWithWhereWithoutResumeInput = {
+  where: Prisma.ApplicationScalarWhereInput;
+  data: Prisma.XOR<
+    Prisma.ApplicationUpdateManyMutationInput,
+    Prisma.ApplicationUncheckedUpdateManyWithoutResumeInput
+  >;
+};
+
 export type ApplicationCreateWithoutUserInput = {
   id?: string;
   status?: $Enums.AppStatus;
@@ -1132,46 +1140,6 @@ export type ApplicationUpdateManyWithWhereWithoutUserInput = {
     Prisma.ApplicationUpdateManyMutationInput,
     Prisma.ApplicationUncheckedUpdateManyWithoutUserInput
   >;
-};
-
-export type ApplicationCreateManyResumeInput = {
-  id?: string;
-  userId: string;
-  jobId: string;
-  companyId: string;
-  status?: $Enums.AppStatus;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-};
-
-export type ApplicationUpdateWithoutResumeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  job?: Prisma.JobUpdateOneRequiredWithoutApplicationsNestedInput;
-  user?: Prisma.UserUpdateOneRequiredWithoutApplicationsNestedInput;
-  company?: Prisma.CompanyUpdateOneRequiredWithoutApplicationsNestedInput;
-};
-
-export type ApplicationUncheckedUpdateWithoutResumeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  jobId?: Prisma.StringFieldUpdateOperationsInput | string;
-  companyId?: Prisma.StringFieldUpdateOperationsInput | string;
-  status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-};
-
-export type ApplicationUncheckedUpdateManyWithoutResumeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  jobId?: Prisma.StringFieldUpdateOperationsInput | string;
-  companyId?: Prisma.StringFieldUpdateOperationsInput | string;
-  status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type ApplicationCreateManyCompanyInput = {
@@ -1248,6 +1216,46 @@ export type ApplicationUncheckedUpdateManyWithoutJobInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   userId?: Prisma.StringFieldUpdateOperationsInput | string;
   resumeId?: Prisma.StringFieldUpdateOperationsInput | string;
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string;
+  status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+
+export type ApplicationCreateManyResumeInput = {
+  id?: string;
+  userId: string;
+  jobId: string;
+  companyId: string;
+  status?: $Enums.AppStatus;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+};
+
+export type ApplicationUpdateWithoutResumeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  job?: Prisma.JobUpdateOneRequiredWithoutApplicationsNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutApplicationsNestedInput;
+  company?: Prisma.CompanyUpdateOneRequiredWithoutApplicationsNestedInput;
+};
+
+export type ApplicationUncheckedUpdateWithoutResumeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
+  jobId?: Prisma.StringFieldUpdateOperationsInput | string;
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string;
+  status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+
+export type ApplicationUncheckedUpdateManyWithoutResumeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
+  jobId?: Prisma.StringFieldUpdateOperationsInput | string;
   companyId?: Prisma.StringFieldUpdateOperationsInput | string;
   status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;

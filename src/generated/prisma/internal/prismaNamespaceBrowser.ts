@@ -54,17 +54,17 @@ export const JsonNull = runtime.JsonNull;
 export const AnyNull = runtime.AnyNull;
 
 export const ModelName = {
-  Candidate: "Candidate",
-  Resume: "Resume",
-  workExperience: "workExperience",
-  skill: "skill",
-  eduction: "eduction",
-  Company: "Company",
-  Job: "Job",
   Application: "Application",
-  SavedJob: "SavedJob",
+  Candidate: "Candidate",
+  Company: "Company",
+  eduction: "eduction",
   FollowCompany: "FollowCompany",
+  Job: "Job",
+  Resume: "Resume",
+  SavedJob: "SavedJob",
   User: "User",
+  skill: "skill",
+  workExperience: "workExperience",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -82,6 +82,20 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 
 export type TransactionIsolationLevel =
   (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
+
+export const ApplicationScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  jobId: "jobId",
+  resumeId: "resumeId",
+  companyId: "companyId",
+  status: "status",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type ApplicationScalarFieldEnum =
+  (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum];
 
 export const CandidateScalarFieldEnum = {
   id: "id",
@@ -101,61 +115,6 @@ export const CandidateScalarFieldEnum = {
 
 export type CandidateScalarFieldEnum =
   (typeof CandidateScalarFieldEnum)[keyof typeof CandidateScalarFieldEnum];
-
-export const ResumeScalarFieldEnum = {
-  id: "id",
-  title: "title",
-  fileUrl: "fileUrl",
-  isPrimary: "isPrimary",
-  isDraft: "isDraft",
-  candidateId: "candidateId",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
-} as const;
-
-export type ResumeScalarFieldEnum =
-  (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum];
-
-export const WorkExperienceScalarFieldEnum = {
-  id: "id",
-  candideId: "candideId",
-  jobTitle: "jobTitle",
-  companyName: "companyName",
-  industry: "industry",
-  startData: "startData",
-  endData: "endData",
-  Description: "Description",
-  isWorking: "isWorking",
-  createdId: "createdId",
-} as const;
-
-export type WorkExperienceScalarFieldEnum =
-  (typeof WorkExperienceScalarFieldEnum)[keyof typeof WorkExperienceScalarFieldEnum];
-
-export const SkillScalarFieldEnum = {
-  id: "id",
-  skill: "skill",
-  candideId: "candideId",
-} as const;
-
-export type SkillScalarFieldEnum =
-  (typeof SkillScalarFieldEnum)[keyof typeof SkillScalarFieldEnum];
-
-export const EductionScalarFieldEnum = {
-  id: "id",
-  institution: "institution",
-  major: "major",
-  field: "field",
-  gap: "gap",
-  startData: "startData",
-  endData: "endData",
-  isStudying: "isStudying",
-  createdId: "createdId",
-  candideId: "candideId",
-} as const;
-
-export type EductionScalarFieldEnum =
-  (typeof EductionScalarFieldEnum)[keyof typeof EductionScalarFieldEnum];
 
 export const CompanyScalarFieldEnum = {
   id: "id",
@@ -181,56 +140,21 @@ export const CompanyScalarFieldEnum = {
 export type CompanyScalarFieldEnum =
   (typeof CompanyScalarFieldEnum)[keyof typeof CompanyScalarFieldEnum];
 
-export const JobScalarFieldEnum = {
+export const EductionScalarFieldEnum = {
   id: "id",
-  title: "title",
-  description: "description",
-  category: "category",
-  tags: "tags",
-  gender: "gender",
-  salaryType: "salaryType",
-  salaryMin: "salaryMin",
-  salaryMax: "salaryMax",
-  totalApplications: "totalApplications",
-  status: "status",
-  jobType: "jobType",
-  experience: "experience",
-  careerLevel: "careerLevel",
-  qualification: "qualification",
-  deadline: "deadline",
-  skills: "skills",
-  companyId: "companyId",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
+  institution: "institution",
+  major: "major",
+  field: "field",
+  gap: "gap",
+  startData: "startData",
+  endData: "endData",
+  isStudying: "isStudying",
+  createdId: "createdId",
+  candideId: "candideId",
 } as const;
 
-export type JobScalarFieldEnum =
-  (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum];
-
-export const ApplicationScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  jobId: "jobId",
-  resumeId: "resumeId",
-  companyId: "companyId",
-  status: "status",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
-} as const;
-
-export type ApplicationScalarFieldEnum =
-  (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum];
-
-export const SavedJobScalarFieldEnum = {
-  id: "id",
-  userId: "userId",
-  jobId: "jobId",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
-} as const;
-
-export type SavedJobScalarFieldEnum =
-  (typeof SavedJobScalarFieldEnum)[keyof typeof SavedJobScalarFieldEnum];
+export type EductionScalarFieldEnum =
+  (typeof EductionScalarFieldEnum)[keyof typeof EductionScalarFieldEnum];
 
 export const FollowCompanyScalarFieldEnum = {
   id: "id",
@@ -242,6 +166,55 @@ export const FollowCompanyScalarFieldEnum = {
 
 export type FollowCompanyScalarFieldEnum =
   (typeof FollowCompanyScalarFieldEnum)[keyof typeof FollowCompanyScalarFieldEnum];
+
+export const JobScalarFieldEnum = {
+  id: "id",
+  title: "title",
+  description: "description",
+  category: "category",
+  gender: "gender",
+  salaryType: "salaryType",
+  salaryMin: "salaryMin",
+  salaryMax: "salaryMax",
+  totalApplications: "totalApplications",
+  status: "status",
+  jobType: "jobType",
+  experience: "experience",
+  careerLevel: "careerLevel",
+  qualification: "qualification",
+  deadline: "deadline",
+  companyId: "companyId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type JobScalarFieldEnum =
+  (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum];
+
+export const ResumeScalarFieldEnum = {
+  id: "id",
+  title: "title",
+  fileUrl: "fileUrl",
+  isPrimary: "isPrimary",
+  isDraft: "isDraft",
+  candidateId: "candidateId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type ResumeScalarFieldEnum =
+  (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum];
+
+export const SavedJobScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  jobId: "jobId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type SavedJobScalarFieldEnum =
+  (typeof SavedJobScalarFieldEnum)[keyof typeof SavedJobScalarFieldEnum];
 
 export const UserScalarFieldEnum = {
   id: "id",
@@ -255,6 +228,31 @@ export const UserScalarFieldEnum = {
 
 export type UserScalarFieldEnum =
   (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
+
+export const SkillScalarFieldEnum = {
+  id: "id",
+  skill: "skill",
+  candideId: "candideId",
+} as const;
+
+export type SkillScalarFieldEnum =
+  (typeof SkillScalarFieldEnum)[keyof typeof SkillScalarFieldEnum];
+
+export const WorkExperienceScalarFieldEnum = {
+  id: "id",
+  candideId: "candideId",
+  jobTitle: "jobTitle",
+  companyName: "companyName",
+  industry: "industry",
+  startData: "startData",
+  endData: "endData",
+  Description: "Description",
+  isWorking: "isWorking",
+  createdId: "createdId",
+} as const;
+
+export type WorkExperienceScalarFieldEnum =
+  (typeof WorkExperienceScalarFieldEnum)[keyof typeof WorkExperienceScalarFieldEnum];
 
 export const SortOrder = {
   asc: "asc",

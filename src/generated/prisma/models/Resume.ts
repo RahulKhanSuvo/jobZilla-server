@@ -364,6 +364,11 @@ export type ResumeUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
+export type ResumeScalarRelationFilter = {
+  is?: Prisma.ResumeWhereInput;
+  isNot?: Prisma.ResumeWhereInput;
+};
+
 export type ResumeListRelationFilter = {
   every?: Prisma.ResumeWhereInput;
   some?: Prisma.ResumeWhereInput;
@@ -407,9 +412,30 @@ export type ResumeMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder;
 };
 
-export type ResumeScalarRelationFilter = {
-  is?: Prisma.ResumeWhereInput;
-  isNot?: Prisma.ResumeWhereInput;
+export type ResumeCreateNestedOneWithoutApplicationsInput = {
+  create?: Prisma.XOR<
+    Prisma.ResumeCreateWithoutApplicationsInput,
+    Prisma.ResumeUncheckedCreateWithoutApplicationsInput
+  >;
+  connectOrCreate?: Prisma.ResumeCreateOrConnectWithoutApplicationsInput;
+  connect?: Prisma.ResumeWhereUniqueInput;
+};
+
+export type ResumeUpdateOneRequiredWithoutApplicationsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.ResumeCreateWithoutApplicationsInput,
+    Prisma.ResumeUncheckedCreateWithoutApplicationsInput
+  >;
+  connectOrCreate?: Prisma.ResumeCreateOrConnectWithoutApplicationsInput;
+  upsert?: Prisma.ResumeUpsertWithoutApplicationsInput;
+  connect?: Prisma.ResumeWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.ResumeUpdateToOneWithWhereWithoutApplicationsInput,
+      Prisma.ResumeUpdateWithoutApplicationsInput
+    >,
+    Prisma.ResumeUncheckedUpdateWithoutApplicationsInput
+  >;
 };
 
 export type ResumeCreateNestedManyWithoutCandidateInput = {
@@ -498,38 +524,76 @@ export type ResumeUncheckedUpdateManyWithoutCandidateNestedInput = {
   deleteMany?: Prisma.ResumeScalarWhereInput | Prisma.ResumeScalarWhereInput[];
 };
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean;
+export type ResumeCreateWithoutApplicationsInput = {
+  id?: string;
+  title: string;
+  fileUrl: string;
+  isPrimary?: boolean;
+  isDraft?: boolean;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  candidate: Prisma.CandidateCreateNestedOneWithoutResumesInput;
 };
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string;
+export type ResumeUncheckedCreateWithoutApplicationsInput = {
+  id?: string;
+  title: string;
+  fileUrl: string;
+  isPrimary?: boolean;
+  isDraft?: boolean;
+  candidateId: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 };
 
-export type ResumeCreateNestedOneWithoutApplicationsInput = {
-  create?: Prisma.XOR<
+export type ResumeCreateOrConnectWithoutApplicationsInput = {
+  where: Prisma.ResumeWhereUniqueInput;
+  create: Prisma.XOR<
     Prisma.ResumeCreateWithoutApplicationsInput,
     Prisma.ResumeUncheckedCreateWithoutApplicationsInput
   >;
-  connectOrCreate?: Prisma.ResumeCreateOrConnectWithoutApplicationsInput;
-  connect?: Prisma.ResumeWhereUniqueInput;
 };
 
-export type ResumeUpdateOneRequiredWithoutApplicationsNestedInput = {
-  create?: Prisma.XOR<
-    Prisma.ResumeCreateWithoutApplicationsInput,
-    Prisma.ResumeUncheckedCreateWithoutApplicationsInput
-  >;
-  connectOrCreate?: Prisma.ResumeCreateOrConnectWithoutApplicationsInput;
-  upsert?: Prisma.ResumeUpsertWithoutApplicationsInput;
-  connect?: Prisma.ResumeWhereUniqueInput;
-  update?: Prisma.XOR<
-    Prisma.XOR<
-      Prisma.ResumeUpdateToOneWithWhereWithoutApplicationsInput,
-      Prisma.ResumeUpdateWithoutApplicationsInput
-    >,
+export type ResumeUpsertWithoutApplicationsInput = {
+  update: Prisma.XOR<
+    Prisma.ResumeUpdateWithoutApplicationsInput,
     Prisma.ResumeUncheckedUpdateWithoutApplicationsInput
   >;
+  create: Prisma.XOR<
+    Prisma.ResumeCreateWithoutApplicationsInput,
+    Prisma.ResumeUncheckedCreateWithoutApplicationsInput
+  >;
+  where?: Prisma.ResumeWhereInput;
+};
+
+export type ResumeUpdateToOneWithWhereWithoutApplicationsInput = {
+  where?: Prisma.ResumeWhereInput;
+  data: Prisma.XOR<
+    Prisma.ResumeUpdateWithoutApplicationsInput,
+    Prisma.ResumeUncheckedUpdateWithoutApplicationsInput
+  >;
+};
+
+export type ResumeUpdateWithoutApplicationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  title?: Prisma.StringFieldUpdateOperationsInput | string;
+  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  isDraft?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  candidate?: Prisma.CandidateUpdateOneRequiredWithoutResumesNestedInput;
+};
+
+export type ResumeUncheckedUpdateWithoutApplicationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  title?: Prisma.StringFieldUpdateOperationsInput | string;
+  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  isDraft?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  candidateId?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type ResumeCreateWithoutCandidateInput = {
@@ -609,78 +673,6 @@ export type ResumeScalarWhereInput = {
   candidateId?: Prisma.StringFilter<"Resume"> | string;
   createdAt?: Prisma.DateTimeFilter<"Resume"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"Resume"> | Date | string;
-};
-
-export type ResumeCreateWithoutApplicationsInput = {
-  id?: string;
-  title: string;
-  fileUrl: string;
-  isPrimary?: boolean;
-  isDraft?: boolean;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  candidate: Prisma.CandidateCreateNestedOneWithoutResumesInput;
-};
-
-export type ResumeUncheckedCreateWithoutApplicationsInput = {
-  id?: string;
-  title: string;
-  fileUrl: string;
-  isPrimary?: boolean;
-  isDraft?: boolean;
-  candidateId: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-};
-
-export type ResumeCreateOrConnectWithoutApplicationsInput = {
-  where: Prisma.ResumeWhereUniqueInput;
-  create: Prisma.XOR<
-    Prisma.ResumeCreateWithoutApplicationsInput,
-    Prisma.ResumeUncheckedCreateWithoutApplicationsInput
-  >;
-};
-
-export type ResumeUpsertWithoutApplicationsInput = {
-  update: Prisma.XOR<
-    Prisma.ResumeUpdateWithoutApplicationsInput,
-    Prisma.ResumeUncheckedUpdateWithoutApplicationsInput
-  >;
-  create: Prisma.XOR<
-    Prisma.ResumeCreateWithoutApplicationsInput,
-    Prisma.ResumeUncheckedCreateWithoutApplicationsInput
-  >;
-  where?: Prisma.ResumeWhereInput;
-};
-
-export type ResumeUpdateToOneWithWhereWithoutApplicationsInput = {
-  where?: Prisma.ResumeWhereInput;
-  data: Prisma.XOR<
-    Prisma.ResumeUpdateWithoutApplicationsInput,
-    Prisma.ResumeUncheckedUpdateWithoutApplicationsInput
-  >;
-};
-
-export type ResumeUpdateWithoutApplicationsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  title?: Prisma.StringFieldUpdateOperationsInput | string;
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string;
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  isDraft?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  candidate?: Prisma.CandidateUpdateOneRequiredWithoutResumesNestedInput;
-};
-
-export type ResumeUncheckedUpdateWithoutApplicationsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  title?: Prisma.StringFieldUpdateOperationsInput | string;
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string;
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  isDraft?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  candidateId?: Prisma.StringFieldUpdateOperationsInput | string;
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type ResumeCreateManyCandidateInput = {

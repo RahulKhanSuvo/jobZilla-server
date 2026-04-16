@@ -8,6 +8,15 @@
  * 🟢 You can import this file directly.
  */
 
+export const AppStatus = {
+  PENDING: "PENDING",
+  SHORTLISTED: "SHORTLISTED",
+  REJECTED: "REJECTED",
+  HIRED: "HIRED",
+} as const;
+
+export type AppStatus = (typeof AppStatus)[keyof typeof AppStatus];
+
 export const JobType = {
   FULL_TIME: "FULL_TIME",
   PART_TIME: "PART_TIME",
@@ -43,12 +52,3 @@ export const UserRole = {
 } as const;
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole];
-
-export const AppStatus = {
-  PENDING: "PENDING",
-  SHORTLISTED: "SHORTLISTED",
-  REJECTED: "REJECTED",
-  HIRED: "HIRED",
-} as const;
-
-export type AppStatus = (typeof AppStatus)[keyof typeof AppStatus];
