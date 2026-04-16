@@ -1,4 +1,4 @@
-model eduction {
+model Eduction {
     id          String    @id @default(uuid())
     institution String
     major       String

@@ -1,4 +1,4 @@
-model workExperience {
+model WorkExperience {
     id          String    @id @default(uuid())
     candideId   String
     candidate   Candidate @relation(fields: [candideId], references: [id])

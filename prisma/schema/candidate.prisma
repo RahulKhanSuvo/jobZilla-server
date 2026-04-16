@@ -12,9 +12,9 @@ model Candidate {
   facebook        String?
   linkedin        String?
   twitter         String?
-  workExperiences workExperience[]
-  skills          skill[]
-  eductions       eduction[]
+  workExperiences WorkExperience[]
+  skills          Skill[]
+  eductions       Eduction[]
   resumes         Resume[]
   user            User             @relation(fields: [userId], references: [id])
   followCompanies FollowCompany[]
