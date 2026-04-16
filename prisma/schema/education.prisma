@@ -3,7 +3,6 @@ model Eduction {
     institution String
     major       String
     field       String
-    gap         Decimal
     startData   DateTime
     endData     DateTime?
     isStudying  Boolean   @default(false)
