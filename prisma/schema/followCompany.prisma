@@ -1,0 +1,11 @@
+model FollowCompany {
+    id        String    @id @default(uuid())
+    candideId String
+    candidate Candidate @relation(fields: [candideId], references: [userId])
+    companyId String
+    company   Company   @relation(fields: [companyId], references: [userId])
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+
+    @@unique([candideId, companyId])
+}

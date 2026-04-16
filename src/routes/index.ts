@@ -13,4 +13,5 @@ routes.use("/recruiter", recruiterRouter);
 routes.use("/jobs", jobsRoutes);
 routes.use("/applications", ApplicationRoutes);
 routes.use("/follow-company", followCompanyRoutes);
+routes.use("/save-job");
 export default routes;

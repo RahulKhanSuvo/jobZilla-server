@@ -1,0 +1,11 @@
+model SavedJob {
+    id        String   @id @default(uuid())
+    userId    String
+    jobId     String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    job       Job      @relation(fields: [jobId], references: [id])
+    user      User     @relation(fields: [userId], references: [id])
+
+    @@unique([userId, jobId])
+}

@@ -30,10 +30,12 @@ export const JobSchema = z.object({
   experience: z.string().max(100).optional().nullable(),
   careerLevel: CareerLevelEnum.optional().nullable(),
   qualification: z.string().optional().nullable(),
-  deadline: z.coerce.date().optional().nullable(),
-  skills: z.string().max(200).optional().nullable(),
-  createdAt: z.coerce.date().optional(),
-  updatedAt: z.coerce.date().optional(),
+  deadline: z.preprocess(
+    (val) => (val === "" ? undefined : val),
+    z.coerce.date().refine((date) => date >= new Date(), {
+      message: "Deadline cannot be in the past",
+    }),
+  ),
 });
 
 export type IJob = z.infer<typeof JobSchema>;

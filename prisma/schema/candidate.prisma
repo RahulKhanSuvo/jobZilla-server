@@ -1,73 +1,21 @@
 model Candidate {
-  id     String @id @default(uuid())
-  userId String @unique
-  phone  String
-
-  // Profile Info
-  location      String?
-  dob           DateTime?
-  gender        String?
-  maritalStatus String?
-  language      String?
-  aboutMe       String?   @db.Text
-  profileImage  String?
-  // Social Links
-  facebook      String?
-  linkedin      String?
-  twitter       String?
-
+  id              String           @id @default(uuid())
+  userId          String           @unique
+  phone           String
+  location        String?
+  dob             DateTime?
+  gender          String?
+  maritalStatus   String?
+  language        String?
+  aboutMe         String?          @db.Text
+  profileImage    String?
+  facebook        String?
+  linkedin        String?
+  twitter         String?
   workExperiences workExperience[]
   skills          skill[]
   eductions       eduction[]
   resumes         Resume[]
   user            User             @relation(fields: [userId], references: [id])
   followCompanies FollowCompany[]
-}
-
-model Resume {
-  id           String        @id @default(uuid())
-  title        String
-  fileUrl      String
-  isPrimary    Boolean       @default(false)
-  isDraft      Boolean       @default(false)
-  candidateId  String
-  candidate    Candidate     @relation(fields: [candidateId], references: [id])
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  applications Application[]
-}
-
-model workExperience {
-  id          String    @id @default(uuid())
-  candideId   String
-  candidate   Candidate @relation(fields: [candideId], references: [id])
-  jobTitle    String    @db.VarChar(150)
-  companyName String    @db.VarChar(150)
-  industry    String
-  startData   DateTime
-  endData     DateTime?
-  Description String    @db.Text
-  isWorking   Boolean   @default(true)
-  createdId   DateTime  @default(now())
-}
-
-model skill {
-  id        String    @id @default(uuid())
-  skill     String
-  candideId String
-  candidate Candidate @relation(fields: [candideId], references: [id])
-}
-
-model eduction {
-  id          String    @id @default(uuid())
-  institution String
-  major       String
-  field       String
-  gap         Decimal
-  startData   DateTime
-  endData     DateTime?
-  isStudying  Boolean   @default(false)
-  createdId   DateTime  @default(now())
-  candideId   String
-  candidate   Candidate @relation(fields: [candideId], references: [id])
 }

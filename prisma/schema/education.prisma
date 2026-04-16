@@ -1,0 +1,13 @@
+model eduction {
+    id          String    @id @default(uuid())
+    institution String
+    major       String
+    field       String
+    gap         Decimal
+    startData   DateTime
+    endData     DateTime?
+    isStudying  Boolean   @default(false)
+    createdId   DateTime  @default(now())
+    candideId   String
+    candidate   Candidate @relation(fields: [candideId], references: [id])
+}

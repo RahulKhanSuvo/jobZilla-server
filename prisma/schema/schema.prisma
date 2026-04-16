@@ -26,10 +26,3 @@ model User {
   company      Company?
   savedJobs    SavedJob[]
 }
-
-enum AppStatus {
-  PENDING
-  SHORTLISTED
-  REJECTED
-  HIRED
-}

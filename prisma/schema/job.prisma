@@ -1,0 +1,45 @@
+model Job {
+    id                String        @id @default(uuid())
+    title             String        @db.VarChar(100)
+    description       String        @db.Text
+    category          String?
+    gender            String?
+    salaryType        String?
+    salaryMin         Int?
+    salaryMax         Int?
+    totalApplications Int?          @default(0)
+    status            JobStatus?    @default(OPEN)
+    jobType           JobType?
+    experience        String?       @db.VarChar(100)
+    careerLevel       CareerLevel?
+    qualification     String?
+    deadline          DateTime?
+    companyId         String
+    company           Company       @relation(fields: [companyId], references: [userId])
+    createdAt         DateTime      @default(now())
+    updatedAt         DateTime      @updatedAt
+    applications      Application[]
+    savedJobs         SavedJob[]
+}
+
+enum JobType {
+    FULL_TIME
+    PART_TIME
+    CONTRACT
+    INTERN
+    REMOTE
+    ON_SITE
+    HYBRID
+}
+
+enum JobStatus {
+    OPEN
+    CLOSED
+}
+
+enum CareerLevel {
+    ENTRY_LEVEL
+    MID_LEVEL
+    SENIOR_LEVEL
+    EXECUTIVE_LEVEL
+}
