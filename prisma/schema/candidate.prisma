@@ -6,7 +6,6 @@ model Candidate {
   dob             DateTime?
   gender          String?
   maritalStatus   String?
-  language        String?
   aboutMe         String?          @db.Text
   profileImage    String?
   facebook        String?
@@ -16,6 +15,7 @@ model Candidate {
   skills          Skill[]
   eductions       Eduction[]
   resumes         Resume[]
+  languages       Language[]
   user            User             @relation(fields: [userId], references: [id])
   followCompanies FollowCompany[]
 }
