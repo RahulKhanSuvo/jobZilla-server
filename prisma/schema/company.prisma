@@ -52,7 +52,7 @@ model Job {
   status            JobStatus?    @default(OPEN)
   jobType           JobType?
   experience        String?       @db.VarChar(100)
-  careerLevel       String?
+  careerLevel       CareerLevel?
   qualification     String?
   deadline          DateTime?
   skills            String?       @db.VarChar(200)
@@ -62,6 +62,13 @@ model Job {
   updatedAt         DateTime      @updatedAt
   applications      Application[]
   savedJobs         SavedJob[]
+}
+
+enum CareerLevel {
+  ENTRY_LEVEL
+  MID_LEVEL
+  SENIOR_LEVEL
+  EXECUTIVE_LEVEL
 }
 
 model Application {
