@@ -45,10 +45,6 @@ jobsRoutes.delete(
 jobsRoutes.get("/:id", authGard({ optional: true }), jobsController.jobById);
 
 // get company jobs
-jobsRoutes.get(
-  "/company/:id",
-  authGard({ roles: [UserRole.CANDIDATE, UserRole.EMPLOYER] }),
-  jobsController.getCompanyJobs,
-);
+jobsRoutes.get("/company/:id", jobsController.getCompanyJobs);
 
 export default jobsRoutes;
