@@ -51,7 +51,7 @@ export type JobMinAggregateOutputType = {
   status: $Enums.JobStatus | null;
   jobType: $Enums.JobType | null;
   experience: string | null;
-  careerLevel: string | null;
+  careerLevel: $Enums.CareerLevel | null;
   qualification: string | null;
   deadline: Date | null;
   skills: string | null;
@@ -73,7 +73,7 @@ export type JobMaxAggregateOutputType = {
   status: $Enums.JobStatus | null;
   jobType: $Enums.JobType | null;
   experience: string | null;
-  careerLevel: string | null;
+  careerLevel: $Enums.CareerLevel | null;
   qualification: string | null;
   deadline: Date | null;
   skills: string | null;
@@ -293,7 +293,7 @@ export type JobGroupByOutputType = {
   status: $Enums.JobStatus | null;
   jobType: $Enums.JobType | null;
   experience: string | null;
-  careerLevel: string | null;
+  careerLevel: $Enums.CareerLevel | null;
   qualification: string | null;
   deadline: Date | null;
   skills: string | null;
@@ -337,7 +337,10 @@ export type JobWhereInput = {
   status?: Prisma.EnumJobStatusNullableFilter<"Job"> | $Enums.JobStatus | null;
   jobType?: Prisma.EnumJobTypeNullableFilter<"Job"> | $Enums.JobType | null;
   experience?: Prisma.StringNullableFilter<"Job"> | string | null;
-  careerLevel?: Prisma.StringNullableFilter<"Job"> | string | null;
+  careerLevel?:
+    | Prisma.EnumCareerLevelNullableFilter<"Job">
+    | $Enums.CareerLevel
+    | null;
   qualification?: Prisma.StringNullableFilter<"Job"> | string | null;
   deadline?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null;
   skills?: Prisma.StringNullableFilter<"Job"> | string | null;
@@ -399,7 +402,10 @@ export type JobWhereUniqueInput = Prisma.AtLeast<
       | null;
     jobType?: Prisma.EnumJobTypeNullableFilter<"Job"> | $Enums.JobType | null;
     experience?: Prisma.StringNullableFilter<"Job"> | string | null;
-    careerLevel?: Prisma.StringNullableFilter<"Job"> | string | null;
+    careerLevel?:
+      | Prisma.EnumCareerLevelNullableFilter<"Job">
+      | $Enums.CareerLevel
+      | null;
     qualification?: Prisma.StringNullableFilter<"Job"> | string | null;
     deadline?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null;
     skills?: Prisma.StringNullableFilter<"Job"> | string | null;
@@ -475,8 +481,8 @@ export type JobScalarWhereWithAggregatesInput = {
     | null;
   experience?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null;
   careerLevel?:
-    | Prisma.StringNullableWithAggregatesFilter<"Job">
-    | string
+    | Prisma.EnumCareerLevelNullableWithAggregatesFilter<"Job">
+    | $Enums.CareerLevel
     | null;
   qualification?:
     | Prisma.StringNullableWithAggregatesFilter<"Job">
@@ -507,7 +513,7 @@ export type JobCreateInput = {
   status?: $Enums.JobStatus | null;
   jobType?: $Enums.JobType | null;
   experience?: string | null;
-  careerLevel?: string | null;
+  careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
   deadline?: Date | string | null;
   skills?: string | null;
@@ -532,7 +538,7 @@ export type JobUncheckedCreateInput = {
   status?: $Enums.JobStatus | null;
   jobType?: $Enums.JobType | null;
   experience?: string | null;
-  careerLevel?: string | null;
+  careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
   deadline?: Date | string | null;
   skills?: string | null;
@@ -566,7 +572,10 @@ export type JobUpdateInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -607,7 +616,10 @@ export type JobUncheckedUpdateInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -639,7 +651,7 @@ export type JobCreateManyInput = {
   status?: $Enums.JobStatus | null;
   jobType?: $Enums.JobType | null;
   experience?: string | null;
-  careerLevel?: string | null;
+  careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
   deadline?: Date | string | null;
   skills?: string | null;
@@ -671,7 +683,10 @@ export type JobUpdateManyMutationInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -709,7 +724,10 @@ export type JobUncheckedUpdateManyInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -938,6 +956,10 @@ export type NullableEnumJobTypeFieldUpdateOperationsInput = {
   set?: $Enums.JobType | null;
 };
 
+export type NullableEnumCareerLevelFieldUpdateOperationsInput = {
+  set?: $Enums.CareerLevel | null;
+};
+
 export type JobCreateNestedOneWithoutApplicationsInput = {
   create?: Prisma.XOR<
     Prisma.JobCreateWithoutApplicationsInput,
@@ -1004,7 +1026,7 @@ export type JobCreateWithoutCompanyInput = {
   status?: $Enums.JobStatus | null;
   jobType?: $Enums.JobType | null;
   experience?: string | null;
-  careerLevel?: string | null;
+  careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
   deadline?: Date | string | null;
   skills?: string | null;
@@ -1028,7 +1050,7 @@ export type JobUncheckedCreateWithoutCompanyInput = {
   status?: $Enums.JobStatus | null;
   jobType?: $Enums.JobType | null;
   experience?: string | null;
-  careerLevel?: string | null;
+  careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
   deadline?: Date | string | null;
   skills?: string | null;
@@ -1096,7 +1118,10 @@ export type JobScalarWhereInput = {
   status?: Prisma.EnumJobStatusNullableFilter<"Job"> | $Enums.JobStatus | null;
   jobType?: Prisma.EnumJobTypeNullableFilter<"Job"> | $Enums.JobType | null;
   experience?: Prisma.StringNullableFilter<"Job"> | string | null;
-  careerLevel?: Prisma.StringNullableFilter<"Job"> | string | null;
+  careerLevel?:
+    | Prisma.EnumCareerLevelNullableFilter<"Job">
+    | $Enums.CareerLevel
+    | null;
   qualification?: Prisma.StringNullableFilter<"Job"> | string | null;
   deadline?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null;
   skills?: Prisma.StringNullableFilter<"Job"> | string | null;
@@ -1119,7 +1144,7 @@ export type JobCreateWithoutApplicationsInput = {
   status?: $Enums.JobStatus | null;
   jobType?: $Enums.JobType | null;
   experience?: string | null;
-  careerLevel?: string | null;
+  careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
   deadline?: Date | string | null;
   skills?: string | null;
@@ -1143,7 +1168,7 @@ export type JobUncheckedCreateWithoutApplicationsInput = {
   status?: $Enums.JobStatus | null;
   jobType?: $Enums.JobType | null;
   experience?: string | null;
-  careerLevel?: string | null;
+  careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
   deadline?: Date | string | null;
   skills?: string | null;
@@ -1204,7 +1229,10 @@ export type JobUpdateWithoutApplicationsInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -1244,7 +1272,10 @@ export type JobUncheckedUpdateWithoutApplicationsInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -1275,7 +1306,7 @@ export type JobCreateWithoutSavedJobsInput = {
   status?: $Enums.JobStatus | null;
   jobType?: $Enums.JobType | null;
   experience?: string | null;
-  careerLevel?: string | null;
+  careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
   deadline?: Date | string | null;
   skills?: string | null;
@@ -1299,7 +1330,7 @@ export type JobUncheckedCreateWithoutSavedJobsInput = {
   status?: $Enums.JobStatus | null;
   jobType?: $Enums.JobType | null;
   experience?: string | null;
-  careerLevel?: string | null;
+  careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
   deadline?: Date | string | null;
   skills?: string | null;
@@ -1360,7 +1391,10 @@ export type JobUpdateWithoutSavedJobsInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -1400,7 +1434,10 @@ export type JobUncheckedUpdateWithoutSavedJobsInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -1431,7 +1468,7 @@ export type JobCreateManyCompanyInput = {
   status?: $Enums.JobStatus | null;
   jobType?: $Enums.JobType | null;
   experience?: string | null;
-  careerLevel?: string | null;
+  careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
   deadline?: Date | string | null;
   skills?: string | null;
@@ -1462,7 +1499,10 @@ export type JobUpdateWithoutCompanyInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -1502,7 +1542,10 @@ export type JobUncheckedUpdateWithoutCompanyInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -1542,7 +1585,10 @@ export type JobUncheckedUpdateManyWithoutCompanyInput = {
     | $Enums.JobType
     | null;
   experience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  careerLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  careerLevel?:
+    | Prisma.NullableEnumCareerLevelFieldUpdateOperationsInput
+    | $Enums.CareerLevel
+    | null;
   qualification?:
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
@@ -1796,7 +1842,7 @@ export type $JobPayload<
       status: $Enums.JobStatus | null;
       jobType: $Enums.JobType | null;
       experience: string | null;
-      careerLevel: string | null;
+      careerLevel: $Enums.CareerLevel | null;
       qualification: string | null;
       deadline: Date | null;
       skills: string | null;
@@ -2444,7 +2490,7 @@ export interface JobFieldRefs {
   readonly status: Prisma.FieldRef<"Job", "JobStatus">;
   readonly jobType: Prisma.FieldRef<"Job", "JobType">;
   readonly experience: Prisma.FieldRef<"Job", "String">;
-  readonly careerLevel: Prisma.FieldRef<"Job", "String">;
+  readonly careerLevel: Prisma.FieldRef<"Job", "CareerLevel">;
   readonly qualification: Prisma.FieldRef<"Job", "String">;
   readonly deadline: Prisma.FieldRef<"Job", "DateTime">;
   readonly skills: Prisma.FieldRef<"Job", "String">;

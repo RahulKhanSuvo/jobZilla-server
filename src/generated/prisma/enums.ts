@@ -11,10 +11,11 @@
 export const JobType = {
   FULL_TIME: "FULL_TIME",
   PART_TIME: "PART_TIME",
-  FREELANCE: "FREELANCE",
   CONTRACT: "CONTRACT",
   INTERN: "INTERN",
   REMOTE: "REMOTE",
+  ON_SITE: "ON_SITE",
+  HYBRID: "HYBRID",
 } as const;
 
 export type JobType = (typeof JobType)[keyof typeof JobType];
@@ -25,6 +26,15 @@ export const JobStatus = {
 } as const;
 
 export type JobStatus = (typeof JobStatus)[keyof typeof JobStatus];
+
+export const CareerLevel = {
+  ENTRY_LEVEL: "ENTRY_LEVEL",
+  MID_LEVEL: "MID_LEVEL",
+  SENIOR_LEVEL: "SENIOR_LEVEL",
+  EXECUTIVE_LEVEL: "EXECUTIVE_LEVEL",
+} as const;
+
+export type CareerLevel = (typeof CareerLevel)[keyof typeof CareerLevel];
 
 export const UserRole = {
   CANDIDATE: "CANDIDATE",

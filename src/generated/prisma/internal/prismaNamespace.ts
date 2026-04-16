@@ -1637,6 +1637,22 @@ export type ListEnumJobTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
 >;
 
 /**
+ * Reference to a field of type 'CareerLevel'
+ */
+export type EnumCareerLevelFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "CareerLevel"
+>;
+
+/**
+ * Reference to a field of type 'CareerLevel[]'
+ */
+export type ListEnumCareerLevelFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "CareerLevel[]"
+>;
+
+/**
  * Reference to a field of type 'AppStatus'
  */
 export type EnumAppStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
