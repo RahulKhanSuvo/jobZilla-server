@@ -30,8 +30,8 @@ export * from "./enums";
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Applications
- * const applications = await prisma.application.findMany()
+ * // Fetch zero or more Languages
+ * const languages = await prisma.language.findMany()
  * ```
  *
  * Read more in our [docs](https://pris.ly/d/client).
@@ -46,6 +46,11 @@ export type PrismaClient<
 > = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>;
 export { Prisma };
 
+/**
+ * Model Language
+ *
+ */
+export type Language = Prisma.LanguageModel;
 /**
  * Model Application
  *
@@ -62,10 +67,10 @@ export type Candidate = Prisma.CandidateModel;
  */
 export type Company = Prisma.CompanyModel;
 /**
- * Model eduction
+ * Model Eduction
  *
  */
-export type eduction = Prisma.eductionModel;
+export type Eduction = Prisma.EductionModel;
 /**
  * Model FollowCompany
  *
@@ -92,12 +97,12 @@ export type SavedJob = Prisma.SavedJobModel;
  */
 export type User = Prisma.UserModel;
 /**
- * Model skill
+ * Model Skill
  *
  */
-export type skill = Prisma.skillModel;
+export type Skill = Prisma.SkillModel;
 /**
- * Model workExperience
+ * Model WorkExperience
  *
  */
-export type workExperience = Prisma.workExperienceModel;
+export type WorkExperience = Prisma.WorkExperienceModel;

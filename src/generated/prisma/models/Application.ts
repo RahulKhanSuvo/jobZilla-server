@@ -420,10 +420,6 @@ export type ApplicationOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder;
 };
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string;
-};
-
 export type EnumAppStatusFieldUpdateOperationsInput = {
   set?: $Enums.AppStatus;
 };

@@ -54,17 +54,18 @@ export const JsonNull = runtime.JsonNull;
 export const AnyNull = runtime.AnyNull;
 
 export const ModelName = {
+  Language: "Language",
   Application: "Application",
   Candidate: "Candidate",
   Company: "Company",
-  eduction: "eduction",
+  Eduction: "Eduction",
   FollowCompany: "FollowCompany",
   Job: "Job",
   Resume: "Resume",
   SavedJob: "SavedJob",
   User: "User",
-  skill: "skill",
-  workExperience: "workExperience",
+  Skill: "Skill",
+  WorkExperience: "WorkExperience",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -82,6 +83,15 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 
 export type TransactionIsolationLevel =
   (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
+
+export const LanguageScalarFieldEnum = {
+  id: "id",
+  language: "language",
+  candideId: "candideId",
+} as const;
+
+export type LanguageScalarFieldEnum =
+  (typeof LanguageScalarFieldEnum)[keyof typeof LanguageScalarFieldEnum];
 
 export const ApplicationScalarFieldEnum = {
   id: "id",
@@ -105,7 +115,6 @@ export const CandidateScalarFieldEnum = {
   dob: "dob",
   gender: "gender",
   maritalStatus: "maritalStatus",
-  language: "language",
   aboutMe: "aboutMe",
   profileImage: "profileImage",
   facebook: "facebook",
@@ -145,7 +154,6 @@ export const EductionScalarFieldEnum = {
   institution: "institution",
   major: "major",
   field: "field",
-  gap: "gap",
   startData: "startData",
   endData: "endData",
   isStudying: "isStudying",

@@ -3,7 +3,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck
 /*
- * This file exports the `eduction` model and its related types.
+ * This file exports the `Eduction` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -12,26 +12,16 @@ import type * as $Enums from "../enums";
 import type * as Prisma from "../internal/prismaNamespace";
 
 /**
- * Model eduction
+ * Model Eduction
  *
  */
-export type eductionModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$eductionPayload>;
+export type EductionModel =
+  runtime.Types.Result.DefaultSelection<Prisma.$EductionPayload>;
 
 export type AggregateEduction = {
   _count: EductionCountAggregateOutputType | null;
-  _avg: EductionAvgAggregateOutputType | null;
-  _sum: EductionSumAggregateOutputType | null;
   _min: EductionMinAggregateOutputType | null;
   _max: EductionMaxAggregateOutputType | null;
-};
-
-export type EductionAvgAggregateOutputType = {
-  gap: runtime.Decimal | null;
-};
-
-export type EductionSumAggregateOutputType = {
-  gap: runtime.Decimal | null;
 };
 
 export type EductionMinAggregateOutputType = {
@@ -39,7 +29,6 @@ export type EductionMinAggregateOutputType = {
   institution: string | null;
   major: string | null;
   field: string | null;
-  gap: runtime.Decimal | null;
   startData: Date | null;
   endData: Date | null;
   isStudying: boolean | null;
@@ -52,7 +41,6 @@ export type EductionMaxAggregateOutputType = {
   institution: string | null;
   major: string | null;
   field: string | null;
-  gap: runtime.Decimal | null;
   startData: Date | null;
   endData: Date | null;
   isStudying: boolean | null;
@@ -65,7 +53,6 @@ export type EductionCountAggregateOutputType = {
   institution: number;
   major: number;
   field: number;
-  gap: number;
   startData: number;
   endData: number;
   isStudying: number;
@@ -74,20 +61,11 @@ export type EductionCountAggregateOutputType = {
   _all: number;
 };
 
-export type EductionAvgAggregateInputType = {
-  gap?: true;
-};
-
-export type EductionSumAggregateInputType = {
-  gap?: true;
-};
-
 export type EductionMinAggregateInputType = {
   id?: true;
   institution?: true;
   major?: true;
   field?: true;
-  gap?: true;
   startData?: true;
   endData?: true;
   isStudying?: true;
@@ -100,7 +78,6 @@ export type EductionMaxAggregateInputType = {
   institution?: true;
   major?: true;
   field?: true;
-  gap?: true;
   startData?: true;
   endData?: true;
   isStudying?: true;
@@ -113,7 +90,6 @@ export type EductionCountAggregateInputType = {
   institution?: true;
   major?: true;
   field?: true;
-  gap?: true;
   startData?: true;
   endData?: true;
   isStudying?: true;
@@ -127,53 +103,41 @@ export type EductionAggregateArgs<
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Filter which eduction to aggregate.
+   * Filter which Eduction to aggregate.
    */
-  where?: Prisma.eductionWhereInput;
+  where?: Prisma.EductionWhereInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    *
-   * Determine the order of eductions to fetch.
+   * Determine the order of Eductions to fetch.
    */
   orderBy?:
-    | Prisma.eductionOrderByWithRelationInput
-    | Prisma.eductionOrderByWithRelationInput[];
+    | Prisma.EductionOrderByWithRelationInput
+    | Prisma.EductionOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
    * Sets the start position
    */
-  cursor?: Prisma.eductionWhereUniqueInput;
+  cursor?: Prisma.EductionWhereUniqueInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Take `±n` eductions from the position of the cursor.
+   * Take `±n` Eductions from the position of the cursor.
    */
   take?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Skip the first `n` eductions.
+   * Skip the first `n` Eductions.
    */
   skip?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    *
-   * Count returned eductions
+   * Count returned Eductions
    **/
   _count?: true | EductionCountAggregateInputType;
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   *
-   * Select which fields to average
-   **/
-  _avg?: EductionAvgAggregateInputType;
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   *
-   * Select which fields to sum
-   **/
-  _sum?: EductionSumAggregateInputType;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    *
@@ -196,21 +160,19 @@ export type GetEductionAggregateType<T extends EductionAggregateArgs> = {
     : Prisma.GetScalarType<T[P], AggregateEduction[P]>;
 };
 
-export type eductionGroupByArgs<
+export type EductionGroupByArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  where?: Prisma.eductionWhereInput;
+  where?: Prisma.EductionWhereInput;
   orderBy?:
-    | Prisma.eductionOrderByWithAggregationInput
-    | Prisma.eductionOrderByWithAggregationInput[];
+    | Prisma.EductionOrderByWithAggregationInput
+    | Prisma.EductionOrderByWithAggregationInput[];
   by: Prisma.EductionScalarFieldEnum[] | Prisma.EductionScalarFieldEnum;
-  having?: Prisma.eductionScalarWhereWithAggregatesInput;
+  having?: Prisma.EductionScalarWhereWithAggregatesInput;
   take?: number;
   skip?: number;
   _count?: EductionCountAggregateInputType | true;
-  _avg?: EductionAvgAggregateInputType;
-  _sum?: EductionSumAggregateInputType;
   _min?: EductionMinAggregateInputType;
   _max?: EductionMaxAggregateInputType;
 };
@@ -220,20 +182,17 @@ export type EductionGroupByOutputType = {
   institution: string;
   major: string;
   field: string;
-  gap: runtime.Decimal;
   startData: Date;
   endData: Date | null;
   isStudying: boolean;
   createdId: Date;
   candideId: string;
   _count: EductionCountAggregateOutputType | null;
-  _avg: EductionAvgAggregateOutputType | null;
-  _sum: EductionSumAggregateOutputType | null;
   _min: EductionMinAggregateOutputType | null;
   _max: EductionMaxAggregateOutputType | null;
 };
 
-export type GetEductionGroupByPayload<T extends eductionGroupByArgs> =
+export type GetEductionGroupByPayload<T extends EductionGroupByArgs> =
   Prisma.PrismaPromise<
     Array<
       Prisma.PickEnumerable<EductionGroupByOutputType, T["by"]> & {
@@ -246,37 +205,30 @@ export type GetEductionGroupByPayload<T extends eductionGroupByArgs> =
     >
   >;
 
-export type eductionWhereInput = {
-  AND?: Prisma.eductionWhereInput | Prisma.eductionWhereInput[];
-  OR?: Prisma.eductionWhereInput[];
-  NOT?: Prisma.eductionWhereInput | Prisma.eductionWhereInput[];
-  id?: Prisma.StringFilter<"eduction"> | string;
-  institution?: Prisma.StringFilter<"eduction"> | string;
-  major?: Prisma.StringFilter<"eduction"> | string;
-  field?: Prisma.StringFilter<"eduction"> | string;
-  gap?:
-    | Prisma.DecimalFilter<"eduction">
-    | runtime.Decimal
-    | runtime.DecimalJsLike
-    | number
-    | string;
-  startData?: Prisma.DateTimeFilter<"eduction"> | Date | string;
-  endData?: Prisma.DateTimeNullableFilter<"eduction"> | Date | string | null;
-  isStudying?: Prisma.BoolFilter<"eduction"> | boolean;
-  createdId?: Prisma.DateTimeFilter<"eduction"> | Date | string;
-  candideId?: Prisma.StringFilter<"eduction"> | string;
+export type EductionWhereInput = {
+  AND?: Prisma.EductionWhereInput | Prisma.EductionWhereInput[];
+  OR?: Prisma.EductionWhereInput[];
+  NOT?: Prisma.EductionWhereInput | Prisma.EductionWhereInput[];
+  id?: Prisma.StringFilter<"Eduction"> | string;
+  institution?: Prisma.StringFilter<"Eduction"> | string;
+  major?: Prisma.StringFilter<"Eduction"> | string;
+  field?: Prisma.StringFilter<"Eduction"> | string;
+  startData?: Prisma.DateTimeFilter<"Eduction"> | Date | string;
+  endData?: Prisma.DateTimeNullableFilter<"Eduction"> | Date | string | null;
+  isStudying?: Prisma.BoolFilter<"Eduction"> | boolean;
+  createdId?: Prisma.DateTimeFilter<"Eduction"> | Date | string;
+  candideId?: Prisma.StringFilter<"Eduction"> | string;
   candidate?: Prisma.XOR<
     Prisma.CandidateScalarRelationFilter,
     Prisma.CandidateWhereInput
   >;
 };
 
-export type eductionOrderByWithRelationInput = {
+export type EductionOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
   institution?: Prisma.SortOrder;
   major?: Prisma.SortOrder;
   field?: Prisma.SortOrder;
-  gap?: Prisma.SortOrder;
   startData?: Prisma.SortOrder;
   endData?: Prisma.SortOrderInput | Prisma.SortOrder;
   isStudying?: Prisma.SortOrder;
@@ -285,26 +237,20 @@ export type eductionOrderByWithRelationInput = {
   candidate?: Prisma.CandidateOrderByWithRelationInput;
 };
 
-export type eductionWhereUniqueInput = Prisma.AtLeast<
+export type EductionWhereUniqueInput = Prisma.AtLeast<
   {
     id?: string;
-    AND?: Prisma.eductionWhereInput | Prisma.eductionWhereInput[];
-    OR?: Prisma.eductionWhereInput[];
-    NOT?: Prisma.eductionWhereInput | Prisma.eductionWhereInput[];
-    institution?: Prisma.StringFilter<"eduction"> | string;
-    major?: Prisma.StringFilter<"eduction"> | string;
-    field?: Prisma.StringFilter<"eduction"> | string;
-    gap?:
-      | Prisma.DecimalFilter<"eduction">
-      | runtime.Decimal
-      | runtime.DecimalJsLike
-      | number
-      | string;
-    startData?: Prisma.DateTimeFilter<"eduction"> | Date | string;
-    endData?: Prisma.DateTimeNullableFilter<"eduction"> | Date | string | null;
-    isStudying?: Prisma.BoolFilter<"eduction"> | boolean;
-    createdId?: Prisma.DateTimeFilter<"eduction"> | Date | string;
-    candideId?: Prisma.StringFilter<"eduction"> | string;
+    AND?: Prisma.EductionWhereInput | Prisma.EductionWhereInput[];
+    OR?: Prisma.EductionWhereInput[];
+    NOT?: Prisma.EductionWhereInput | Prisma.EductionWhereInput[];
+    institution?: Prisma.StringFilter<"Eduction"> | string;
+    major?: Prisma.StringFilter<"Eduction"> | string;
+    field?: Prisma.StringFilter<"Eduction"> | string;
+    startData?: Prisma.DateTimeFilter<"Eduction"> | Date | string;
+    endData?: Prisma.DateTimeNullableFilter<"Eduction"> | Date | string | null;
+    isStudying?: Prisma.BoolFilter<"Eduction"> | boolean;
+    createdId?: Prisma.DateTimeFilter<"Eduction"> | Date | string;
+    candideId?: Prisma.StringFilter<"Eduction"> | string;
     candidate?: Prisma.XOR<
       Prisma.CandidateScalarRelationFilter,
       Prisma.CandidateWhereInput
@@ -313,59 +259,49 @@ export type eductionWhereUniqueInput = Prisma.AtLeast<
   "id"
 >;
 
-export type eductionOrderByWithAggregationInput = {
+export type EductionOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
   institution?: Prisma.SortOrder;
   major?: Prisma.SortOrder;
   field?: Prisma.SortOrder;
-  gap?: Prisma.SortOrder;
   startData?: Prisma.SortOrder;
   endData?: Prisma.SortOrderInput | Prisma.SortOrder;
   isStudying?: Prisma.SortOrder;
   createdId?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
-  _count?: Prisma.eductionCountOrderByAggregateInput;
-  _avg?: Prisma.eductionAvgOrderByAggregateInput;
-  _max?: Prisma.eductionMaxOrderByAggregateInput;
-  _min?: Prisma.eductionMinOrderByAggregateInput;
-  _sum?: Prisma.eductionSumOrderByAggregateInput;
+  _count?: Prisma.EductionCountOrderByAggregateInput;
+  _max?: Prisma.EductionMaxOrderByAggregateInput;
+  _min?: Prisma.EductionMinOrderByAggregateInput;
 };
 
-export type eductionScalarWhereWithAggregatesInput = {
+export type EductionScalarWhereWithAggregatesInput = {
   AND?:
-    | Prisma.eductionScalarWhereWithAggregatesInput
-    | Prisma.eductionScalarWhereWithAggregatesInput[];
-  OR?: Prisma.eductionScalarWhereWithAggregatesInput[];
+    | Prisma.EductionScalarWhereWithAggregatesInput
+    | Prisma.EductionScalarWhereWithAggregatesInput[];
+  OR?: Prisma.EductionScalarWhereWithAggregatesInput[];
   NOT?:
-    | Prisma.eductionScalarWhereWithAggregatesInput
-    | Prisma.eductionScalarWhereWithAggregatesInput[];
-  id?: Prisma.StringWithAggregatesFilter<"eduction"> | string;
-  institution?: Prisma.StringWithAggregatesFilter<"eduction"> | string;
-  major?: Prisma.StringWithAggregatesFilter<"eduction"> | string;
-  field?: Prisma.StringWithAggregatesFilter<"eduction"> | string;
-  gap?:
-    | Prisma.DecimalWithAggregatesFilter<"eduction">
-    | runtime.Decimal
-    | runtime.DecimalJsLike
-    | number
-    | string;
-  startData?: Prisma.DateTimeWithAggregatesFilter<"eduction"> | Date | string;
+    | Prisma.EductionScalarWhereWithAggregatesInput
+    | Prisma.EductionScalarWhereWithAggregatesInput[];
+  id?: Prisma.StringWithAggregatesFilter<"Eduction"> | string;
+  institution?: Prisma.StringWithAggregatesFilter<"Eduction"> | string;
+  major?: Prisma.StringWithAggregatesFilter<"Eduction"> | string;
+  field?: Prisma.StringWithAggregatesFilter<"Eduction"> | string;
+  startData?: Prisma.DateTimeWithAggregatesFilter<"Eduction"> | Date | string;
   endData?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<"eduction">
+    | Prisma.DateTimeNullableWithAggregatesFilter<"Eduction">
     | Date
     | string
     | null;
-  isStudying?: Prisma.BoolWithAggregatesFilter<"eduction"> | boolean;
-  createdId?: Prisma.DateTimeWithAggregatesFilter<"eduction"> | Date | string;
-  candideId?: Prisma.StringWithAggregatesFilter<"eduction"> | string;
+  isStudying?: Prisma.BoolWithAggregatesFilter<"Eduction"> | boolean;
+  createdId?: Prisma.DateTimeWithAggregatesFilter<"Eduction"> | Date | string;
+  candideId?: Prisma.StringWithAggregatesFilter<"Eduction"> | string;
 };
 
-export type eductionCreateInput = {
+export type EductionCreateInput = {
   id?: string;
   institution: string;
   major: string;
   field: string;
-  gap: runtime.Decimal | runtime.DecimalJsLike | number | string;
   startData: Date | string;
   endData?: Date | string | null;
   isStudying?: boolean;
@@ -373,12 +309,11 @@ export type eductionCreateInput = {
   candidate: Prisma.CandidateCreateNestedOneWithoutEductionsInput;
 };
 
-export type eductionUncheckedCreateInput = {
+export type EductionUncheckedCreateInput = {
   id?: string;
   institution: string;
   major: string;
   field: string;
-  gap: runtime.Decimal | runtime.DecimalJsLike | number | string;
   startData: Date | string;
   endData?: Date | string | null;
   isStudying?: boolean;
@@ -386,17 +321,11 @@ export type eductionUncheckedCreateInput = {
   candideId: string;
 };
 
-export type eductionUpdateInput = {
+export type EductionUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   institution?: Prisma.StringFieldUpdateOperationsInput | string;
   major?: Prisma.StringFieldUpdateOperationsInput | string;
   field?: Prisma.StringFieldUpdateOperationsInput | string;
-  gap?:
-    | Prisma.DecimalFieldUpdateOperationsInput
-    | runtime.Decimal
-    | runtime.DecimalJsLike
-    | number
-    | string;
   startData?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   endData?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -408,17 +337,11 @@ export type eductionUpdateInput = {
   candidate?: Prisma.CandidateUpdateOneRequiredWithoutEductionsNestedInput;
 };
 
-export type eductionUncheckedUpdateInput = {
+export type EductionUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   institution?: Prisma.StringFieldUpdateOperationsInput | string;
   major?: Prisma.StringFieldUpdateOperationsInput | string;
   field?: Prisma.StringFieldUpdateOperationsInput | string;
-  gap?:
-    | Prisma.DecimalFieldUpdateOperationsInput
-    | runtime.Decimal
-    | runtime.DecimalJsLike
-    | number
-    | string;
   startData?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   endData?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -430,12 +353,11 @@ export type eductionUncheckedUpdateInput = {
   candideId?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
-export type eductionCreateManyInput = {
+export type EductionCreateManyInput = {
   id?: string;
   institution: string;
   major: string;
   field: string;
-  gap: runtime.Decimal | runtime.DecimalJsLike | number | string;
   startData: Date | string;
   endData?: Date | string | null;
   isStudying?: boolean;
@@ -443,17 +365,11 @@ export type eductionCreateManyInput = {
   candideId: string;
 };
 
-export type eductionUpdateManyMutationInput = {
+export type EductionUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   institution?: Prisma.StringFieldUpdateOperationsInput | string;
   major?: Prisma.StringFieldUpdateOperationsInput | string;
   field?: Prisma.StringFieldUpdateOperationsInput | string;
-  gap?:
-    | Prisma.DecimalFieldUpdateOperationsInput
-    | runtime.Decimal
-    | runtime.DecimalJsLike
-    | number
-    | string;
   startData?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   endData?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -464,17 +380,11 @@ export type eductionUpdateManyMutationInput = {
   createdId?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
-export type eductionUncheckedUpdateManyInput = {
+export type EductionUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   institution?: Prisma.StringFieldUpdateOperationsInput | string;
   major?: Prisma.StringFieldUpdateOperationsInput | string;
   field?: Prisma.StringFieldUpdateOperationsInput | string;
-  gap?:
-    | Prisma.DecimalFieldUpdateOperationsInput
-    | runtime.Decimal
-    | runtime.DecimalJsLike
-    | number
-    | string;
   startData?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   endData?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -487,21 +397,20 @@ export type eductionUncheckedUpdateManyInput = {
 };
 
 export type EductionListRelationFilter = {
-  every?: Prisma.eductionWhereInput;
-  some?: Prisma.eductionWhereInput;
-  none?: Prisma.eductionWhereInput;
+  every?: Prisma.EductionWhereInput;
+  some?: Prisma.EductionWhereInput;
+  none?: Prisma.EductionWhereInput;
 };
 
-export type eductionOrderByRelationAggregateInput = {
+export type EductionOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder;
 };
 
-export type eductionCountOrderByAggregateInput = {
+export type EductionCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   institution?: Prisma.SortOrder;
   major?: Prisma.SortOrder;
   field?: Prisma.SortOrder;
-  gap?: Prisma.SortOrder;
   startData?: Prisma.SortOrder;
   endData?: Prisma.SortOrder;
   isStudying?: Prisma.SortOrder;
@@ -509,16 +418,11 @@ export type eductionCountOrderByAggregateInput = {
   candideId?: Prisma.SortOrder;
 };
 
-export type eductionAvgOrderByAggregateInput = {
-  gap?: Prisma.SortOrder;
-};
-
-export type eductionMaxOrderByAggregateInput = {
+export type EductionMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   institution?: Prisma.SortOrder;
   major?: Prisma.SortOrder;
   field?: Prisma.SortOrder;
-  gap?: Prisma.SortOrder;
   startData?: Prisma.SortOrder;
   endData?: Prisma.SortOrder;
   isStudying?: Prisma.SortOrder;
@@ -526,12 +430,11 @@ export type eductionMaxOrderByAggregateInput = {
   candideId?: Prisma.SortOrder;
 };
 
-export type eductionMinOrderByAggregateInput = {
+export type EductionMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   institution?: Prisma.SortOrder;
   major?: Prisma.SortOrder;
   field?: Prisma.SortOrder;
-  gap?: Prisma.SortOrder;
   startData?: Prisma.SortOrder;
   endData?: Prisma.SortOrder;
   isStudying?: Prisma.SortOrder;
@@ -539,223 +442,196 @@ export type eductionMinOrderByAggregateInput = {
   candideId?: Prisma.SortOrder;
 };
 
-export type eductionSumOrderByAggregateInput = {
-  gap?: Prisma.SortOrder;
-};
-
-export type eductionCreateNestedManyWithoutCandidateInput = {
+export type EductionCreateNestedManyWithoutCandidateInput = {
   create?:
     | Prisma.XOR<
-        Prisma.eductionCreateWithoutCandidateInput,
-        Prisma.eductionUncheckedCreateWithoutCandidateInput
+        Prisma.EductionCreateWithoutCandidateInput,
+        Prisma.EductionUncheckedCreateWithoutCandidateInput
       >
-    | Prisma.eductionCreateWithoutCandidateInput[]
-    | Prisma.eductionUncheckedCreateWithoutCandidateInput[];
+    | Prisma.EductionCreateWithoutCandidateInput[]
+    | Prisma.EductionUncheckedCreateWithoutCandidateInput[];
   connectOrCreate?:
-    | Prisma.eductionCreateOrConnectWithoutCandidateInput
-    | Prisma.eductionCreateOrConnectWithoutCandidateInput[];
-  createMany?: Prisma.eductionCreateManyCandidateInputEnvelope;
-  connect?: Prisma.eductionWhereUniqueInput | Prisma.eductionWhereUniqueInput[];
+    | Prisma.EductionCreateOrConnectWithoutCandidateInput
+    | Prisma.EductionCreateOrConnectWithoutCandidateInput[];
+  createMany?: Prisma.EductionCreateManyCandidateInputEnvelope;
+  connect?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
 };
 
-export type eductionUncheckedCreateNestedManyWithoutCandidateInput = {
+export type EductionUncheckedCreateNestedManyWithoutCandidateInput = {
   create?:
     | Prisma.XOR<
-        Prisma.eductionCreateWithoutCandidateInput,
-        Prisma.eductionUncheckedCreateWithoutCandidateInput
+        Prisma.EductionCreateWithoutCandidateInput,
+        Prisma.EductionUncheckedCreateWithoutCandidateInput
       >
-    | Prisma.eductionCreateWithoutCandidateInput[]
-    | Prisma.eductionUncheckedCreateWithoutCandidateInput[];
+    | Prisma.EductionCreateWithoutCandidateInput[]
+    | Prisma.EductionUncheckedCreateWithoutCandidateInput[];
   connectOrCreate?:
-    | Prisma.eductionCreateOrConnectWithoutCandidateInput
-    | Prisma.eductionCreateOrConnectWithoutCandidateInput[];
-  createMany?: Prisma.eductionCreateManyCandidateInputEnvelope;
-  connect?: Prisma.eductionWhereUniqueInput | Prisma.eductionWhereUniqueInput[];
+    | Prisma.EductionCreateOrConnectWithoutCandidateInput
+    | Prisma.EductionCreateOrConnectWithoutCandidateInput[];
+  createMany?: Prisma.EductionCreateManyCandidateInputEnvelope;
+  connect?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
 };
 
-export type eductionUpdateManyWithoutCandidateNestedInput = {
+export type EductionUpdateManyWithoutCandidateNestedInput = {
   create?:
     | Prisma.XOR<
-        Prisma.eductionCreateWithoutCandidateInput,
-        Prisma.eductionUncheckedCreateWithoutCandidateInput
+        Prisma.EductionCreateWithoutCandidateInput,
+        Prisma.EductionUncheckedCreateWithoutCandidateInput
       >
-    | Prisma.eductionCreateWithoutCandidateInput[]
-    | Prisma.eductionUncheckedCreateWithoutCandidateInput[];
+    | Prisma.EductionCreateWithoutCandidateInput[]
+    | Prisma.EductionUncheckedCreateWithoutCandidateInput[];
   connectOrCreate?:
-    | Prisma.eductionCreateOrConnectWithoutCandidateInput
-    | Prisma.eductionCreateOrConnectWithoutCandidateInput[];
+    | Prisma.EductionCreateOrConnectWithoutCandidateInput
+    | Prisma.EductionCreateOrConnectWithoutCandidateInput[];
   upsert?:
-    | Prisma.eductionUpsertWithWhereUniqueWithoutCandidateInput
-    | Prisma.eductionUpsertWithWhereUniqueWithoutCandidateInput[];
-  createMany?: Prisma.eductionCreateManyCandidateInputEnvelope;
-  set?: Prisma.eductionWhereUniqueInput | Prisma.eductionWhereUniqueInput[];
+    | Prisma.EductionUpsertWithWhereUniqueWithoutCandidateInput
+    | Prisma.EductionUpsertWithWhereUniqueWithoutCandidateInput[];
+  createMany?: Prisma.EductionCreateManyCandidateInputEnvelope;
+  set?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
   disconnect?:
-    | Prisma.eductionWhereUniqueInput
-    | Prisma.eductionWhereUniqueInput[];
-  delete?: Prisma.eductionWhereUniqueInput | Prisma.eductionWhereUniqueInput[];
-  connect?: Prisma.eductionWhereUniqueInput | Prisma.eductionWhereUniqueInput[];
+    | Prisma.EductionWhereUniqueInput
+    | Prisma.EductionWhereUniqueInput[];
+  delete?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
+  connect?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
   update?:
-    | Prisma.eductionUpdateWithWhereUniqueWithoutCandidateInput
-    | Prisma.eductionUpdateWithWhereUniqueWithoutCandidateInput[];
+    | Prisma.EductionUpdateWithWhereUniqueWithoutCandidateInput
+    | Prisma.EductionUpdateWithWhereUniqueWithoutCandidateInput[];
   updateMany?:
-    | Prisma.eductionUpdateManyWithWhereWithoutCandidateInput
-    | Prisma.eductionUpdateManyWithWhereWithoutCandidateInput[];
+    | Prisma.EductionUpdateManyWithWhereWithoutCandidateInput
+    | Prisma.EductionUpdateManyWithWhereWithoutCandidateInput[];
   deleteMany?:
-    | Prisma.eductionScalarWhereInput
-    | Prisma.eductionScalarWhereInput[];
+    | Prisma.EductionScalarWhereInput
+    | Prisma.EductionScalarWhereInput[];
 };
 
-export type eductionUncheckedUpdateManyWithoutCandidateNestedInput = {
+export type EductionUncheckedUpdateManyWithoutCandidateNestedInput = {
   create?:
     | Prisma.XOR<
-        Prisma.eductionCreateWithoutCandidateInput,
-        Prisma.eductionUncheckedCreateWithoutCandidateInput
+        Prisma.EductionCreateWithoutCandidateInput,
+        Prisma.EductionUncheckedCreateWithoutCandidateInput
       >
-    | Prisma.eductionCreateWithoutCandidateInput[]
-    | Prisma.eductionUncheckedCreateWithoutCandidateInput[];
+    | Prisma.EductionCreateWithoutCandidateInput[]
+    | Prisma.EductionUncheckedCreateWithoutCandidateInput[];
   connectOrCreate?:
-    | Prisma.eductionCreateOrConnectWithoutCandidateInput
-    | Prisma.eductionCreateOrConnectWithoutCandidateInput[];
+    | Prisma.EductionCreateOrConnectWithoutCandidateInput
+    | Prisma.EductionCreateOrConnectWithoutCandidateInput[];
   upsert?:
-    | Prisma.eductionUpsertWithWhereUniqueWithoutCandidateInput
-    | Prisma.eductionUpsertWithWhereUniqueWithoutCandidateInput[];
-  createMany?: Prisma.eductionCreateManyCandidateInputEnvelope;
-  set?: Prisma.eductionWhereUniqueInput | Prisma.eductionWhereUniqueInput[];
+    | Prisma.EductionUpsertWithWhereUniqueWithoutCandidateInput
+    | Prisma.EductionUpsertWithWhereUniqueWithoutCandidateInput[];
+  createMany?: Prisma.EductionCreateManyCandidateInputEnvelope;
+  set?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
   disconnect?:
-    | Prisma.eductionWhereUniqueInput
-    | Prisma.eductionWhereUniqueInput[];
-  delete?: Prisma.eductionWhereUniqueInput | Prisma.eductionWhereUniqueInput[];
-  connect?: Prisma.eductionWhereUniqueInput | Prisma.eductionWhereUniqueInput[];
+    | Prisma.EductionWhereUniqueInput
+    | Prisma.EductionWhereUniqueInput[];
+  delete?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
+  connect?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
   update?:
-    | Prisma.eductionUpdateWithWhereUniqueWithoutCandidateInput
-    | Prisma.eductionUpdateWithWhereUniqueWithoutCandidateInput[];
+    | Prisma.EductionUpdateWithWhereUniqueWithoutCandidateInput
+    | Prisma.EductionUpdateWithWhereUniqueWithoutCandidateInput[];
   updateMany?:
-    | Prisma.eductionUpdateManyWithWhereWithoutCandidateInput
-    | Prisma.eductionUpdateManyWithWhereWithoutCandidateInput[];
+    | Prisma.EductionUpdateManyWithWhereWithoutCandidateInput
+    | Prisma.EductionUpdateManyWithWhereWithoutCandidateInput[];
   deleteMany?:
-    | Prisma.eductionScalarWhereInput
-    | Prisma.eductionScalarWhereInput[];
+    | Prisma.EductionScalarWhereInput
+    | Prisma.EductionScalarWhereInput[];
 };
 
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string;
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string;
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string;
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string;
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string;
-};
-
-export type eductionCreateWithoutCandidateInput = {
+export type EductionCreateWithoutCandidateInput = {
   id?: string;
   institution: string;
   major: string;
   field: string;
-  gap: runtime.Decimal | runtime.DecimalJsLike | number | string;
   startData: Date | string;
   endData?: Date | string | null;
   isStudying?: boolean;
   createdId?: Date | string;
 };
 
-export type eductionUncheckedCreateWithoutCandidateInput = {
+export type EductionUncheckedCreateWithoutCandidateInput = {
   id?: string;
   institution: string;
   major: string;
   field: string;
-  gap: runtime.Decimal | runtime.DecimalJsLike | number | string;
   startData: Date | string;
   endData?: Date | string | null;
   isStudying?: boolean;
   createdId?: Date | string;
 };
 
-export type eductionCreateOrConnectWithoutCandidateInput = {
-  where: Prisma.eductionWhereUniqueInput;
+export type EductionCreateOrConnectWithoutCandidateInput = {
+  where: Prisma.EductionWhereUniqueInput;
   create: Prisma.XOR<
-    Prisma.eductionCreateWithoutCandidateInput,
-    Prisma.eductionUncheckedCreateWithoutCandidateInput
+    Prisma.EductionCreateWithoutCandidateInput,
+    Prisma.EductionUncheckedCreateWithoutCandidateInput
   >;
 };
 
-export type eductionCreateManyCandidateInputEnvelope = {
+export type EductionCreateManyCandidateInputEnvelope = {
   data:
-    | Prisma.eductionCreateManyCandidateInput
-    | Prisma.eductionCreateManyCandidateInput[];
+    | Prisma.EductionCreateManyCandidateInput
+    | Prisma.EductionCreateManyCandidateInput[];
   skipDuplicates?: boolean;
 };
 
-export type eductionUpsertWithWhereUniqueWithoutCandidateInput = {
-  where: Prisma.eductionWhereUniqueInput;
+export type EductionUpsertWithWhereUniqueWithoutCandidateInput = {
+  where: Prisma.EductionWhereUniqueInput;
   update: Prisma.XOR<
-    Prisma.eductionUpdateWithoutCandidateInput,
-    Prisma.eductionUncheckedUpdateWithoutCandidateInput
+    Prisma.EductionUpdateWithoutCandidateInput,
+    Prisma.EductionUncheckedUpdateWithoutCandidateInput
   >;
   create: Prisma.XOR<
-    Prisma.eductionCreateWithoutCandidateInput,
-    Prisma.eductionUncheckedCreateWithoutCandidateInput
+    Prisma.EductionCreateWithoutCandidateInput,
+    Prisma.EductionUncheckedCreateWithoutCandidateInput
   >;
 };
 
-export type eductionUpdateWithWhereUniqueWithoutCandidateInput = {
-  where: Prisma.eductionWhereUniqueInput;
+export type EductionUpdateWithWhereUniqueWithoutCandidateInput = {
+  where: Prisma.EductionWhereUniqueInput;
   data: Prisma.XOR<
-    Prisma.eductionUpdateWithoutCandidateInput,
-    Prisma.eductionUncheckedUpdateWithoutCandidateInput
+    Prisma.EductionUpdateWithoutCandidateInput,
+    Prisma.EductionUncheckedUpdateWithoutCandidateInput
   >;
 };
 
-export type eductionUpdateManyWithWhereWithoutCandidateInput = {
-  where: Prisma.eductionScalarWhereInput;
+export type EductionUpdateManyWithWhereWithoutCandidateInput = {
+  where: Prisma.EductionScalarWhereInput;
   data: Prisma.XOR<
-    Prisma.eductionUpdateManyMutationInput,
-    Prisma.eductionUncheckedUpdateManyWithoutCandidateInput
+    Prisma.EductionUpdateManyMutationInput,
+    Prisma.EductionUncheckedUpdateManyWithoutCandidateInput
   >;
 };
 
-export type eductionScalarWhereInput = {
-  AND?: Prisma.eductionScalarWhereInput | Prisma.eductionScalarWhereInput[];
-  OR?: Prisma.eductionScalarWhereInput[];
-  NOT?: Prisma.eductionScalarWhereInput | Prisma.eductionScalarWhereInput[];
-  id?: Prisma.StringFilter<"eduction"> | string;
-  institution?: Prisma.StringFilter<"eduction"> | string;
-  major?: Prisma.StringFilter<"eduction"> | string;
-  field?: Prisma.StringFilter<"eduction"> | string;
-  gap?:
-    | Prisma.DecimalFilter<"eduction">
-    | runtime.Decimal
-    | runtime.DecimalJsLike
-    | number
-    | string;
-  startData?: Prisma.DateTimeFilter<"eduction"> | Date | string;
-  endData?: Prisma.DateTimeNullableFilter<"eduction"> | Date | string | null;
-  isStudying?: Prisma.BoolFilter<"eduction"> | boolean;
-  createdId?: Prisma.DateTimeFilter<"eduction"> | Date | string;
-  candideId?: Prisma.StringFilter<"eduction"> | string;
+export type EductionScalarWhereInput = {
+  AND?: Prisma.EductionScalarWhereInput | Prisma.EductionScalarWhereInput[];
+  OR?: Prisma.EductionScalarWhereInput[];
+  NOT?: Prisma.EductionScalarWhereInput | Prisma.EductionScalarWhereInput[];
+  id?: Prisma.StringFilter<"Eduction"> | string;
+  institution?: Prisma.StringFilter<"Eduction"> | string;
+  major?: Prisma.StringFilter<"Eduction"> | string;
+  field?: Prisma.StringFilter<"Eduction"> | string;
+  startData?: Prisma.DateTimeFilter<"Eduction"> | Date | string;
+  endData?: Prisma.DateTimeNullableFilter<"Eduction"> | Date | string | null;
+  isStudying?: Prisma.BoolFilter<"Eduction"> | boolean;
+  createdId?: Prisma.DateTimeFilter<"Eduction"> | Date | string;
+  candideId?: Prisma.StringFilter<"Eduction"> | string;
 };
 
-export type eductionCreateManyCandidateInput = {
+export type EductionCreateManyCandidateInput = {
   id?: string;
   institution: string;
   major: string;
   field: string;
-  gap: runtime.Decimal | runtime.DecimalJsLike | number | string;
   startData: Date | string;
   endData?: Date | string | null;
   isStudying?: boolean;
   createdId?: Date | string;
 };
 
-export type eductionUpdateWithoutCandidateInput = {
+export type EductionUpdateWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   institution?: Prisma.StringFieldUpdateOperationsInput | string;
   major?: Prisma.StringFieldUpdateOperationsInput | string;
   field?: Prisma.StringFieldUpdateOperationsInput | string;
-  gap?:
-    | Prisma.DecimalFieldUpdateOperationsInput
-    | runtime.Decimal
-    | runtime.DecimalJsLike
-    | number
-    | string;
   startData?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   endData?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -766,17 +642,11 @@ export type eductionUpdateWithoutCandidateInput = {
   createdId?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
-export type eductionUncheckedUpdateWithoutCandidateInput = {
+export type EductionUncheckedUpdateWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   institution?: Prisma.StringFieldUpdateOperationsInput | string;
   major?: Prisma.StringFieldUpdateOperationsInput | string;
   field?: Prisma.StringFieldUpdateOperationsInput | string;
-  gap?:
-    | Prisma.DecimalFieldUpdateOperationsInput
-    | runtime.Decimal
-    | runtime.DecimalJsLike
-    | number
-    | string;
   startData?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   endData?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -787,17 +657,11 @@ export type eductionUncheckedUpdateWithoutCandidateInput = {
   createdId?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
-export type eductionUncheckedUpdateManyWithoutCandidateInput = {
+export type EductionUncheckedUpdateManyWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   institution?: Prisma.StringFieldUpdateOperationsInput | string;
   major?: Prisma.StringFieldUpdateOperationsInput | string;
   field?: Prisma.StringFieldUpdateOperationsInput | string;
-  gap?:
-    | Prisma.DecimalFieldUpdateOperationsInput
-    | runtime.Decimal
-    | runtime.DecimalJsLike
-    | number
-    | string;
   startData?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   endData?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -808,7 +672,7 @@ export type eductionUncheckedUpdateManyWithoutCandidateInput = {
   createdId?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
-export type eductionSelect<
+export type EductionSelect<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
@@ -817,7 +681,6 @@ export type eductionSelect<
     institution?: boolean;
     major?: boolean;
     field?: boolean;
-    gap?: boolean;
     startData?: boolean;
     endData?: boolean;
     isStudying?: boolean;
@@ -828,7 +691,7 @@ export type eductionSelect<
   ExtArgs["result"]["eduction"]
 >;
 
-export type eductionSelectCreateManyAndReturn<
+export type EductionSelectCreateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
@@ -837,7 +700,6 @@ export type eductionSelectCreateManyAndReturn<
     institution?: boolean;
     major?: boolean;
     field?: boolean;
-    gap?: boolean;
     startData?: boolean;
     endData?: boolean;
     isStudying?: boolean;
@@ -848,7 +710,7 @@ export type eductionSelectCreateManyAndReturn<
   ExtArgs["result"]["eduction"]
 >;
 
-export type eductionSelectUpdateManyAndReturn<
+export type EductionSelectUpdateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
@@ -857,7 +719,6 @@ export type eductionSelectUpdateManyAndReturn<
     institution?: boolean;
     major?: boolean;
     field?: boolean;
-    gap?: boolean;
     startData?: boolean;
     endData?: boolean;
     isStudying?: boolean;
@@ -868,12 +729,11 @@ export type eductionSelectUpdateManyAndReturn<
   ExtArgs["result"]["eduction"]
 >;
 
-export type eductionSelectScalar = {
+export type EductionSelectScalar = {
   id?: boolean;
   institution?: boolean;
   major?: boolean;
   field?: boolean;
-  gap?: boolean;
   startData?: boolean;
   endData?: boolean;
   isStudying?: boolean;
@@ -881,7 +741,7 @@ export type eductionSelectScalar = {
   candideId?: boolean;
 };
 
-export type eductionOmit<
+export type EductionOmit<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
@@ -889,7 +749,6 @@ export type eductionOmit<
   | "institution"
   | "major"
   | "field"
-  | "gap"
   | "startData"
   | "endData"
   | "isStudying"
@@ -897,30 +756,30 @@ export type eductionOmit<
   | "candideId",
   ExtArgs["result"]["eduction"]
 >;
-export type eductionInclude<
+export type EductionInclude<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
 };
-export type eductionIncludeCreateManyAndReturn<
+export type EductionIncludeCreateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
 };
-export type eductionIncludeUpdateManyAndReturn<
+export type EductionIncludeUpdateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
 };
 
-export type $eductionPayload<
+export type $EductionPayload<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  name: "eduction";
+  name: "Eduction";
   objects: {
     candidate: Prisma.$CandidatePayload<ExtArgs>;
   };
@@ -930,7 +789,6 @@ export type $eductionPayload<
       institution: string;
       major: string;
       field: string;
-      gap: runtime.Decimal;
       startData: Date;
       endData: Date | null;
       isStudying: boolean;
@@ -942,29 +800,29 @@ export type $eductionPayload<
   composites: {};
 };
 
-export type eductionGetPayload<
-  S extends boolean | null | undefined | eductionDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$eductionPayload, S>;
+export type EductionGetPayload<
+  S extends boolean | null | undefined | EductionDefaultArgs,
+> = runtime.Types.Result.GetResult<Prisma.$EductionPayload, S>;
 
-export type eductionCountArgs<
+export type EductionCountArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
-> = Omit<eductionFindManyArgs, "select" | "include" | "distinct" | "omit"> & {
+> = Omit<EductionFindManyArgs, "select" | "include" | "distinct" | "omit"> & {
   select?: EductionCountAggregateInputType | true;
 };
 
-export interface eductionDelegate<
+export interface EductionDelegate<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
-    types: Prisma.TypeMap<ExtArgs>["model"]["eduction"];
-    meta: { name: "eduction" };
+    types: Prisma.TypeMap<ExtArgs>["model"]["Eduction"];
+    meta: { name: "Eduction" };
   };
   /**
    * Find zero or one Eduction that matches the filter.
-   * @param {eductionFindUniqueArgs} args - Arguments to find a Eduction
+   * @param {EductionFindUniqueArgs} args - Arguments to find a Eduction
    * @example
    * // Get one Eduction
    * const eduction = await prisma.eduction.findUnique({
@@ -973,11 +831,11 @@ export interface eductionDelegate<
    *   }
    * })
    */
-  findUnique<T extends eductionFindUniqueArgs>(
-    args: Prisma.SelectSubset<T, eductionFindUniqueArgs<ExtArgs>>,
-  ): Prisma.Prisma__eductionClient<
+  findUnique<T extends EductionFindUniqueArgs>(
+    args: Prisma.SelectSubset<T, EductionFindUniqueArgs<ExtArgs>>,
+  ): Prisma.Prisma__EductionClient<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "findUnique",
       GlobalOmitOptions
@@ -990,7 +848,7 @@ export interface eductionDelegate<
   /**
    * Find one Eduction that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {eductionFindUniqueOrThrowArgs} args - Arguments to find a Eduction
+   * @param {EductionFindUniqueOrThrowArgs} args - Arguments to find a Eduction
    * @example
    * // Get one Eduction
    * const eduction = await prisma.eduction.findUniqueOrThrow({
@@ -999,11 +857,11 @@ export interface eductionDelegate<
    *   }
    * })
    */
-  findUniqueOrThrow<T extends eductionFindUniqueOrThrowArgs>(
-    args: Prisma.SelectSubset<T, eductionFindUniqueOrThrowArgs<ExtArgs>>,
-  ): Prisma.Prisma__eductionClient<
+  findUniqueOrThrow<T extends EductionFindUniqueOrThrowArgs>(
+    args: Prisma.SelectSubset<T, EductionFindUniqueOrThrowArgs<ExtArgs>>,
+  ): Prisma.Prisma__EductionClient<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "findUniqueOrThrow",
       GlobalOmitOptions
@@ -1017,7 +875,7 @@ export interface eductionDelegate<
    * Find the first Eduction that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {eductionFindFirstArgs} args - Arguments to find a Eduction
+   * @param {EductionFindFirstArgs} args - Arguments to find a Eduction
    * @example
    * // Get one Eduction
    * const eduction = await prisma.eduction.findFirst({
@@ -1026,11 +884,11 @@ export interface eductionDelegate<
    *   }
    * })
    */
-  findFirst<T extends eductionFindFirstArgs>(
-    args?: Prisma.SelectSubset<T, eductionFindFirstArgs<ExtArgs>>,
-  ): Prisma.Prisma__eductionClient<
+  findFirst<T extends EductionFindFirstArgs>(
+    args?: Prisma.SelectSubset<T, EductionFindFirstArgs<ExtArgs>>,
+  ): Prisma.Prisma__EductionClient<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "findFirst",
       GlobalOmitOptions
@@ -1045,7 +903,7 @@ export interface eductionDelegate<
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {eductionFindFirstOrThrowArgs} args - Arguments to find a Eduction
+   * @param {EductionFindFirstOrThrowArgs} args - Arguments to find a Eduction
    * @example
    * // Get one Eduction
    * const eduction = await prisma.eduction.findFirstOrThrow({
@@ -1054,11 +912,11 @@ export interface eductionDelegate<
    *   }
    * })
    */
-  findFirstOrThrow<T extends eductionFindFirstOrThrowArgs>(
-    args?: Prisma.SelectSubset<T, eductionFindFirstOrThrowArgs<ExtArgs>>,
-  ): Prisma.Prisma__eductionClient<
+  findFirstOrThrow<T extends EductionFindFirstOrThrowArgs>(
+    args?: Prisma.SelectSubset<T, EductionFindFirstOrThrowArgs<ExtArgs>>,
+  ): Prisma.Prisma__EductionClient<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "findFirstOrThrow",
       GlobalOmitOptions
@@ -1072,7 +930,7 @@ export interface eductionDelegate<
    * Find zero or more Eductions that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {eductionFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {EductionFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all Eductions
    * const eductions = await prisma.eduction.findMany()
@@ -1084,11 +942,11 @@ export interface eductionDelegate<
    * const eductionWithIdOnly = await prisma.eduction.findMany({ select: { id: true } })
    *
    */
-  findMany<T extends eductionFindManyArgs>(
-    args?: Prisma.SelectSubset<T, eductionFindManyArgs<ExtArgs>>,
+  findMany<T extends EductionFindManyArgs>(
+    args?: Prisma.SelectSubset<T, EductionFindManyArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "findMany",
       GlobalOmitOptions
@@ -1097,7 +955,7 @@ export interface eductionDelegate<
 
   /**
    * Create a Eduction.
-   * @param {eductionCreateArgs} args - Arguments to create a Eduction.
+   * @param {EductionCreateArgs} args - Arguments to create a Eduction.
    * @example
    * // Create one Eduction
    * const Eduction = await prisma.eduction.create({
@@ -1107,11 +965,11 @@ export interface eductionDelegate<
    * })
    *
    */
-  create<T extends eductionCreateArgs>(
-    args: Prisma.SelectSubset<T, eductionCreateArgs<ExtArgs>>,
-  ): Prisma.Prisma__eductionClient<
+  create<T extends EductionCreateArgs>(
+    args: Prisma.SelectSubset<T, EductionCreateArgs<ExtArgs>>,
+  ): Prisma.Prisma__EductionClient<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "create",
       GlobalOmitOptions
@@ -1123,7 +981,7 @@ export interface eductionDelegate<
 
   /**
    * Create many Eductions.
-   * @param {eductionCreateManyArgs} args - Arguments to create many Eductions.
+   * @param {EductionCreateManyArgs} args - Arguments to create many Eductions.
    * @example
    * // Create many Eductions
    * const eduction = await prisma.eduction.createMany({
@@ -1133,13 +991,13 @@ export interface eductionDelegate<
    * })
    *
    */
-  createMany<T extends eductionCreateManyArgs>(
-    args?: Prisma.SelectSubset<T, eductionCreateManyArgs<ExtArgs>>,
+  createMany<T extends EductionCreateManyArgs>(
+    args?: Prisma.SelectSubset<T, EductionCreateManyArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<Prisma.BatchPayload>;
 
   /**
    * Create many Eductions and returns the data saved in the database.
-   * @param {eductionCreateManyAndReturnArgs} args - Arguments to create many Eductions.
+   * @param {EductionCreateManyAndReturnArgs} args - Arguments to create many Eductions.
    * @example
    * // Create many Eductions
    * const eduction = await prisma.eduction.createManyAndReturn({
@@ -1159,11 +1017,11 @@ export interface eductionDelegate<
    * Read more here: https://pris.ly/d/null-undefined
    *
    */
-  createManyAndReturn<T extends eductionCreateManyAndReturnArgs>(
-    args?: Prisma.SelectSubset<T, eductionCreateManyAndReturnArgs<ExtArgs>>,
+  createManyAndReturn<T extends EductionCreateManyAndReturnArgs>(
+    args?: Prisma.SelectSubset<T, EductionCreateManyAndReturnArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "createManyAndReturn",
       GlobalOmitOptions
@@ -1172,7 +1030,7 @@ export interface eductionDelegate<
 
   /**
    * Delete a Eduction.
-   * @param {eductionDeleteArgs} args - Arguments to delete one Eduction.
+   * @param {EductionDeleteArgs} args - Arguments to delete one Eduction.
    * @example
    * // Delete one Eduction
    * const Eduction = await prisma.eduction.delete({
@@ -1182,11 +1040,11 @@ export interface eductionDelegate<
    * })
    *
    */
-  delete<T extends eductionDeleteArgs>(
-    args: Prisma.SelectSubset<T, eductionDeleteArgs<ExtArgs>>,
-  ): Prisma.Prisma__eductionClient<
+  delete<T extends EductionDeleteArgs>(
+    args: Prisma.SelectSubset<T, EductionDeleteArgs<ExtArgs>>,
+  ): Prisma.Prisma__EductionClient<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "delete",
       GlobalOmitOptions
@@ -1198,7 +1056,7 @@ export interface eductionDelegate<
 
   /**
    * Update one Eduction.
-   * @param {eductionUpdateArgs} args - Arguments to update one Eduction.
+   * @param {EductionUpdateArgs} args - Arguments to update one Eduction.
    * @example
    * // Update one Eduction
    * const eduction = await prisma.eduction.update({
@@ -1211,11 +1069,11 @@ export interface eductionDelegate<
    * })
    *
    */
-  update<T extends eductionUpdateArgs>(
-    args: Prisma.SelectSubset<T, eductionUpdateArgs<ExtArgs>>,
-  ): Prisma.Prisma__eductionClient<
+  update<T extends EductionUpdateArgs>(
+    args: Prisma.SelectSubset<T, EductionUpdateArgs<ExtArgs>>,
+  ): Prisma.Prisma__EductionClient<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "update",
       GlobalOmitOptions
@@ -1227,7 +1085,7 @@ export interface eductionDelegate<
 
   /**
    * Delete zero or more Eductions.
-   * @param {eductionDeleteManyArgs} args - Arguments to filter Eductions to delete.
+   * @param {EductionDeleteManyArgs} args - Arguments to filter Eductions to delete.
    * @example
    * // Delete a few Eductions
    * const { count } = await prisma.eduction.deleteMany({
@@ -1237,15 +1095,15 @@ export interface eductionDelegate<
    * })
    *
    */
-  deleteMany<T extends eductionDeleteManyArgs>(
-    args?: Prisma.SelectSubset<T, eductionDeleteManyArgs<ExtArgs>>,
+  deleteMany<T extends EductionDeleteManyArgs>(
+    args?: Prisma.SelectSubset<T, EductionDeleteManyArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<Prisma.BatchPayload>;
 
   /**
    * Update zero or more Eductions.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {eductionUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {EductionUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many Eductions
    * const eduction = await prisma.eduction.updateMany({
@@ -1258,13 +1116,13 @@ export interface eductionDelegate<
    * })
    *
    */
-  updateMany<T extends eductionUpdateManyArgs>(
-    args: Prisma.SelectSubset<T, eductionUpdateManyArgs<ExtArgs>>,
+  updateMany<T extends EductionUpdateManyArgs>(
+    args: Prisma.SelectSubset<T, EductionUpdateManyArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<Prisma.BatchPayload>;
 
   /**
    * Update zero or more Eductions and returns the data updated in the database.
-   * @param {eductionUpdateManyAndReturnArgs} args - Arguments to update many Eductions.
+   * @param {EductionUpdateManyAndReturnArgs} args - Arguments to update many Eductions.
    * @example
    * // Update many Eductions
    * const eduction = await prisma.eduction.updateManyAndReturn({
@@ -1290,11 +1148,11 @@ export interface eductionDelegate<
    * Read more here: https://pris.ly/d/null-undefined
    *
    */
-  updateManyAndReturn<T extends eductionUpdateManyAndReturnArgs>(
-    args: Prisma.SelectSubset<T, eductionUpdateManyAndReturnArgs<ExtArgs>>,
+  updateManyAndReturn<T extends EductionUpdateManyAndReturnArgs>(
+    args: Prisma.SelectSubset<T, EductionUpdateManyAndReturnArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "updateManyAndReturn",
       GlobalOmitOptions
@@ -1303,7 +1161,7 @@ export interface eductionDelegate<
 
   /**
    * Create or update one Eduction.
-   * @param {eductionUpsertArgs} args - Arguments to update or create a Eduction.
+   * @param {EductionUpsertArgs} args - Arguments to update or create a Eduction.
    * @example
    * // Update or create a Eduction
    * const eduction = await prisma.eduction.upsert({
@@ -1318,11 +1176,11 @@ export interface eductionDelegate<
    *   }
    * })
    */
-  upsert<T extends eductionUpsertArgs>(
-    args: Prisma.SelectSubset<T, eductionUpsertArgs<ExtArgs>>,
-  ): Prisma.Prisma__eductionClient<
+  upsert<T extends EductionUpsertArgs>(
+    args: Prisma.SelectSubset<T, EductionUpsertArgs<ExtArgs>>,
+  ): Prisma.Prisma__EductionClient<
     runtime.Types.Result.GetResult<
-      Prisma.$eductionPayload<ExtArgs>,
+      Prisma.$EductionPayload<ExtArgs>,
       T,
       "upsert",
       GlobalOmitOptions
@@ -1336,7 +1194,7 @@ export interface eductionDelegate<
    * Count the number of Eductions.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {eductionCountArgs} args - Arguments to filter Eductions to count.
+   * @param {EductionCountArgs} args - Arguments to filter Eductions to count.
    * @example
    * // Count the number of Eductions
    * const count = await prisma.eduction.count({
@@ -1345,8 +1203,8 @@ export interface eductionDelegate<
    *   }
    * })
    **/
-  count<T extends eductionCountArgs>(
-    args?: Prisma.Subset<T, eductionCountArgs>,
+  count<T extends EductionCountArgs>(
+    args?: Prisma.Subset<T, EductionCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<"select", any>
       ? T["select"] extends true
@@ -1387,7 +1245,7 @@ export interface eductionDelegate<
    * Group by Eduction.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {eductionGroupByArgs} args - Group by arguments.
+   * @param {EductionGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -1402,14 +1260,14 @@ export interface eductionDelegate<
    *
    **/
   groupBy<
-    T extends eductionGroupByArgs,
+    T extends EductionGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<"skip", Prisma.Keys<T>>,
       Prisma.Extends<"take", Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: eductionGroupByArgs["orderBy"] }
-      : { orderBy?: eductionGroupByArgs["orderBy"] },
+      ? { orderBy: EductionGroupByArgs["orderBy"] }
+      : { orderBy?: EductionGroupByArgs["orderBy"] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<
       Prisma.Keys<Prisma.MaybeTupleToUnion<T["orderBy"]>>
     >,
@@ -1461,24 +1319,24 @@ export interface eductionDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, eductionGroupByArgs, OrderByArg> &
+    args: Prisma.SubsetIntersection<T, EductionGroupByArgs, OrderByArg> &
       InputErrors,
   ): {} extends InputErrors
     ? GetEductionGroupByPayload<T>
     : Prisma.PrismaPromise<InputErrors>;
   /**
-   * Fields of the eduction model
+   * Fields of the Eduction model
    */
-  readonly fields: eductionFieldRefs;
+  readonly fields: EductionFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for eduction.
+ * The delegate class that acts as a "Promise-like" for Eduction.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__eductionClient<
+export interface Prisma__EductionClient<
   T,
   Null = never,
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
@@ -1539,501 +1397,500 @@ export interface Prisma__eductionClient<
 }
 
 /**
- * Fields of the eduction model
+ * Fields of the Eduction model
  */
-export interface eductionFieldRefs {
-  readonly id: Prisma.FieldRef<"eduction", "String">;
-  readonly institution: Prisma.FieldRef<"eduction", "String">;
-  readonly major: Prisma.FieldRef<"eduction", "String">;
-  readonly field: Prisma.FieldRef<"eduction", "String">;
-  readonly gap: Prisma.FieldRef<"eduction", "Decimal">;
-  readonly startData: Prisma.FieldRef<"eduction", "DateTime">;
-  readonly endData: Prisma.FieldRef<"eduction", "DateTime">;
-  readonly isStudying: Prisma.FieldRef<"eduction", "Boolean">;
-  readonly createdId: Prisma.FieldRef<"eduction", "DateTime">;
-  readonly candideId: Prisma.FieldRef<"eduction", "String">;
+export interface EductionFieldRefs {
+  readonly id: Prisma.FieldRef<"Eduction", "String">;
+  readonly institution: Prisma.FieldRef<"Eduction", "String">;
+  readonly major: Prisma.FieldRef<"Eduction", "String">;
+  readonly field: Prisma.FieldRef<"Eduction", "String">;
+  readonly startData: Prisma.FieldRef<"Eduction", "DateTime">;
+  readonly endData: Prisma.FieldRef<"Eduction", "DateTime">;
+  readonly isStudying: Prisma.FieldRef<"Eduction", "Boolean">;
+  readonly createdId: Prisma.FieldRef<"Eduction", "DateTime">;
+  readonly candideId: Prisma.FieldRef<"Eduction", "String">;
 }
 
 // Custom InputTypes
 /**
- * eduction findUnique
+ * Eduction findUnique
  */
-export type eductionFindUniqueArgs<
+export type EductionFindUniqueArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelect<ExtArgs> | null;
+  select?: Prisma.EductionSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionInclude<ExtArgs> | null;
+  include?: Prisma.EductionInclude<ExtArgs> | null;
   /**
-   * Filter, which eduction to fetch.
+   * Filter, which Eduction to fetch.
    */
-  where: Prisma.eductionWhereUniqueInput;
+  where: Prisma.EductionWhereUniqueInput;
 };
 
 /**
- * eduction findUniqueOrThrow
+ * Eduction findUniqueOrThrow
  */
-export type eductionFindUniqueOrThrowArgs<
+export type EductionFindUniqueOrThrowArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelect<ExtArgs> | null;
+  select?: Prisma.EductionSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionInclude<ExtArgs> | null;
+  include?: Prisma.EductionInclude<ExtArgs> | null;
   /**
-   * Filter, which eduction to fetch.
+   * Filter, which Eduction to fetch.
    */
-  where: Prisma.eductionWhereUniqueInput;
+  where: Prisma.EductionWhereUniqueInput;
 };
 
 /**
- * eduction findFirst
+ * Eduction findFirst
  */
-export type eductionFindFirstArgs<
+export type EductionFindFirstArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelect<ExtArgs> | null;
+  select?: Prisma.EductionSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionInclude<ExtArgs> | null;
+  include?: Prisma.EductionInclude<ExtArgs> | null;
   /**
-   * Filter, which eduction to fetch.
+   * Filter, which Eduction to fetch.
    */
-  where?: Prisma.eductionWhereInput;
+  where?: Prisma.EductionWhereInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    *
-   * Determine the order of eductions to fetch.
+   * Determine the order of Eductions to fetch.
    */
   orderBy?:
-    | Prisma.eductionOrderByWithRelationInput
-    | Prisma.eductionOrderByWithRelationInput[];
+    | Prisma.EductionOrderByWithRelationInput
+    | Prisma.EductionOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
-   * Sets the position for searching for eductions.
+   * Sets the position for searching for Eductions.
    */
-  cursor?: Prisma.eductionWhereUniqueInput;
+  cursor?: Prisma.EductionWhereUniqueInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Take `±n` eductions from the position of the cursor.
+   * Take `±n` Eductions from the position of the cursor.
    */
   take?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Skip the first `n` eductions.
+   * Skip the first `n` Eductions.
    */
   skip?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    *
-   * Filter by unique combinations of eductions.
+   * Filter by unique combinations of Eductions.
    */
   distinct?: Prisma.EductionScalarFieldEnum | Prisma.EductionScalarFieldEnum[];
 };
 
 /**
- * eduction findFirstOrThrow
+ * Eduction findFirstOrThrow
  */
-export type eductionFindFirstOrThrowArgs<
+export type EductionFindFirstOrThrowArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelect<ExtArgs> | null;
+  select?: Prisma.EductionSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionInclude<ExtArgs> | null;
+  include?: Prisma.EductionInclude<ExtArgs> | null;
   /**
-   * Filter, which eduction to fetch.
+   * Filter, which Eduction to fetch.
    */
-  where?: Prisma.eductionWhereInput;
+  where?: Prisma.EductionWhereInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    *
-   * Determine the order of eductions to fetch.
+   * Determine the order of Eductions to fetch.
    */
   orderBy?:
-    | Prisma.eductionOrderByWithRelationInput
-    | Prisma.eductionOrderByWithRelationInput[];
+    | Prisma.EductionOrderByWithRelationInput
+    | Prisma.EductionOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
-   * Sets the position for searching for eductions.
+   * Sets the position for searching for Eductions.
    */
-  cursor?: Prisma.eductionWhereUniqueInput;
+  cursor?: Prisma.EductionWhereUniqueInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Take `±n` eductions from the position of the cursor.
+   * Take `±n` Eductions from the position of the cursor.
    */
   take?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Skip the first `n` eductions.
+   * Skip the first `n` Eductions.
    */
   skip?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    *
-   * Filter by unique combinations of eductions.
+   * Filter by unique combinations of Eductions.
    */
   distinct?: Prisma.EductionScalarFieldEnum | Prisma.EductionScalarFieldEnum[];
 };
 
 /**
- * eduction findMany
+ * Eduction findMany
  */
-export type eductionFindManyArgs<
+export type EductionFindManyArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelect<ExtArgs> | null;
+  select?: Prisma.EductionSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionInclude<ExtArgs> | null;
+  include?: Prisma.EductionInclude<ExtArgs> | null;
   /**
-   * Filter, which eductions to fetch.
+   * Filter, which Eductions to fetch.
    */
-  where?: Prisma.eductionWhereInput;
+  where?: Prisma.EductionWhereInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    *
-   * Determine the order of eductions to fetch.
+   * Determine the order of Eductions to fetch.
    */
   orderBy?:
-    | Prisma.eductionOrderByWithRelationInput
-    | Prisma.eductionOrderByWithRelationInput[];
+    | Prisma.EductionOrderByWithRelationInput
+    | Prisma.EductionOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
-   * Sets the position for listing eductions.
+   * Sets the position for listing Eductions.
    */
-  cursor?: Prisma.eductionWhereUniqueInput;
+  cursor?: Prisma.EductionWhereUniqueInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Take `±n` eductions from the position of the cursor.
+   * Take `±n` Eductions from the position of the cursor.
    */
   take?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Skip the first `n` eductions.
+   * Skip the first `n` Eductions.
    */
   skip?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    *
-   * Filter by unique combinations of eductions.
+   * Filter by unique combinations of Eductions.
    */
   distinct?: Prisma.EductionScalarFieldEnum | Prisma.EductionScalarFieldEnum[];
 };
 
 /**
- * eduction create
+ * Eduction create
  */
-export type eductionCreateArgs<
+export type EductionCreateArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelect<ExtArgs> | null;
+  select?: Prisma.EductionSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionInclude<ExtArgs> | null;
+  include?: Prisma.EductionInclude<ExtArgs> | null;
   /**
-   * The data needed to create a eduction.
+   * The data needed to create a Eduction.
    */
   data: Prisma.XOR<
-    Prisma.eductionCreateInput,
-    Prisma.eductionUncheckedCreateInput
+    Prisma.EductionCreateInput,
+    Prisma.EductionUncheckedCreateInput
   >;
 };
 
 /**
- * eduction createMany
+ * Eduction createMany
  */
-export type eductionCreateManyArgs<
+export type EductionCreateManyArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * The data used to create many eductions.
+   * The data used to create many Eductions.
    */
-  data: Prisma.eductionCreateManyInput | Prisma.eductionCreateManyInput[];
+  data: Prisma.EductionCreateManyInput | Prisma.EductionCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
 /**
- * eduction createManyAndReturn
+ * Eduction createManyAndReturn
  */
-export type eductionCreateManyAndReturnArgs<
+export type EductionCreateManyAndReturnArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelectCreateManyAndReturn<ExtArgs> | null;
+  select?: Prisma.EductionSelectCreateManyAndReturn<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
-   * The data used to create many eductions.
+   * The data used to create many Eductions.
    */
-  data: Prisma.eductionCreateManyInput | Prisma.eductionCreateManyInput[];
+  data: Prisma.EductionCreateManyInput | Prisma.EductionCreateManyInput[];
   skipDuplicates?: boolean;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionIncludeCreateManyAndReturn<ExtArgs> | null;
+  include?: Prisma.EductionIncludeCreateManyAndReturn<ExtArgs> | null;
 };
 
 /**
- * eduction update
+ * Eduction update
  */
-export type eductionUpdateArgs<
+export type EductionUpdateArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelect<ExtArgs> | null;
+  select?: Prisma.EductionSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionInclude<ExtArgs> | null;
+  include?: Prisma.EductionInclude<ExtArgs> | null;
   /**
-   * The data needed to update a eduction.
+   * The data needed to update a Eduction.
    */
   data: Prisma.XOR<
-    Prisma.eductionUpdateInput,
-    Prisma.eductionUncheckedUpdateInput
+    Prisma.EductionUpdateInput,
+    Prisma.EductionUncheckedUpdateInput
   >;
   /**
-   * Choose, which eduction to update.
+   * Choose, which Eduction to update.
    */
-  where: Prisma.eductionWhereUniqueInput;
+  where: Prisma.EductionWhereUniqueInput;
 };
 
 /**
- * eduction updateMany
+ * Eduction updateMany
  */
-export type eductionUpdateManyArgs<
+export type EductionUpdateManyArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * The data used to update eductions.
+   * The data used to update Eductions.
    */
   data: Prisma.XOR<
-    Prisma.eductionUpdateManyMutationInput,
-    Prisma.eductionUncheckedUpdateManyInput
+    Prisma.EductionUpdateManyMutationInput,
+    Prisma.EductionUncheckedUpdateManyInput
   >;
   /**
-   * Filter which eductions to update
+   * Filter which Eductions to update
    */
-  where?: Prisma.eductionWhereInput;
+  where?: Prisma.EductionWhereInput;
   /**
-   * Limit how many eductions to update.
+   * Limit how many Eductions to update.
    */
   limit?: number;
 };
 
 /**
- * eduction updateManyAndReturn
+ * Eduction updateManyAndReturn
  */
-export type eductionUpdateManyAndReturnArgs<
+export type EductionUpdateManyAndReturnArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelectUpdateManyAndReturn<ExtArgs> | null;
+  select?: Prisma.EductionSelectUpdateManyAndReturn<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
-   * The data used to update eductions.
+   * The data used to update Eductions.
    */
   data: Prisma.XOR<
-    Prisma.eductionUpdateManyMutationInput,
-    Prisma.eductionUncheckedUpdateManyInput
+    Prisma.EductionUpdateManyMutationInput,
+    Prisma.EductionUncheckedUpdateManyInput
   >;
   /**
-   * Filter which eductions to update
+   * Filter which Eductions to update
    */
-  where?: Prisma.eductionWhereInput;
+  where?: Prisma.EductionWhereInput;
   /**
-   * Limit how many eductions to update.
+   * Limit how many Eductions to update.
    */
   limit?: number;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionIncludeUpdateManyAndReturn<ExtArgs> | null;
+  include?: Prisma.EductionIncludeUpdateManyAndReturn<ExtArgs> | null;
 };
 
 /**
- * eduction upsert
+ * Eduction upsert
  */
-export type eductionUpsertArgs<
+export type EductionUpsertArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelect<ExtArgs> | null;
+  select?: Prisma.EductionSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionInclude<ExtArgs> | null;
+  include?: Prisma.EductionInclude<ExtArgs> | null;
   /**
-   * The filter to search for the eduction to update in case it exists.
+   * The filter to search for the Eduction to update in case it exists.
    */
-  where: Prisma.eductionWhereUniqueInput;
+  where: Prisma.EductionWhereUniqueInput;
   /**
-   * In case the eduction found by the `where` argument doesn't exist, create a new eduction with this data.
+   * In case the Eduction found by the `where` argument doesn't exist, create a new Eduction with this data.
    */
   create: Prisma.XOR<
-    Prisma.eductionCreateInput,
-    Prisma.eductionUncheckedCreateInput
+    Prisma.EductionCreateInput,
+    Prisma.EductionUncheckedCreateInput
   >;
   /**
-   * In case the eduction was found with the provided `where` argument, update it with this data.
+   * In case the Eduction was found with the provided `where` argument, update it with this data.
    */
   update: Prisma.XOR<
-    Prisma.eductionUpdateInput,
-    Prisma.eductionUncheckedUpdateInput
+    Prisma.EductionUpdateInput,
+    Prisma.EductionUncheckedUpdateInput
   >;
 };
 
 /**
- * eduction delete
+ * Eduction delete
  */
-export type eductionDeleteArgs<
+export type EductionDeleteArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelect<ExtArgs> | null;
+  select?: Prisma.EductionSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionInclude<ExtArgs> | null;
+  include?: Prisma.EductionInclude<ExtArgs> | null;
   /**
-   * Filter which eduction to delete.
+   * Filter which Eduction to delete.
    */
-  where: Prisma.eductionWhereUniqueInput;
+  where: Prisma.EductionWhereUniqueInput;
 };
 
 /**
- * eduction deleteMany
+ * Eduction deleteMany
  */
-export type eductionDeleteManyArgs<
+export type EductionDeleteManyArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Filter which eductions to delete
+   * Filter which Eductions to delete
    */
-  where?: Prisma.eductionWhereInput;
+  where?: Prisma.EductionWhereInput;
   /**
-   * Limit how many eductions to delete.
+   * Limit how many Eductions to delete.
    */
   limit?: number;
 };
 
 /**
- * eduction without action
+ * Eduction without action
  */
-export type eductionDefaultArgs<
+export type EductionDefaultArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the eduction
+   * Select specific fields to fetch from the Eduction
    */
-  select?: Prisma.eductionSelect<ExtArgs> | null;
+  select?: Prisma.EductionSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the eduction
+   * Omit specific fields from the Eduction
    */
-  omit?: Prisma.eductionOmit<ExtArgs> | null;
+  omit?: Prisma.EductionOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eductionInclude<ExtArgs> | null;
+  include?: Prisma.EductionInclude<ExtArgs> | null;
 };

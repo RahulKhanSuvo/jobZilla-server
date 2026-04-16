@@ -3,7 +3,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck
 /*
- * This file exports the `skill` model and its related types.
+ * This file exports the `Skill` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -12,11 +12,11 @@ import type * as $Enums from "../enums";
 import type * as Prisma from "../internal/prismaNamespace";
 
 /**
- * Model skill
+ * Model Skill
  *
  */
-export type skillModel =
-  runtime.Types.Result.DefaultSelection<Prisma.$skillPayload>;
+export type SkillModel =
+  runtime.Types.Result.DefaultSelection<Prisma.$SkillPayload>;
 
 export type AggregateSkill = {
   _count: SkillCountAggregateOutputType | null;
@@ -67,39 +67,39 @@ export type SkillAggregateArgs<
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Filter which skill to aggregate.
+   * Filter which Skill to aggregate.
    */
-  where?: Prisma.skillWhereInput;
+  where?: Prisma.SkillWhereInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    *
-   * Determine the order of skills to fetch.
+   * Determine the order of Skills to fetch.
    */
   orderBy?:
-    | Prisma.skillOrderByWithRelationInput
-    | Prisma.skillOrderByWithRelationInput[];
+    | Prisma.SkillOrderByWithRelationInput
+    | Prisma.SkillOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
    * Sets the start position
    */
-  cursor?: Prisma.skillWhereUniqueInput;
+  cursor?: Prisma.SkillWhereUniqueInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Take `±n` skills from the position of the cursor.
+   * Take `±n` Skills from the position of the cursor.
    */
   take?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Skip the first `n` skills.
+   * Skip the first `n` Skills.
    */
   skip?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    *
-   * Count returned skills
+   * Count returned Skills
    **/
   _count?: true | SkillCountAggregateInputType;
   /**
@@ -124,16 +124,16 @@ export type GetSkillAggregateType<T extends SkillAggregateArgs> = {
     : Prisma.GetScalarType<T[P], AggregateSkill[P]>;
 };
 
-export type skillGroupByArgs<
+export type SkillGroupByArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  where?: Prisma.skillWhereInput;
+  where?: Prisma.SkillWhereInput;
   orderBy?:
-    | Prisma.skillOrderByWithAggregationInput
-    | Prisma.skillOrderByWithAggregationInput[];
+    | Prisma.SkillOrderByWithAggregationInput
+    | Prisma.SkillOrderByWithAggregationInput[];
   by: Prisma.SkillScalarFieldEnum[] | Prisma.SkillScalarFieldEnum;
-  having?: Prisma.skillScalarWhereWithAggregatesInput;
+  having?: Prisma.SkillScalarWhereWithAggregatesInput;
   take?: number;
   skip?: number;
   _count?: SkillCountAggregateInputType | true;
@@ -150,7 +150,7 @@ export type SkillGroupByOutputType = {
   _max: SkillMaxAggregateOutputType | null;
 };
 
-export type GetSkillGroupByPayload<T extends skillGroupByArgs> =
+export type GetSkillGroupByPayload<T extends SkillGroupByArgs> =
   Prisma.PrismaPromise<
     Array<
       Prisma.PickEnumerable<SkillGroupByOutputType, T["by"]> & {
@@ -163,34 +163,34 @@ export type GetSkillGroupByPayload<T extends skillGroupByArgs> =
     >
   >;
 
-export type skillWhereInput = {
-  AND?: Prisma.skillWhereInput | Prisma.skillWhereInput[];
-  OR?: Prisma.skillWhereInput[];
-  NOT?: Prisma.skillWhereInput | Prisma.skillWhereInput[];
-  id?: Prisma.StringFilter<"skill"> | string;
-  skill?: Prisma.StringFilter<"skill"> | string;
-  candideId?: Prisma.StringFilter<"skill"> | string;
+export type SkillWhereInput = {
+  AND?: Prisma.SkillWhereInput | Prisma.SkillWhereInput[];
+  OR?: Prisma.SkillWhereInput[];
+  NOT?: Prisma.SkillWhereInput | Prisma.SkillWhereInput[];
+  id?: Prisma.StringFilter<"Skill"> | string;
+  skill?: Prisma.StringFilter<"Skill"> | string;
+  candideId?: Prisma.StringFilter<"Skill"> | string;
   candidate?: Prisma.XOR<
     Prisma.CandidateScalarRelationFilter,
     Prisma.CandidateWhereInput
   >;
 };
 
-export type skillOrderByWithRelationInput = {
+export type SkillOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
   skill?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
   candidate?: Prisma.CandidateOrderByWithRelationInput;
 };
 
-export type skillWhereUniqueInput = Prisma.AtLeast<
+export type SkillWhereUniqueInput = Prisma.AtLeast<
   {
     id?: string;
-    AND?: Prisma.skillWhereInput | Prisma.skillWhereInput[];
-    OR?: Prisma.skillWhereInput[];
-    NOT?: Prisma.skillWhereInput | Prisma.skillWhereInput[];
-    skill?: Prisma.StringFilter<"skill"> | string;
-    candideId?: Prisma.StringFilter<"skill"> | string;
+    AND?: Prisma.SkillWhereInput | Prisma.SkillWhereInput[];
+    OR?: Prisma.SkillWhereInput[];
+    NOT?: Prisma.SkillWhereInput | Prisma.SkillWhereInput[];
+    skill?: Prisma.StringFilter<"Skill"> | string;
+    candideId?: Prisma.StringFilter<"Skill"> | string;
     candidate?: Prisma.XOR<
       Prisma.CandidateScalarRelationFilter,
       Prisma.CandidateWhereInput
@@ -199,266 +199,266 @@ export type skillWhereUniqueInput = Prisma.AtLeast<
   "id"
 >;
 
-export type skillOrderByWithAggregationInput = {
+export type SkillOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
   skill?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
-  _count?: Prisma.skillCountOrderByAggregateInput;
-  _max?: Prisma.skillMaxOrderByAggregateInput;
-  _min?: Prisma.skillMinOrderByAggregateInput;
+  _count?: Prisma.SkillCountOrderByAggregateInput;
+  _max?: Prisma.SkillMaxOrderByAggregateInput;
+  _min?: Prisma.SkillMinOrderByAggregateInput;
 };
 
-export type skillScalarWhereWithAggregatesInput = {
+export type SkillScalarWhereWithAggregatesInput = {
   AND?:
-    | Prisma.skillScalarWhereWithAggregatesInput
-    | Prisma.skillScalarWhereWithAggregatesInput[];
-  OR?: Prisma.skillScalarWhereWithAggregatesInput[];
+    | Prisma.SkillScalarWhereWithAggregatesInput
+    | Prisma.SkillScalarWhereWithAggregatesInput[];
+  OR?: Prisma.SkillScalarWhereWithAggregatesInput[];
   NOT?:
-    | Prisma.skillScalarWhereWithAggregatesInput
-    | Prisma.skillScalarWhereWithAggregatesInput[];
-  id?: Prisma.StringWithAggregatesFilter<"skill"> | string;
-  skill?: Prisma.StringWithAggregatesFilter<"skill"> | string;
-  candideId?: Prisma.StringWithAggregatesFilter<"skill"> | string;
+    | Prisma.SkillScalarWhereWithAggregatesInput
+    | Prisma.SkillScalarWhereWithAggregatesInput[];
+  id?: Prisma.StringWithAggregatesFilter<"Skill"> | string;
+  skill?: Prisma.StringWithAggregatesFilter<"Skill"> | string;
+  candideId?: Prisma.StringWithAggregatesFilter<"Skill"> | string;
 };
 
-export type skillCreateInput = {
+export type SkillCreateInput = {
   id?: string;
   skill: string;
   candidate: Prisma.CandidateCreateNestedOneWithoutSkillsInput;
 };
 
-export type skillUncheckedCreateInput = {
+export type SkillUncheckedCreateInput = {
   id?: string;
   skill: string;
   candideId: string;
 };
 
-export type skillUpdateInput = {
+export type SkillUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   skill?: Prisma.StringFieldUpdateOperationsInput | string;
   candidate?: Prisma.CandidateUpdateOneRequiredWithoutSkillsNestedInput;
 };
 
-export type skillUncheckedUpdateInput = {
+export type SkillUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   skill?: Prisma.StringFieldUpdateOperationsInput | string;
   candideId?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
-export type skillCreateManyInput = {
+export type SkillCreateManyInput = {
   id?: string;
   skill: string;
   candideId: string;
 };
 
-export type skillUpdateManyMutationInput = {
+export type SkillUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   skill?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
-export type skillUncheckedUpdateManyInput = {
+export type SkillUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   skill?: Prisma.StringFieldUpdateOperationsInput | string;
   candideId?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
 export type SkillListRelationFilter = {
-  every?: Prisma.skillWhereInput;
-  some?: Prisma.skillWhereInput;
-  none?: Prisma.skillWhereInput;
+  every?: Prisma.SkillWhereInput;
+  some?: Prisma.SkillWhereInput;
+  none?: Prisma.SkillWhereInput;
 };
 
-export type skillOrderByRelationAggregateInput = {
+export type SkillOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder;
 };
 
-export type skillCountOrderByAggregateInput = {
+export type SkillCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   skill?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
 };
 
-export type skillMaxOrderByAggregateInput = {
+export type SkillMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   skill?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
 };
 
-export type skillMinOrderByAggregateInput = {
+export type SkillMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   skill?: Prisma.SortOrder;
   candideId?: Prisma.SortOrder;
 };
 
-export type skillCreateNestedManyWithoutCandidateInput = {
+export type SkillCreateNestedManyWithoutCandidateInput = {
   create?:
     | Prisma.XOR<
-        Prisma.skillCreateWithoutCandidateInput,
-        Prisma.skillUncheckedCreateWithoutCandidateInput
+        Prisma.SkillCreateWithoutCandidateInput,
+        Prisma.SkillUncheckedCreateWithoutCandidateInput
       >
-    | Prisma.skillCreateWithoutCandidateInput[]
-    | Prisma.skillUncheckedCreateWithoutCandidateInput[];
+    | Prisma.SkillCreateWithoutCandidateInput[]
+    | Prisma.SkillUncheckedCreateWithoutCandidateInput[];
   connectOrCreate?:
-    | Prisma.skillCreateOrConnectWithoutCandidateInput
-    | Prisma.skillCreateOrConnectWithoutCandidateInput[];
-  createMany?: Prisma.skillCreateManyCandidateInputEnvelope;
-  connect?: Prisma.skillWhereUniqueInput | Prisma.skillWhereUniqueInput[];
+    | Prisma.SkillCreateOrConnectWithoutCandidateInput
+    | Prisma.SkillCreateOrConnectWithoutCandidateInput[];
+  createMany?: Prisma.SkillCreateManyCandidateInputEnvelope;
+  connect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[];
 };
 
-export type skillUncheckedCreateNestedManyWithoutCandidateInput = {
+export type SkillUncheckedCreateNestedManyWithoutCandidateInput = {
   create?:
     | Prisma.XOR<
-        Prisma.skillCreateWithoutCandidateInput,
-        Prisma.skillUncheckedCreateWithoutCandidateInput
+        Prisma.SkillCreateWithoutCandidateInput,
+        Prisma.SkillUncheckedCreateWithoutCandidateInput
       >
-    | Prisma.skillCreateWithoutCandidateInput[]
-    | Prisma.skillUncheckedCreateWithoutCandidateInput[];
+    | Prisma.SkillCreateWithoutCandidateInput[]
+    | Prisma.SkillUncheckedCreateWithoutCandidateInput[];
   connectOrCreate?:
-    | Prisma.skillCreateOrConnectWithoutCandidateInput
-    | Prisma.skillCreateOrConnectWithoutCandidateInput[];
-  createMany?: Prisma.skillCreateManyCandidateInputEnvelope;
-  connect?: Prisma.skillWhereUniqueInput | Prisma.skillWhereUniqueInput[];
+    | Prisma.SkillCreateOrConnectWithoutCandidateInput
+    | Prisma.SkillCreateOrConnectWithoutCandidateInput[];
+  createMany?: Prisma.SkillCreateManyCandidateInputEnvelope;
+  connect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[];
 };
 
-export type skillUpdateManyWithoutCandidateNestedInput = {
+export type SkillUpdateManyWithoutCandidateNestedInput = {
   create?:
     | Prisma.XOR<
-        Prisma.skillCreateWithoutCandidateInput,
-        Prisma.skillUncheckedCreateWithoutCandidateInput
+        Prisma.SkillCreateWithoutCandidateInput,
+        Prisma.SkillUncheckedCreateWithoutCandidateInput
       >
-    | Prisma.skillCreateWithoutCandidateInput[]
-    | Prisma.skillUncheckedCreateWithoutCandidateInput[];
+    | Prisma.SkillCreateWithoutCandidateInput[]
+    | Prisma.SkillUncheckedCreateWithoutCandidateInput[];
   connectOrCreate?:
-    | Prisma.skillCreateOrConnectWithoutCandidateInput
-    | Prisma.skillCreateOrConnectWithoutCandidateInput[];
+    | Prisma.SkillCreateOrConnectWithoutCandidateInput
+    | Prisma.SkillCreateOrConnectWithoutCandidateInput[];
   upsert?:
-    | Prisma.skillUpsertWithWhereUniqueWithoutCandidateInput
-    | Prisma.skillUpsertWithWhereUniqueWithoutCandidateInput[];
-  createMany?: Prisma.skillCreateManyCandidateInputEnvelope;
-  set?: Prisma.skillWhereUniqueInput | Prisma.skillWhereUniqueInput[];
-  disconnect?: Prisma.skillWhereUniqueInput | Prisma.skillWhereUniqueInput[];
-  delete?: Prisma.skillWhereUniqueInput | Prisma.skillWhereUniqueInput[];
-  connect?: Prisma.skillWhereUniqueInput | Prisma.skillWhereUniqueInput[];
+    | Prisma.SkillUpsertWithWhereUniqueWithoutCandidateInput
+    | Prisma.SkillUpsertWithWhereUniqueWithoutCandidateInput[];
+  createMany?: Prisma.SkillCreateManyCandidateInputEnvelope;
+  set?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[];
+  disconnect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[];
+  delete?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[];
+  connect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[];
   update?:
-    | Prisma.skillUpdateWithWhereUniqueWithoutCandidateInput
-    | Prisma.skillUpdateWithWhereUniqueWithoutCandidateInput[];
+    | Prisma.SkillUpdateWithWhereUniqueWithoutCandidateInput
+    | Prisma.SkillUpdateWithWhereUniqueWithoutCandidateInput[];
   updateMany?:
-    | Prisma.skillUpdateManyWithWhereWithoutCandidateInput
-    | Prisma.skillUpdateManyWithWhereWithoutCandidateInput[];
-  deleteMany?: Prisma.skillScalarWhereInput | Prisma.skillScalarWhereInput[];
+    | Prisma.SkillUpdateManyWithWhereWithoutCandidateInput
+    | Prisma.SkillUpdateManyWithWhereWithoutCandidateInput[];
+  deleteMany?: Prisma.SkillScalarWhereInput | Prisma.SkillScalarWhereInput[];
 };
 
-export type skillUncheckedUpdateManyWithoutCandidateNestedInput = {
+export type SkillUncheckedUpdateManyWithoutCandidateNestedInput = {
   create?:
     | Prisma.XOR<
-        Prisma.skillCreateWithoutCandidateInput,
-        Prisma.skillUncheckedCreateWithoutCandidateInput
+        Prisma.SkillCreateWithoutCandidateInput,
+        Prisma.SkillUncheckedCreateWithoutCandidateInput
       >
-    | Prisma.skillCreateWithoutCandidateInput[]
-    | Prisma.skillUncheckedCreateWithoutCandidateInput[];
+    | Prisma.SkillCreateWithoutCandidateInput[]
+    | Prisma.SkillUncheckedCreateWithoutCandidateInput[];
   connectOrCreate?:
-    | Prisma.skillCreateOrConnectWithoutCandidateInput
-    | Prisma.skillCreateOrConnectWithoutCandidateInput[];
+    | Prisma.SkillCreateOrConnectWithoutCandidateInput
+    | Prisma.SkillCreateOrConnectWithoutCandidateInput[];
   upsert?:
-    | Prisma.skillUpsertWithWhereUniqueWithoutCandidateInput
-    | Prisma.skillUpsertWithWhereUniqueWithoutCandidateInput[];
-  createMany?: Prisma.skillCreateManyCandidateInputEnvelope;
-  set?: Prisma.skillWhereUniqueInput | Prisma.skillWhereUniqueInput[];
-  disconnect?: Prisma.skillWhereUniqueInput | Prisma.skillWhereUniqueInput[];
-  delete?: Prisma.skillWhereUniqueInput | Prisma.skillWhereUniqueInput[];
-  connect?: Prisma.skillWhereUniqueInput | Prisma.skillWhereUniqueInput[];
+    | Prisma.SkillUpsertWithWhereUniqueWithoutCandidateInput
+    | Prisma.SkillUpsertWithWhereUniqueWithoutCandidateInput[];
+  createMany?: Prisma.SkillCreateManyCandidateInputEnvelope;
+  set?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[];
+  disconnect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[];
+  delete?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[];
+  connect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[];
   update?:
-    | Prisma.skillUpdateWithWhereUniqueWithoutCandidateInput
-    | Prisma.skillUpdateWithWhereUniqueWithoutCandidateInput[];
+    | Prisma.SkillUpdateWithWhereUniqueWithoutCandidateInput
+    | Prisma.SkillUpdateWithWhereUniqueWithoutCandidateInput[];
   updateMany?:
-    | Prisma.skillUpdateManyWithWhereWithoutCandidateInput
-    | Prisma.skillUpdateManyWithWhereWithoutCandidateInput[];
-  deleteMany?: Prisma.skillScalarWhereInput | Prisma.skillScalarWhereInput[];
+    | Prisma.SkillUpdateManyWithWhereWithoutCandidateInput
+    | Prisma.SkillUpdateManyWithWhereWithoutCandidateInput[];
+  deleteMany?: Prisma.SkillScalarWhereInput | Prisma.SkillScalarWhereInput[];
 };
 
-export type skillCreateWithoutCandidateInput = {
+export type SkillCreateWithoutCandidateInput = {
   id?: string;
   skill: string;
 };
 
-export type skillUncheckedCreateWithoutCandidateInput = {
+export type SkillUncheckedCreateWithoutCandidateInput = {
   id?: string;
   skill: string;
 };
 
-export type skillCreateOrConnectWithoutCandidateInput = {
-  where: Prisma.skillWhereUniqueInput;
+export type SkillCreateOrConnectWithoutCandidateInput = {
+  where: Prisma.SkillWhereUniqueInput;
   create: Prisma.XOR<
-    Prisma.skillCreateWithoutCandidateInput,
-    Prisma.skillUncheckedCreateWithoutCandidateInput
+    Prisma.SkillCreateWithoutCandidateInput,
+    Prisma.SkillUncheckedCreateWithoutCandidateInput
   >;
 };
 
-export type skillCreateManyCandidateInputEnvelope = {
+export type SkillCreateManyCandidateInputEnvelope = {
   data:
-    | Prisma.skillCreateManyCandidateInput
-    | Prisma.skillCreateManyCandidateInput[];
+    | Prisma.SkillCreateManyCandidateInput
+    | Prisma.SkillCreateManyCandidateInput[];
   skipDuplicates?: boolean;
 };
 
-export type skillUpsertWithWhereUniqueWithoutCandidateInput = {
-  where: Prisma.skillWhereUniqueInput;
+export type SkillUpsertWithWhereUniqueWithoutCandidateInput = {
+  where: Prisma.SkillWhereUniqueInput;
   update: Prisma.XOR<
-    Prisma.skillUpdateWithoutCandidateInput,
-    Prisma.skillUncheckedUpdateWithoutCandidateInput
+    Prisma.SkillUpdateWithoutCandidateInput,
+    Prisma.SkillUncheckedUpdateWithoutCandidateInput
   >;
   create: Prisma.XOR<
-    Prisma.skillCreateWithoutCandidateInput,
-    Prisma.skillUncheckedCreateWithoutCandidateInput
+    Prisma.SkillCreateWithoutCandidateInput,
+    Prisma.SkillUncheckedCreateWithoutCandidateInput
   >;
 };
 
-export type skillUpdateWithWhereUniqueWithoutCandidateInput = {
-  where: Prisma.skillWhereUniqueInput;
+export type SkillUpdateWithWhereUniqueWithoutCandidateInput = {
+  where: Prisma.SkillWhereUniqueInput;
   data: Prisma.XOR<
-    Prisma.skillUpdateWithoutCandidateInput,
-    Prisma.skillUncheckedUpdateWithoutCandidateInput
+    Prisma.SkillUpdateWithoutCandidateInput,
+    Prisma.SkillUncheckedUpdateWithoutCandidateInput
   >;
 };
 
-export type skillUpdateManyWithWhereWithoutCandidateInput = {
-  where: Prisma.skillScalarWhereInput;
+export type SkillUpdateManyWithWhereWithoutCandidateInput = {
+  where: Prisma.SkillScalarWhereInput;
   data: Prisma.XOR<
-    Prisma.skillUpdateManyMutationInput,
-    Prisma.skillUncheckedUpdateManyWithoutCandidateInput
+    Prisma.SkillUpdateManyMutationInput,
+    Prisma.SkillUncheckedUpdateManyWithoutCandidateInput
   >;
 };
 
-export type skillScalarWhereInput = {
-  AND?: Prisma.skillScalarWhereInput | Prisma.skillScalarWhereInput[];
-  OR?: Prisma.skillScalarWhereInput[];
-  NOT?: Prisma.skillScalarWhereInput | Prisma.skillScalarWhereInput[];
-  id?: Prisma.StringFilter<"skill"> | string;
-  skill?: Prisma.StringFilter<"skill"> | string;
-  candideId?: Prisma.StringFilter<"skill"> | string;
+export type SkillScalarWhereInput = {
+  AND?: Prisma.SkillScalarWhereInput | Prisma.SkillScalarWhereInput[];
+  OR?: Prisma.SkillScalarWhereInput[];
+  NOT?: Prisma.SkillScalarWhereInput | Prisma.SkillScalarWhereInput[];
+  id?: Prisma.StringFilter<"Skill"> | string;
+  skill?: Prisma.StringFilter<"Skill"> | string;
+  candideId?: Prisma.StringFilter<"Skill"> | string;
 };
 
-export type skillCreateManyCandidateInput = {
+export type SkillCreateManyCandidateInput = {
   id?: string;
   skill: string;
 };
 
-export type skillUpdateWithoutCandidateInput = {
+export type SkillUpdateWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   skill?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
-export type skillUncheckedUpdateWithoutCandidateInput = {
+export type SkillUncheckedUpdateWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   skill?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
-export type skillUncheckedUpdateManyWithoutCandidateInput = {
+export type SkillUncheckedUpdateManyWithoutCandidateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   skill?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
-export type skillSelect<
+export type SkillSelect<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
@@ -471,7 +471,7 @@ export type skillSelect<
   ExtArgs["result"]["skill"]
 >;
 
-export type skillSelectCreateManyAndReturn<
+export type SkillSelectCreateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
@@ -484,7 +484,7 @@ export type skillSelectCreateManyAndReturn<
   ExtArgs["result"]["skill"]
 >;
 
-export type skillSelectUpdateManyAndReturn<
+export type SkillSelectUpdateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
@@ -497,43 +497,43 @@ export type skillSelectUpdateManyAndReturn<
   ExtArgs["result"]["skill"]
 >;
 
-export type skillSelectScalar = {
+export type SkillSelectScalar = {
   id?: boolean;
   skill?: boolean;
   candideId?: boolean;
 };
 
-export type skillOmit<
+export type SkillOmit<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   "id" | "skill" | "candideId",
   ExtArgs["result"]["skill"]
 >;
-export type skillInclude<
+export type SkillInclude<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
 };
-export type skillIncludeCreateManyAndReturn<
+export type SkillIncludeCreateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
 };
-export type skillIncludeUpdateManyAndReturn<
+export type SkillIncludeUpdateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
 };
 
-export type $skillPayload<
+export type $SkillPayload<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  name: "skill";
+  name: "Skill";
   objects: {
     candidate: Prisma.$CandidatePayload<ExtArgs>;
   };
@@ -548,29 +548,29 @@ export type $skillPayload<
   composites: {};
 };
 
-export type skillGetPayload<
-  S extends boolean | null | undefined | skillDefaultArgs,
-> = runtime.Types.Result.GetResult<Prisma.$skillPayload, S>;
+export type SkillGetPayload<
+  S extends boolean | null | undefined | SkillDefaultArgs,
+> = runtime.Types.Result.GetResult<Prisma.$SkillPayload, S>;
 
-export type skillCountArgs<
+export type SkillCountArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
-> = Omit<skillFindManyArgs, "select" | "include" | "distinct" | "omit"> & {
+> = Omit<SkillFindManyArgs, "select" | "include" | "distinct" | "omit"> & {
   select?: SkillCountAggregateInputType | true;
 };
 
-export interface skillDelegate<
+export interface SkillDelegate<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
   GlobalOmitOptions = {},
 > {
   [K: symbol]: {
-    types: Prisma.TypeMap<ExtArgs>["model"]["skill"];
-    meta: { name: "skill" };
+    types: Prisma.TypeMap<ExtArgs>["model"]["Skill"];
+    meta: { name: "Skill" };
   };
   /**
    * Find zero or one Skill that matches the filter.
-   * @param {skillFindUniqueArgs} args - Arguments to find a Skill
+   * @param {SkillFindUniqueArgs} args - Arguments to find a Skill
    * @example
    * // Get one Skill
    * const skill = await prisma.skill.findUnique({
@@ -579,11 +579,11 @@ export interface skillDelegate<
    *   }
    * })
    */
-  findUnique<T extends skillFindUniqueArgs>(
-    args: Prisma.SelectSubset<T, skillFindUniqueArgs<ExtArgs>>,
-  ): Prisma.Prisma__skillClient<
+  findUnique<T extends SkillFindUniqueArgs>(
+    args: Prisma.SelectSubset<T, SkillFindUniqueArgs<ExtArgs>>,
+  ): Prisma.Prisma__SkillClient<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "findUnique",
       GlobalOmitOptions
@@ -596,7 +596,7 @@ export interface skillDelegate<
   /**
    * Find one Skill that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {skillFindUniqueOrThrowArgs} args - Arguments to find a Skill
+   * @param {SkillFindUniqueOrThrowArgs} args - Arguments to find a Skill
    * @example
    * // Get one Skill
    * const skill = await prisma.skill.findUniqueOrThrow({
@@ -605,11 +605,11 @@ export interface skillDelegate<
    *   }
    * })
    */
-  findUniqueOrThrow<T extends skillFindUniqueOrThrowArgs>(
-    args: Prisma.SelectSubset<T, skillFindUniqueOrThrowArgs<ExtArgs>>,
-  ): Prisma.Prisma__skillClient<
+  findUniqueOrThrow<T extends SkillFindUniqueOrThrowArgs>(
+    args: Prisma.SelectSubset<T, SkillFindUniqueOrThrowArgs<ExtArgs>>,
+  ): Prisma.Prisma__SkillClient<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "findUniqueOrThrow",
       GlobalOmitOptions
@@ -623,7 +623,7 @@ export interface skillDelegate<
    * Find the first Skill that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {skillFindFirstArgs} args - Arguments to find a Skill
+   * @param {SkillFindFirstArgs} args - Arguments to find a Skill
    * @example
    * // Get one Skill
    * const skill = await prisma.skill.findFirst({
@@ -632,11 +632,11 @@ export interface skillDelegate<
    *   }
    * })
    */
-  findFirst<T extends skillFindFirstArgs>(
-    args?: Prisma.SelectSubset<T, skillFindFirstArgs<ExtArgs>>,
-  ): Prisma.Prisma__skillClient<
+  findFirst<T extends SkillFindFirstArgs>(
+    args?: Prisma.SelectSubset<T, SkillFindFirstArgs<ExtArgs>>,
+  ): Prisma.Prisma__SkillClient<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "findFirst",
       GlobalOmitOptions
@@ -651,7 +651,7 @@ export interface skillDelegate<
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {skillFindFirstOrThrowArgs} args - Arguments to find a Skill
+   * @param {SkillFindFirstOrThrowArgs} args - Arguments to find a Skill
    * @example
    * // Get one Skill
    * const skill = await prisma.skill.findFirstOrThrow({
@@ -660,11 +660,11 @@ export interface skillDelegate<
    *   }
    * })
    */
-  findFirstOrThrow<T extends skillFindFirstOrThrowArgs>(
-    args?: Prisma.SelectSubset<T, skillFindFirstOrThrowArgs<ExtArgs>>,
-  ): Prisma.Prisma__skillClient<
+  findFirstOrThrow<T extends SkillFindFirstOrThrowArgs>(
+    args?: Prisma.SelectSubset<T, SkillFindFirstOrThrowArgs<ExtArgs>>,
+  ): Prisma.Prisma__SkillClient<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "findFirstOrThrow",
       GlobalOmitOptions
@@ -678,7 +678,7 @@ export interface skillDelegate<
    * Find zero or more Skills that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {skillFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {SkillFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all Skills
    * const skills = await prisma.skill.findMany()
@@ -690,11 +690,11 @@ export interface skillDelegate<
    * const skillWithIdOnly = await prisma.skill.findMany({ select: { id: true } })
    *
    */
-  findMany<T extends skillFindManyArgs>(
-    args?: Prisma.SelectSubset<T, skillFindManyArgs<ExtArgs>>,
+  findMany<T extends SkillFindManyArgs>(
+    args?: Prisma.SelectSubset<T, SkillFindManyArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "findMany",
       GlobalOmitOptions
@@ -703,7 +703,7 @@ export interface skillDelegate<
 
   /**
    * Create a Skill.
-   * @param {skillCreateArgs} args - Arguments to create a Skill.
+   * @param {SkillCreateArgs} args - Arguments to create a Skill.
    * @example
    * // Create one Skill
    * const Skill = await prisma.skill.create({
@@ -713,11 +713,11 @@ export interface skillDelegate<
    * })
    *
    */
-  create<T extends skillCreateArgs>(
-    args: Prisma.SelectSubset<T, skillCreateArgs<ExtArgs>>,
-  ): Prisma.Prisma__skillClient<
+  create<T extends SkillCreateArgs>(
+    args: Prisma.SelectSubset<T, SkillCreateArgs<ExtArgs>>,
+  ): Prisma.Prisma__SkillClient<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "create",
       GlobalOmitOptions
@@ -729,7 +729,7 @@ export interface skillDelegate<
 
   /**
    * Create many Skills.
-   * @param {skillCreateManyArgs} args - Arguments to create many Skills.
+   * @param {SkillCreateManyArgs} args - Arguments to create many Skills.
    * @example
    * // Create many Skills
    * const skill = await prisma.skill.createMany({
@@ -739,13 +739,13 @@ export interface skillDelegate<
    * })
    *
    */
-  createMany<T extends skillCreateManyArgs>(
-    args?: Prisma.SelectSubset<T, skillCreateManyArgs<ExtArgs>>,
+  createMany<T extends SkillCreateManyArgs>(
+    args?: Prisma.SelectSubset<T, SkillCreateManyArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<Prisma.BatchPayload>;
 
   /**
    * Create many Skills and returns the data saved in the database.
-   * @param {skillCreateManyAndReturnArgs} args - Arguments to create many Skills.
+   * @param {SkillCreateManyAndReturnArgs} args - Arguments to create many Skills.
    * @example
    * // Create many Skills
    * const skill = await prisma.skill.createManyAndReturn({
@@ -765,11 +765,11 @@ export interface skillDelegate<
    * Read more here: https://pris.ly/d/null-undefined
    *
    */
-  createManyAndReturn<T extends skillCreateManyAndReturnArgs>(
-    args?: Prisma.SelectSubset<T, skillCreateManyAndReturnArgs<ExtArgs>>,
+  createManyAndReturn<T extends SkillCreateManyAndReturnArgs>(
+    args?: Prisma.SelectSubset<T, SkillCreateManyAndReturnArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "createManyAndReturn",
       GlobalOmitOptions
@@ -778,7 +778,7 @@ export interface skillDelegate<
 
   /**
    * Delete a Skill.
-   * @param {skillDeleteArgs} args - Arguments to delete one Skill.
+   * @param {SkillDeleteArgs} args - Arguments to delete one Skill.
    * @example
    * // Delete one Skill
    * const Skill = await prisma.skill.delete({
@@ -788,11 +788,11 @@ export interface skillDelegate<
    * })
    *
    */
-  delete<T extends skillDeleteArgs>(
-    args: Prisma.SelectSubset<T, skillDeleteArgs<ExtArgs>>,
-  ): Prisma.Prisma__skillClient<
+  delete<T extends SkillDeleteArgs>(
+    args: Prisma.SelectSubset<T, SkillDeleteArgs<ExtArgs>>,
+  ): Prisma.Prisma__SkillClient<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "delete",
       GlobalOmitOptions
@@ -804,7 +804,7 @@ export interface skillDelegate<
 
   /**
    * Update one Skill.
-   * @param {skillUpdateArgs} args - Arguments to update one Skill.
+   * @param {SkillUpdateArgs} args - Arguments to update one Skill.
    * @example
    * // Update one Skill
    * const skill = await prisma.skill.update({
@@ -817,11 +817,11 @@ export interface skillDelegate<
    * })
    *
    */
-  update<T extends skillUpdateArgs>(
-    args: Prisma.SelectSubset<T, skillUpdateArgs<ExtArgs>>,
-  ): Prisma.Prisma__skillClient<
+  update<T extends SkillUpdateArgs>(
+    args: Prisma.SelectSubset<T, SkillUpdateArgs<ExtArgs>>,
+  ): Prisma.Prisma__SkillClient<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "update",
       GlobalOmitOptions
@@ -833,7 +833,7 @@ export interface skillDelegate<
 
   /**
    * Delete zero or more Skills.
-   * @param {skillDeleteManyArgs} args - Arguments to filter Skills to delete.
+   * @param {SkillDeleteManyArgs} args - Arguments to filter Skills to delete.
    * @example
    * // Delete a few Skills
    * const { count } = await prisma.skill.deleteMany({
@@ -843,15 +843,15 @@ export interface skillDelegate<
    * })
    *
    */
-  deleteMany<T extends skillDeleteManyArgs>(
-    args?: Prisma.SelectSubset<T, skillDeleteManyArgs<ExtArgs>>,
+  deleteMany<T extends SkillDeleteManyArgs>(
+    args?: Prisma.SelectSubset<T, SkillDeleteManyArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<Prisma.BatchPayload>;
 
   /**
    * Update zero or more Skills.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {skillUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {SkillUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many Skills
    * const skill = await prisma.skill.updateMany({
@@ -864,13 +864,13 @@ export interface skillDelegate<
    * })
    *
    */
-  updateMany<T extends skillUpdateManyArgs>(
-    args: Prisma.SelectSubset<T, skillUpdateManyArgs<ExtArgs>>,
+  updateMany<T extends SkillUpdateManyArgs>(
+    args: Prisma.SelectSubset<T, SkillUpdateManyArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<Prisma.BatchPayload>;
 
   /**
    * Update zero or more Skills and returns the data updated in the database.
-   * @param {skillUpdateManyAndReturnArgs} args - Arguments to update many Skills.
+   * @param {SkillUpdateManyAndReturnArgs} args - Arguments to update many Skills.
    * @example
    * // Update many Skills
    * const skill = await prisma.skill.updateManyAndReturn({
@@ -896,11 +896,11 @@ export interface skillDelegate<
    * Read more here: https://pris.ly/d/null-undefined
    *
    */
-  updateManyAndReturn<T extends skillUpdateManyAndReturnArgs>(
-    args: Prisma.SelectSubset<T, skillUpdateManyAndReturnArgs<ExtArgs>>,
+  updateManyAndReturn<T extends SkillUpdateManyAndReturnArgs>(
+    args: Prisma.SelectSubset<T, SkillUpdateManyAndReturnArgs<ExtArgs>>,
   ): Prisma.PrismaPromise<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "updateManyAndReturn",
       GlobalOmitOptions
@@ -909,7 +909,7 @@ export interface skillDelegate<
 
   /**
    * Create or update one Skill.
-   * @param {skillUpsertArgs} args - Arguments to update or create a Skill.
+   * @param {SkillUpsertArgs} args - Arguments to update or create a Skill.
    * @example
    * // Update or create a Skill
    * const skill = await prisma.skill.upsert({
@@ -924,11 +924,11 @@ export interface skillDelegate<
    *   }
    * })
    */
-  upsert<T extends skillUpsertArgs>(
-    args: Prisma.SelectSubset<T, skillUpsertArgs<ExtArgs>>,
-  ): Prisma.Prisma__skillClient<
+  upsert<T extends SkillUpsertArgs>(
+    args: Prisma.SelectSubset<T, SkillUpsertArgs<ExtArgs>>,
+  ): Prisma.Prisma__SkillClient<
     runtime.Types.Result.GetResult<
-      Prisma.$skillPayload<ExtArgs>,
+      Prisma.$SkillPayload<ExtArgs>,
       T,
       "upsert",
       GlobalOmitOptions
@@ -942,7 +942,7 @@ export interface skillDelegate<
    * Count the number of Skills.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {skillCountArgs} args - Arguments to filter Skills to count.
+   * @param {SkillCountArgs} args - Arguments to filter Skills to count.
    * @example
    * // Count the number of Skills
    * const count = await prisma.skill.count({
@@ -951,8 +951,8 @@ export interface skillDelegate<
    *   }
    * })
    **/
-  count<T extends skillCountArgs>(
-    args?: Prisma.Subset<T, skillCountArgs>,
+  count<T extends SkillCountArgs>(
+    args?: Prisma.Subset<T, SkillCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<"select", any>
       ? T["select"] extends true
@@ -993,7 +993,7 @@ export interface skillDelegate<
    * Group by Skill.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {skillGroupByArgs} args - Group by arguments.
+   * @param {SkillGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -1008,14 +1008,14 @@ export interface skillDelegate<
    *
    **/
   groupBy<
-    T extends skillGroupByArgs,
+    T extends SkillGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<"skip", Prisma.Keys<T>>,
       Prisma.Extends<"take", Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: skillGroupByArgs["orderBy"] }
-      : { orderBy?: skillGroupByArgs["orderBy"] },
+      ? { orderBy: SkillGroupByArgs["orderBy"] }
+      : { orderBy?: SkillGroupByArgs["orderBy"] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<
       Prisma.Keys<Prisma.MaybeTupleToUnion<T["orderBy"]>>
     >,
@@ -1067,24 +1067,24 @@ export interface skillDelegate<
                     : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                 }[OrderFields],
   >(
-    args: Prisma.SubsetIntersection<T, skillGroupByArgs, OrderByArg> &
+    args: Prisma.SubsetIntersection<T, SkillGroupByArgs, OrderByArg> &
       InputErrors,
   ): {} extends InputErrors
     ? GetSkillGroupByPayload<T>
     : Prisma.PrismaPromise<InputErrors>;
   /**
-   * Fields of the skill model
+   * Fields of the Skill model
    */
-  readonly fields: skillFieldRefs;
+  readonly fields: SkillFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for skill.
+ * The delegate class that acts as a "Promise-like" for Skill.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__skillClient<
+export interface Prisma__SkillClient<
   T,
   Null = never,
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
@@ -1145,482 +1145,482 @@ export interface Prisma__skillClient<
 }
 
 /**
- * Fields of the skill model
+ * Fields of the Skill model
  */
-export interface skillFieldRefs {
-  readonly id: Prisma.FieldRef<"skill", "String">;
-  readonly skill: Prisma.FieldRef<"skill", "String">;
-  readonly candideId: Prisma.FieldRef<"skill", "String">;
+export interface SkillFieldRefs {
+  readonly id: Prisma.FieldRef<"Skill", "String">;
+  readonly skill: Prisma.FieldRef<"Skill", "String">;
+  readonly candideId: Prisma.FieldRef<"Skill", "String">;
 }
 
 // Custom InputTypes
 /**
- * skill findUnique
+ * Skill findUnique
  */
-export type skillFindUniqueArgs<
+export type SkillFindUniqueArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelect<ExtArgs> | null;
+  select?: Prisma.SkillSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillInclude<ExtArgs> | null;
+  include?: Prisma.SkillInclude<ExtArgs> | null;
   /**
-   * Filter, which skill to fetch.
+   * Filter, which Skill to fetch.
    */
-  where: Prisma.skillWhereUniqueInput;
+  where: Prisma.SkillWhereUniqueInput;
 };
 
 /**
- * skill findUniqueOrThrow
+ * Skill findUniqueOrThrow
  */
-export type skillFindUniqueOrThrowArgs<
+export type SkillFindUniqueOrThrowArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelect<ExtArgs> | null;
+  select?: Prisma.SkillSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillInclude<ExtArgs> | null;
+  include?: Prisma.SkillInclude<ExtArgs> | null;
   /**
-   * Filter, which skill to fetch.
+   * Filter, which Skill to fetch.
    */
-  where: Prisma.skillWhereUniqueInput;
+  where: Prisma.SkillWhereUniqueInput;
 };
 
 /**
- * skill findFirst
+ * Skill findFirst
  */
-export type skillFindFirstArgs<
+export type SkillFindFirstArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelect<ExtArgs> | null;
+  select?: Prisma.SkillSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillInclude<ExtArgs> | null;
+  include?: Prisma.SkillInclude<ExtArgs> | null;
   /**
-   * Filter, which skill to fetch.
+   * Filter, which Skill to fetch.
    */
-  where?: Prisma.skillWhereInput;
+  where?: Prisma.SkillWhereInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    *
-   * Determine the order of skills to fetch.
+   * Determine the order of Skills to fetch.
    */
   orderBy?:
-    | Prisma.skillOrderByWithRelationInput
-    | Prisma.skillOrderByWithRelationInput[];
+    | Prisma.SkillOrderByWithRelationInput
+    | Prisma.SkillOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
-   * Sets the position for searching for skills.
+   * Sets the position for searching for Skills.
    */
-  cursor?: Prisma.skillWhereUniqueInput;
+  cursor?: Prisma.SkillWhereUniqueInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Take `±n` skills from the position of the cursor.
+   * Take `±n` Skills from the position of the cursor.
    */
   take?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Skip the first `n` skills.
+   * Skip the first `n` Skills.
    */
   skip?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    *
-   * Filter by unique combinations of skills.
+   * Filter by unique combinations of Skills.
    */
   distinct?: Prisma.SkillScalarFieldEnum | Prisma.SkillScalarFieldEnum[];
 };
 
 /**
- * skill findFirstOrThrow
+ * Skill findFirstOrThrow
  */
-export type skillFindFirstOrThrowArgs<
+export type SkillFindFirstOrThrowArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelect<ExtArgs> | null;
+  select?: Prisma.SkillSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillInclude<ExtArgs> | null;
+  include?: Prisma.SkillInclude<ExtArgs> | null;
   /**
-   * Filter, which skill to fetch.
+   * Filter, which Skill to fetch.
    */
-  where?: Prisma.skillWhereInput;
+  where?: Prisma.SkillWhereInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    *
-   * Determine the order of skills to fetch.
+   * Determine the order of Skills to fetch.
    */
   orderBy?:
-    | Prisma.skillOrderByWithRelationInput
-    | Prisma.skillOrderByWithRelationInput[];
+    | Prisma.SkillOrderByWithRelationInput
+    | Prisma.SkillOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
-   * Sets the position for searching for skills.
+   * Sets the position for searching for Skills.
    */
-  cursor?: Prisma.skillWhereUniqueInput;
+  cursor?: Prisma.SkillWhereUniqueInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Take `±n` skills from the position of the cursor.
+   * Take `±n` Skills from the position of the cursor.
    */
   take?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Skip the first `n` skills.
+   * Skip the first `n` Skills.
    */
   skip?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    *
-   * Filter by unique combinations of skills.
+   * Filter by unique combinations of Skills.
    */
   distinct?: Prisma.SkillScalarFieldEnum | Prisma.SkillScalarFieldEnum[];
 };
 
 /**
- * skill findMany
+ * Skill findMany
  */
-export type skillFindManyArgs<
+export type SkillFindManyArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelect<ExtArgs> | null;
+  select?: Prisma.SkillSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillInclude<ExtArgs> | null;
+  include?: Prisma.SkillInclude<ExtArgs> | null;
   /**
-   * Filter, which skills to fetch.
+   * Filter, which Skills to fetch.
    */
-  where?: Prisma.skillWhereInput;
+  where?: Prisma.SkillWhereInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    *
-   * Determine the order of skills to fetch.
+   * Determine the order of Skills to fetch.
    */
   orderBy?:
-    | Prisma.skillOrderByWithRelationInput
-    | Prisma.skillOrderByWithRelationInput[];
+    | Prisma.SkillOrderByWithRelationInput
+    | Prisma.SkillOrderByWithRelationInput[];
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    *
-   * Sets the position for listing skills.
+   * Sets the position for listing Skills.
    */
-  cursor?: Prisma.skillWhereUniqueInput;
+  cursor?: Prisma.SkillWhereUniqueInput;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Take `±n` skills from the position of the cursor.
+   * Take `±n` Skills from the position of the cursor.
    */
   take?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    *
-   * Skip the first `n` skills.
+   * Skip the first `n` Skills.
    */
   skip?: number;
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    *
-   * Filter by unique combinations of skills.
+   * Filter by unique combinations of Skills.
    */
   distinct?: Prisma.SkillScalarFieldEnum | Prisma.SkillScalarFieldEnum[];
 };
 
 /**
- * skill create
+ * Skill create
  */
-export type skillCreateArgs<
+export type SkillCreateArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelect<ExtArgs> | null;
+  select?: Prisma.SkillSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillInclude<ExtArgs> | null;
+  include?: Prisma.SkillInclude<ExtArgs> | null;
   /**
-   * The data needed to create a skill.
+   * The data needed to create a Skill.
    */
-  data: Prisma.XOR<Prisma.skillCreateInput, Prisma.skillUncheckedCreateInput>;
+  data: Prisma.XOR<Prisma.SkillCreateInput, Prisma.SkillUncheckedCreateInput>;
 };
 
 /**
- * skill createMany
+ * Skill createMany
  */
-export type skillCreateManyArgs<
+export type SkillCreateManyArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * The data used to create many skills.
+   * The data used to create many Skills.
    */
-  data: Prisma.skillCreateManyInput | Prisma.skillCreateManyInput[];
+  data: Prisma.SkillCreateManyInput | Prisma.SkillCreateManyInput[];
   skipDuplicates?: boolean;
 };
 
 /**
- * skill createManyAndReturn
+ * Skill createManyAndReturn
  */
-export type skillCreateManyAndReturnArgs<
+export type SkillCreateManyAndReturnArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelectCreateManyAndReturn<ExtArgs> | null;
+  select?: Prisma.SkillSelectCreateManyAndReturn<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
-   * The data used to create many skills.
+   * The data used to create many Skills.
    */
-  data: Prisma.skillCreateManyInput | Prisma.skillCreateManyInput[];
+  data: Prisma.SkillCreateManyInput | Prisma.SkillCreateManyInput[];
   skipDuplicates?: boolean;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillIncludeCreateManyAndReturn<ExtArgs> | null;
+  include?: Prisma.SkillIncludeCreateManyAndReturn<ExtArgs> | null;
 };
 
 /**
- * skill update
+ * Skill update
  */
-export type skillUpdateArgs<
+export type SkillUpdateArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelect<ExtArgs> | null;
+  select?: Prisma.SkillSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillInclude<ExtArgs> | null;
+  include?: Prisma.SkillInclude<ExtArgs> | null;
   /**
-   * The data needed to update a skill.
+   * The data needed to update a Skill.
    */
-  data: Prisma.XOR<Prisma.skillUpdateInput, Prisma.skillUncheckedUpdateInput>;
+  data: Prisma.XOR<Prisma.SkillUpdateInput, Prisma.SkillUncheckedUpdateInput>;
   /**
-   * Choose, which skill to update.
+   * Choose, which Skill to update.
    */
-  where: Prisma.skillWhereUniqueInput;
+  where: Prisma.SkillWhereUniqueInput;
 };
 
 /**
- * skill updateMany
+ * Skill updateMany
  */
-export type skillUpdateManyArgs<
+export type SkillUpdateManyArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * The data used to update skills.
+   * The data used to update Skills.
    */
   data: Prisma.XOR<
-    Prisma.skillUpdateManyMutationInput,
-    Prisma.skillUncheckedUpdateManyInput
+    Prisma.SkillUpdateManyMutationInput,
+    Prisma.SkillUncheckedUpdateManyInput
   >;
   /**
-   * Filter which skills to update
+   * Filter which Skills to update
    */
-  where?: Prisma.skillWhereInput;
+  where?: Prisma.SkillWhereInput;
   /**
-   * Limit how many skills to update.
+   * Limit how many Skills to update.
    */
   limit?: number;
 };
 
 /**
- * skill updateManyAndReturn
+ * Skill updateManyAndReturn
  */
-export type skillUpdateManyAndReturnArgs<
+export type SkillUpdateManyAndReturnArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelectUpdateManyAndReturn<ExtArgs> | null;
+  select?: Prisma.SkillSelectUpdateManyAndReturn<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
-   * The data used to update skills.
+   * The data used to update Skills.
    */
   data: Prisma.XOR<
-    Prisma.skillUpdateManyMutationInput,
-    Prisma.skillUncheckedUpdateManyInput
+    Prisma.SkillUpdateManyMutationInput,
+    Prisma.SkillUncheckedUpdateManyInput
   >;
   /**
-   * Filter which skills to update
+   * Filter which Skills to update
    */
-  where?: Prisma.skillWhereInput;
+  where?: Prisma.SkillWhereInput;
   /**
-   * Limit how many skills to update.
+   * Limit how many Skills to update.
    */
   limit?: number;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillIncludeUpdateManyAndReturn<ExtArgs> | null;
+  include?: Prisma.SkillIncludeUpdateManyAndReturn<ExtArgs> | null;
 };
 
 /**
- * skill upsert
+ * Skill upsert
  */
-export type skillUpsertArgs<
+export type SkillUpsertArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelect<ExtArgs> | null;
+  select?: Prisma.SkillSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillInclude<ExtArgs> | null;
+  include?: Prisma.SkillInclude<ExtArgs> | null;
   /**
-   * The filter to search for the skill to update in case it exists.
+   * The filter to search for the Skill to update in case it exists.
    */
-  where: Prisma.skillWhereUniqueInput;
+  where: Prisma.SkillWhereUniqueInput;
   /**
-   * In case the skill found by the `where` argument doesn't exist, create a new skill with this data.
+   * In case the Skill found by the `where` argument doesn't exist, create a new Skill with this data.
    */
-  create: Prisma.XOR<Prisma.skillCreateInput, Prisma.skillUncheckedCreateInput>;
+  create: Prisma.XOR<Prisma.SkillCreateInput, Prisma.SkillUncheckedCreateInput>;
   /**
-   * In case the skill was found with the provided `where` argument, update it with this data.
+   * In case the Skill was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.skillUpdateInput, Prisma.skillUncheckedUpdateInput>;
+  update: Prisma.XOR<Prisma.SkillUpdateInput, Prisma.SkillUncheckedUpdateInput>;
 };
 
 /**
- * skill delete
+ * Skill delete
  */
-export type skillDeleteArgs<
+export type SkillDeleteArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelect<ExtArgs> | null;
+  select?: Prisma.SkillSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillInclude<ExtArgs> | null;
+  include?: Prisma.SkillInclude<ExtArgs> | null;
   /**
-   * Filter which skill to delete.
+   * Filter which Skill to delete.
    */
-  where: Prisma.skillWhereUniqueInput;
+  where: Prisma.SkillWhereUniqueInput;
 };
 
 /**
- * skill deleteMany
+ * Skill deleteMany
  */
-export type skillDeleteManyArgs<
+export type SkillDeleteManyArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Filter which skills to delete
+   * Filter which Skills to delete
    */
-  where?: Prisma.skillWhereInput;
+  where?: Prisma.SkillWhereInput;
   /**
-   * Limit how many skills to delete.
+   * Limit how many Skills to delete.
    */
   limit?: number;
 };
 
 /**
- * skill without action
+ * Skill without action
  */
-export type skillDefaultArgs<
+export type SkillDefaultArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   /**
-   * Select specific fields to fetch from the skill
+   * Select specific fields to fetch from the Skill
    */
-  select?: Prisma.skillSelect<ExtArgs> | null;
+  select?: Prisma.SkillSelect<ExtArgs> | null;
   /**
-   * Omit specific fields from the skill
+   * Omit specific fields from the Skill
    */
-  omit?: Prisma.skillOmit<ExtArgs> | null;
+  omit?: Prisma.SkillOmit<ExtArgs> | null;
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.skillInclude<ExtArgs> | null;
+  include?: Prisma.SkillInclude<ExtArgs> | null;
 };

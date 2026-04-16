@@ -7,15 +7,16 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from "./models/Language";
 export type * from "./models/Application";
 export type * from "./models/Candidate";
 export type * from "./models/Company";
-export type * from "./models/eduction";
+export type * from "./models/Eduction";
 export type * from "./models/FollowCompany";
 export type * from "./models/Job";
 export type * from "./models/Resume";
 export type * from "./models/SavedJob";
 export type * from "./models/User";
-export type * from "./models/skill";
-export type * from "./models/workExperience";
+export type * from "./models/Skill";
+export type * from "./models/WorkExperience";
 export type * from "./commonInputTypes";
