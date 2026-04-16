@@ -26,7 +26,6 @@ model Company {
 enum JobType {
   FULL_TIME
   PART_TIME
-  FREELANCE
   CONTRACT
   INTERN
   REMOTE
