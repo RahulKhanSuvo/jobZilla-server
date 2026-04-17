@@ -21,7 +21,6 @@ export const candidateSchema = z.object({
       institution: z.string(),
       major: z.string(),
       field: z.string(),
-      gap: z.number(),
       startData: z.string(),
       endData: z.string(),
       isStudying: z.boolean(),
