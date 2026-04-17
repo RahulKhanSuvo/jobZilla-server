@@ -11,7 +11,7 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       name: payload.fullName,
     },
   });
-  const reuslt = await prisma.candidate.upsert({
+  const result = await prisma.candidate.upsert({
     where: { userId: userId },
     update: {
       phone: payload.phone,
@@ -19,7 +19,12 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       dob: payload.dob ? new Date(payload.dob) : null,
       gender: payload.gender,
       maritalStatus: payload.maritalStatus,
-      language: payload.language,
+      languages: {
+        deleteMany: {},
+        create: payload.language?.map((lang) => ({
+          language: lang,
+        })),
+      },
       aboutMe: payload.aboutMe,
       profileImage: payload.avatar,
       facebook: payload.facebook,
@@ -64,7 +69,11 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       dob: payload.dob ? new Date(payload.dob) : null,
       gender: payload.gender,
       maritalStatus: payload.maritalStatus,
-      language: payload.language,
+      languages: {
+        create: payload.language?.map((language) => ({
+          language: language,
+        })),
+      },
       aboutMe: payload.aboutMe,
       profileImage: payload.avatar,
       facebook: payload.facebook,
@@ -99,7 +108,7 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       },
     },
   });
-  return { ...user, candidate: reuslt };
+  return { ...user, candidate: result };
 };
 
 export const candidateService = {

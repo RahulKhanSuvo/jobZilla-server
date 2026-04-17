@@ -8,7 +8,7 @@ export const candidateSchema = z.object({
   dob: z.string().min(1, "Date of birth is required"),
   gender: z.string().min(1, "Gender is required"),
   maritalStatus: z.string().min(1, "Marital status is required"),
-  language: z.string().min(1, "Language is required"),
+  language: z.array(z.string()).optional(),
   skills: z.array(z.string()).optional(),
   aboutMe: z.string().optional(),
   careerFinding: z.string().optional(),
