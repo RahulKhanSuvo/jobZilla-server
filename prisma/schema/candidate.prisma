@@ -7,7 +7,7 @@ model Candidate {
   gender          String?
   maritalStatus   String?
   aboutMe         String?          @db.Text
-  profileImage    String?
+  avatar          String?
   facebook        String?
   linkedin        String?
   twitter         String?

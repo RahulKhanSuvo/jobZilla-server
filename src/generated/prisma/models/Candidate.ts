@@ -33,7 +33,7 @@ export type CandidateMinAggregateOutputType = {
   gender: string | null;
   maritalStatus: string | null;
   aboutMe: string | null;
-  profileImage: string | null;
+  avatar: string | null;
   facebook: string | null;
   linkedin: string | null;
   twitter: string | null;
@@ -48,7 +48,7 @@ export type CandidateMaxAggregateOutputType = {
   gender: string | null;
   maritalStatus: string | null;
   aboutMe: string | null;
-  profileImage: string | null;
+  avatar: string | null;
   facebook: string | null;
   linkedin: string | null;
   twitter: string | null;
@@ -63,7 +63,7 @@ export type CandidateCountAggregateOutputType = {
   gender: number;
   maritalStatus: number;
   aboutMe: number;
-  profileImage: number;
+  avatar: number;
   facebook: number;
   linkedin: number;
   twitter: number;
@@ -79,7 +79,7 @@ export type CandidateMinAggregateInputType = {
   gender?: true;
   maritalStatus?: true;
   aboutMe?: true;
-  profileImage?: true;
+  avatar?: true;
   facebook?: true;
   linkedin?: true;
   twitter?: true;
@@ -94,7 +94,7 @@ export type CandidateMaxAggregateInputType = {
   gender?: true;
   maritalStatus?: true;
   aboutMe?: true;
-  profileImage?: true;
+  avatar?: true;
   facebook?: true;
   linkedin?: true;
   twitter?: true;
@@ -109,7 +109,7 @@ export type CandidateCountAggregateInputType = {
   gender?: true;
   maritalStatus?: true;
   aboutMe?: true;
-  profileImage?: true;
+  avatar?: true;
   facebook?: true;
   linkedin?: true;
   twitter?: true;
@@ -204,7 +204,7 @@ export type CandidateGroupByOutputType = {
   gender: string | null;
   maritalStatus: string | null;
   aboutMe: string | null;
-  profileImage: string | null;
+  avatar: string | null;
   facebook: string | null;
   linkedin: string | null;
   twitter: string | null;
@@ -238,7 +238,7 @@ export type CandidateWhereInput = {
   gender?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   maritalStatus?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   aboutMe?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-  profileImage?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  avatar?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   facebook?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   linkedin?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   twitter?: Prisma.StringNullableFilter<"Candidate"> | string | null;
@@ -260,7 +260,7 @@ export type CandidateOrderByWithRelationInput = {
   gender?: Prisma.SortOrderInput | Prisma.SortOrder;
   maritalStatus?: Prisma.SortOrderInput | Prisma.SortOrder;
   aboutMe?: Prisma.SortOrderInput | Prisma.SortOrder;
-  profileImage?: Prisma.SortOrderInput | Prisma.SortOrder;
+  avatar?: Prisma.SortOrderInput | Prisma.SortOrder;
   facebook?: Prisma.SortOrderInput | Prisma.SortOrder;
   linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
   twitter?: Prisma.SortOrderInput | Prisma.SortOrder;
@@ -286,7 +286,7 @@ export type CandidateWhereUniqueInput = Prisma.AtLeast<
     gender?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     maritalStatus?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     aboutMe?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-    profileImage?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+    avatar?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     facebook?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     linkedin?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     twitter?: Prisma.StringNullableFilter<"Candidate"> | string | null;
@@ -310,7 +310,7 @@ export type CandidateOrderByWithAggregationInput = {
   gender?: Prisma.SortOrderInput | Prisma.SortOrder;
   maritalStatus?: Prisma.SortOrderInput | Prisma.SortOrder;
   aboutMe?: Prisma.SortOrderInput | Prisma.SortOrder;
-  profileImage?: Prisma.SortOrderInput | Prisma.SortOrder;
+  avatar?: Prisma.SortOrderInput | Prisma.SortOrder;
   facebook?: Prisma.SortOrderInput | Prisma.SortOrder;
   linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
   twitter?: Prisma.SortOrderInput | Prisma.SortOrder;
@@ -351,7 +351,7 @@ export type CandidateScalarWhereWithAggregatesInput = {
     | Prisma.StringNullableWithAggregatesFilter<"Candidate">
     | string
     | null;
-  profileImage?:
+  avatar?:
     | Prisma.StringNullableWithAggregatesFilter<"Candidate">
     | string
     | null;
@@ -377,7 +377,7 @@ export type CandidateCreateInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -399,7 +399,7 @@ export type CandidateUncheckedCreateInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -426,10 +426,7 @@ export type CandidateUpdateInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -458,10 +455,7 @@ export type CandidateUncheckedUpdateInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -482,7 +476,7 @@ export type CandidateCreateManyInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -503,10 +497,7 @@ export type CandidateUpdateManyMutationInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -528,10 +519,7 @@ export type CandidateUncheckedUpdateManyInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -551,7 +539,7 @@ export type CandidateCountOrderByAggregateInput = {
   gender?: Prisma.SortOrder;
   maritalStatus?: Prisma.SortOrder;
   aboutMe?: Prisma.SortOrder;
-  profileImage?: Prisma.SortOrder;
+  avatar?: Prisma.SortOrder;
   facebook?: Prisma.SortOrder;
   linkedin?: Prisma.SortOrder;
   twitter?: Prisma.SortOrder;
@@ -566,7 +554,7 @@ export type CandidateMaxOrderByAggregateInput = {
   gender?: Prisma.SortOrder;
   maritalStatus?: Prisma.SortOrder;
   aboutMe?: Prisma.SortOrder;
-  profileImage?: Prisma.SortOrder;
+  avatar?: Prisma.SortOrder;
   facebook?: Prisma.SortOrder;
   linkedin?: Prisma.SortOrder;
   twitter?: Prisma.SortOrder;
@@ -581,7 +569,7 @@ export type CandidateMinOrderByAggregateInput = {
   gender?: Prisma.SortOrder;
   maritalStatus?: Prisma.SortOrder;
   aboutMe?: Prisma.SortOrder;
-  profileImage?: Prisma.SortOrder;
+  avatar?: Prisma.SortOrder;
   facebook?: Prisma.SortOrder;
   linkedin?: Prisma.SortOrder;
   twitter?: Prisma.SortOrder;
@@ -820,7 +808,7 @@ export type CandidateCreateWithoutLanguagesInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -841,7 +829,7 @@ export type CandidateUncheckedCreateWithoutLanguagesInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -895,10 +883,7 @@ export type CandidateUpdateWithoutLanguagesInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -926,10 +911,7 @@ export type CandidateUncheckedUpdateWithoutLanguagesInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -948,7 +930,7 @@ export type CandidateCreateWithoutEductionsInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -969,7 +951,7 @@ export type CandidateUncheckedCreateWithoutEductionsInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1023,10 +1005,7 @@ export type CandidateUpdateWithoutEductionsInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1054,10 +1033,7 @@ export type CandidateUncheckedUpdateWithoutEductionsInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1076,7 +1052,7 @@ export type CandidateCreateWithoutFollowCompaniesInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1097,7 +1073,7 @@ export type CandidateUncheckedCreateWithoutFollowCompaniesInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1151,10 +1127,7 @@ export type CandidateUpdateWithoutFollowCompaniesInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1182,10 +1155,7 @@ export type CandidateUncheckedUpdateWithoutFollowCompaniesInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1204,7 +1174,7 @@ export type CandidateCreateWithoutResumesInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1225,7 +1195,7 @@ export type CandidateUncheckedCreateWithoutResumesInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1279,10 +1249,7 @@ export type CandidateUpdateWithoutResumesInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1310,10 +1277,7 @@ export type CandidateUncheckedUpdateWithoutResumesInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1332,7 +1296,7 @@ export type CandidateCreateWithoutUserInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1352,7 +1316,7 @@ export type CandidateUncheckedCreateWithoutUserInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1407,10 +1371,7 @@ export type CandidateUpdateWithoutUserInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1437,10 +1398,7 @@ export type CandidateUncheckedUpdateWithoutUserInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1460,7 +1418,7 @@ export type CandidateCreateWithoutSkillsInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1481,7 +1439,7 @@ export type CandidateUncheckedCreateWithoutSkillsInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1535,10 +1493,7 @@ export type CandidateUpdateWithoutSkillsInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1566,10 +1521,7 @@ export type CandidateUncheckedUpdateWithoutSkillsInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1588,7 +1540,7 @@ export type CandidateCreateWithoutWorkExperiencesInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1609,7 +1561,7 @@ export type CandidateUncheckedCreateWithoutWorkExperiencesInput = {
   gender?: string | null;
   maritalStatus?: string | null;
   aboutMe?: string | null;
-  profileImage?: string | null;
+  avatar?: string | null;
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
@@ -1663,10 +1615,7 @@ export type CandidateUpdateWithoutWorkExperiencesInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1694,10 +1643,7 @@ export type CandidateUncheckedUpdateWithoutWorkExperiencesInput = {
     | string
     | null;
   aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  profileImage?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1819,7 +1765,7 @@ export type CandidateSelect<
     gender?: boolean;
     maritalStatus?: boolean;
     aboutMe?: boolean;
-    profileImage?: boolean;
+    avatar?: boolean;
     facebook?: boolean;
     linkedin?: boolean;
     twitter?: boolean;
@@ -1848,7 +1794,7 @@ export type CandidateSelectCreateManyAndReturn<
     gender?: boolean;
     maritalStatus?: boolean;
     aboutMe?: boolean;
-    profileImage?: boolean;
+    avatar?: boolean;
     facebook?: boolean;
     linkedin?: boolean;
     twitter?: boolean;
@@ -1870,7 +1816,7 @@ export type CandidateSelectUpdateManyAndReturn<
     gender?: boolean;
     maritalStatus?: boolean;
     aboutMe?: boolean;
-    profileImage?: boolean;
+    avatar?: boolean;
     facebook?: boolean;
     linkedin?: boolean;
     twitter?: boolean;
@@ -1888,7 +1834,7 @@ export type CandidateSelectScalar = {
   gender?: boolean;
   maritalStatus?: boolean;
   aboutMe?: boolean;
-  profileImage?: boolean;
+  avatar?: boolean;
   facebook?: boolean;
   linkedin?: boolean;
   twitter?: boolean;
@@ -1906,7 +1852,7 @@ export type CandidateOmit<
   | "gender"
   | "maritalStatus"
   | "aboutMe"
-  | "profileImage"
+  | "avatar"
   | "facebook"
   | "linkedin"
   | "twitter",
@@ -1962,7 +1908,7 @@ export type $CandidatePayload<
       gender: string | null;
       maritalStatus: string | null;
       aboutMe: string | null;
-      profileImage: string | null;
+      avatar: string | null;
       facebook: string | null;
       linkedin: string | null;
       twitter: string | null;
@@ -2646,7 +2592,7 @@ export interface CandidateFieldRefs {
   readonly gender: Prisma.FieldRef<"Candidate", "String">;
   readonly maritalStatus: Prisma.FieldRef<"Candidate", "String">;
   readonly aboutMe: Prisma.FieldRef<"Candidate", "String">;
-  readonly profileImage: Prisma.FieldRef<"Candidate", "String">;
+  readonly avatar: Prisma.FieldRef<"Candidate", "String">;
   readonly facebook: Prisma.FieldRef<"Candidate", "String">;
   readonly linkedin: Prisma.FieldRef<"Candidate", "String">;
   readonly twitter: Prisma.FieldRef<"Candidate", "String">;

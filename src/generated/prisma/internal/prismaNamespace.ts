@@ -1444,7 +1444,7 @@ export const CandidateScalarFieldEnum = {
   gender: "gender",
   maritalStatus: "maritalStatus",
   aboutMe: "aboutMe",
-  profileImage: "profileImage",
+  avatar: "avatar",
   facebook: "facebook",
   linkedin: "linkedin",
   twitter: "twitter",
