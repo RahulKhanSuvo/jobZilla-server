@@ -74,6 +74,7 @@ const currentUserById = async (id: string, userRole: string) => {
             skills: true,
             eductions: true,
             workExperiences: true,
+            languages: true,
           },
         },
       }),
