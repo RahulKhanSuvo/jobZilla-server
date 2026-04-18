@@ -30,12 +30,14 @@ export type JobAvgAggregateOutputType = {
   salaryMin: number | null;
   salaryMax: number | null;
   totalApplications: number | null;
+  views: number | null;
 };
 
 export type JobSumAggregateOutputType = {
   salaryMin: number | null;
   salaryMax: number | null;
   totalApplications: number | null;
+  views: number | null;
 };
 
 export type JobMinAggregateOutputType = {
@@ -53,6 +55,7 @@ export type JobMinAggregateOutputType = {
   experience: string | null;
   careerLevel: $Enums.CareerLevel | null;
   qualification: string | null;
+  views: number | null;
   deadline: Date | null;
   companyId: string | null;
   createdAt: Date | null;
@@ -74,6 +77,7 @@ export type JobMaxAggregateOutputType = {
   experience: string | null;
   careerLevel: $Enums.CareerLevel | null;
   qualification: string | null;
+  views: number | null;
   deadline: Date | null;
   companyId: string | null;
   createdAt: Date | null;
@@ -95,6 +99,7 @@ export type JobCountAggregateOutputType = {
   experience: number;
   careerLevel: number;
   qualification: number;
+  views: number;
   deadline: number;
   companyId: number;
   createdAt: number;
@@ -106,12 +111,14 @@ export type JobAvgAggregateInputType = {
   salaryMin?: true;
   salaryMax?: true;
   totalApplications?: true;
+  views?: true;
 };
 
 export type JobSumAggregateInputType = {
   salaryMin?: true;
   salaryMax?: true;
   totalApplications?: true;
+  views?: true;
 };
 
 export type JobMinAggregateInputType = {
@@ -129,6 +136,7 @@ export type JobMinAggregateInputType = {
   experience?: true;
   careerLevel?: true;
   qualification?: true;
+  views?: true;
   deadline?: true;
   companyId?: true;
   createdAt?: true;
@@ -150,6 +158,7 @@ export type JobMaxAggregateInputType = {
   experience?: true;
   careerLevel?: true;
   qualification?: true;
+  views?: true;
   deadline?: true;
   companyId?: true;
   createdAt?: true;
@@ -171,6 +180,7 @@ export type JobCountAggregateInputType = {
   experience?: true;
   careerLevel?: true;
   qualification?: true;
+  views?: true;
   deadline?: true;
   companyId?: true;
   createdAt?: true;
@@ -286,6 +296,7 @@ export type JobGroupByOutputType = {
   experience: string | null;
   careerLevel: $Enums.CareerLevel | null;
   qualification: string | null;
+  views: number | null;
   deadline: Date | null;
   companyId: string;
   createdAt: Date;
@@ -331,6 +342,7 @@ export type JobWhereInput = {
     | $Enums.CareerLevel
     | null;
   qualification?: Prisma.StringNullableFilter<"Job"> | string | null;
+  views?: Prisma.IntNullableFilter<"Job"> | number | null;
   deadline?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null;
   companyId?: Prisma.StringFilter<"Job"> | string;
   createdAt?: Prisma.DateTimeFilter<"Job"> | Date | string;
@@ -359,6 +371,7 @@ export type JobOrderByWithRelationInput = {
   experience?: Prisma.SortOrderInput | Prisma.SortOrder;
   careerLevel?: Prisma.SortOrderInput | Prisma.SortOrder;
   qualification?: Prisma.SortOrderInput | Prisma.SortOrder;
+  views?: Prisma.SortOrderInput | Prisma.SortOrder;
   deadline?: Prisma.SortOrderInput | Prisma.SortOrder;
   companyId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
@@ -394,6 +407,7 @@ export type JobWhereUniqueInput = Prisma.AtLeast<
       | $Enums.CareerLevel
       | null;
     qualification?: Prisma.StringNullableFilter<"Job"> | string | null;
+    views?: Prisma.IntNullableFilter<"Job"> | number | null;
     deadline?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null;
     companyId?: Prisma.StringFilter<"Job"> | string;
     createdAt?: Prisma.DateTimeFilter<"Job"> | Date | string;
@@ -424,6 +438,7 @@ export type JobOrderByWithAggregationInput = {
   experience?: Prisma.SortOrderInput | Prisma.SortOrder;
   careerLevel?: Prisma.SortOrderInput | Prisma.SortOrder;
   qualification?: Prisma.SortOrderInput | Prisma.SortOrder;
+  views?: Prisma.SortOrderInput | Prisma.SortOrder;
   deadline?: Prisma.SortOrderInput | Prisma.SortOrder;
   companyId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
@@ -472,6 +487,7 @@ export type JobScalarWhereWithAggregatesInput = {
     | Prisma.StringNullableWithAggregatesFilter<"Job">
     | string
     | null;
+  views?: Prisma.IntNullableWithAggregatesFilter<"Job"> | number | null;
   deadline?:
     | Prisma.DateTimeNullableWithAggregatesFilter<"Job">
     | Date
@@ -497,6 +513,7 @@ export type JobCreateInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -521,6 +538,7 @@ export type JobUncheckedCreateInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   companyId: string;
   createdAt?: Date | string;
@@ -560,6 +578,7 @@ export type JobUpdateInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -603,6 +622,7 @@ export type JobUncheckedUpdateInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -631,6 +651,7 @@ export type JobCreateManyInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   companyId: string;
   createdAt?: Date | string;
@@ -667,6 +688,7 @@ export type JobUpdateManyMutationInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -706,6 +728,7 @@ export type JobUncheckedUpdateManyInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -746,6 +769,7 @@ export type JobCountOrderByAggregateInput = {
   experience?: Prisma.SortOrder;
   careerLevel?: Prisma.SortOrder;
   qualification?: Prisma.SortOrder;
+  views?: Prisma.SortOrder;
   deadline?: Prisma.SortOrder;
   companyId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
@@ -756,6 +780,7 @@ export type JobAvgOrderByAggregateInput = {
   salaryMin?: Prisma.SortOrder;
   salaryMax?: Prisma.SortOrder;
   totalApplications?: Prisma.SortOrder;
+  views?: Prisma.SortOrder;
 };
 
 export type JobMaxOrderByAggregateInput = {
@@ -773,6 +798,7 @@ export type JobMaxOrderByAggregateInput = {
   experience?: Prisma.SortOrder;
   careerLevel?: Prisma.SortOrder;
   qualification?: Prisma.SortOrder;
+  views?: Prisma.SortOrder;
   deadline?: Prisma.SortOrder;
   companyId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
@@ -794,6 +820,7 @@ export type JobMinOrderByAggregateInput = {
   experience?: Prisma.SortOrder;
   careerLevel?: Prisma.SortOrder;
   qualification?: Prisma.SortOrder;
+  views?: Prisma.SortOrder;
   deadline?: Prisma.SortOrder;
   companyId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
@@ -804,6 +831,7 @@ export type JobSumOrderByAggregateInput = {
   salaryMin?: Prisma.SortOrder;
   salaryMax?: Prisma.SortOrder;
   totalApplications?: Prisma.SortOrder;
+  views?: Prisma.SortOrder;
 };
 
 export type JobCreateNestedOneWithoutApplicationsInput = {
@@ -1005,6 +1033,7 @@ export type JobCreateWithoutApplicationsInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -1028,6 +1057,7 @@ export type JobUncheckedCreateWithoutApplicationsInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   companyId: string;
   createdAt?: Date | string;
@@ -1094,6 +1124,7 @@ export type JobUpdateWithoutApplicationsInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -1136,6 +1167,7 @@ export type JobUncheckedUpdateWithoutApplicationsInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -1163,6 +1195,7 @@ export type JobCreateWithoutCompanyInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -1186,6 +1219,7 @@ export type JobUncheckedCreateWithoutCompanyInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -1256,6 +1290,7 @@ export type JobScalarWhereInput = {
     | $Enums.CareerLevel
     | null;
   qualification?: Prisma.StringNullableFilter<"Job"> | string | null;
+  views?: Prisma.IntNullableFilter<"Job"> | number | null;
   deadline?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null;
   companyId?: Prisma.StringFilter<"Job"> | string;
   createdAt?: Prisma.DateTimeFilter<"Job"> | Date | string;
@@ -1277,6 +1312,7 @@ export type JobCreateWithoutJobViewsInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -1300,6 +1336,7 @@ export type JobUncheckedCreateWithoutJobViewsInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   companyId: string;
   createdAt?: Date | string;
@@ -1366,6 +1403,7 @@ export type JobUpdateWithoutJobViewsInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -1408,6 +1446,7 @@ export type JobUncheckedUpdateWithoutJobViewsInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -1435,6 +1474,7 @@ export type JobCreateWithoutSavedJobsInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -1458,6 +1498,7 @@ export type JobUncheckedCreateWithoutSavedJobsInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   companyId: string;
   createdAt?: Date | string;
@@ -1524,6 +1565,7 @@ export type JobUpdateWithoutSavedJobsInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -1566,6 +1608,7 @@ export type JobUncheckedUpdateWithoutSavedJobsInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -1593,6 +1636,7 @@ export type JobCreateManyCompanyInput = {
   experience?: string | null;
   careerLevel?: $Enums.CareerLevel | null;
   qualification?: string | null;
+  views?: number | null;
   deadline?: Date | string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
@@ -1628,6 +1672,7 @@ export type JobUpdateWithoutCompanyInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -1670,6 +1715,7 @@ export type JobUncheckedUpdateWithoutCompanyInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -1712,6 +1758,7 @@ export type JobUncheckedUpdateManyWithoutCompanyInput = {
     | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
   deadline?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
     | Date
@@ -1802,6 +1849,7 @@ export type JobSelect<
     experience?: boolean;
     careerLevel?: boolean;
     qualification?: boolean;
+    views?: boolean;
     deadline?: boolean;
     companyId?: boolean;
     createdAt?: boolean;
@@ -1834,6 +1882,7 @@ export type JobSelectCreateManyAndReturn<
     experience?: boolean;
     careerLevel?: boolean;
     qualification?: boolean;
+    views?: boolean;
     deadline?: boolean;
     companyId?: boolean;
     createdAt?: boolean;
@@ -1862,6 +1911,7 @@ export type JobSelectUpdateManyAndReturn<
     experience?: boolean;
     careerLevel?: boolean;
     qualification?: boolean;
+    views?: boolean;
     deadline?: boolean;
     companyId?: boolean;
     createdAt?: boolean;
@@ -1886,6 +1936,7 @@ export type JobSelectScalar = {
   experience?: boolean;
   careerLevel?: boolean;
   qualification?: boolean;
+  views?: boolean;
   deadline?: boolean;
   companyId?: boolean;
   createdAt?: boolean;
@@ -1910,6 +1961,7 @@ export type JobOmit<
   | "experience"
   | "careerLevel"
   | "qualification"
+  | "views"
   | "deadline"
   | "companyId"
   | "createdAt"
@@ -1966,6 +2018,7 @@ export type $JobPayload<
       experience: string | null;
       careerLevel: $Enums.CareerLevel | null;
       qualification: string | null;
+      views: number | null;
       deadline: Date | null;
       companyId: string;
       createdAt: Date;
@@ -2623,6 +2676,7 @@ export interface JobFieldRefs {
   readonly experience: Prisma.FieldRef<"Job", "String">;
   readonly careerLevel: Prisma.FieldRef<"Job", "CareerLevel">;
   readonly qualification: Prisma.FieldRef<"Job", "String">;
+  readonly views: Prisma.FieldRef<"Job", "Int">;
   readonly deadline: Prisma.FieldRef<"Job", "DateTime">;
   readonly companyId: Prisma.FieldRef<"Job", "String">;
   readonly createdAt: Prisma.FieldRef<"Job", "DateTime">;

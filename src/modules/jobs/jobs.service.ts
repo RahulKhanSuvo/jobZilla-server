@@ -277,7 +277,7 @@ const saveJob = async (userId: string, jobId: string) => {
 };
 
 // get job by id
-const getJobById = async (userId: string, jobId: string) => {
+const getJobById = async (userId: string, jobId: string, anonId: string) => {
   let isSaved = false;
   let isFollowed = false;
   if (userId) {
@@ -290,6 +290,30 @@ const getJobById = async (userId: string, jobId: string) => {
       },
     });
     isSaved = !!savedJob;
+  }
+  const jobView = await prisma.jobView.findFirst({
+    where: {
+      jobId,
+      ...(userId ? { userId } : { anonymousId: anonId }),
+    },
+  });
+  if (!jobView) {
+    await prisma.jobView.create({
+      data: {
+        ...(userId ? { userId } : { anonymousId: anonId }),
+        jobId: jobId,
+      },
+    });
+    await prisma.job.update({
+      where: {
+        id: jobId,
+      },
+      data: {
+        views: {
+          increment: 1,
+        },
+      },
+    });
   }
 
   const job = await prisma.job.findUnique({

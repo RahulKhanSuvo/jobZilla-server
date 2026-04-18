@@ -13,6 +13,7 @@ model Job {
     experience        String?       @db.VarChar(100)
     careerLevel       CareerLevel?
     qualification     String?
+    views             Int?          @default(0)
     deadline          DateTime?
     companyId         String
     company           Company       @relation(fields: [companyId], references: [userId])
