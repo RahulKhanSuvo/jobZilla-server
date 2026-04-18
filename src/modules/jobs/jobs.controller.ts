@@ -172,6 +172,20 @@ const updateJobStatus = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
+// delete job
+const deleteJob = catchAsync(async (req, res) => {
+  const result = await jobsService.deleteJob(
+    req.user?.id as string,
+    req.params.id as string,
+  );
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Job deleted successfully",
+    data: result,
+  });
+});
 export const jobsController = {
   createJob,
   getAllJobs,
@@ -183,4 +197,5 @@ export const jobsController = {
   getCompanyJobs,
   updateJob,
   updateJobStatus,
+  deleteJob,
 };

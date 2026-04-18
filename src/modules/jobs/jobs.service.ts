@@ -481,6 +481,27 @@ const updateJobStatus = async (
   });
   return result;
 };
+
+// delete job
+const deleteJob = async (userId: string, jobId: string) => {
+  const job = await prisma.job.findUnique({
+    where: {
+      id: jobId,
+    },
+  });
+  if (!job) {
+    throw new ApiError("Job not found", 404);
+  }
+  if (job.companyId !== userId) {
+    throw new ApiError("You are not authorized to delete this job", 403);
+  }
+  const result = await prisma.job.delete({
+    where: {
+      id: jobId,
+    },
+  });
+  return result;
+};
 export const jobsService = {
   createJob,
   getAllJobs,
@@ -492,4 +513,5 @@ export const jobsService = {
   getCompanyJobs,
   updateJob,
   updateJobStatus,
+  deleteJob,
 };
