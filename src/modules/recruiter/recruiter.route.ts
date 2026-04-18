@@ -13,7 +13,7 @@ recruiterRouter.get("/", (req, res) => {
 });
 recruiterRouter.patch(
   "/update",
-  authGard(UserRole.EMPLOYER),
+  authGard({ roles: [UserRole.EMPLOYER] }),
   upload.fields([
     { name: "logo", maxCount: 1 },
     { name: "coverImage", maxCount: 1 },

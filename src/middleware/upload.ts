@@ -9,7 +9,7 @@ export const upload = multer({
     fileSize: 10 * 1024 * 1024,
   },
   fileFilter: (req, file, cb) => {
-    const allowedTypes = /jpeg|jpg|png|gif|svg|webp|pdf|doc|docx/;
+    const allowedTypes = /jpeg|jpg|png|gif|avif|svg|webp|pdf|doc|docx/;
     const extname = allowedTypes.test(
       path.extname(file.originalname).toLowerCase(),
     );
