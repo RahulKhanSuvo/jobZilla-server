@@ -25,4 +25,5 @@ model User {
   candidate    Candidate?
   company      Company?
   savedJobs    SavedJob[]
+  jobViews     JobView[]
 }
