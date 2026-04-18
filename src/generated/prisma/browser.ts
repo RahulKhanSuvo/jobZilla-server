@@ -52,6 +52,11 @@ export type FollowCompany = Prisma.FollowCompanyModel;
  */
 export type Job = Prisma.JobModel;
 /**
+ * Model JobView
+ *
+ */
+export type JobView = Prisma.JobViewModel;
+/**
  * Model Resume
  *
  */

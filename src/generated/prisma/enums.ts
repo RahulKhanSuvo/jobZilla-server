@@ -32,6 +32,7 @@ export type JobType = (typeof JobType)[keyof typeof JobType];
 export const JobStatus = {
   OPEN: "OPEN",
   CLOSED: "CLOSED",
+  PUBLISHED: "PUBLISHED",
 } as const;
 
 export type JobStatus = (typeof JobStatus)[keyof typeof JobStatus];

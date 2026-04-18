@@ -61,6 +61,7 @@ export const ModelName = {
   Eduction: "Eduction",
   FollowCompany: "FollowCompany",
   Job: "Job",
+  JobView: "JobView",
   Resume: "Resume",
   SavedJob: "SavedJob",
   User: "User",
@@ -198,6 +199,18 @@ export const JobScalarFieldEnum = {
 
 export type JobScalarFieldEnum =
   (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum];
+
+export const JobViewScalarFieldEnum = {
+  id: "id",
+  jobId: "jobId",
+  userId: "userId",
+  anonymousId: "anonymousId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type JobViewScalarFieldEnum =
+  (typeof JobViewScalarFieldEnum)[keyof typeof JobViewScalarFieldEnum];
 
 export const ResumeScalarFieldEnum = {
   id: "id",
