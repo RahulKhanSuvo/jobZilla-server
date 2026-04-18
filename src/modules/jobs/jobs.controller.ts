@@ -163,7 +163,7 @@ const updateJobStatus = catchAsync(async (req, res) => {
   const result = await jobsService.updateJobStatus(
     req.user?.id as string,
     req.params.id as string,
-    req.params.status as JobStatus,
+    req.body.status as JobStatus,
   );
   sendResponse(res, {
     statusCode: 200,

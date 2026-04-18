@@ -54,7 +54,7 @@ jobsRoutes.patch(
 jobsRoutes.patch(
   "/status/:id",
   authGard({ roles: [UserRole.EMPLOYER] }),
-  validate(JobStatusSchema, "params"),
+  validate(JobStatusSchema),
   jobsController.updateJobStatus,
 );
 jobsRoutes.delete(
