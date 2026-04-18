@@ -39,7 +39,9 @@ export const JobSchema = z.object({
 });
 
 export const JobStatusSchema = z.enum(["OPEN", "CLOSED", "PUBLISHED"]);
-
+export const UpdateJobStatusSchema = z.object({
+  status: JobStatusSchema,
+});
 export type IJob = z.infer<typeof JobSchema>;
 export type IJobStatus = z.infer<typeof JobStatusSchema>;
 

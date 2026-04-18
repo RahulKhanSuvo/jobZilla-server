@@ -2,7 +2,7 @@ import { Router } from "express";
 import { jobsController } from "./jobs.controller";
 import { authGard } from "../../middleware/authGard";
 import { UserRole } from "../../generated/prisma/enums";
-import { JobSchema, JobStatusSchema } from "./job.schema";
+import { JobSchema, UpdateJobStatusSchema } from "./job.schema";
 import { validate } from "../../middleware/validate.middleware";
 
 const jobsRoutes = Router();
@@ -54,7 +54,7 @@ jobsRoutes.patch(
 jobsRoutes.patch(
   "/status/:id",
   authGard({ roles: [UserRole.EMPLOYER] }),
-  validate(JobStatusSchema),
+  validate(UpdateJobStatusSchema, "body"),
   jobsController.updateJobStatus,
 );
 jobsRoutes.delete(
