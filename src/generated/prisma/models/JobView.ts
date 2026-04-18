@@ -215,6 +215,8 @@ export type JobViewOrderByWithRelationInput = {
 export type JobViewWhereUniqueInput = Prisma.AtLeast<
   {
     id?: string;
+    jobId_anonymousId?: Prisma.JobViewJobIdAnonymousIdCompoundUniqueInput;
+    jobId_userId?: Prisma.JobViewJobIdUserIdCompoundUniqueInput;
     AND?: Prisma.JobViewWhereInput | Prisma.JobViewWhereInput[];
     OR?: Prisma.JobViewWhereInput[];
     NOT?: Prisma.JobViewWhereInput | Prisma.JobViewWhereInput[];
@@ -229,7 +231,7 @@ export type JobViewWhereUniqueInput = Prisma.AtLeast<
       Prisma.UserWhereInput
     > | null;
   },
-  "id"
+  "id" | "jobId_anonymousId" | "jobId_userId"
 >;
 
 export type JobViewOrderByWithAggregationInput = {
@@ -332,6 +334,16 @@ export type JobViewListRelationFilter = {
 
 export type JobViewOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder;
+};
+
+export type JobViewJobIdAnonymousIdCompoundUniqueInput = {
+  jobId: string;
+  anonymousId: string;
+};
+
+export type JobViewJobIdUserIdCompoundUniqueInput = {
+  jobId: string;
+  userId: string;
 };
 
 export type JobViewCountOrderByAggregateInput = {

@@ -33,6 +33,9 @@ model JobView {
     updatedAt   DateTime @updatedAt
     job         Job      @relation(fields: [jobId], references: [id])
     user        User?    @relation(fields: [userId], references: [id])
+
+    @@unique([jobId, anonymousId])
+    @@unique([jobId, userId])
 }
 
 enum JobType {
