@@ -44,6 +44,14 @@ jobsRoutes.delete(
 // get job by id
 jobsRoutes.get("/:id", authGard({ optional: true }), jobsController.jobById);
 
+// update job
+jobsRoutes.patch(
+  "/:id",
+  authGard({ roles: [UserRole.EMPLOYER] }),
+  validate(JobSchema),
+  jobsController.updateJob,
+);
+
 // get company jobs
 jobsRoutes.get("/company/:id", jobsController.getCompanyJobs);
 

@@ -141,6 +141,21 @@ const getCompanyJobs = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
+// update job
+const updateJob = catchAsync(async (req, res) => {
+  const result = await jobsService.updateJob(
+    req.user?.id as string,
+    req.params.id as string,
+    req.body,
+  );
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Job updated successfully",
+    data: result,
+  });
+});
 export const jobsController = {
   createJob,
   getAllJobs,
@@ -150,4 +165,5 @@ export const jobsController = {
   getSaveJob,
   unSaveJob,
   getCompanyJobs,
+  updateJob,
 };

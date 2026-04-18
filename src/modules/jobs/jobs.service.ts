@@ -427,6 +427,28 @@ const getCompanyJobs = async (companyId: string) => {
   return result;
 };
 
+// update job
+const updateJob = async (userId: string, jobId: string, payload: IJob) => {
+  const job = await prisma.job.findUnique({
+    where: {
+      id: jobId,
+    },
+  });
+  if (!job) {
+    throw new ApiError("Job not found", 404);
+  }
+  if (job.companyId !== userId) {
+    throw new ApiError("You are not authorized to update this job", 403);
+  }
+  const result = await prisma.job.update({
+    where: {
+      id: jobId,
+    },
+    data: payload,
+  });
+  return result;
+};
+
 export const jobsService = {
   createJob,
   getAllJobs,
@@ -436,4 +458,5 @@ export const jobsService = {
   getSaveJob,
   unSaveJob,
   getCompanyJobs,
+  updateJob,
 };
