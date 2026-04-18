@@ -1,7 +1,12 @@
 import { ApiError } from "../../errors/ApiError";
 import { prisma } from "../../lib/prisma";
 import { IJob } from "./job.schema";
-import { CareerLevel, JobType, Prisma } from "../../generated/prisma/client";
+import {
+  CareerLevel,
+  JobStatus,
+  JobType,
+  Prisma,
+} from "../../generated/prisma/client";
 
 const createJob = async (userId: string, payload: IJob) => {
   const company = await prisma.company.findUnique({
@@ -449,6 +454,33 @@ const updateJob = async (userId: string, jobId: string, payload: IJob) => {
   return result;
 };
 
+// update job status
+const updateJobStatus = async (
+  userId: string,
+  jobId: string,
+  status: JobStatus,
+) => {
+  const job = await prisma.job.findUnique({
+    where: {
+      id: jobId,
+    },
+  });
+  if (!job) {
+    throw new ApiError("Job not found", 404);
+  }
+  if (job.companyId !== userId) {
+    throw new ApiError("You are not authorized to update this job", 403);
+  }
+  const result = await prisma.job.update({
+    where: {
+      id: jobId,
+    },
+    data: {
+      status: status,
+    },
+  });
+  return result;
+};
 export const jobsService = {
   createJob,
   getAllJobs,
@@ -459,4 +491,5 @@ export const jobsService = {
   unSaveJob,
   getCompanyJobs,
   updateJob,
+  updateJobStatus,
 };

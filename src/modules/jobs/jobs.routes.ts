@@ -2,7 +2,7 @@ import { Router } from "express";
 import { jobsController } from "./jobs.controller";
 import { authGard } from "../../middleware/authGard";
 import { UserRole } from "../../generated/prisma/enums";
-import { JobSchema } from "./job.schema";
+import { JobSchema, JobStatusSchema } from "./job.schema";
 import { validate } from "../../middleware/validate.middleware";
 
 const jobsRoutes = Router();
@@ -51,7 +51,12 @@ jobsRoutes.patch(
   validate(JobSchema),
   jobsController.updateJob,
 );
-
+jobsRoutes.patch(
+  "/status/:id",
+  authGard({ roles: [UserRole.EMPLOYER] }),
+  validate(JobStatusSchema, "params"),
+  jobsController.updateJobStatus,
+);
 // get company jobs
 jobsRoutes.get("/company/:id", jobsController.getCompanyJobs);
 

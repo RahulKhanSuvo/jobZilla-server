@@ -3,6 +3,7 @@ import { jobsService, IJobOptions } from "./jobs.service";
 import { sendResponse } from "../../shared/sendResponse";
 import pick from "../../shared/pick";
 import { jobFilterableFields } from "./job.constant";
+import { JobStatus } from "../../generated/prisma/enums";
 
 const createJob = catchAsync(async (req, res) => {
   const result = await jobsService.createJob(req.user?.id as string, req.body);
@@ -156,6 +157,21 @@ const updateJob = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
+// update job status
+const updateJobStatus = catchAsync(async (req, res) => {
+  const result = await jobsService.updateJobStatus(
+    req.user?.id as string,
+    req.params.id as string,
+    req.params.status as JobStatus,
+  );
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Job status updated successfully",
+    data: result,
+  });
+});
 export const jobsController = {
   createJob,
   getAllJobs,
@@ -166,4 +182,5 @@ export const jobsController = {
   unSaveJob,
   getCompanyJobs,
   updateJob,
+  updateJobStatus,
 };
