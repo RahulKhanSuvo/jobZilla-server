@@ -101,6 +101,7 @@ const unFollowACompany = async (userId: string, companyId: string) => {
       },
     },
   });
+  console.log(followCompany);
   return followCompany;
 };
 export const followACompanyService = {

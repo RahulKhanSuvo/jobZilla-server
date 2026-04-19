@@ -11,12 +11,12 @@ followCompanyRoutes.get(
   followCompanyController.getAllFollwedCompany,
 );
 followCompanyRoutes.post(
-  "/:companyId",
+  "/follow/:companyId",
   authGard({ roles: [UserRole.CANDIDATE] }),
   followCompanyController.followACompany,
 );
 followCompanyRoutes.delete(
-  "/:id",
+  "/unfollow/:companyId",
   authGard({ roles: [UserRole.CANDIDATE] }),
   followCompanyController.unFollowACompany,
 );

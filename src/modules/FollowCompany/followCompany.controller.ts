@@ -39,11 +39,23 @@ const followACompany = catchAsync(async (req, res) => {
   });
 });
 const unFollowACompany = catchAsync(async (req, res) => {
+  const { id: userId } = req.user!;
+  const companyId = req.params.companyId;
+  console.log(companyId);
+
+  if (!userId) throw new ApiError("no user id", 400);
+  if (companyId === userId) {
+    throw new ApiError("You can not unfollow yourself", 400);
+  }
+  const result = await followACompanyService.unFollowACompany(
+    userId,
+    companyId as string,
+  );
   sendResponse(res, {
     statusCode: 200,
     success: true,
     message: "Company unfollowed successfully",
-    data: [],
+    data: result,
   });
 });
 export const followCompanyController = {
