@@ -1,12 +1,19 @@
+import http from "http";
 import app from "./app";
 import { envConfig } from "./config/env";
 import { prisma } from "./lib/prisma";
+import { initSocket } from "./socket";
+
+const serverHttp = http.createServer(app);
+
+// Initialize Socket.io
+initSocket(serverHttp);
 
 async function server() {
   try {
     await prisma.$connect();
     console.log("✅ Connected to the database");
-    app.listen(envConfig.PORT, () => {
+    serverHttp.listen(envConfig.PORT, () => {
       console.log(`🚀 Server is running on port ${envConfig.PORT}`);
     });
   } catch (error) {

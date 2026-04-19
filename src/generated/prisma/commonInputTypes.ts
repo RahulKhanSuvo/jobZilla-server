@@ -45,13 +45,9 @@ export type StringWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedStringFilter<$PrismaModel>;
 };
 
-export type EnumAppStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.AppStatus | Prisma.EnumAppStatusFieldRefInput<$PrismaModel>;
-  in?: $Enums.AppStatus[] | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
-  notIn?:
-    | $Enums.AppStatus[]
-    | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
-  not?: Prisma.NestedEnumAppStatusFilter<$PrismaModel> | $Enums.AppStatus;
+export type BoolFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean;
 };
 
 export type DateTimeFilter<$PrismaModel = never> = {
@@ -65,18 +61,12 @@ export type DateTimeFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDateTimeFilter<$PrismaModel> | Date | string;
 };
 
-export type EnumAppStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.AppStatus | Prisma.EnumAppStatusFieldRefInput<$PrismaModel>;
-  in?: $Enums.AppStatus[] | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
-  notIn?:
-    | $Enums.AppStatus[]
-    | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
-  not?:
-    | Prisma.NestedEnumAppStatusWithAggregatesFilter<$PrismaModel>
-    | $Enums.AppStatus;
+export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedBoolWithAggregatesFilter<$PrismaModel> | boolean;
   _count?: Prisma.NestedIntFilter<$PrismaModel>;
-  _min?: Prisma.NestedEnumAppStatusFilter<$PrismaModel>;
-  _max?: Prisma.NestedEnumAppStatusFilter<$PrismaModel>;
+  _min?: Prisma.NestedBoolFilter<$PrismaModel>;
+  _max?: Prisma.NestedBoolFilter<$PrismaModel>;
 };
 
 export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -91,6 +81,29 @@ export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>;
   _min?: Prisma.NestedDateTimeFilter<$PrismaModel>;
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>;
+};
+
+export type EnumAppStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.AppStatus | Prisma.EnumAppStatusFieldRefInput<$PrismaModel>;
+  in?: $Enums.AppStatus[] | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.AppStatus[]
+    | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedEnumAppStatusFilter<$PrismaModel> | $Enums.AppStatus;
+};
+
+export type EnumAppStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AppStatus | Prisma.EnumAppStatusFieldRefInput<$PrismaModel>;
+  in?: $Enums.AppStatus[] | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.AppStatus[]
+    | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
+  not?:
+    | Prisma.NestedEnumAppStatusWithAggregatesFilter<$PrismaModel>
+    | $Enums.AppStatus;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumAppStatusFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumAppStatusFilter<$PrismaModel>;
 };
 
 export type StringNullableFilter<$PrismaModel = never> = {
@@ -181,19 +194,6 @@ export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
   _min?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>;
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>;
-};
-
-export type BoolFilter<$PrismaModel = never> = {
-  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>;
-  not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean;
-};
-
-export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>;
-  not?: Prisma.NestedBoolWithAggregatesFilter<$PrismaModel> | boolean;
-  _count?: Prisma.NestedIntFilter<$PrismaModel>;
-  _min?: Prisma.NestedBoolFilter<$PrismaModel>;
-  _max?: Prisma.NestedBoolFilter<$PrismaModel>;
 };
 
 export type IntNullableFilter<$PrismaModel = never> = {
@@ -415,13 +415,9 @@ export type NestedIntFilter<$PrismaModel = never> = {
   not?: Prisma.NestedIntFilter<$PrismaModel> | number;
 };
 
-export type NestedEnumAppStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.AppStatus | Prisma.EnumAppStatusFieldRefInput<$PrismaModel>;
-  in?: $Enums.AppStatus[] | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
-  notIn?:
-    | $Enums.AppStatus[]
-    | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
-  not?: Prisma.NestedEnumAppStatusFilter<$PrismaModel> | $Enums.AppStatus;
+export type NestedBoolFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean;
 };
 
 export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -435,18 +431,12 @@ export type NestedDateTimeFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDateTimeFilter<$PrismaModel> | Date | string;
 };
 
-export type NestedEnumAppStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.AppStatus | Prisma.EnumAppStatusFieldRefInput<$PrismaModel>;
-  in?: $Enums.AppStatus[] | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
-  notIn?:
-    | $Enums.AppStatus[]
-    | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
-  not?:
-    | Prisma.NestedEnumAppStatusWithAggregatesFilter<$PrismaModel>
-    | $Enums.AppStatus;
+export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedBoolWithAggregatesFilter<$PrismaModel> | boolean;
   _count?: Prisma.NestedIntFilter<$PrismaModel>;
-  _min?: Prisma.NestedEnumAppStatusFilter<$PrismaModel>;
-  _max?: Prisma.NestedEnumAppStatusFilter<$PrismaModel>;
+  _min?: Prisma.NestedBoolFilter<$PrismaModel>;
+  _max?: Prisma.NestedBoolFilter<$PrismaModel>;
 };
 
 export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -461,6 +451,29 @@ export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>;
   _min?: Prisma.NestedDateTimeFilter<$PrismaModel>;
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>;
+};
+
+export type NestedEnumAppStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.AppStatus | Prisma.EnumAppStatusFieldRefInput<$PrismaModel>;
+  in?: $Enums.AppStatus[] | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.AppStatus[]
+    | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedEnumAppStatusFilter<$PrismaModel> | $Enums.AppStatus;
+};
+
+export type NestedEnumAppStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AppStatus | Prisma.EnumAppStatusFieldRefInput<$PrismaModel>;
+  in?: $Enums.AppStatus[] | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.AppStatus[]
+    | Prisma.ListEnumAppStatusFieldRefInput<$PrismaModel>;
+  not?:
+    | Prisma.NestedEnumAppStatusWithAggregatesFilter<$PrismaModel>
+    | $Enums.AppStatus;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumAppStatusFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumAppStatusFilter<$PrismaModel>;
 };
 
 export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -555,19 +568,6 @@ export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
   _min?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>;
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>;
-};
-
-export type NestedBoolFilter<$PrismaModel = never> = {
-  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>;
-  not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean;
-};
-
-export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>;
-  not?: Prisma.NestedBoolWithAggregatesFilter<$PrismaModel> | boolean;
-  _count?: Prisma.NestedIntFilter<$PrismaModel>;
-  _min?: Prisma.NestedBoolFilter<$PrismaModel>;
-  _max?: Prisma.NestedBoolFilter<$PrismaModel>;
 };
 
 export type NestedEnumJobStatusNullableFilter<$PrismaModel = never> = {

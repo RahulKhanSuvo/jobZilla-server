@@ -8,8 +8,12 @@
  * 🟢 You can import this file directly.
  */
 export type * from "./models/Language";
+export type * from "./models/UserSettings";
+export type * from "./models/NotificationSettings";
 export type * from "./models/Application";
 export type * from "./models/Candidate";
+export type * from "./models/Conversation";
+export type * from "./models/Message";
 export type * from "./models/Company";
 export type * from "./models/Eduction";
 export type * from "./models/FollowCompany";

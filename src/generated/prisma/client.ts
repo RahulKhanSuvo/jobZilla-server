@@ -52,6 +52,16 @@ export { Prisma };
  */
 export type Language = Prisma.LanguageModel;
 /**
+ * Model UserSettings
+ *
+ */
+export type UserSettings = Prisma.UserSettingsModel;
+/**
+ * Model NotificationSettings
+ *
+ */
+export type NotificationSettings = Prisma.NotificationSettingsModel;
+/**
  * Model Application
  *
  */
@@ -61,6 +71,16 @@ export type Application = Prisma.ApplicationModel;
  *
  */
 export type Candidate = Prisma.CandidateModel;
+/**
+ * Model Conversation
+ *
+ */
+export type Conversation = Prisma.ConversationModel;
+/**
+ * Model Message
+ *
+ */
+export type Message = Prisma.MessageModel;
 /**
  * Model Company
  *

@@ -424,10 +424,6 @@ export type EnumAppStatusFieldUpdateOperationsInput = {
   set?: $Enums.AppStatus;
 };
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string;
-};
-
 export type ApplicationCreateNestedManyWithoutCompanyInput = {
   create?:
     | Prisma.XOR<

@@ -55,8 +55,12 @@ export const AnyNull = runtime.AnyNull;
 
 export const ModelName = {
   Language: "Language",
+  UserSettings: "UserSettings",
+  NotificationSettings: "NotificationSettings",
   Application: "Application",
   Candidate: "Candidate",
+  Conversation: "Conversation",
+  Message: "Message",
   Company: "Company",
   Eduction: "Eduction",
   FollowCompany: "FollowCompany",
@@ -95,6 +99,37 @@ export const LanguageScalarFieldEnum = {
 export type LanguageScalarFieldEnum =
   (typeof LanguageScalarFieldEnum)[keyof typeof LanguageScalarFieldEnum];
 
+export const UserSettingsScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  theme: "theme",
+  language: "language",
+  timezone: "timezone",
+  privacy: "privacy",
+  openToWork: "openToWork",
+  twoFactorAuthentication: "twoFactorAuthentication",
+  emailVerified: "emailVerified",
+  phoneVerified: "phoneVerified",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type UserSettingsScalarFieldEnum =
+  (typeof UserSettingsScalarFieldEnum)[keyof typeof UserSettingsScalarFieldEnum];
+
+export const NotificationSettingsScalarFieldEnum = {
+  id: "id",
+  userSettingsId: "userSettingsId",
+  emailNotification: "emailNotification",
+  pushNotification: "pushNotification",
+  inAppNotification: "inAppNotification",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type NotificationSettingsScalarFieldEnum =
+  (typeof NotificationSettingsScalarFieldEnum)[keyof typeof NotificationSettingsScalarFieldEnum];
+
 export const ApplicationScalarFieldEnum = {
   id: "id",
   userId: "userId",
@@ -126,6 +161,30 @@ export const CandidateScalarFieldEnum = {
 
 export type CandidateScalarFieldEnum =
   (typeof CandidateScalarFieldEnum)[keyof typeof CandidateScalarFieldEnum];
+
+export const ConversationScalarFieldEnum = {
+  id: "id",
+  participantA: "participantA",
+  participantB: "participantB",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type ConversationScalarFieldEnum =
+  (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum];
+
+export const MessageScalarFieldEnum = {
+  id: "id",
+  conversationId: "conversationId",
+  senderId: "senderId",
+  content: "content",
+  isRead: "isRead",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type MessageScalarFieldEnum =
+  (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum];
 
 export const CompanyScalarFieldEnum = {
   id: "id",

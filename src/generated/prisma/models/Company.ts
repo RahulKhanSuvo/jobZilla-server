@@ -689,10 +689,6 @@ export type CompanyUpdateOneRequiredWithoutApplicationsNestedInput = {
   >;
 };
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean;
-};
-
 export type CompanyCreateNestedOneWithoutFollowCompaniesInput = {
   create?: Prisma.XOR<
     Prisma.CompanyCreateWithoutFollowCompaniesInput,

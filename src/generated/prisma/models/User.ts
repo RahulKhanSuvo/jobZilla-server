@@ -256,6 +256,13 @@ export type UserWhereInput = {
   savedJobs?: Prisma.SavedJobListRelationFilter;
   jobViews?: Prisma.JobViewListRelationFilter;
   candidateViews?: Prisma.CandidateViewsListRelationFilter;
+  participantAConversations?: Prisma.ConversationListRelationFilter;
+  participantBConversations?: Prisma.ConversationListRelationFilter;
+  messages?: Prisma.MessageListRelationFilter;
+  userSettings?: Prisma.XOR<
+    Prisma.UserSettingsNullableScalarRelationFilter,
+    Prisma.UserSettingsWhereInput
+  > | null;
 };
 
 export type UserOrderByWithRelationInput = {
@@ -273,6 +280,10 @@ export type UserOrderByWithRelationInput = {
   savedJobs?: Prisma.SavedJobOrderByRelationAggregateInput;
   jobViews?: Prisma.JobViewOrderByRelationAggregateInput;
   candidateViews?: Prisma.CandidateViewsOrderByRelationAggregateInput;
+  participantAConversations?: Prisma.ConversationOrderByRelationAggregateInput;
+  participantBConversations?: Prisma.ConversationOrderByRelationAggregateInput;
+  messages?: Prisma.MessageOrderByRelationAggregateInput;
+  userSettings?: Prisma.UserSettingsOrderByWithRelationInput;
 };
 
 export type UserWhereUniqueInput = Prisma.AtLeast<
@@ -300,6 +311,13 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
     savedJobs?: Prisma.SavedJobListRelationFilter;
     jobViews?: Prisma.JobViewListRelationFilter;
     candidateViews?: Prisma.CandidateViewsListRelationFilter;
+    participantAConversations?: Prisma.ConversationListRelationFilter;
+    participantBConversations?: Prisma.ConversationListRelationFilter;
+    messages?: Prisma.MessageListRelationFilter;
+    userSettings?: Prisma.XOR<
+      Prisma.UserSettingsNullableScalarRelationFilter,
+      Prisma.UserSettingsWhereInput
+    > | null;
   },
   "id" | "email"
 >;
@@ -353,6 +371,10 @@ export type UserCreateInput = {
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
 };
 
 export type UserUncheckedCreateInput = {
@@ -370,6 +392,10 @@ export type UserUncheckedCreateInput = {
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
 };
 
 export type UserUpdateInput = {
@@ -387,6 +413,10 @@ export type UserUpdateInput = {
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateInput = {
@@ -404,6 +434,10 @@ export type UserUncheckedUpdateInput = {
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
 };
 
 export type UserCreateManyInput = {
@@ -490,6 +524,32 @@ export type UserSumOrderByAggregateInput = {
   views?: Prisma.SortOrder;
 };
 
+export type UserCreateNestedOneWithoutUserSettingsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutUserSettingsInput,
+    Prisma.UserUncheckedCreateWithoutUserSettingsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserSettingsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutUserSettingsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutUserSettingsInput,
+    Prisma.UserUncheckedCreateWithoutUserSettingsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserSettingsInput;
+  upsert?: Prisma.UserUpsertWithoutUserSettingsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutUserSettingsInput,
+      Prisma.UserUpdateWithoutUserSettingsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutUserSettingsInput
+  >;
+};
+
 export type UserCreateNestedOneWithoutApplicationsInput = {
   create?: Prisma.XOR<
     Prisma.UserCreateWithoutApplicationsInput,
@@ -539,6 +599,84 @@ export type UserUpdateOneRequiredWithoutCandidateNestedInput = {
       Prisma.UserUpdateWithoutCandidateInput
     >,
     Prisma.UserUncheckedUpdateWithoutCandidateInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutParticipantAConversationsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutParticipantAConversationsInput,
+    Prisma.UserUncheckedCreateWithoutParticipantAConversationsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutParticipantAConversationsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserCreateNestedOneWithoutParticipantBConversationsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutParticipantBConversationsInput,
+    Prisma.UserUncheckedCreateWithoutParticipantBConversationsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutParticipantBConversationsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutParticipantAConversationsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutParticipantAConversationsInput,
+    Prisma.UserUncheckedCreateWithoutParticipantAConversationsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutParticipantAConversationsInput;
+  upsert?: Prisma.UserUpsertWithoutParticipantAConversationsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutParticipantAConversationsInput,
+      Prisma.UserUpdateWithoutParticipantAConversationsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutParticipantAConversationsInput
+  >;
+};
+
+export type UserUpdateOneRequiredWithoutParticipantBConversationsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutParticipantBConversationsInput,
+    Prisma.UserUncheckedCreateWithoutParticipantBConversationsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutParticipantBConversationsInput;
+  upsert?: Prisma.UserUpsertWithoutParticipantBConversationsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutParticipantBConversationsInput,
+      Prisma.UserUpdateWithoutParticipantBConversationsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutParticipantBConversationsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutMessagesInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutMessagesInput,
+    Prisma.UserUncheckedCreateWithoutMessagesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMessagesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutMessagesNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutMessagesInput,
+    Prisma.UserUncheckedCreateWithoutMessagesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMessagesInput;
+  upsert?: Prisma.UserUpsertWithoutMessagesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutMessagesInput,
+      Prisma.UserUpdateWithoutMessagesInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutMessagesInput
   >;
 };
 
@@ -652,6 +790,114 @@ export type UserUpdateOneRequiredWithoutCandidateViewsNestedInput = {
   >;
 };
 
+export type UserCreateWithoutUserSettingsInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+};
+
+export type UserUncheckedCreateWithoutUserSettingsInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+};
+
+export type UserCreateOrConnectWithoutUserSettingsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutUserSettingsInput,
+    Prisma.UserUncheckedCreateWithoutUserSettingsInput
+  >;
+};
+
+export type UserUpsertWithoutUserSettingsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutUserSettingsInput,
+    Prisma.UserUncheckedUpdateWithoutUserSettingsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutUserSettingsInput,
+    Prisma.UserUncheckedCreateWithoutUserSettingsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutUserSettingsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutUserSettingsInput,
+    Prisma.UserUncheckedUpdateWithoutUserSettingsInput
+  >;
+};
+
+export type UserUpdateWithoutUserSettingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutUserSettingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+};
+
 export type UserCreateWithoutApplicationsInput = {
   id?: string;
   name: string;
@@ -666,6 +912,10 @@ export type UserCreateWithoutApplicationsInput = {
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutApplicationsInput = {
@@ -682,6 +932,10 @@ export type UserUncheckedCreateWithoutApplicationsInput = {
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutApplicationsInput = {
@@ -726,6 +980,10 @@ export type UserUpdateWithoutApplicationsInput = {
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutApplicationsInput = {
@@ -742,6 +1000,10 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutCandidateInput = {
@@ -758,6 +1020,10 @@ export type UserCreateWithoutCandidateInput = {
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutCandidateInput = {
@@ -774,6 +1040,10 @@ export type UserUncheckedCreateWithoutCandidateInput = {
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutCandidateInput = {
@@ -818,6 +1088,10 @@ export type UserUpdateWithoutCandidateInput = {
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutCandidateInput = {
@@ -834,6 +1108,334 @@ export type UserUncheckedUpdateWithoutCandidateInput = {
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+};
+
+export type UserCreateWithoutParticipantAConversationsInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+};
+
+export type UserUncheckedCreateWithoutParticipantAConversationsInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+};
+
+export type UserCreateOrConnectWithoutParticipantAConversationsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutParticipantAConversationsInput,
+    Prisma.UserUncheckedCreateWithoutParticipantAConversationsInput
+  >;
+};
+
+export type UserCreateWithoutParticipantBConversationsInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+};
+
+export type UserUncheckedCreateWithoutParticipantBConversationsInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+};
+
+export type UserCreateOrConnectWithoutParticipantBConversationsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutParticipantBConversationsInput,
+    Prisma.UserUncheckedCreateWithoutParticipantBConversationsInput
+  >;
+};
+
+export type UserUpsertWithoutParticipantAConversationsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutParticipantAConversationsInput,
+    Prisma.UserUncheckedUpdateWithoutParticipantAConversationsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutParticipantAConversationsInput,
+    Prisma.UserUncheckedCreateWithoutParticipantAConversationsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutParticipantAConversationsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutParticipantAConversationsInput,
+    Prisma.UserUncheckedUpdateWithoutParticipantAConversationsInput
+  >;
+};
+
+export type UserUpdateWithoutParticipantAConversationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutParticipantAConversationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+};
+
+export type UserUpsertWithoutParticipantBConversationsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutParticipantBConversationsInput,
+    Prisma.UserUncheckedUpdateWithoutParticipantBConversationsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutParticipantBConversationsInput,
+    Prisma.UserUncheckedCreateWithoutParticipantBConversationsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutParticipantBConversationsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutParticipantBConversationsInput,
+    Prisma.UserUncheckedUpdateWithoutParticipantBConversationsInput
+  >;
+};
+
+export type UserUpdateWithoutParticipantBConversationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutParticipantBConversationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+};
+
+export type UserCreateWithoutMessagesInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+};
+
+export type UserUncheckedCreateWithoutMessagesInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+};
+
+export type UserCreateOrConnectWithoutMessagesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutMessagesInput,
+    Prisma.UserUncheckedCreateWithoutMessagesInput
+  >;
+};
+
+export type UserUpsertWithoutMessagesInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutMessagesInput,
+    Prisma.UserUncheckedUpdateWithoutMessagesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutMessagesInput,
+    Prisma.UserUncheckedCreateWithoutMessagesInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutMessagesInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutMessagesInput,
+    Prisma.UserUncheckedUpdateWithoutMessagesInput
+  >;
+};
+
+export type UserUpdateWithoutMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutCompanyInput = {
@@ -850,6 +1452,10 @@ export type UserCreateWithoutCompanyInput = {
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutCompanyInput = {
@@ -866,6 +1472,10 @@ export type UserUncheckedCreateWithoutCompanyInput = {
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutCompanyInput = {
@@ -910,6 +1520,10 @@ export type UserUpdateWithoutCompanyInput = {
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutCompanyInput = {
@@ -926,6 +1540,10 @@ export type UserUncheckedUpdateWithoutCompanyInput = {
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutJobViewsInput = {
@@ -942,6 +1560,10 @@ export type UserCreateWithoutJobViewsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutJobViewsInput = {
@@ -958,6 +1580,10 @@ export type UserUncheckedCreateWithoutJobViewsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutJobViewsInput = {
@@ -1002,6 +1628,10 @@ export type UserUpdateWithoutJobViewsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutJobViewsInput = {
@@ -1018,6 +1648,10 @@ export type UserUncheckedUpdateWithoutJobViewsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutSavedJobsInput = {
@@ -1034,6 +1668,10 @@ export type UserCreateWithoutSavedJobsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutSavedJobsInput = {
@@ -1050,6 +1688,10 @@ export type UserUncheckedCreateWithoutSavedJobsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
   candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutSavedJobsInput = {
@@ -1094,6 +1736,10 @@ export type UserUpdateWithoutSavedJobsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutSavedJobsInput = {
@@ -1110,6 +1756,10 @@ export type UserUncheckedUpdateWithoutSavedJobsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutCandidateViewsInput = {
@@ -1126,6 +1776,10 @@ export type UserCreateWithoutCandidateViewsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutCandidateViewsInput = {
@@ -1142,6 +1796,10 @@ export type UserUncheckedCreateWithoutCandidateViewsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutCandidateViewsInput = {
@@ -1186,6 +1844,10 @@ export type UserUpdateWithoutCandidateViewsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutCandidateViewsInput = {
@@ -1202,6 +1864,10 @@ export type UserUncheckedUpdateWithoutCandidateViewsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
 };
 
 /**
@@ -1213,6 +1879,9 @@ export type UserCountOutputType = {
   savedJobs: number;
   jobViews: number;
   candidateViews: number;
+  participantAConversations: number;
+  participantBConversations: number;
+  messages: number;
 };
 
 export type UserCountOutputTypeSelect<
@@ -1223,6 +1892,13 @@ export type UserCountOutputTypeSelect<
   savedJobs?: boolean | UserCountOutputTypeCountSavedJobsArgs;
   jobViews?: boolean | UserCountOutputTypeCountJobViewsArgs;
   candidateViews?: boolean | UserCountOutputTypeCountCandidateViewsArgs;
+  participantAConversations?:
+    | boolean
+    | UserCountOutputTypeCountParticipantAConversationsArgs;
+  participantBConversations?:
+    | boolean
+    | UserCountOutputTypeCountParticipantBConversationsArgs;
+  messages?: boolean | UserCountOutputTypeCountMessagesArgs;
 };
 
 /**
@@ -1278,6 +1954,36 @@ export type UserCountOutputTypeCountCandidateViewsArgs<
   where?: Prisma.CandidateViewsWhereInput;
 };
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountParticipantAConversationsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.ConversationWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountParticipantBConversationsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.ConversationWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMessagesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.MessageWhereInput;
+};
+
 export type UserSelect<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
@@ -1297,6 +2003,14 @@ export type UserSelect<
     savedJobs?: boolean | Prisma.User$savedJobsArgs<ExtArgs>;
     jobViews?: boolean | Prisma.User$jobViewsArgs<ExtArgs>;
     candidateViews?: boolean | Prisma.User$candidateViewsArgs<ExtArgs>;
+    participantAConversations?:
+      | boolean
+      | Prisma.User$participantAConversationsArgs<ExtArgs>;
+    participantBConversations?:
+      | boolean
+      | Prisma.User$participantBConversationsArgs<ExtArgs>;
+    messages?: boolean | Prisma.User$messagesArgs<ExtArgs>;
+    userSettings?: boolean | Prisma.User$userSettingsArgs<ExtArgs>;
     _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["user"]
@@ -1371,6 +2085,14 @@ export type UserInclude<
   savedJobs?: boolean | Prisma.User$savedJobsArgs<ExtArgs>;
   jobViews?: boolean | Prisma.User$jobViewsArgs<ExtArgs>;
   candidateViews?: boolean | Prisma.User$candidateViewsArgs<ExtArgs>;
+  participantAConversations?:
+    | boolean
+    | Prisma.User$participantAConversationsArgs<ExtArgs>;
+  participantBConversations?:
+    | boolean
+    | Prisma.User$participantBConversationsArgs<ExtArgs>;
+  messages?: boolean | Prisma.User$messagesArgs<ExtArgs>;
+  userSettings?: boolean | Prisma.User$userSettingsArgs<ExtArgs>;
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type UserIncludeCreateManyAndReturn<
@@ -1394,6 +2116,10 @@ export type $UserPayload<
     savedJobs: Prisma.$SavedJobPayload<ExtArgs>[];
     jobViews: Prisma.$JobViewPayload<ExtArgs>[];
     candidateViews: Prisma.$CandidateViewsPayload<ExtArgs>[];
+    participantAConversations: Prisma.$ConversationPayload<ExtArgs>[];
+    participantBConversations: Prisma.$ConversationPayload<ExtArgs>[];
+    messages: Prisma.$MessagePayload<ExtArgs>[];
+    userSettings: Prisma.$UserSettingsPayload<ExtArgs> | null;
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
@@ -2024,6 +2750,56 @@ export interface Prisma__UserClient<
         GlobalOmitOptions
       >
     | Null
+  >;
+  participantAConversations<
+    T extends Prisma.User$participantAConversationsArgs<ExtArgs> = {},
+  >(
+    args?: Prisma.Subset<T, Prisma.User$participantAConversationsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ConversationPayload<ExtArgs>,
+        T,
+        "findMany",
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  participantBConversations<
+    T extends Prisma.User$participantBConversationsArgs<ExtArgs> = {},
+  >(
+    args?: Prisma.Subset<T, Prisma.User$participantBConversationsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ConversationPayload<ExtArgs>,
+        T,
+        "findMany",
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  messages<T extends Prisma.User$messagesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$messagesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$MessagePayload<ExtArgs>,
+        T,
+        "findMany",
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  userSettings<T extends Prisma.User$userSettingsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$userSettingsArgs<ExtArgs>>,
+  ): Prisma.Prisma__UserSettingsClient<
+    runtime.Types.Result.GetResult<
+      Prisma.$UserSettingsPayload<ExtArgs>,
+      T,
+      "findUniqueOrThrow",
+      GlobalOmitOptions
+    > | null,
+    null,
+    ExtArgs,
+    GlobalOmitOptions
   >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2682,6 +3458,119 @@ export type User$candidateViewsArgs<
   distinct?:
     | Prisma.CandidateViewsScalarFieldEnum
     | Prisma.CandidateViewsScalarFieldEnum[];
+};
+
+/**
+ * User.participantAConversations
+ */
+export type User$participantAConversationsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Conversation
+   */
+  select?: Prisma.ConversationSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Conversation
+   */
+  omit?: Prisma.ConversationOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ConversationInclude<ExtArgs> | null;
+  where?: Prisma.ConversationWhereInput;
+  orderBy?:
+    | Prisma.ConversationOrderByWithRelationInput
+    | Prisma.ConversationOrderByWithRelationInput[];
+  cursor?: Prisma.ConversationWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.ConversationScalarFieldEnum
+    | Prisma.ConversationScalarFieldEnum[];
+};
+
+/**
+ * User.participantBConversations
+ */
+export type User$participantBConversationsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Conversation
+   */
+  select?: Prisma.ConversationSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Conversation
+   */
+  omit?: Prisma.ConversationOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ConversationInclude<ExtArgs> | null;
+  where?: Prisma.ConversationWhereInput;
+  orderBy?:
+    | Prisma.ConversationOrderByWithRelationInput
+    | Prisma.ConversationOrderByWithRelationInput[];
+  cursor?: Prisma.ConversationWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.ConversationScalarFieldEnum
+    | Prisma.ConversationScalarFieldEnum[];
+};
+
+/**
+ * User.messages
+ */
+export type User$messagesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Message
+   */
+  select?: Prisma.MessageSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Message
+   */
+  omit?: Prisma.MessageOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MessageInclude<ExtArgs> | null;
+  where?: Prisma.MessageWhereInput;
+  orderBy?:
+    | Prisma.MessageOrderByWithRelationInput
+    | Prisma.MessageOrderByWithRelationInput[];
+  cursor?: Prisma.MessageWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.MessageScalarFieldEnum | Prisma.MessageScalarFieldEnum[];
+};
+
+/**
+ * User.userSettings
+ */
+export type User$userSettingsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the UserSettings
+   */
+  select?: Prisma.UserSettingsSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the UserSettings
+   */
+  omit?: Prisma.UserSettingsOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserSettingsInclude<ExtArgs> | null;
+  where?: Prisma.UserSettingsWhereInput;
 };
 
 /**

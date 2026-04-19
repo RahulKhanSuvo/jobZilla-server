@@ -32,7 +32,8 @@ const getAllApplications = catchAsync(async (req, res) => {
     statusCode: 200,
     success: true,
     message: "Applications fetched successfully",
-    data: result,
+    data: result.applications,
+    meta: result.meta,
   });
 });
 
