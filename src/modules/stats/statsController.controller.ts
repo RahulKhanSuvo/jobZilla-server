@@ -13,6 +13,18 @@ const getJobStats = catchAsync(async (req, res) => {
   });
 });
 
+const getCandidateDashboardStats = catchAsync(async (req, res) => {
+  const userId = req.user?.id as string;
+  const result = await statsService.getCandidateDashboardStats(userId);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Candidate dashboard stats fetched successfully",
+    data: result,
+  });
+});
+
 export const statsController = {
   getJobStats,
+  getCandidateDashboardStats,
 };

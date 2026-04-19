@@ -53,6 +53,70 @@ const getJobStats = async (userId: string) => {
     totalApplicants,
   };
 };
+
+const getCandidateDashboardStats = async (userId: string) => {
+  // 1. Total applications
+  const totalApplications = await prisma.application.count({
+    where: {
+      userId,
+    },
+  });
+
+  // 2. Total saved jobs
+  const totalSavedJobs = await prisma.savedJob.count({
+    where: {
+      userId,
+    },
+  });
+
+  // 3. Total views
+  const viewsAgg = await prisma.user.aggregate({
+    where: {
+      id: userId,
+    },
+    _sum: {
+      views: true,
+    },
+  });
+
+  const totalViews = viewsAgg._sum.views || 0;
+
+  const recentApplications = await prisma.application.findMany({
+    where: {
+      userId,
+    },
+    take: 5,
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: {
+      job: {
+        select: {
+          title: true,
+          company: {
+            select: {
+              logo: true,
+              user: {
+                select: {
+                  name: true,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  return {
+    totalApplications,
+    totalSavedJobs,
+    totalViews,
+    recentApplications,
+  };
+};
+
 export const statsService = {
   getJobStats,
+  getCandidateDashboardStats,
 };
