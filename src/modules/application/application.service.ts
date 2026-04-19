@@ -80,7 +80,11 @@ const createApplication = async (
   return result;
 };
 
-const getAllApplications = async (userId: string) => {
+const getAllApplications = async (
+  userId: string,
+  skip: number,
+  limit: number,
+) => {
   const company = await prisma.company.findUnique({
     where: { userId },
   });
@@ -102,7 +106,7 @@ const getAllApplications = async (userId: string) => {
           candidate: {
             select: {
               location: true,
-              profileImage: true,
+              avatar: true,
             },
           },
         },
@@ -114,8 +118,13 @@ const getAllApplications = async (userId: string) => {
         },
       },
     },
+    skip,
+    take: limit,
   });
-  return applications;
+  const total = await prisma.application.count({
+    where: { companyId: company.id },
+  });
+  return { applications, meta: { total, skip, limit } };
 };
 
 const getApplicationById = async (userId: string, applicationId: string) => {
@@ -138,7 +147,7 @@ const getApplicationById = async (userId: string, applicationId: string) => {
           candidate: {
             select: {
               location: true,
-              profileImage: true,
+              avatar: true,
               skills: true,
               eductions: true,
               workExperiences: true,
@@ -194,7 +203,7 @@ const getCandidateAppliedJobs = async (userId: string) => {
           candidate: {
             select: {
               location: true,
-              profileImage: true,
+              avatar: true,
             },
           },
         },

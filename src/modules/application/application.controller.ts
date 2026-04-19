@@ -1,5 +1,6 @@
 import { catchAsync } from "../../shared/catchAsync";
 import { sendResponse } from "../../shared/sendResponse";
+import { getPagination } from "../../utils/pagination";
 import { applicationService } from "./application.service";
 
 const createApplication = catchAsync(async (req, res) => {
@@ -21,7 +22,12 @@ const createApplication = catchAsync(async (req, res) => {
 
 const getAllApplications = catchAsync(async (req, res) => {
   const { id: userId } = req.user!;
-  const result = await applicationService.getAllApplications(userId);
+  const { skip, limit } = getPagination(req.query);
+  const result = await applicationService.getAllApplications(
+    userId,
+    skip,
+    limit,
+  );
   sendResponse(res, {
     statusCode: 200,
     success: true,
