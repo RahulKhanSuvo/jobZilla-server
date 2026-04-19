@@ -96,7 +96,10 @@ const getCandidateDashboardStats = async (userId: string) => {
     orderBy: {
       createdAt: "desc",
     },
-    include: {
+    select: {
+      id: true,
+      status: true,
+      createdAt: true,
       job: {
         select: {
           title: true,
