@@ -21,4 +21,5 @@ model Company {
   user            User            @relation(fields: [userId], references: [id])
   applications    Application[]
   followCompanies FollowCompany[]
+  candidateViews  CandidateViews[]
 }

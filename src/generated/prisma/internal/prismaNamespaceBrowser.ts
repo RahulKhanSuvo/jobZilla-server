@@ -65,6 +65,7 @@ export const ModelName = {
   Resume: "Resume",
   SavedJob: "SavedJob",
   User: "User",
+  CandidateViews: "CandidateViews",
   Skill: "Skill",
   WorkExperience: "WorkExperience",
 } as const;
@@ -244,12 +245,24 @@ export const UserScalarFieldEnum = {
   email: "email",
   role: "role",
   password: "password",
+  views: "views",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
 } as const;
 
 export type UserScalarFieldEnum =
   (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
+
+export const CandidateViewsScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  companyId: "companyId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type CandidateViewsScalarFieldEnum =
+  (typeof CandidateViewsScalarFieldEnum)[keyof typeof CandidateViewsScalarFieldEnum];
 
 export const SkillScalarFieldEnum = {
   id: "id",

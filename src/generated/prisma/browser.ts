@@ -72,6 +72,11 @@ export type SavedJob = Prisma.SavedJobModel;
  */
 export type User = Prisma.UserModel;
 /**
+ * Model CandidateViews
+ *
+ */
+export type CandidateViews = Prisma.CandidateViewsModel;
+/**
  * Model Skill
  *
  */

@@ -423,6 +423,7 @@ export const ModelName = {
   Resume: "Resume",
   SavedJob: "SavedJob",
   User: "User",
+  CandidateViews: "CandidateViews",
   Skill: "Skill",
   WorkExperience: "WorkExperience",
 } as const;
@@ -458,6 +459,7 @@ export type TypeMap<
       | "resume"
       | "savedJob"
       | "user"
+      | "candidateViews"
       | "skill"
       | "workExperience";
     txIsolationLevel: TransactionIsolationLevel;
@@ -1299,6 +1301,82 @@ export type TypeMap<
         };
       };
     };
+    CandidateViews: {
+      payload: Prisma.$CandidateViewsPayload<ExtArgs>;
+      fields: Prisma.CandidateViewsFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.CandidateViewsFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.CandidateViewsFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload>;
+        };
+        findFirst: {
+          args: Prisma.CandidateViewsFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.CandidateViewsFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload>;
+        };
+        findMany: {
+          args: Prisma.CandidateViewsFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload>[];
+        };
+        create: {
+          args: Prisma.CandidateViewsCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload>;
+        };
+        createMany: {
+          args: Prisma.CandidateViewsCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.CandidateViewsCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload>[];
+        };
+        delete: {
+          args: Prisma.CandidateViewsDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload>;
+        };
+        update: {
+          args: Prisma.CandidateViewsUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload>;
+        };
+        deleteMany: {
+          args: Prisma.CandidateViewsDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.CandidateViewsUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.CandidateViewsUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload>[];
+        };
+        upsert: {
+          args: Prisma.CandidateViewsUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CandidateViewsPayload>;
+        };
+        aggregate: {
+          args: Prisma.CandidateViewsAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCandidateViews>;
+        };
+        groupBy: {
+          args: Prisma.CandidateViewsGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.CandidateViewsGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.CandidateViewsCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.CandidateViewsCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
     Skill: {
       payload: Prisma.$SkillPayload<ExtArgs>;
       fields: Prisma.SkillFieldRefs;
@@ -1649,12 +1727,24 @@ export const UserScalarFieldEnum = {
   email: "email",
   role: "role",
   password: "password",
+  views: "views",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
 } as const;
 
 export type UserScalarFieldEnum =
   (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
+
+export const CandidateViewsScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  companyId: "companyId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type CandidateViewsScalarFieldEnum =
+  (typeof CandidateViewsScalarFieldEnum)[keyof typeof CandidateViewsScalarFieldEnum];
 
 export const SkillScalarFieldEnum = {
   id: "id",
@@ -1972,6 +2062,7 @@ export type GlobalOmitConfig = {
   resume?: Prisma.ResumeOmit;
   savedJob?: Prisma.SavedJobOmit;
   user?: Prisma.UserOmit;
+  candidateViews?: Prisma.CandidateViewsOmit;
   skill?: Prisma.SkillOmit;
   workExperience?: Prisma.WorkExperienceOmit;
 };

@@ -18,6 +18,7 @@ export type * from "./models/JobView";
 export type * from "./models/Resume";
 export type * from "./models/SavedJob";
 export type * from "./models/User";
+export type * from "./models/CandidateViews";
 export type * from "./models/Skill";
 export type * from "./models/WorkExperience";
 export type * from "./commonInputTypes";
