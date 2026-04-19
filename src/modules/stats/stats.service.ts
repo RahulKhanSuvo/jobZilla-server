@@ -88,42 +88,11 @@ const getCandidateDashboardStats = async (userId: string) => {
 
   const totalViews = viewsAgg._sum.views || 0;
 
-  const recentApplications = await prisma.application.findMany({
-    where: {
-      userId,
-    },
-    take: 5,
-    orderBy: {
-      createdAt: "desc",
-    },
-    select: {
-      id: true,
-      status: true,
-      createdAt: true,
-      job: {
-        select: {
-          title: true,
-          company: {
-            select: {
-              logo: true,
-              user: {
-                select: {
-                  name: true,
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  });
-
   return {
     totalApplications,
     totalSavedJobs,
     totalViews,
     totlaShortListedJobs,
-    recentApplications,
   };
 };
 
