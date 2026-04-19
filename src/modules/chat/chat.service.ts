@@ -31,8 +31,32 @@ export const chatService = {
         OR: [{ participantA: userId }, { participantB: userId }],
       },
       include: {
-        userA: { select: { id: true, name: true } },
-        userB: { select: { id: true, name: true } },
+        userA: {
+          select: {
+            id: true,
+            name: true,
+            role: true,
+            candidate: {
+              select: { avatar: true, aboutMe: true, location: true },
+            },
+            company: {
+              select: { logo: true, description: true, location: true },
+            },
+          },
+        },
+        userB: {
+          select: {
+            id: true,
+            name: true,
+            role: true,
+            candidate: {
+              select: { avatar: true, aboutMe: true, location: true },
+            },
+            company: {
+              select: { logo: true, description: true, location: true },
+            },
+          },
+        },
         messages: {
           orderBy: { createdAt: "desc" },
           take: 1, // Get the latest message for the list
