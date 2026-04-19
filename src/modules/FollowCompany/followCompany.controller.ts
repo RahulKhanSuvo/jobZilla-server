@@ -20,8 +20,8 @@ const getAllFollwedCompany = catchAsync(async (req, res) => {
 });
 const followACompany = catchAsync(async (req, res) => {
   const { id: userId } = req.user!;
-  const companyId = req.params.companyId || req.params.id;
-  console.log(userId);
+  const companyId = req.params.companyId;
+  console.log(companyId);
 
   if (!userId) throw new ApiError("no user id", 400);
   if (companyId === userId) {
