@@ -36,11 +36,99 @@ const getJobStats = async (userId: string) => {
 
   const totalViews = viewsAgg._sum.views || 0;
 
-  // 3. Total applicants
-  const totalApplicants = await prisma.application.count({
+  // 3. Application stats (Total and Status breakdown)
+  const applications = await prisma.application.groupBy({
+    by: ["status"],
     where: {
+      companyId: userId,
+    },
+    _count: {
+      id: true,
+    },
+  });
+
+  let totalApplicants = 0;
+  let pendingApplicants = 0;
+  let shortlistedApplicants = 0;
+  let hiredApplicants = 0;
+  let rejectedApplicants = 0;
+
+  applications.forEach((item) => {
+    const count = item._count.id;
+    totalApplicants += count;
+
+    if (item.status === "PENDING") pendingApplicants = count;
+    if (item.status === "SHORTLISTED") shortlistedApplicants = count;
+    if (item.status === "HIRED") hiredApplicants = count;
+    if (item.status === "REJECTED") rejectedApplicants = count;
+  });
+
+  // 4. Application Trend (Last 7 days)
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+  const trendDataRaw = await prisma.application.groupBy({
+    by: ["createdAt"],
+    where: {
+      companyId: userId,
+      createdAt: {
+        gte: sevenDaysAgo,
+      },
+    },
+    _count: {
+      id: true,
+    },
+  });
+
+  // Format trend data for the chart (grouped by day)
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const trendMap: Record<string, number> = {};
+
+  // Initialize last 7 days with 0
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    trendMap[days[d.getDay()]] = 0;
+  }
+
+  trendDataRaw.forEach((item) => {
+    const day = days[new Date(item.createdAt).getDay()];
+    if (trendMap[day] !== undefined) {
+      trendMap[day] += item._count.id;
+    }
+  });
+
+  const applicationTrend = Object.entries(trendMap).map(([day, value]) => ({
+    day,
+    value,
+  }));
+
+  // 5. Recent Applicants
+  const recentApplicants = await prisma.application.findMany({
+    where: {
+      companyId: userId,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 10,
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          candidate: {
+            select: {
+              avatar: true,
+            },
+          },
+        },
+      },
       job: {
-        companyId: userId,
+        select: {
+          title: true,
+        },
       },
     },
   });
@@ -51,6 +139,12 @@ const getJobStats = async (userId: string) => {
     closedJobs,
     totalViews,
     totalApplicants,
+    pendingApplicants,
+    shortlistedApplicants,
+    hiredApplicants,
+    rejectedApplicants,
+    applicationTrend,
+    recentApplicants,
   };
 };
 
