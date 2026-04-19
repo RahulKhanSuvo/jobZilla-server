@@ -314,17 +314,6 @@ const getJobById = async (userId: string, jobId: string, anonId: string) => {
         },
       },
     });
-  } else {
-    if (userId && anonId) {
-      await prisma.jobView.delete({
-        where: {
-          jobId_anonymousId: {
-            jobId,
-            anonymousId: anonId,
-          },
-        },
-      });
-    }
   }
 
   const job = await prisma.job.findUnique({

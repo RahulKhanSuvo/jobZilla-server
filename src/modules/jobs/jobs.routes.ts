@@ -42,7 +42,11 @@ jobsRoutes.delete(
 );
 
 // get job by id
-jobsRoutes.get("/:id", authGard({ optional: true }), jobsController.jobById);
+jobsRoutes.get(
+  "/public/:id",
+  authGard({ optional: true }),
+  jobsController.jobById,
+);
 
 // update job
 jobsRoutes.patch(
