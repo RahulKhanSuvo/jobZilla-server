@@ -78,6 +78,13 @@ const getCandidateDashboardStats = async (userId: string) => {
       views: true,
     },
   });
+  // short list of jobs
+  const totlaShortListedJobs = await prisma.application.count({
+    where: {
+      userId,
+      status: "SHORTLISTED",
+    },
+  });
 
   const totalViews = viewsAgg._sum.views || 0;
 
@@ -112,6 +119,7 @@ const getCandidateDashboardStats = async (userId: string) => {
     totalApplications,
     totalSavedJobs,
     totalViews,
+    totlaShortListedJobs,
     recentApplications,
   };
 };
