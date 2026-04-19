@@ -15,5 +15,6 @@ userRouter.post("/login", validate(loginSchema), userController.loginUser);
 userRouter.post("/refresh", userController.userTokenRefresh);
 userRouter.get("/me", authGard(), userController.currentUser);
 userRouter.post("/logout", userController.userLogout);
+userRouter.put("change-password", authGard(), userController.changePassword);
 
 export default userRouter;

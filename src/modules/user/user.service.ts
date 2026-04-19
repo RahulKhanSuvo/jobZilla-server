@@ -7,6 +7,7 @@ import { CustomJwtPayload } from "../../types";
 import { ApiError } from "../../errors/ApiError";
 import { generateTokens } from "../../utils/generateTokens";
 import { envConfig } from "../../config/env";
+import { UserRole } from "../../generated/prisma/enums";
 const createUser = async (data: CreateUserInput) => {
   const isExist = await prisma.user.findUnique({
     where: {
@@ -86,9 +87,38 @@ const currentUserById = async (id: string, userRole: string) => {
   if (!user) throw new ApiError("user not found ", 404);
   return user;
 };
+const changePassword = async (
+  id: string,
+  userRole: UserRole,
+  oldPassword: string,
+  newPassword: string,
+) => {
+  const user = await prisma.user.findUnique({
+    where: { id },
+  });
+  if (!user) throw new ApiError("user not found ", 404);
+  const passwordValid = await bcrypt.compare(oldPassword, user.password);
+  if (!passwordValid) throw new ApiError("invalid credentials", 401);
+  const hashPassword = await bcrypt.hash(newPassword, 10);
+  return await prisma.user.update({
+    where: { id },
+    data: {
+      password: hashPassword,
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
+};
 export const userService = {
   createUser,
   loginUser,
   refreshTokenAuth,
   currentUserById,
+  changePassword,
 };
