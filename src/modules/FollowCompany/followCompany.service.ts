@@ -18,6 +18,27 @@ const getAllFollwedCompany = async (userId: string, pagination: Pagination) => {
       where: {
         candideId: userId,
       },
+      include: {
+        company: {
+          select: {
+            id: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
+            location: true,
+            logo: true,
+            industry: true,
+            _count: {
+              select: {
+                applications: true,
+              },
+            },
+          },
+        },
+      },
     }),
     prisma.followCompany.count({
       where: {
@@ -101,7 +122,6 @@ const unFollowACompany = async (userId: string, companyId: string) => {
       },
     },
   });
-  console.log(followCompany);
   return followCompany;
 };
 export const followACompanyService = {

@@ -15,7 +15,8 @@ const getAllFollwedCompany = catchAsync(async (req, res) => {
     statusCode: 200,
     success: true,
     message: "Followed companies fetched successfully",
-    data: result,
+    data: result.data,
+    meta: result.meta,
   });
 });
 const followACompany = catchAsync(async (req, res) => {
