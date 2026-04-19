@@ -6,6 +6,7 @@ import jobsRoutes from "../modules/jobs/jobs.routes";
 import { ApplicationRoutes } from "../modules/application/application.route";
 import followCompanyRoutes from "../modules/FollowCompany/followCompany.route";
 import saveJobRouter from "../modules/saveJobs/saveJob.routes";
+import statsRoutes from "../modules/stats/stats.routes";
 
 const routes = Router();
 routes.use("/auth", userRouter);
@@ -15,4 +16,5 @@ routes.use("/jobs", jobsRoutes);
 routes.use("/applications", ApplicationRoutes);
 routes.use("/follow-company", followCompanyRoutes);
 routes.use("/save-job", saveJobRouter);
+routes.use("/stats", statsRoutes);
 export default routes;
