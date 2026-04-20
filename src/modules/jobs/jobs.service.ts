@@ -277,7 +277,7 @@ const saveJob = async (userId: string, jobId: string) => {
 };
 
 // get job by id
-const getJobById = async (userId: string, jobId: string, anonId: string) => {
+const getJobById = async (userId: string, jobId: string) => {
   let isSaved = false;
   let isFollowed = false;
   if (userId) {
@@ -294,7 +294,7 @@ const getJobById = async (userId: string, jobId: string, anonId: string) => {
   const jobView = await prisma.jobView.findFirst({
     where: {
       jobId,
-      ...(userId ? { userId } : { anonymousId: anonId }),
+      userId,
     },
   });
   const job = await prisma.job.findUnique({
@@ -329,7 +329,7 @@ const getJobById = async (userId: string, jobId: string, anonId: string) => {
   if (!jobView && job?.company.user.id !== userId) {
     await prisma.jobView.create({
       data: {
-        ...(userId ? { userId } : { anonymousId: anonId }),
+        userId,
         jobId: jobId,
       },
     });

@@ -74,21 +74,7 @@ const getMyJobs = catchAsync(async (req, res) => {
 const jobById = catchAsync(async (req, res) => {
   const id = req.params.id;
   const userId = req.user?.id;
-  let anonId = req.cookies.anonId;
-  if (!userId && !anonId) {
-    anonId = crypto.randomUUID();
-
-    res.cookie("anonId", anonId, {
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 365,
-      sameSite: "lax",
-    });
-  }
-  const result = await jobsService.getJobById(
-    userId as string,
-    id as string,
-    anonId as string,
-  );
+  const result = await jobsService.getJobById(userId as string, id as string);
   sendResponse(res, {
     statusCode: 200,
     success: true,
