@@ -190,7 +190,169 @@ const getCandidateDashboardStats = async (userId: string) => {
   };
 };
 
+const getEmployerDashboardStats = async (companyId: string) => {
+  // 1. Total jobs
+  const totalJobs = await prisma.job.count({
+    where: {
+      companyId,
+    },
+  });
+
+  // 2. Total views
+  const viewsAgg = await prisma.job.aggregate({
+    where: {
+      companyId,
+    },
+    _sum: {
+      views: true,
+    },
+  });
+
+  const totalViews = viewsAgg._sum.views || 0;
+
+  // 3. Total applicants
+  const totalApplicants = await prisma.application.count({
+    where: {
+      companyId,
+    },
+  });
+
+  // 4. Application stats (Total and Status breakdown)
+  const applications = await prisma.application.groupBy({
+    by: ["status"],
+    where: {
+      companyId,
+    },
+    _count: {
+      id: true,
+    },
+  });
+
+  let pendingApplicants = 0;
+  let shortlistedApplicants = 0;
+  let hiredApplicants = 0;
+  let rejectedApplicants = 0;
+
+  applications.forEach((item) => {
+    const count = item._count.id;
+
+    if (item.status === "PENDING") pendingApplicants = count;
+    if (item.status === "SHORTLISTED") shortlistedApplicants = count;
+    if (item.status === "HIRED") hiredApplicants = count;
+    if (item.status === "REJECTED") rejectedApplicants = count;
+  });
+
+  // 5. Application Trend (Last 7 days)
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+  const trendDataRaw = await prisma.application.groupBy({
+    by: ["createdAt"],
+    where: {
+      companyId,
+      createdAt: {
+        gte: sevenDaysAgo,
+      },
+    },
+    _count: {
+      id: true,
+    },
+  });
+
+  // Format trend data for the chart (grouped by day)
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const trendMap: Record<string, number> = {};
+
+  // Initialize last 7 days with 0
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    trendMap[days[d.getDay()]] = 0;
+  }
+
+  trendDataRaw.forEach((item) => {
+    const day = days[new Date(item.createdAt).getDay()];
+    if (trendMap[day] !== undefined) {
+      trendMap[day] += item._count.id;
+    }
+  });
+
+  const applicationTrend = Object.entries(trendMap).map(([day, value]) => ({
+    day,
+    value,
+  }));
+
+  // 6. Top Jobs (by applicants)
+  const topJobs = await prisma.job.findMany({
+    where: {
+      companyId,
+    },
+    orderBy: {
+      applications: {
+        _count: "desc",
+      },
+    },
+    take: 5,
+    include: {
+      applications: {
+        select: {
+          id: true,
+        },
+      },
+    },
+  });
+
+  const topJobsData = topJobs.map((job) => ({
+    title: job.title,
+    applicants: job.applications.length,
+  }));
+
+  // 7. Recent Applicants
+  const recentApplicants = await prisma.application.findMany({
+    where: {
+      companyId,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 10,
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          candidate: {
+            select: {
+              avatar: true,
+            },
+          },
+        },
+      },
+      job: {
+        select: {
+          title: true,
+        },
+      },
+    },
+  });
+
+  return {
+    totalJobs,
+    totalViews,
+    totalApplicants,
+    pendingApplicants,
+    shortlistedApplicants,
+    hiredApplicants,
+    rejectedApplicants,
+    applicationTrend,
+    topJobs: topJobsData,
+    recentApplicants,
+  };
+};
+
 export const statsService = {
   getJobStats,
   getCandidateDashboardStats,
+  getEmployerDashboardStats,
 };

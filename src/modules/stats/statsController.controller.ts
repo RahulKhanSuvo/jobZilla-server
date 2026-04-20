@@ -24,7 +24,19 @@ const getCandidateDashboardStats = catchAsync(async (req, res) => {
   });
 });
 
+const getEmployerDashboardStats = catchAsync(async (req, res) => {
+  const companyId = req.user?.id as string;
+  const result = await statsService.getEmployerDashboardStats(companyId);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Employer dashboard stats fetched successfully",
+    data: result,
+  });
+});
+
 export const statsController = {
   getJobStats,
   getCandidateDashboardStats,
+  getEmployerDashboardStats,
 };

@@ -15,4 +15,9 @@ statsRoutes.get(
   authGard({ roles: [UserRole.CANDIDATE] }),
   statsController.getCandidateDashboardStats,
 );
+statsRoutes.get(
+  "/employer/dashboard-stats",
+  authGard({ roles: [UserRole.EMPLOYER] }),
+  statsController.getEmployerDashboardStats,
+);
 export default statsRoutes;
