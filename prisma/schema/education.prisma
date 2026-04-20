@@ -8,5 +8,5 @@ model Eduction {
     isStudying  Boolean   @default(false)
     createdId   DateTime  @default(now())
     candideId   String
-    candidate   Candidate @relation(fields: [candideId], references: [id])
+    candidate   Candidate @relation(fields: [candideId], references: [userId])
 }

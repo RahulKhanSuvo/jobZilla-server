@@ -1,7 +1,7 @@
 model WorkExperience {
     id          String    @id @default(uuid())
     candideId   String
-    candidate   Candidate @relation(fields: [candideId], references: [id])
+    candidate   Candidate @relation(fields: [candideId], references: [userId])
     jobTitle    String    @db.VarChar(150)
     companyName String    @db.VarChar(150)
     industry    String

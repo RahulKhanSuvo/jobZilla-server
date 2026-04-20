@@ -2,5 +2,5 @@ model Skill {
     id        String    @id @default(uuid())
     skill     String
     candideId String
-    candidate Candidate @relation(fields: [candideId], references: [id])
+    candidate Candidate @relation(fields: [candideId], references: [userId])
 }

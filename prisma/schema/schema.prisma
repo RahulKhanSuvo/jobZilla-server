@@ -14,19 +14,19 @@ enum UserRole {
 }
 
 model User {
-  id             String           @id @default(uuid())
-  name           String           @db.VarChar(100)
-  email          String           @unique
-  role           UserRole         @default(CANDIDATE)
-  password       String
-  views          Int?             @default(0)
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  applications   Application[]
-  candidate      Candidate?
-  company        Company?
-  savedJobs      SavedJob[]
-  jobViews       JobView[]
+  id                        String           @id @default(uuid())
+  name                      String           @db.VarChar(100)
+  email                     String           @unique
+  role                      UserRole         @default(CANDIDATE)
+  password                  String
+  views                     Int?             @default(0)
+  createdAt                 DateTime         @default(now())
+  updatedAt                 DateTime         @updatedAt
+  applications              Application[]
+  candidate                 Candidate?
+  company                   Company?
+  savedJobs                 SavedJob[]
+  jobViews                  JobView[]
   candidateViews            CandidateViews[]
   participantAConversations Conversation[]   @relation("ParticipantAConversations")
   participantBConversations Conversation[]   @relation("ParticipantBConversations")
@@ -42,5 +42,5 @@ model CandidateViews {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   user      User     @relation(fields: [userId], references: [id])
-  company   Company  @relation(fields: [companyId], references: [id])
+  company   Company  @relation(fields: [companyId], references: [userId])
 }

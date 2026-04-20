@@ -2,5 +2,5 @@ model Language {
     id        String    @id @default(uuid())
     language  String
     candideId String
-    candidate Candidate @relation(fields: [candideId], references: [id])
+    candidate Candidate @relation(fields: [candideId], references: [userId])
 }
