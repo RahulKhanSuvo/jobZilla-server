@@ -290,14 +290,34 @@ const updateApplicationStatus = async (
     where: { id: applicationId },
     data: { status },
   });
+  let title = "Application Status Updated";
+  let message: string;
+
+  switch (status) {
+    case "SHORTLISTED":
+      message = `Good news! You’ve been shortlisted for "${application.job.title}".`;
+      break;
+
+    case "HIRED":
+      title = "Congratulations!";
+      message = `Congrats! You’ve been hired for "${application.job.title}".`;
+      break;
+
+    case "REJECTED":
+      message = `We’re sorry. Your application for "${application.job.title}" was not selected.`;
+      break;
+
+    default:
+      message = `Your application for "${application.job.title}" has been updated to ${status}.`;
+  }
 
   // Send notification to candidate
   await notificationService.createNotification({
     userId: application.userId,
     type: NotificationType.APPLICATION,
-    title: "Application Status Updated",
-    message: `Your application for "${application.job.title}" has been updated to ${status}.`,
-    link: `/dashboard/candidate/applied-jobs`,
+    title,
+    message,
+    link: `/candidate/my-applied-jobs`,
   });
 
   return result;
