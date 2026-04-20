@@ -133,8 +133,6 @@ const getEmployerDashboardStats = async (userId: string) => {
       companyId: userId,
     },
   });
-  console.log("count", totalJobs);
-
   // 2. Total views
   const viewsAgg = await prisma.job.aggregate({
     where: {
