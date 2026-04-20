@@ -93,6 +93,15 @@ const createApplication = async (
       message: `${candidateUser?.name || "A candidate"} has applied for "${job.title}"`,
       link: `/recruiter/applicants`,
     });
+
+    // Send confirmation notification to candidate
+    await notificationService.createNotification({
+      userId: userId,
+      type: NotificationType.APPLICATION,
+      title: "Application Submitted",
+      message: `You have successfully applied for "${job.title}"`,
+      link: `/dashboard/candidate/applied-jobs`,
+    });
   }
 
   return result;
