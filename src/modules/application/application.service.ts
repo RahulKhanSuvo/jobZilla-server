@@ -290,11 +290,12 @@ const updateApplicationStatus = async (
     where: { id: applicationId },
     data: { status },
   });
-  let title = "Application Status Updated";
+  let title: string;
   let message: string;
 
   switch (status) {
     case "SHORTLISTED":
+      title = "Congratulations!";
       message = `Good news! You’ve been shortlisted for "${application.job.title}".`;
       break;
 
@@ -304,10 +305,12 @@ const updateApplicationStatus = async (
       break;
 
     case "REJECTED":
+      title = "Application Rejected";
       message = `We’re sorry. Your application for "${application.job.title}" was not selected.`;
       break;
 
     default:
+      title = "Application Status Updated";
       message = `Your application for "${application.job.title}" has been updated to ${status}.`;
   }
 
