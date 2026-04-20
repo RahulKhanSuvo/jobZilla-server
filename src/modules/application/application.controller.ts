@@ -22,9 +22,16 @@ const createApplication = catchAsync(async (req, res) => {
 
 const getAllApplications = catchAsync(async (req, res) => {
   const { id: userId } = req.user!;
+  const { searchTerm, status, jobFilter, sortBy } = req.query;
   const { skip, limit } = getPagination(req.query);
   const result = await applicationService.getAllApplications(
     userId,
+    {
+      searchTerm: searchTerm as string,
+      status: status as string,
+      jobFilter: jobFilter as string,
+      sortBy: sortBy as string,
+    },
     skip,
     limit,
   );

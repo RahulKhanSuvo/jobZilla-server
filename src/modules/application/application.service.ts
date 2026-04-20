@@ -1,5 +1,6 @@
 import { ApiError } from "../../errors/ApiError";
 import { AppStatus } from "../../generated/prisma/enums";
+import { Prisma } from "../../generated/prisma/client";
 import { prisma } from "../../lib/prisma";
 import { uploadToCloudinary } from "../../utils/cloudinary";
 
@@ -82,6 +83,12 @@ const createApplication = async (
 
 const getAllApplications = async (
   userId: string,
+  filters: {
+    searchTerm?: string;
+    status?: string;
+    jobFilter?: string;
+    sortBy?: string;
+  },
   skip: number,
   limit: number,
 ) => {
@@ -89,8 +96,40 @@ const getAllApplications = async (
     where: { userId },
   });
   if (!company) throw new ApiError("Company not found", 404);
+
+  const { searchTerm, status, jobFilter, sortBy } = filters;
+
+  const where: Prisma.ApplicationWhereInput = {
+    companyId: company.id,
+  };
+
+  if (searchTerm) {
+    where.OR = [
+      { user: { name: { contains: searchTerm, mode: "insensitive" } } },
+      { job: { title: { contains: searchTerm, mode: "insensitive" } } },
+    ];
+  }
+
+  if (status && status !== "ALL") {
+    where.status = status as AppStatus;
+  }
+
+  if (jobFilter && jobFilter !== "ALL") {
+    where.job = { title: jobFilter };
+  }
+
+  let orderBy: Prisma.ApplicationOrderByWithRelationInput = {
+    createdAt: "desc",
+  };
+
+  if (sortBy === "oldest") {
+    orderBy = { createdAt: "asc" };
+  } else if (sortBy === "name") {
+    orderBy = { user: { name: "asc" } };
+  }
+
   const applications = await prisma.application.findMany({
-    where: { companyId: company.id },
+    where,
     include: {
       job: {
         select: {
@@ -102,6 +141,7 @@ const getAllApplications = async (
       },
       user: {
         select: {
+          id: true,
           name: true,
           candidate: {
             select: {
@@ -113,6 +153,7 @@ const getAllApplications = async (
       },
       resume: {
         select: {
+          id: true,
           title: true,
           fileUrl: true,
         },
@@ -120,11 +161,49 @@ const getAllApplications = async (
     },
     skip,
     take: limit,
+    orderBy,
   });
-  const total = await prisma.application.count({
+
+  const total = await prisma.application.count({ where });
+
+  // Stats (counts for each status for this company)
+  const stats = await prisma.application.groupBy({
+    by: ["status"],
     where: { companyId: company.id },
+    _count: { _all: true },
   });
-  return { applications, meta: { total, skip, limit } };
+
+  const statsFormatted = {
+    ALL: await prisma.application.count({ where: { companyId: company.id } }),
+    PENDING: stats.find((s) => s.status === "PENDING")?._count._all || 0,
+    SHORTLISTED:
+      stats.find((s) => s.status === "SHORTLISTED")?._count._all || 0,
+    HIRED: stats.find((s) => s.status === "HIRED")?._count._all || 0,
+    REJECTED: stats.find((s) => s.status === "REJECTED")?._count._all || 0,
+  };
+
+  // Unique job titles for filtering
+  const jobs = await prisma.job.findMany({
+    where: {
+      companyId: userId,
+      applications: { some: {} },
+    },
+    select: { title: true },
+    distinct: ["title"],
+  });
+
+  const uniqueJobs = jobs.map((j) => j.title).sort();
+
+  return {
+    applications,
+    meta: {
+      total,
+      skip,
+      limit,
+      stats: statsFormatted,
+      uniqueJobs,
+    },
+  };
 };
 
 const getApplicationById = async (userId: string, applicationId: string) => {
