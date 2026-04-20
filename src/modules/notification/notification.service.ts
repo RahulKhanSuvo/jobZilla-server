@@ -63,6 +63,7 @@ const createNotification = async (data: {
   message: string;
   link?: string;
 }) => {
+  console.log("notification data", data);
   const notification = await prisma.notification.create({
     data,
   });
