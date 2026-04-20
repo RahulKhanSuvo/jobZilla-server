@@ -210,7 +210,7 @@ const getEmployerDashboardStats = async (userId: string) => {
   // 2. Total views
   const viewsAgg = await prisma.job.aggregate({
     where: {
-      companyId,
+      companyId: userId,
     },
     _sum: {
       views: true,
@@ -287,28 +287,53 @@ const getEmployerDashboardStats = async (userId: string) => {
       id: true,
     },
   });
+  const jobs = await prisma.job.findMany({
+    where: {
+      companyId: userId,
+      updatedAt: {
+        gte: sevenDaysAgo,
+      },
+    },
+    select: {
+      views: true,
+      updatedAt: true,
+    },
+  });
+  console.log("jobrfe", jobs);
+  const trendMap: Record<string, { applications: number; views: number }> = {};
 
-  // Format trend data for the chart (grouped by day)
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const trendMap: Record<string, number> = {};
-
-  // Initialize last 7 days with 0
   for (let i = 6; i >= 0; i--) {
     const d = new Date();
     d.setDate(d.getDate() - i);
-    trendMap[days[d.getDay()]] = 0;
-  }
 
+    const key = d.toISOString().split("T")[0];
+
+    trendMap[key] = {
+      applications: 0,
+      views: 0,
+    };
+  }
   trendDataRaw.forEach((item) => {
-    const day = days[new Date(item.createdAt).getDay()];
-    if (trendMap[day] !== undefined) {
-      trendMap[day] += item._count.id;
+    const key = new Date(item.createdAt).toISOString().split("T")[0];
+
+    if (trendMap[key]) {
+      trendMap[key].applications += item._count.id;
+    }
+  });
+  jobs.forEach((job) => {
+    const key = new Date(job.updatedAt).toISOString().split("T")[0];
+
+    if (trendMap[key]) {
+      trendMap[key].views += job?.views || 0;
     }
   });
 
-  const applicationTrend = Object.entries(trendMap).map(([day, value]) => ({
-    day,
-    value,
+  const trend = Object.entries(trendMap).map(([date, value]) => ({
+    day: new Date(date).toLocaleDateString("en-US", {
+      weekday: "short",
+    }),
+    applications: value.applications,
+    views: value.views,
   }));
 
   // 6. Top Jobs (by applicants)
@@ -376,7 +401,7 @@ const getEmployerDashboardStats = async (userId: string) => {
     shortlistedApplicants,
     hiredApplicants,
     rejectedApplicants,
-    applicationTrend,
+    applicationTrend: trend,
     topJobs: topJobsData,
     recentApplicants,
   };
