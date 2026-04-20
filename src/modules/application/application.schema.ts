@@ -6,7 +6,7 @@ const updateApplicationStatusSchema = z.object({
 
 const createApplicationSchema = z.object({
   jobId: z.string(),
-  resumeId: z.string(),
+  resumeId: z.string().optional(),
 });
 
 export const ApplicationSchema = {
