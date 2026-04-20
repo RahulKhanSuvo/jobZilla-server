@@ -424,6 +424,7 @@ export const ModelName = {
   FollowCompany: "FollowCompany",
   Job: "Job",
   JobView: "JobView",
+  Notification: "Notification",
   Resume: "Resume",
   SavedJob: "SavedJob",
   User: "User",
@@ -464,6 +465,7 @@ export type TypeMap<
       | "followCompany"
       | "job"
       | "jobView"
+      | "notification"
       | "resume"
       | "savedJob"
       | "user"
@@ -1385,6 +1387,82 @@ export type TypeMap<
         };
       };
     };
+    Notification: {
+      payload: Prisma.$NotificationPayload<ExtArgs>;
+      fields: Prisma.NotificationFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.NotificationFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.NotificationFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>;
+        };
+        findFirst: {
+          args: Prisma.NotificationFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.NotificationFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>;
+        };
+        findMany: {
+          args: Prisma.NotificationFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>[];
+        };
+        create: {
+          args: Prisma.NotificationCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>;
+        };
+        createMany: {
+          args: Prisma.NotificationCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.NotificationCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>[];
+        };
+        delete: {
+          args: Prisma.NotificationDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>;
+        };
+        update: {
+          args: Prisma.NotificationUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>;
+        };
+        deleteMany: {
+          args: Prisma.NotificationDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.NotificationUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.NotificationUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>[];
+        };
+        upsert: {
+          args: Prisma.NotificationUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>;
+        };
+        aggregate: {
+          args: Prisma.NotificationAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNotification>;
+        };
+        groupBy: {
+          args: Prisma.NotificationGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.NotificationGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.NotificationCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.NotificationCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
     Resume: {
       payload: Prisma.$ResumePayload<ExtArgs>;
       fields: Prisma.ResumeFieldRefs;
@@ -2063,6 +2141,21 @@ export const JobViewScalarFieldEnum = {
 export type JobViewScalarFieldEnum =
   (typeof JobViewScalarFieldEnum)[keyof typeof JobViewScalarFieldEnum];
 
+export const NotificationScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  type: "type",
+  title: "title",
+  message: "message",
+  isRead: "isRead",
+  link: "link",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type NotificationScalarFieldEnum =
+  (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum];
+
 export const ResumeScalarFieldEnum = {
   id: "id",
   title: "title",
@@ -2284,6 +2377,20 @@ export type ListEnumCareerLevelFieldRefInput<$PrismaModel> = FieldRefInputType<
 >;
 
 /**
+ * Reference to a field of type 'NotificationType'
+ */
+export type EnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "NotificationType"
+>;
+
+/**
+ * Reference to a field of type 'NotificationType[]'
+ */
+export type ListEnumNotificationTypeFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, "NotificationType[]">;
+
+/**
  * Reference to a field of type 'UserRole'
  */
 export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<
@@ -2430,6 +2537,7 @@ export type GlobalOmitConfig = {
   followCompany?: Prisma.FollowCompanyOmit;
   job?: Prisma.JobOmit;
   jobView?: Prisma.JobViewOmit;
+  notification?: Prisma.NotificationOmit;
   resume?: Prisma.ResumeOmit;
   savedJob?: Prisma.SavedJobOmit;
   user?: Prisma.UserOmit;

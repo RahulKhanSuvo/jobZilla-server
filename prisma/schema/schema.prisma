@@ -32,6 +32,7 @@ model User {
   participantBConversations Conversation[]   @relation("ParticipantBConversations")
   messages                  Message[]        @relation("UserMessages")
   userSettings              UserSettings?
+  notifications             Notification[]
 }
 
 model CandidateViews {

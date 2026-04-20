@@ -107,6 +107,11 @@ export type Job = Prisma.JobModel;
  */
 export type JobView = Prisma.JobViewModel;
 /**
+ * Model Notification
+ *
+ */
+export type Notification = Prisma.NotificationModel;
+/**
  * Model Resume
  *
  */

@@ -46,6 +46,17 @@ export const CareerLevel = {
 
 export type CareerLevel = (typeof CareerLevel)[keyof typeof CareerLevel];
 
+export const NotificationType = {
+  APPLICATION: "APPLICATION",
+  MESSAGE: "MESSAGE",
+  ALERT: "ALERT",
+  INTERVIEW: "INTERVIEW",
+  SUCCESS: "SUCCESS",
+} as const;
+
+export type NotificationType =
+  (typeof NotificationType)[keyof typeof NotificationType];
+
 export const UserRole = {
   CANDIDATE: "CANDIDATE",
   EMPLOYER: "EMPLOYER",

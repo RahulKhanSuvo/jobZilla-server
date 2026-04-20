@@ -1,8 +1,9 @@
 import { ApiError } from "../../errors/ApiError";
-import { AppStatus } from "../../generated/prisma/enums";
+import { AppStatus, NotificationType } from "../../generated/prisma/enums";
 import { Prisma } from "../../generated/prisma/client";
 import { prisma } from "../../lib/prisma";
 import { uploadToCloudinary } from "../../utils/cloudinary";
+import { notificationService } from "../notification/notification.service";
 
 const createApplication = async (
   userId: string,
@@ -253,14 +254,27 @@ const updateApplicationStatus = async (
     where: { userId },
   });
   if (!company) throw new ApiError("Company not found", 404);
+
   const application = await prisma.application.findUnique({
     where: { id: applicationId },
+    include: { job: true },
   });
   if (!application) throw new ApiError("Application not found", 404);
+
   const result = await prisma.application.update({
     where: { id: applicationId },
     data: { status },
   });
+
+  // Send notification to candidate
+  await notificationService.createNotification({
+    userId: application.userId,
+    type: NotificationType.APPLICATION,
+    title: "Application Status Updated",
+    message: `Your application for "${application.job.title}" has been updated to ${status}.`,
+    link: `/dashboard/candidate/applied-jobs`,
+  });
+
   return result;
 };
 

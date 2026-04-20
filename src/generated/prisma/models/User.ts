@@ -263,6 +263,7 @@ export type UserWhereInput = {
     Prisma.UserSettingsNullableScalarRelationFilter,
     Prisma.UserSettingsWhereInput
   > | null;
+  notifications?: Prisma.NotificationListRelationFilter;
 };
 
 export type UserOrderByWithRelationInput = {
@@ -284,6 +285,7 @@ export type UserOrderByWithRelationInput = {
   participantBConversations?: Prisma.ConversationOrderByRelationAggregateInput;
   messages?: Prisma.MessageOrderByRelationAggregateInput;
   userSettings?: Prisma.UserSettingsOrderByWithRelationInput;
+  notifications?: Prisma.NotificationOrderByRelationAggregateInput;
 };
 
 export type UserWhereUniqueInput = Prisma.AtLeast<
@@ -318,6 +320,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
       Prisma.UserSettingsNullableScalarRelationFilter,
       Prisma.UserSettingsWhereInput
     > | null;
+    notifications?: Prisma.NotificationListRelationFilter;
   },
   "id" | "email"
 >;
@@ -375,6 +378,7 @@ export type UserCreateInput = {
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateInput = {
@@ -396,6 +400,7 @@ export type UserUncheckedCreateInput = {
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserUpdateInput = {
@@ -417,6 +422,7 @@ export type UserUpdateInput = {
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateInput = {
@@ -438,6 +444,7 @@ export type UserUncheckedUpdateInput = {
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 export type UserCreateManyInput = {
@@ -734,6 +741,32 @@ export type UserUpdateOneWithoutJobViewsNestedInput = {
   >;
 };
 
+export type UserCreateNestedOneWithoutNotificationsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutNotificationsInput,
+    Prisma.UserUncheckedCreateWithoutNotificationsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutNotificationsInput,
+    Prisma.UserUncheckedCreateWithoutNotificationsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput;
+  upsert?: Prisma.UserUpsertWithoutNotificationsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput,
+      Prisma.UserUpdateWithoutNotificationsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutNotificationsInput
+  >;
+};
+
 export type UserCreateNestedOneWithoutSavedJobsInput = {
   create?: Prisma.XOR<
     Prisma.UserCreateWithoutSavedJobsInput,
@@ -808,6 +841,7 @@ export type UserCreateWithoutUserSettingsInput = {
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutUserSettingsInput = {
@@ -828,6 +862,7 @@ export type UserUncheckedCreateWithoutUserSettingsInput = {
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutUserSettingsInput = {
@@ -876,6 +911,7 @@ export type UserUpdateWithoutUserSettingsInput = {
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutUserSettingsInput = {
@@ -896,6 +932,7 @@ export type UserUncheckedUpdateWithoutUserSettingsInput = {
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutApplicationsInput = {
@@ -916,6 +953,7 @@ export type UserCreateWithoutApplicationsInput = {
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutApplicationsInput = {
@@ -936,6 +974,7 @@ export type UserUncheckedCreateWithoutApplicationsInput = {
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutApplicationsInput = {
@@ -984,6 +1023,7 @@ export type UserUpdateWithoutApplicationsInput = {
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutApplicationsInput = {
@@ -1004,6 +1044,7 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutCandidateInput = {
@@ -1024,6 +1065,7 @@ export type UserCreateWithoutCandidateInput = {
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutCandidateInput = {
@@ -1044,6 +1086,7 @@ export type UserUncheckedCreateWithoutCandidateInput = {
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutCandidateInput = {
@@ -1092,6 +1135,7 @@ export type UserUpdateWithoutCandidateInput = {
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutCandidateInput = {
@@ -1112,6 +1156,7 @@ export type UserUncheckedUpdateWithoutCandidateInput = {
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutParticipantAConversationsInput = {
@@ -1132,6 +1177,7 @@ export type UserCreateWithoutParticipantAConversationsInput = {
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutParticipantAConversationsInput = {
@@ -1152,6 +1198,7 @@ export type UserUncheckedCreateWithoutParticipantAConversationsInput = {
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutParticipantAConversationsInput = {
@@ -1180,6 +1227,7 @@ export type UserCreateWithoutParticipantBConversationsInput = {
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutParticipantBConversationsInput = {
@@ -1200,6 +1248,7 @@ export type UserUncheckedCreateWithoutParticipantBConversationsInput = {
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutParticipantBConversationsInput = {
@@ -1248,6 +1297,7 @@ export type UserUpdateWithoutParticipantAConversationsInput = {
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutParticipantAConversationsInput = {
@@ -1268,6 +1318,7 @@ export type UserUncheckedUpdateWithoutParticipantAConversationsInput = {
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUpsertWithoutParticipantBConversationsInput = {
@@ -1308,6 +1359,7 @@ export type UserUpdateWithoutParticipantBConversationsInput = {
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutParticipantBConversationsInput = {
@@ -1328,6 +1380,7 @@ export type UserUncheckedUpdateWithoutParticipantBConversationsInput = {
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutMessagesInput = {
@@ -1348,6 +1401,7 @@ export type UserCreateWithoutMessagesInput = {
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -1368,6 +1422,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -1416,6 +1471,7 @@ export type UserUpdateWithoutMessagesInput = {
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -1436,6 +1492,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutCompanyInput = {
@@ -1456,6 +1513,7 @@ export type UserCreateWithoutCompanyInput = {
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutCompanyInput = {
@@ -1476,6 +1534,7 @@ export type UserUncheckedCreateWithoutCompanyInput = {
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutCompanyInput = {
@@ -1524,6 +1583,7 @@ export type UserUpdateWithoutCompanyInput = {
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutCompanyInput = {
@@ -1544,6 +1604,7 @@ export type UserUncheckedUpdateWithoutCompanyInput = {
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutJobViewsInput = {
@@ -1564,6 +1625,7 @@ export type UserCreateWithoutJobViewsInput = {
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutJobViewsInput = {
@@ -1584,6 +1646,7 @@ export type UserUncheckedCreateWithoutJobViewsInput = {
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutJobViewsInput = {
@@ -1632,6 +1695,7 @@ export type UserUpdateWithoutJobViewsInput = {
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutJobViewsInput = {
@@ -1647,6 +1711,119 @@ export type UserUncheckedUpdateWithoutJobViewsInput = {
   candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
+};
+
+export type UserCreateWithoutNotificationsInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+};
+
+export type UserUncheckedCreateWithoutNotificationsInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+};
+
+export type UserCreateOrConnectWithoutNotificationsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutNotificationsInput,
+    Prisma.UserUncheckedCreateWithoutNotificationsInput
+  >;
+};
+
+export type UserUpsertWithoutNotificationsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutNotificationsInput,
+    Prisma.UserUncheckedUpdateWithoutNotificationsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutNotificationsInput,
+    Prisma.UserUncheckedCreateWithoutNotificationsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutNotificationsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutNotificationsInput,
+    Prisma.UserUncheckedUpdateWithoutNotificationsInput
+  >;
+};
+
+export type UserUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
   candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
@@ -1672,6 +1849,7 @@ export type UserCreateWithoutSavedJobsInput = {
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutSavedJobsInput = {
@@ -1692,6 +1870,7 @@ export type UserUncheckedCreateWithoutSavedJobsInput = {
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutSavedJobsInput = {
@@ -1740,6 +1919,7 @@ export type UserUpdateWithoutSavedJobsInput = {
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutSavedJobsInput = {
@@ -1760,6 +1940,7 @@ export type UserUncheckedUpdateWithoutSavedJobsInput = {
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 export type UserCreateWithoutCandidateViewsInput = {
@@ -1780,6 +1961,7 @@ export type UserCreateWithoutCandidateViewsInput = {
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutCandidateViewsInput = {
@@ -1800,6 +1982,7 @@ export type UserUncheckedCreateWithoutCandidateViewsInput = {
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutCandidateViewsInput = {
@@ -1848,6 +2031,7 @@ export type UserUpdateWithoutCandidateViewsInput = {
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutCandidateViewsInput = {
@@ -1868,6 +2052,7 @@ export type UserUncheckedUpdateWithoutCandidateViewsInput = {
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 /**
@@ -1882,6 +2067,7 @@ export type UserCountOutputType = {
   participantAConversations: number;
   participantBConversations: number;
   messages: number;
+  notifications: number;
 };
 
 export type UserCountOutputTypeSelect<
@@ -1899,6 +2085,7 @@ export type UserCountOutputTypeSelect<
     | boolean
     | UserCountOutputTypeCountParticipantBConversationsArgs;
   messages?: boolean | UserCountOutputTypeCountMessagesArgs;
+  notifications?: boolean | UserCountOutputTypeCountNotificationsArgs;
 };
 
 /**
@@ -1984,6 +2171,16 @@ export type UserCountOutputTypeCountMessagesArgs<
   where?: Prisma.MessageWhereInput;
 };
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountNotificationsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.NotificationWhereInput;
+};
+
 export type UserSelect<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
@@ -2011,6 +2208,7 @@ export type UserSelect<
       | Prisma.User$participantBConversationsArgs<ExtArgs>;
     messages?: boolean | Prisma.User$messagesArgs<ExtArgs>;
     userSettings?: boolean | Prisma.User$userSettingsArgs<ExtArgs>;
+    notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>;
     _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["user"]
@@ -2093,6 +2291,7 @@ export type UserInclude<
     | Prisma.User$participantBConversationsArgs<ExtArgs>;
   messages?: boolean | Prisma.User$messagesArgs<ExtArgs>;
   userSettings?: boolean | Prisma.User$userSettingsArgs<ExtArgs>;
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>;
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type UserIncludeCreateManyAndReturn<
@@ -2120,6 +2319,7 @@ export type $UserPayload<
     participantBConversations: Prisma.$ConversationPayload<ExtArgs>[];
     messages: Prisma.$MessagePayload<ExtArgs>[];
     userSettings: Prisma.$UserSettingsPayload<ExtArgs> | null;
+    notifications: Prisma.$NotificationPayload<ExtArgs>[];
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
@@ -2800,6 +3000,17 @@ export interface Prisma__UserClient<
     null,
     ExtArgs,
     GlobalOmitOptions
+  >;
+  notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$NotificationPayload<ExtArgs>,
+        T,
+        "findMany",
+        GlobalOmitOptions
+      >
+    | Null
   >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3571,6 +3782,37 @@ export type User$userSettingsArgs<
    */
   include?: Prisma.UserSettingsInclude<ExtArgs> | null;
   where?: Prisma.UserSettingsWhereInput;
+};
+
+/**
+ * User.notifications
+ */
+export type User$notificationsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null;
+  where?: Prisma.NotificationWhereInput;
+  orderBy?:
+    | Prisma.NotificationOrderByWithRelationInput
+    | Prisma.NotificationOrderByWithRelationInput[];
+  cursor?: Prisma.NotificationWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.NotificationScalarFieldEnum
+    | Prisma.NotificationScalarFieldEnum[];
 };
 
 /**

@@ -2,6 +2,7 @@ import { Server as SocketIOServer } from "socket.io";
 import { Server as HttpServer } from "http";
 import { envConfig } from "../config/env";
 import { chatSocketHandlers } from "../modules/chat/chat.socket";
+import { notificationSocketHandlers } from "../modules/notification/notification.socket";
 
 let io: SocketIOServer | null = null;
 
@@ -19,6 +20,7 @@ export const initSocket = (server: HttpServer) => {
 
     // Register modular socket handlers
     chatSocketHandlers(socket, io!);
+    notificationSocketHandlers(socket, io!);
 
     socket.on("disconnect", () => {
       console.log("🔴 User disconnected:", socket.id);
