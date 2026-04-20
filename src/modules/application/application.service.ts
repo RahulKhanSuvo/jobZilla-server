@@ -22,6 +22,14 @@ const createApplication = async (
     include: { company: true },
   });
   if (!job) throw new ApiError("Job not found", 404);
+
+  const candidateUser = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { name: true },
+  });
+
+  let result;
+
   if (file) {
     const candidate = await prisma.candidate.findUnique({
       where: { userId },
@@ -50,7 +58,7 @@ const createApplication = async (
       },
     });
 
-    const result = await prisma.application.create({
+    result = await prisma.application.create({
       data: {
         userId,
         jobId,
@@ -58,33 +66,35 @@ const createApplication = async (
         resumeId: resume.id,
       },
     });
-    if (result.id) {
-      await prisma.job.update({
-        where: { id: jobId },
-        data: {
-          totalApplications: { increment: 1 },
-        },
-      });
-    }
-    return result;
+  } else {
+    result = await prisma.application.create({
+      data: {
+        userId,
+        jobId,
+        companyId: job.company.id,
+        resumeId: resumeId!,
+      },
+    });
   }
-  const result = await prisma.application.create({
-    data: {
-      userId,
-      jobId,
-      companyId: job.company.id,
-      resumeId: resumeId!,
-    },
-  });
+
   if (result.id) {
-    const updateJob = await prisma.job.update({
+    await prisma.job.update({
       where: { id: jobId },
       data: {
         totalApplications: { increment: 1 },
       },
     });
-    if (!updateJob) throw new ApiError("Failed to update job", 500);
+
+    // Send notification to recruiter
+    await notificationService.createNotification({
+      userId: job.company.userId,
+      type: NotificationType.APPLICATION,
+      title: "New Job Application",
+      message: `${candidateUser?.name || "A candidate"} has applied for "${job.title}"`,
+      link: `/recruiter/applicants`,
+    });
   }
+
   return result;
 };
 
