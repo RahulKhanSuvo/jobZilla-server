@@ -10,7 +10,7 @@ model Application {
     job       Job       @relation(fields: [jobId], references: [id])
     user      User      @relation(fields: [userId], references: [id])
     resume    Resume    @relation(fields: [resumeId], references: [id])
-    company   Company   @relation(fields: [companyId], references: [id])
+    company   Company   @relation(fields: [companyId], references: [userId])
 
     @@unique([userId, jobId])
 }
