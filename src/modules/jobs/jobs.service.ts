@@ -240,7 +240,6 @@ const getMyJobs = async (userId: string, options: IJobOptions) => {
   const total = await prisma.job.count({
     where: whereConditions,
   });
-
   return {
     meta: {
       page: Number(page),
