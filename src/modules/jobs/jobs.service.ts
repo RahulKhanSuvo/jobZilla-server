@@ -526,6 +526,96 @@ const deleteJob = async (userId: string, jobId: string) => {
   });
   return result;
 };
+const getRecommendedJobs = async (userId: string) => {
+  // 1. Get candidate skills
+  const candidate = await prisma.candidate.findUnique({
+    where: { userId },
+    include: {
+      skills: true,
+    },
+  });
+
+  const skills = candidate?.skills.map((s) => s.skill) || [];
+
+  let whereCondition: Prisma.JobWhereInput = {
+    status: JobStatus.OPEN,
+  };
+
+  // 2. If skills exist, create a matching condition
+  if (skills.length > 0) {
+    whereCondition = {
+      ...whereCondition,
+      OR: [
+        {
+          title: {
+            contains: skills[0], // Start with first skill for basic matching
+            mode: "insensitive",
+          },
+        },
+        ...skills.map((skill) => ({
+          description: {
+            contains: skill,
+            mode: "insensitive" as const,
+          },
+        })),
+        {
+          category: {
+            in: skills, // Also match by category if it matches any skill name
+          },
+        },
+      ],
+    };
+  }
+
+  // 3. Fetch matches
+  let jobs = await prisma.job.findMany({
+    where: whereCondition,
+    include: {
+      company: {
+        select: {
+          user: {
+            select: {
+              name: true,
+            },
+          },
+          location: true,
+          logo: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 6,
+  });
+
+  // 4. Fallback if no specific matches found
+  if (jobs.length === 0) {
+    jobs = await prisma.job.findMany({
+      where: { status: JobStatus.OPEN },
+      include: {
+        company: {
+          select: {
+            user: {
+              select: {
+                name: true,
+              },
+            },
+            location: true,
+            logo: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 6,
+    });
+  }
+
+  return jobs;
+};
+
 export const jobsService = {
   createJob,
   getAllJobs,
@@ -538,4 +628,5 @@ export const jobsService = {
   updateJob,
   updateJobStatus,
   deleteJob,
+  getRecommendedJobs,
 };

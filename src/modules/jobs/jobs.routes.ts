@@ -9,6 +9,12 @@ const jobsRoutes = Router();
 
 jobsRoutes.get("/", authGard({ optional: true }), jobsController.getAllJobs);
 jobsRoutes.get(
+  "/recommended",
+  authGard({ roles: [UserRole.CANDIDATE] }),
+  jobsController.getRecommendedJobs,
+);
+
+jobsRoutes.get(
   "/my-jobs",
   authGard({ roles: [UserRole.EMPLOYER] }),
   jobsController.getMyJobs,

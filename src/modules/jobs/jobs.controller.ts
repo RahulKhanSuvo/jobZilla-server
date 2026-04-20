@@ -200,6 +200,16 @@ const deleteJob = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getRecommendedJobs = catchAsync(async (req, res) => {
+  const result = await jobsService.getRecommendedJobs(req.user?.id as string);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Recommended jobs fetched successfully",
+    data: result,
+  });
+});
+
 export const jobsController = {
   createJob,
   getAllJobs,
@@ -212,4 +222,5 @@ export const jobsController = {
   updateJob,
   updateJobStatus,
   deleteJob,
+  getRecommendedJobs,
 };
