@@ -297,25 +297,6 @@ const getJobById = async (userId: string, jobId: string, anonId: string) => {
       ...(userId ? { userId } : { anonymousId: anonId }),
     },
   });
-  if (!jobView) {
-    await prisma.jobView.create({
-      data: {
-        ...(userId ? { userId } : { anonymousId: anonId }),
-        jobId: jobId,
-      },
-    });
-    await prisma.job.update({
-      where: {
-        id: jobId,
-      },
-      data: {
-        views: {
-          increment: 1,
-        },
-      },
-    });
-  }
-
   const job = await prisma.job.findUnique({
     where: {
       id: jobId,
@@ -345,6 +326,25 @@ const getJobById = async (userId: string, jobId: string, anonId: string) => {
         : {}),
     },
   });
+  if (!jobView && job?.company.user.id !== userId) {
+    await prisma.jobView.create({
+      data: {
+        ...(userId ? { userId } : { anonymousId: anonId }),
+        jobId: jobId,
+      },
+    });
+    await prisma.job.update({
+      where: {
+        id: jobId,
+      },
+      data: {
+        views: {
+          increment: 1,
+        },
+      },
+    });
+  }
+
   if (!job) {
     throw new ApiError("Job not found", 404);
   }
