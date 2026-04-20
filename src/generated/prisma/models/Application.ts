@@ -240,6 +240,7 @@ export type ApplicationOrderByWithRelationInput = {
 export type ApplicationWhereUniqueInput = Prisma.AtLeast<
   {
     id?: string;
+    userId_jobId?: Prisma.ApplicationUserIdJobIdCompoundUniqueInput;
     AND?: Prisma.ApplicationWhereInput | Prisma.ApplicationWhereInput[];
     OR?: Prisma.ApplicationWhereInput[];
     NOT?: Prisma.ApplicationWhereInput | Prisma.ApplicationWhereInput[];
@@ -261,7 +262,7 @@ export type ApplicationWhereUniqueInput = Prisma.AtLeast<
       Prisma.CompanyWhereInput
     >;
   },
-  "id"
+  "id" | "userId_jobId"
 >;
 
 export type ApplicationOrderByWithAggregationInput = {
@@ -375,6 +376,11 @@ export type ApplicationUncheckedUpdateManyInput = {
   status?: Prisma.EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+
+export type ApplicationUserIdJobIdCompoundUniqueInput = {
+  userId: string;
+  jobId: string;
 };
 
 export type ApplicationCountOrderByAggregateInput = {

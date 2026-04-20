@@ -11,6 +11,8 @@ model Application {
     user      User      @relation(fields: [userId], references: [id])
     resume    Resume    @relation(fields: [resumeId], references: [id])
     company   Company   @relation(fields: [companyId], references: [id])
+
+    @@unique([userId, jobId])
 }
 
 enum AppStatus {
