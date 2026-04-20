@@ -242,6 +242,26 @@ const getEmployerDashboardStats = async (companyId: string) => {
     if (item.status === "REJECTED") rejectedApplicants = count;
   });
 
+  // 4b. Job status stats (Active vs Closed)
+  const jobStatusStats = await prisma.job.groupBy({
+    by: ["status"],
+    where: {
+      companyId,
+    },
+    _count: {
+      id: true,
+    },
+  });
+
+  let openJobs = 0;
+  let closedJobs = 0;
+
+  jobStatusStats.forEach((item) => {
+    const count = item._count.id;
+    if (item.status === "OPEN") openJobs = count;
+    if (item.status === "CLOSED") closedJobs = count;
+  });
+
   // 5. Application Trend (Last 7 days)
   const sevenDaysAgo = new Date();
   sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
@@ -307,8 +327,40 @@ const getEmployerDashboardStats = async (companyId: string) => {
     applicants: job.applications.length,
   }));
 
+  // 7. Recent Applicants
+  const recentApplicants = await prisma.application.findMany({
+    where: {
+      companyId,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 10,
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          candidate: {
+            select: {
+              avatar: true,
+            },
+          },
+        },
+      },
+      job: {
+        select: {
+          title: true,
+        },
+      },
+    },
+  });
+
   return {
     totalJobs,
+    openJobs,
+    closedJobs,
     totalViews,
     totalApplicants,
     pendingApplicants,
@@ -317,6 +369,7 @@ const getEmployerDashboardStats = async (companyId: string) => {
     rejectedApplicants,
     applicationTrend,
     topJobs: topJobsData,
+    recentApplicants,
   };
 };
 
