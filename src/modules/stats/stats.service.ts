@@ -307,36 +307,6 @@ const getEmployerDashboardStats = async (companyId: string) => {
     applicants: job.applications.length,
   }));
 
-  // 7. Recent Applicants
-  const recentApplicants = await prisma.application.findMany({
-    where: {
-      companyId,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-    take: 10,
-    include: {
-      user: {
-        select: {
-          id: true,
-          name: true,
-          email: true,
-          candidate: {
-            select: {
-              avatar: true,
-            },
-          },
-        },
-      },
-      job: {
-        select: {
-          title: true,
-        },
-      },
-    },
-  });
-
   return {
     totalJobs,
     totalViews,
@@ -347,7 +317,6 @@ const getEmployerDashboardStats = async (companyId: string) => {
     rejectedApplicants,
     applicationTrend,
     topJobs: topJobsData,
-    recentApplicants,
   };
 };
 
