@@ -1,3 +1,4 @@
+import { ApiError } from "../../errors/ApiError";
 import { prisma } from "../../lib/prisma";
 
 const getJobStats = async (userId: string) => {
@@ -190,13 +191,21 @@ const getCandidateDashboardStats = async (userId: string) => {
   };
 };
 
-const getEmployerDashboardStats = async (companyId: string) => {
+const getEmployerDashboardStats = async (userId: string) => {
+  const company = await prisma.company.findUnique({
+    where: {
+      userId,
+    },
+  });
+  if (!company?.id) new ApiError("user not found", 404);
+  const companyId = company?.id;
   // 1. Total jobs
   const totalJobs = await prisma.job.count({
     where: {
-      companyId,
+      companyId: userId,
     },
   });
+  console.log("count", totalJobs);
 
   // 2. Total views
   const viewsAgg = await prisma.job.aggregate({
@@ -246,7 +255,7 @@ const getEmployerDashboardStats = async (companyId: string) => {
   const jobStatusStats = await prisma.job.groupBy({
     by: ["status"],
     where: {
-      companyId,
+      companyId: userId,
     },
     _count: {
       id: true,
@@ -305,7 +314,7 @@ const getEmployerDashboardStats = async (companyId: string) => {
   // 6. Top Jobs (by applicants)
   const topJobs = await prisma.job.findMany({
     where: {
-      companyId,
+      companyId: userId,
     },
     orderBy: {
       applications: {
