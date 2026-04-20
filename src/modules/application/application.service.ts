@@ -8,9 +8,15 @@ import { notificationService } from "../notification/notification.service";
 const createApplication = async (
   userId: string,
   jobId: string,
-  resumeId: string,
-  file: Express.Multer.File,
+  resumeId: string | undefined,
+  file: Express.Multer.File | undefined,
 ) => {
+  if (!file && (!resumeId || resumeId === "")) {
+    throw new ApiError(
+      "Please provide either a resume ID or upload a new file",
+      400,
+    );
+  }
   const job = await prisma.job.findUnique({
     where: { id: jobId },
     include: { company: true },
@@ -67,7 +73,7 @@ const createApplication = async (
       userId,
       jobId,
       companyId: job.company.id,
-      resumeId,
+      resumeId: resumeId!,
     },
   });
   if (result.id) {
