@@ -12,6 +12,20 @@ export const CareerLevelEnum = z.enum([
   "SENIOR_LEVEL",
   "EXECUTIVE_LEVEL",
 ]);
+export const JobCategoryEnum = z.enum([
+  "TECHNOLOGY",
+  "DESIGN",
+  "MARKETING",
+  "SALES",
+  "FINANCE",
+  "HR",
+  "OPERATIONS",
+  "CUSTOMER_SUPPORT",
+  "EDUCATION",
+  "HEALTHCARE",
+  "LEGAL",
+  "OTHER",
+]);
 export const GenderEnum = z.enum(["MALE", "FEMALE", "OTHER", "ANY"]);
 export const SalaryTypeEnum = z.enum(["MONTHLY", "YEARLY", "HOURLY"]);
 export const LocationTypeEnum = z.enum(["REMOTE", "ON_SITE", "HYBRID"]);
@@ -19,7 +33,7 @@ export const JobSchema = z
   .object({
     title: z.string().min(1, "Job title is required"),
     description: z.string().min(1, "Job description is required"),
-    category: z.string().min(1, "Job category is required"),
+    category: JobCategoryEnum,
     gender: GenderEnum,
     salaryType: SalaryTypeEnum,
     salaryMin: z.coerce.number().int().min(1, "Salary min is required"),
