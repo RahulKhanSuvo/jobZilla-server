@@ -7,6 +7,6 @@ model Eduction {
     endData     DateTime?
     isStudying  Boolean   @default(false)
     createdId   DateTime  @default(now())
-    candideId   String
-    candidate   Candidate @relation(fields: [candideId], references: [userId])
+    userId      String
+    user        User      @relation(fields: [userId], references: [id])
 }

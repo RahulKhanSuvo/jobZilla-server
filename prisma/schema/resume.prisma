@@ -4,8 +4,8 @@ model Resume {
     fileUrl      String
     isPrimary    Boolean       @default(false)
     isDraft      Boolean       @default(false)
-    candidateId  String
-    candidate    Candidate     @relation(fields: [candidateId], references: [userId])
+    userId       String
+    user         User          @relation(fields: [userId], references: [id])
     createdAt    DateTime      @default(now())
     updatedAt    DateTime      @updatedAt
     applications Application[]

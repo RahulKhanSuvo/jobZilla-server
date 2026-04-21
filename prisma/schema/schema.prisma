@@ -33,6 +33,14 @@ model User {
   messages                  Message[]        @relation("UserMessages")
   userSettings              UserSettings?
   notifications             Notification[]
+  jobs                      Job[]
+  eductions                 Eduction[]
+  skills                    Skill[]
+  languages                 Language[]
+  workExperiences           WorkExperience[]
+  resumes                   Resume[]
+  following                 Follow[]         @relation("UserFollowing")
+  followers                 Follow[]         @relation("UserFollowers")
 }
 
 model CandidateViews {

@@ -1,6 +1,6 @@
 model Language {
-    id        String    @id @default(uuid())
-    language  String
-    candideId String
-    candidate Candidate @relation(fields: [candideId], references: [userId])
+    id       String @id @default(uuid())
+    language String
+    userId   String
+    user     User   @relation(fields: [userId], references: [id])
 }

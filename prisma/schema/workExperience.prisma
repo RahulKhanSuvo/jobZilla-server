@@ -1,7 +1,7 @@
 model WorkExperience {
     id          String    @id @default(uuid())
-    candideId   String
-    candidate   Candidate @relation(fields: [candideId], references: [userId])
+    userId      String
+    user        User      @relation(fields: [userId], references: [id])
     jobTitle    String    @db.VarChar(150)
     companyName String    @db.VarChar(150)
     industry    String
@@ -9,5 +9,6 @@ model WorkExperience {
     endData     DateTime?
     Description String    @db.Text
     isWorking   Boolean   @default(true)
-    createdId   DateTime  @default(now())
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
 }

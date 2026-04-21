@@ -15,8 +15,8 @@ model Job {
     qualification     String?
     views             Int?          @default(0)
     deadline          DateTime?
-    companyId         String
-    company           Company       @relation(fields: [companyId], references: [userId])
+    userId            String
+    user              User          @relation(fields: [userId], references: [id])
     createdAt         DateTime      @default(now())
     updatedAt         DateTime      @updatedAt
     applications      Application[]

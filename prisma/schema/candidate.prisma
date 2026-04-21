@@ -1,21 +1,15 @@
 model Candidate {
-  id              String           @id @default(uuid())
-  userId          String           @unique
-  phone           String
-  location        String?
-  dob             DateTime?
-  gender          String?
-  maritalStatus   String?
-  aboutMe         String?          @db.Text
-  avatar          String?
-  facebook        String?
-  linkedin        String?
-  twitter         String?
-  workExperiences WorkExperience[]
-  skills          Skill[]
-  eductions       Eduction[]
-  resumes         Resume[]
-  languages       Language[]
-  user            User             @relation(fields: [userId], references: [id])
-  followCompanies FollowCompany[]
+  id            String    @id @default(uuid())
+  userId        String    @unique
+  phone         String
+  location      String?
+  dob           DateTime?
+  gender        String?
+  maritalStatus String?
+  aboutMe       String?   @db.Text
+  avatar        String?
+  facebook      String?
+  linkedin      String?
+  twitter       String?
+  user          User      @relation(fields: [userId], references: [id])
 }
