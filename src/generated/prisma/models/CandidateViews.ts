@@ -192,10 +192,7 @@ export type CandidateViewsWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"CandidateViews"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"CandidateViews"> | Date | string;
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
-  company?: Prisma.XOR<
-    Prisma.CompanyScalarRelationFilter,
-    Prisma.CompanyWhereInput
-  >;
+  company?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 
 export type CandidateViewsOrderByWithRelationInput = {
@@ -205,12 +202,13 @@ export type CandidateViewsOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
   user?: Prisma.UserOrderByWithRelationInput;
-  company?: Prisma.CompanyOrderByWithRelationInput;
+  company?: Prisma.UserOrderByWithRelationInput;
 };
 
 export type CandidateViewsWhereUniqueInput = Prisma.AtLeast<
   {
     id?: string;
+    userId_companyId?: Prisma.CandidateViewsUserIdCompanyIdCompoundUniqueInput;
     AND?: Prisma.CandidateViewsWhereInput | Prisma.CandidateViewsWhereInput[];
     OR?: Prisma.CandidateViewsWhereInput[];
     NOT?: Prisma.CandidateViewsWhereInput | Prisma.CandidateViewsWhereInput[];
@@ -220,11 +218,11 @@ export type CandidateViewsWhereUniqueInput = Prisma.AtLeast<
     updatedAt?: Prisma.DateTimeFilter<"CandidateViews"> | Date | string;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
     company?: Prisma.XOR<
-      Prisma.CompanyScalarRelationFilter,
-      Prisma.CompanyWhereInput
+      Prisma.UserScalarRelationFilter,
+      Prisma.UserWhereInput
     >;
   },
-  "id"
+  "id" | "userId_companyId"
 >;
 
 export type CandidateViewsOrderByWithAggregationInput = {
@@ -264,7 +262,7 @@ export type CandidateViewsCreateInput = {
   createdAt?: Date | string;
   updatedAt?: Date | string;
   user: Prisma.UserCreateNestedOneWithoutCandidateViewsInput;
-  company: Prisma.CompanyCreateNestedOneWithoutCandidateViewsInput;
+  company: Prisma.UserCreateNestedOneWithoutCompanyViewsInput;
 };
 
 export type CandidateViewsUncheckedCreateInput = {
@@ -280,7 +278,7 @@ export type CandidateViewsUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateViewsNestedInput;
-  company?: Prisma.CompanyUpdateOneRequiredWithoutCandidateViewsNestedInput;
+  company?: Prisma.UserUpdateOneRequiredWithoutCompanyViewsNestedInput;
 };
 
 export type CandidateViewsUncheckedUpdateInput = {
@@ -323,6 +321,11 @@ export type CandidateViewsOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder;
 };
 
+export type CandidateViewsUserIdCompanyIdCompoundUniqueInput = {
+  userId: string;
+  companyId: string;
+};
+
 export type CandidateViewsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
@@ -347,116 +350,6 @@ export type CandidateViewsMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder;
 };
 
-export type CandidateViewsCreateNestedManyWithoutCompanyInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.CandidateViewsCreateWithoutCompanyInput,
-        Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput
-      >
-    | Prisma.CandidateViewsCreateWithoutCompanyInput[]
-    | Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput[];
-  connectOrCreate?:
-    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput
-    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput[];
-  createMany?: Prisma.CandidateViewsCreateManyCompanyInputEnvelope;
-  connect?:
-    | Prisma.CandidateViewsWhereUniqueInput
-    | Prisma.CandidateViewsWhereUniqueInput[];
-};
-
-export type CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.CandidateViewsCreateWithoutCompanyInput,
-        Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput
-      >
-    | Prisma.CandidateViewsCreateWithoutCompanyInput[]
-    | Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput[];
-  connectOrCreate?:
-    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput
-    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput[];
-  createMany?: Prisma.CandidateViewsCreateManyCompanyInputEnvelope;
-  connect?:
-    | Prisma.CandidateViewsWhereUniqueInput
-    | Prisma.CandidateViewsWhereUniqueInput[];
-};
-
-export type CandidateViewsUpdateManyWithoutCompanyNestedInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.CandidateViewsCreateWithoutCompanyInput,
-        Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput
-      >
-    | Prisma.CandidateViewsCreateWithoutCompanyInput[]
-    | Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput[];
-  connectOrCreate?:
-    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput
-    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput[];
-  upsert?:
-    | Prisma.CandidateViewsUpsertWithWhereUniqueWithoutCompanyInput
-    | Prisma.CandidateViewsUpsertWithWhereUniqueWithoutCompanyInput[];
-  createMany?: Prisma.CandidateViewsCreateManyCompanyInputEnvelope;
-  set?:
-    | Prisma.CandidateViewsWhereUniqueInput
-    | Prisma.CandidateViewsWhereUniqueInput[];
-  disconnect?:
-    | Prisma.CandidateViewsWhereUniqueInput
-    | Prisma.CandidateViewsWhereUniqueInput[];
-  delete?:
-    | Prisma.CandidateViewsWhereUniqueInput
-    | Prisma.CandidateViewsWhereUniqueInput[];
-  connect?:
-    | Prisma.CandidateViewsWhereUniqueInput
-    | Prisma.CandidateViewsWhereUniqueInput[];
-  update?:
-    | Prisma.CandidateViewsUpdateWithWhereUniqueWithoutCompanyInput
-    | Prisma.CandidateViewsUpdateWithWhereUniqueWithoutCompanyInput[];
-  updateMany?:
-    | Prisma.CandidateViewsUpdateManyWithWhereWithoutCompanyInput
-    | Prisma.CandidateViewsUpdateManyWithWhereWithoutCompanyInput[];
-  deleteMany?:
-    | Prisma.CandidateViewsScalarWhereInput
-    | Prisma.CandidateViewsScalarWhereInput[];
-};
-
-export type CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput = {
-  create?:
-    | Prisma.XOR<
-        Prisma.CandidateViewsCreateWithoutCompanyInput,
-        Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput
-      >
-    | Prisma.CandidateViewsCreateWithoutCompanyInput[]
-    | Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput[];
-  connectOrCreate?:
-    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput
-    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput[];
-  upsert?:
-    | Prisma.CandidateViewsUpsertWithWhereUniqueWithoutCompanyInput
-    | Prisma.CandidateViewsUpsertWithWhereUniqueWithoutCompanyInput[];
-  createMany?: Prisma.CandidateViewsCreateManyCompanyInputEnvelope;
-  set?:
-    | Prisma.CandidateViewsWhereUniqueInput
-    | Prisma.CandidateViewsWhereUniqueInput[];
-  disconnect?:
-    | Prisma.CandidateViewsWhereUniqueInput
-    | Prisma.CandidateViewsWhereUniqueInput[];
-  delete?:
-    | Prisma.CandidateViewsWhereUniqueInput
-    | Prisma.CandidateViewsWhereUniqueInput[];
-  connect?:
-    | Prisma.CandidateViewsWhereUniqueInput
-    | Prisma.CandidateViewsWhereUniqueInput[];
-  update?:
-    | Prisma.CandidateViewsUpdateWithWhereUniqueWithoutCompanyInput
-    | Prisma.CandidateViewsUpdateWithWhereUniqueWithoutCompanyInput[];
-  updateMany?:
-    | Prisma.CandidateViewsUpdateManyWithWhereWithoutCompanyInput
-    | Prisma.CandidateViewsUpdateManyWithWhereWithoutCompanyInput[];
-  deleteMany?:
-    | Prisma.CandidateViewsScalarWhereInput
-    | Prisma.CandidateViewsScalarWhereInput[];
-};
-
 export type CandidateViewsCreateNestedManyWithoutUserInput = {
   create?:
     | Prisma.XOR<
@@ -474,6 +367,23 @@ export type CandidateViewsCreateNestedManyWithoutUserInput = {
     | Prisma.CandidateViewsWhereUniqueInput[];
 };
 
+export type CandidateViewsCreateNestedManyWithoutCompanyInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.CandidateViewsCreateWithoutCompanyInput,
+        Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput
+      >
+    | Prisma.CandidateViewsCreateWithoutCompanyInput[]
+    | Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput[];
+  connectOrCreate?:
+    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput
+    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput[];
+  createMany?: Prisma.CandidateViewsCreateManyCompanyInputEnvelope;
+  connect?:
+    | Prisma.CandidateViewsWhereUniqueInput
+    | Prisma.CandidateViewsWhereUniqueInput[];
+};
+
 export type CandidateViewsUncheckedCreateNestedManyWithoutUserInput = {
   create?:
     | Prisma.XOR<
@@ -486,6 +396,23 @@ export type CandidateViewsUncheckedCreateNestedManyWithoutUserInput = {
     | Prisma.CandidateViewsCreateOrConnectWithoutUserInput
     | Prisma.CandidateViewsCreateOrConnectWithoutUserInput[];
   createMany?: Prisma.CandidateViewsCreateManyUserInputEnvelope;
+  connect?:
+    | Prisma.CandidateViewsWhereUniqueInput
+    | Prisma.CandidateViewsWhereUniqueInput[];
+};
+
+export type CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.CandidateViewsCreateWithoutCompanyInput,
+        Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput
+      >
+    | Prisma.CandidateViewsCreateWithoutCompanyInput[]
+    | Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput[];
+  connectOrCreate?:
+    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput
+    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput[];
+  createMany?: Prisma.CandidateViewsCreateManyCompanyInputEnvelope;
   connect?:
     | Prisma.CandidateViewsWhereUniqueInput
     | Prisma.CandidateViewsWhereUniqueInput[];
@@ -529,6 +456,44 @@ export type CandidateViewsUpdateManyWithoutUserNestedInput = {
     | Prisma.CandidateViewsScalarWhereInput[];
 };
 
+export type CandidateViewsUpdateManyWithoutCompanyNestedInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.CandidateViewsCreateWithoutCompanyInput,
+        Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput
+      >
+    | Prisma.CandidateViewsCreateWithoutCompanyInput[]
+    | Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput[];
+  connectOrCreate?:
+    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput
+    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput[];
+  upsert?:
+    | Prisma.CandidateViewsUpsertWithWhereUniqueWithoutCompanyInput
+    | Prisma.CandidateViewsUpsertWithWhereUniqueWithoutCompanyInput[];
+  createMany?: Prisma.CandidateViewsCreateManyCompanyInputEnvelope;
+  set?:
+    | Prisma.CandidateViewsWhereUniqueInput
+    | Prisma.CandidateViewsWhereUniqueInput[];
+  disconnect?:
+    | Prisma.CandidateViewsWhereUniqueInput
+    | Prisma.CandidateViewsWhereUniqueInput[];
+  delete?:
+    | Prisma.CandidateViewsWhereUniqueInput
+    | Prisma.CandidateViewsWhereUniqueInput[];
+  connect?:
+    | Prisma.CandidateViewsWhereUniqueInput
+    | Prisma.CandidateViewsWhereUniqueInput[];
+  update?:
+    | Prisma.CandidateViewsUpdateWithWhereUniqueWithoutCompanyInput
+    | Prisma.CandidateViewsUpdateWithWhereUniqueWithoutCompanyInput[];
+  updateMany?:
+    | Prisma.CandidateViewsUpdateManyWithWhereWithoutCompanyInput
+    | Prisma.CandidateViewsUpdateManyWithWhereWithoutCompanyInput[];
+  deleteMany?:
+    | Prisma.CandidateViewsScalarWhereInput
+    | Prisma.CandidateViewsScalarWhereInput[];
+};
+
 export type CandidateViewsUncheckedUpdateManyWithoutUserNestedInput = {
   create?:
     | Prisma.XOR<
@@ -567,6 +532,73 @@ export type CandidateViewsUncheckedUpdateManyWithoutUserNestedInput = {
     | Prisma.CandidateViewsScalarWhereInput[];
 };
 
+export type CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.CandidateViewsCreateWithoutCompanyInput,
+        Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput
+      >
+    | Prisma.CandidateViewsCreateWithoutCompanyInput[]
+    | Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput[];
+  connectOrCreate?:
+    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput
+    | Prisma.CandidateViewsCreateOrConnectWithoutCompanyInput[];
+  upsert?:
+    | Prisma.CandidateViewsUpsertWithWhereUniqueWithoutCompanyInput
+    | Prisma.CandidateViewsUpsertWithWhereUniqueWithoutCompanyInput[];
+  createMany?: Prisma.CandidateViewsCreateManyCompanyInputEnvelope;
+  set?:
+    | Prisma.CandidateViewsWhereUniqueInput
+    | Prisma.CandidateViewsWhereUniqueInput[];
+  disconnect?:
+    | Prisma.CandidateViewsWhereUniqueInput
+    | Prisma.CandidateViewsWhereUniqueInput[];
+  delete?:
+    | Prisma.CandidateViewsWhereUniqueInput
+    | Prisma.CandidateViewsWhereUniqueInput[];
+  connect?:
+    | Prisma.CandidateViewsWhereUniqueInput
+    | Prisma.CandidateViewsWhereUniqueInput[];
+  update?:
+    | Prisma.CandidateViewsUpdateWithWhereUniqueWithoutCompanyInput
+    | Prisma.CandidateViewsUpdateWithWhereUniqueWithoutCompanyInput[];
+  updateMany?:
+    | Prisma.CandidateViewsUpdateManyWithWhereWithoutCompanyInput
+    | Prisma.CandidateViewsUpdateManyWithWhereWithoutCompanyInput[];
+  deleteMany?:
+    | Prisma.CandidateViewsScalarWhereInput
+    | Prisma.CandidateViewsScalarWhereInput[];
+};
+
+export type CandidateViewsCreateWithoutUserInput = {
+  id?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  company: Prisma.UserCreateNestedOneWithoutCompanyViewsInput;
+};
+
+export type CandidateViewsUncheckedCreateWithoutUserInput = {
+  id?: string;
+  companyId: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+};
+
+export type CandidateViewsCreateOrConnectWithoutUserInput = {
+  where: Prisma.CandidateViewsWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.CandidateViewsCreateWithoutUserInput,
+    Prisma.CandidateViewsUncheckedCreateWithoutUserInput
+  >;
+};
+
+export type CandidateViewsCreateManyUserInputEnvelope = {
+  data:
+    | Prisma.CandidateViewsCreateManyUserInput
+    | Prisma.CandidateViewsCreateManyUserInput[];
+  skipDuplicates?: boolean;
+};
+
 export type CandidateViewsCreateWithoutCompanyInput = {
   id?: string;
   createdAt?: Date | string;
@@ -593,78 +625,6 @@ export type CandidateViewsCreateManyCompanyInputEnvelope = {
   data:
     | Prisma.CandidateViewsCreateManyCompanyInput
     | Prisma.CandidateViewsCreateManyCompanyInput[];
-  skipDuplicates?: boolean;
-};
-
-export type CandidateViewsUpsertWithWhereUniqueWithoutCompanyInput = {
-  where: Prisma.CandidateViewsWhereUniqueInput;
-  update: Prisma.XOR<
-    Prisma.CandidateViewsUpdateWithoutCompanyInput,
-    Prisma.CandidateViewsUncheckedUpdateWithoutCompanyInput
-  >;
-  create: Prisma.XOR<
-    Prisma.CandidateViewsCreateWithoutCompanyInput,
-    Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput
-  >;
-};
-
-export type CandidateViewsUpdateWithWhereUniqueWithoutCompanyInput = {
-  where: Prisma.CandidateViewsWhereUniqueInput;
-  data: Prisma.XOR<
-    Prisma.CandidateViewsUpdateWithoutCompanyInput,
-    Prisma.CandidateViewsUncheckedUpdateWithoutCompanyInput
-  >;
-};
-
-export type CandidateViewsUpdateManyWithWhereWithoutCompanyInput = {
-  where: Prisma.CandidateViewsScalarWhereInput;
-  data: Prisma.XOR<
-    Prisma.CandidateViewsUpdateManyMutationInput,
-    Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyInput
-  >;
-};
-
-export type CandidateViewsScalarWhereInput = {
-  AND?:
-    | Prisma.CandidateViewsScalarWhereInput
-    | Prisma.CandidateViewsScalarWhereInput[];
-  OR?: Prisma.CandidateViewsScalarWhereInput[];
-  NOT?:
-    | Prisma.CandidateViewsScalarWhereInput
-    | Prisma.CandidateViewsScalarWhereInput[];
-  id?: Prisma.StringFilter<"CandidateViews"> | string;
-  userId?: Prisma.StringFilter<"CandidateViews"> | string;
-  companyId?: Prisma.StringFilter<"CandidateViews"> | string;
-  createdAt?: Prisma.DateTimeFilter<"CandidateViews"> | Date | string;
-  updatedAt?: Prisma.DateTimeFilter<"CandidateViews"> | Date | string;
-};
-
-export type CandidateViewsCreateWithoutUserInput = {
-  id?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  company: Prisma.CompanyCreateNestedOneWithoutCandidateViewsInput;
-};
-
-export type CandidateViewsUncheckedCreateWithoutUserInput = {
-  id?: string;
-  companyId: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-};
-
-export type CandidateViewsCreateOrConnectWithoutUserInput = {
-  where: Prisma.CandidateViewsWhereUniqueInput;
-  create: Prisma.XOR<
-    Prisma.CandidateViewsCreateWithoutUserInput,
-    Prisma.CandidateViewsUncheckedCreateWithoutUserInput
-  >;
-};
-
-export type CandidateViewsCreateManyUserInputEnvelope = {
-  data:
-    | Prisma.CandidateViewsCreateManyUserInput
-    | Prisma.CandidateViewsCreateManyUserInput[];
   skipDuplicates?: boolean;
 };
 
@@ -696,11 +656,82 @@ export type CandidateViewsUpdateManyWithWhereWithoutUserInput = {
   >;
 };
 
+export type CandidateViewsScalarWhereInput = {
+  AND?:
+    | Prisma.CandidateViewsScalarWhereInput
+    | Prisma.CandidateViewsScalarWhereInput[];
+  OR?: Prisma.CandidateViewsScalarWhereInput[];
+  NOT?:
+    | Prisma.CandidateViewsScalarWhereInput
+    | Prisma.CandidateViewsScalarWhereInput[];
+  id?: Prisma.StringFilter<"CandidateViews"> | string;
+  userId?: Prisma.StringFilter<"CandidateViews"> | string;
+  companyId?: Prisma.StringFilter<"CandidateViews"> | string;
+  createdAt?: Prisma.DateTimeFilter<"CandidateViews"> | Date | string;
+  updatedAt?: Prisma.DateTimeFilter<"CandidateViews"> | Date | string;
+};
+
+export type CandidateViewsUpsertWithWhereUniqueWithoutCompanyInput = {
+  where: Prisma.CandidateViewsWhereUniqueInput;
+  update: Prisma.XOR<
+    Prisma.CandidateViewsUpdateWithoutCompanyInput,
+    Prisma.CandidateViewsUncheckedUpdateWithoutCompanyInput
+  >;
+  create: Prisma.XOR<
+    Prisma.CandidateViewsCreateWithoutCompanyInput,
+    Prisma.CandidateViewsUncheckedCreateWithoutCompanyInput
+  >;
+};
+
+export type CandidateViewsUpdateWithWhereUniqueWithoutCompanyInput = {
+  where: Prisma.CandidateViewsWhereUniqueInput;
+  data: Prisma.XOR<
+    Prisma.CandidateViewsUpdateWithoutCompanyInput,
+    Prisma.CandidateViewsUncheckedUpdateWithoutCompanyInput
+  >;
+};
+
+export type CandidateViewsUpdateManyWithWhereWithoutCompanyInput = {
+  where: Prisma.CandidateViewsScalarWhereInput;
+  data: Prisma.XOR<
+    Prisma.CandidateViewsUpdateManyMutationInput,
+    Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyInput
+  >;
+};
+
+export type CandidateViewsCreateManyUserInput = {
+  id?: string;
+  companyId: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+};
+
 export type CandidateViewsCreateManyCompanyInput = {
   id?: string;
   userId: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
+};
+
+export type CandidateViewsUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  company?: Prisma.UserUpdateOneRequiredWithoutCompanyViewsNestedInput;
+};
+
+export type CandidateViewsUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+
+export type CandidateViewsUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  companyId?: Prisma.StringFieldUpdateOperationsInput | string;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type CandidateViewsUpdateWithoutCompanyInput = {
@@ -724,34 +755,6 @@ export type CandidateViewsUncheckedUpdateManyWithoutCompanyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
-export type CandidateViewsCreateManyUserInput = {
-  id?: string;
-  companyId: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-};
-
-export type CandidateViewsUpdateWithoutUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  company?: Prisma.CompanyUpdateOneRequiredWithoutCandidateViewsNestedInput;
-};
-
-export type CandidateViewsUncheckedUpdateWithoutUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  companyId?: Prisma.StringFieldUpdateOperationsInput | string;
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-};
-
-export type CandidateViewsUncheckedUpdateManyWithoutUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  companyId?: Prisma.StringFieldUpdateOperationsInput | string;
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-};
-
 export type CandidateViewsSelect<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
@@ -763,7 +766,7 @@ export type CandidateViewsSelect<
     createdAt?: boolean;
     updatedAt?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
-    company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>;
+    company?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["candidateViews"]
 >;
@@ -779,7 +782,7 @@ export type CandidateViewsSelectCreateManyAndReturn<
     createdAt?: boolean;
     updatedAt?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
-    company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>;
+    company?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["candidateViews"]
 >;
@@ -795,7 +798,7 @@ export type CandidateViewsSelectUpdateManyAndReturn<
     createdAt?: boolean;
     updatedAt?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
-    company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>;
+    company?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["candidateViews"]
 >;
@@ -820,21 +823,21 @@ export type CandidateViewsInclude<
     runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>;
+  company?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type CandidateViewsIncludeCreateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>;
+  company?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type CandidateViewsIncludeUpdateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
-  company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>;
+  company?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 
 export type $CandidateViewsPayload<
@@ -844,7 +847,7 @@ export type $CandidateViewsPayload<
   name: "CandidateViews";
   objects: {
     user: Prisma.$UserPayload<ExtArgs>;
-    company: Prisma.$CompanyPayload<ExtArgs>;
+    company: Prisma.$UserPayload<ExtArgs>;
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
@@ -1429,11 +1432,11 @@ export interface Prisma__CandidateViewsClient<
     ExtArgs,
     GlobalOmitOptions
   >;
-  company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>,
-  ): Prisma.Prisma__CompanyClient<
+  company<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>,
+  ): Prisma.Prisma__UserClient<
     | runtime.Types.Result.GetResult<
-        Prisma.$CompanyPayload<ExtArgs>,
+        Prisma.$UserPayload<ExtArgs>,
         T,
         "findUniqueOrThrow",
         GlobalOmitOptions

@@ -255,7 +255,6 @@ export type UserWhereInput = {
   > | null;
   savedJobs?: Prisma.SavedJobListRelationFilter;
   jobViews?: Prisma.JobViewListRelationFilter;
-  candidateViews?: Prisma.CandidateViewsListRelationFilter;
   participantAConversations?: Prisma.ConversationListRelationFilter;
   participantBConversations?: Prisma.ConversationListRelationFilter;
   messages?: Prisma.MessageListRelationFilter;
@@ -270,6 +269,8 @@ export type UserWhereInput = {
   languages?: Prisma.LanguageListRelationFilter;
   workExperiences?: Prisma.WorkExperienceListRelationFilter;
   resumes?: Prisma.ResumeListRelationFilter;
+  candidateViews?: Prisma.CandidateViewsListRelationFilter;
+  companyViews?: Prisma.CandidateViewsListRelationFilter;
   following?: Prisma.FollowListRelationFilter;
   followers?: Prisma.FollowListRelationFilter;
 };
@@ -288,7 +289,6 @@ export type UserOrderByWithRelationInput = {
   company?: Prisma.CompanyOrderByWithRelationInput;
   savedJobs?: Prisma.SavedJobOrderByRelationAggregateInput;
   jobViews?: Prisma.JobViewOrderByRelationAggregateInput;
-  candidateViews?: Prisma.CandidateViewsOrderByRelationAggregateInput;
   participantAConversations?: Prisma.ConversationOrderByRelationAggregateInput;
   participantBConversations?: Prisma.ConversationOrderByRelationAggregateInput;
   messages?: Prisma.MessageOrderByRelationAggregateInput;
@@ -300,6 +300,8 @@ export type UserOrderByWithRelationInput = {
   languages?: Prisma.LanguageOrderByRelationAggregateInput;
   workExperiences?: Prisma.WorkExperienceOrderByRelationAggregateInput;
   resumes?: Prisma.ResumeOrderByRelationAggregateInput;
+  candidateViews?: Prisma.CandidateViewsOrderByRelationAggregateInput;
+  companyViews?: Prisma.CandidateViewsOrderByRelationAggregateInput;
   following?: Prisma.FollowOrderByRelationAggregateInput;
   followers?: Prisma.FollowOrderByRelationAggregateInput;
 };
@@ -328,7 +330,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
     > | null;
     savedJobs?: Prisma.SavedJobListRelationFilter;
     jobViews?: Prisma.JobViewListRelationFilter;
-    candidateViews?: Prisma.CandidateViewsListRelationFilter;
     participantAConversations?: Prisma.ConversationListRelationFilter;
     participantBConversations?: Prisma.ConversationListRelationFilter;
     messages?: Prisma.MessageListRelationFilter;
@@ -343,6 +344,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
     languages?: Prisma.LanguageListRelationFilter;
     workExperiences?: Prisma.WorkExperienceListRelationFilter;
     resumes?: Prisma.ResumeListRelationFilter;
+    candidateViews?: Prisma.CandidateViewsListRelationFilter;
+    companyViews?: Prisma.CandidateViewsListRelationFilter;
     following?: Prisma.FollowListRelationFilter;
     followers?: Prisma.FollowListRelationFilter;
   },
@@ -397,7 +400,6 @@ export type UserCreateInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -409,6 +411,8 @@ export type UserCreateInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -427,7 +431,6 @@ export type UserUncheckedCreateInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -439,6 +442,8 @@ export type UserUncheckedCreateInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -457,7 +462,6 @@ export type UserUpdateInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -469,6 +473,8 @@ export type UserUpdateInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -487,7 +493,6 @@ export type UserUncheckedUpdateInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -499,6 +504,8 @@ export type UserUncheckedUpdateInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -1018,6 +1025,15 @@ export type UserCreateNestedOneWithoutCandidateViewsInput = {
   connect?: Prisma.UserWhereUniqueInput;
 };
 
+export type UserCreateNestedOneWithoutCompanyViewsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutCompanyViewsInput,
+    Prisma.UserUncheckedCreateWithoutCompanyViewsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCompanyViewsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
 export type UserUpdateOneRequiredWithoutCandidateViewsNestedInput = {
   create?: Prisma.XOR<
     Prisma.UserCreateWithoutCandidateViewsInput,
@@ -1032,6 +1048,23 @@ export type UserUpdateOneRequiredWithoutCandidateViewsNestedInput = {
       Prisma.UserUpdateWithoutCandidateViewsInput
     >,
     Prisma.UserUncheckedUpdateWithoutCandidateViewsInput
+  >;
+};
+
+export type UserUpdateOneRequiredWithoutCompanyViewsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutCompanyViewsInput,
+    Prisma.UserUncheckedCreateWithoutCompanyViewsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCompanyViewsInput;
+  upsert?: Prisma.UserUpsertWithoutCompanyViewsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutCompanyViewsInput,
+      Prisma.UserUpdateWithoutCompanyViewsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutCompanyViewsInput
   >;
 };
 
@@ -1101,7 +1134,6 @@ export type UserCreateWithoutFollowingInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -1113,6 +1145,8 @@ export type UserCreateWithoutFollowingInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
 
@@ -1130,7 +1164,6 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -1142,6 +1175,8 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
 
@@ -1167,7 +1202,6 @@ export type UserCreateWithoutFollowersInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -1179,6 +1213,8 @@ export type UserCreateWithoutFollowersInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
 };
 
@@ -1196,7 +1232,6 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -1208,6 +1243,8 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
 };
 
@@ -1253,7 +1290,6 @@ export type UserUpdateWithoutFollowingInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -1265,6 +1301,8 @@ export type UserUpdateWithoutFollowingInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
 
@@ -1282,7 +1320,6 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -1294,6 +1331,8 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
 
@@ -1331,7 +1370,6 @@ export type UserUpdateWithoutFollowersInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -1343,6 +1381,8 @@ export type UserUpdateWithoutFollowersInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
 };
 
@@ -1360,7 +1400,6 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -1372,6 +1411,8 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
 };
 
@@ -1389,7 +1430,6 @@ export type UserCreateWithoutLanguagesInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -1400,6 +1440,8 @@ export type UserCreateWithoutLanguagesInput = {
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -1418,7 +1460,6 @@ export type UserUncheckedCreateWithoutLanguagesInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -1429,6 +1470,8 @@ export type UserUncheckedCreateWithoutLanguagesInput = {
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -1475,7 +1518,6 @@ export type UserUpdateWithoutLanguagesInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -1486,6 +1528,8 @@ export type UserUpdateWithoutLanguagesInput = {
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -1504,7 +1548,6 @@ export type UserUncheckedUpdateWithoutLanguagesInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -1515,6 +1558,8 @@ export type UserUncheckedUpdateWithoutLanguagesInput = {
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -1533,7 +1578,6 @@ export type UserCreateWithoutUserSettingsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -1544,6 +1588,8 @@ export type UserCreateWithoutUserSettingsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -1562,7 +1608,6 @@ export type UserUncheckedCreateWithoutUserSettingsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -1573,6 +1618,8 @@ export type UserUncheckedCreateWithoutUserSettingsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -1619,7 +1666,6 @@ export type UserUpdateWithoutUserSettingsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -1630,6 +1676,8 @@ export type UserUpdateWithoutUserSettingsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -1648,7 +1696,6 @@ export type UserUncheckedUpdateWithoutUserSettingsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -1659,6 +1706,8 @@ export type UserUncheckedUpdateWithoutUserSettingsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -1676,7 +1725,6 @@ export type UserCreateWithoutApplicationsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -1688,6 +1736,8 @@ export type UserCreateWithoutApplicationsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -1705,7 +1755,6 @@ export type UserUncheckedCreateWithoutApplicationsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -1717,6 +1766,8 @@ export type UserUncheckedCreateWithoutApplicationsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -1762,7 +1813,6 @@ export type UserUpdateWithoutApplicationsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -1774,6 +1824,8 @@ export type UserUpdateWithoutApplicationsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -1791,7 +1843,6 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -1803,6 +1854,8 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -1820,7 +1873,6 @@ export type UserCreateWithoutCandidateInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -1832,6 +1884,8 @@ export type UserCreateWithoutCandidateInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -1849,7 +1903,6 @@ export type UserUncheckedCreateWithoutCandidateInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -1861,6 +1914,8 @@ export type UserUncheckedCreateWithoutCandidateInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -1906,7 +1961,6 @@ export type UserUpdateWithoutCandidateInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -1918,6 +1972,8 @@ export type UserUpdateWithoutCandidateInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -1935,7 +1991,6 @@ export type UserUncheckedUpdateWithoutCandidateInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -1947,6 +2002,8 @@ export type UserUncheckedUpdateWithoutCandidateInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -1965,7 +2022,6 @@ export type UserCreateWithoutParticipantAConversationsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
@@ -1976,6 +2032,8 @@ export type UserCreateWithoutParticipantAConversationsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -1994,7 +2052,6 @@ export type UserUncheckedCreateWithoutParticipantAConversationsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
@@ -2005,6 +2062,8 @@ export type UserUncheckedCreateWithoutParticipantAConversationsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -2031,7 +2090,6 @@ export type UserCreateWithoutParticipantBConversationsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
@@ -2042,6 +2100,8 @@ export type UserCreateWithoutParticipantBConversationsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -2060,7 +2120,6 @@ export type UserUncheckedCreateWithoutParticipantBConversationsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
@@ -2071,6 +2130,8 @@ export type UserUncheckedCreateWithoutParticipantBConversationsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -2117,7 +2178,6 @@ export type UserUpdateWithoutParticipantAConversationsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
@@ -2128,6 +2188,8 @@ export type UserUpdateWithoutParticipantAConversationsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -2146,7 +2208,6 @@ export type UserUncheckedUpdateWithoutParticipantAConversationsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
@@ -2157,6 +2218,8 @@ export type UserUncheckedUpdateWithoutParticipantAConversationsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -2195,7 +2258,6 @@ export type UserUpdateWithoutParticipantBConversationsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
@@ -2206,6 +2268,8 @@ export type UserUpdateWithoutParticipantBConversationsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -2224,7 +2288,6 @@ export type UserUncheckedUpdateWithoutParticipantBConversationsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
@@ -2235,6 +2298,8 @@ export type UserUncheckedUpdateWithoutParticipantBConversationsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -2253,7 +2318,6 @@ export type UserCreateWithoutMessagesInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
@@ -2264,6 +2328,8 @@ export type UserCreateWithoutMessagesInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -2282,7 +2348,6 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
@@ -2293,6 +2358,8 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -2339,7 +2406,6 @@ export type UserUpdateWithoutMessagesInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
@@ -2350,6 +2416,8 @@ export type UserUpdateWithoutMessagesInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -2368,7 +2436,6 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
@@ -2379,6 +2446,8 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -2396,7 +2465,6 @@ export type UserCreateWithoutCompanyInput = {
   candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -2408,6 +2476,8 @@ export type UserCreateWithoutCompanyInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -2425,7 +2495,6 @@ export type UserUncheckedCreateWithoutCompanyInput = {
   candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -2437,6 +2506,8 @@ export type UserUncheckedCreateWithoutCompanyInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -2482,7 +2553,6 @@ export type UserUpdateWithoutCompanyInput = {
   candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -2494,6 +2564,8 @@ export type UserUpdateWithoutCompanyInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -2511,7 +2583,6 @@ export type UserUncheckedUpdateWithoutCompanyInput = {
   candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -2523,6 +2594,8 @@ export type UserUncheckedUpdateWithoutCompanyInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -2541,7 +2614,6 @@ export type UserCreateWithoutEductionsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -2552,6 +2624,8 @@ export type UserCreateWithoutEductionsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -2570,7 +2644,6 @@ export type UserUncheckedCreateWithoutEductionsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -2581,6 +2654,8 @@ export type UserUncheckedCreateWithoutEductionsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -2627,7 +2702,6 @@ export type UserUpdateWithoutEductionsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -2638,6 +2712,8 @@ export type UserUpdateWithoutEductionsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -2656,7 +2732,6 @@ export type UserUncheckedUpdateWithoutEductionsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -2667,6 +2742,8 @@ export type UserUncheckedUpdateWithoutEductionsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -2685,7 +2762,6 @@ export type UserCreateWithoutJobsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -2696,6 +2772,8 @@ export type UserCreateWithoutJobsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -2714,7 +2792,6 @@ export type UserUncheckedCreateWithoutJobsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -2725,6 +2802,8 @@ export type UserUncheckedCreateWithoutJobsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -2771,7 +2850,6 @@ export type UserUpdateWithoutJobsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -2782,6 +2860,8 @@ export type UserUpdateWithoutJobsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -2800,7 +2880,6 @@ export type UserUncheckedUpdateWithoutJobsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -2811,6 +2890,8 @@ export type UserUncheckedUpdateWithoutJobsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -2828,7 +2909,6 @@ export type UserCreateWithoutJobViewsInput = {
   candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -2840,6 +2920,8 @@ export type UserCreateWithoutJobViewsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -2857,7 +2939,6 @@ export type UserUncheckedCreateWithoutJobViewsInput = {
   candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -2869,6 +2950,8 @@ export type UserUncheckedCreateWithoutJobViewsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -2914,7 +2997,6 @@ export type UserUpdateWithoutJobViewsInput = {
   candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -2926,6 +3008,8 @@ export type UserUpdateWithoutJobViewsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -2943,7 +3027,6 @@ export type UserUncheckedUpdateWithoutJobViewsInput = {
   candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -2955,6 +3038,8 @@ export type UserUncheckedUpdateWithoutJobViewsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -2973,7 +3058,6 @@ export type UserCreateWithoutNotificationsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -2984,6 +3068,8 @@ export type UserCreateWithoutNotificationsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -3002,7 +3088,6 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -3013,6 +3098,8 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -3059,7 +3146,6 @@ export type UserUpdateWithoutNotificationsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -3070,6 +3156,8 @@ export type UserUpdateWithoutNotificationsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -3088,7 +3176,6 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -3099,6 +3186,8 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -3117,7 +3206,6 @@ export type UserCreateWithoutResumesInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -3128,6 +3216,8 @@ export type UserCreateWithoutResumesInput = {
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput;
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -3146,7 +3236,6 @@ export type UserUncheckedCreateWithoutResumesInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -3157,6 +3246,8 @@ export type UserUncheckedCreateWithoutResumesInput = {
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput;
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -3203,7 +3294,6 @@ export type UserUpdateWithoutResumesInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -3214,6 +3304,8 @@ export type UserUpdateWithoutResumesInput = {
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput;
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -3232,7 +3324,6 @@ export type UserUncheckedUpdateWithoutResumesInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -3243,6 +3334,8 @@ export type UserUncheckedUpdateWithoutResumesInput = {
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput;
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -3260,7 +3353,6 @@ export type UserCreateWithoutSavedJobsInput = {
   candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -3272,6 +3364,8 @@ export type UserCreateWithoutSavedJobsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -3289,7 +3383,6 @@ export type UserUncheckedCreateWithoutSavedJobsInput = {
   candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -3301,6 +3394,8 @@ export type UserUncheckedCreateWithoutSavedJobsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -3346,7 +3441,6 @@ export type UserUpdateWithoutSavedJobsInput = {
   candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -3358,6 +3452,8 @@ export type UserUpdateWithoutSavedJobsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -3375,7 +3471,6 @@ export type UserUncheckedUpdateWithoutSavedJobsInput = {
   candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -3387,6 +3482,8 @@ export type UserUncheckedUpdateWithoutSavedJobsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -3416,6 +3513,7 @@ export type UserCreateWithoutCandidateViewsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -3445,6 +3543,7 @@ export type UserUncheckedCreateWithoutCandidateViewsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -3454,6 +3553,74 @@ export type UserCreateOrConnectWithoutCandidateViewsInput = {
   create: Prisma.XOR<
     Prisma.UserCreateWithoutCandidateViewsInput,
     Prisma.UserUncheckedCreateWithoutCandidateViewsInput
+  >;
+};
+
+export type UserCreateWithoutCompanyViewsInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput;
+  jobs?: Prisma.JobCreateNestedManyWithoutUserInput;
+  eductions?: Prisma.EductionCreateNestedManyWithoutUserInput;
+  skills?: Prisma.SkillCreateNestedManyWithoutUserInput;
+  languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
+  resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+};
+
+export type UserUncheckedCreateWithoutCompanyViewsInput = {
+  id?: string;
+  name: string;
+  email: string;
+  role?: $Enums.UserRole;
+  password: string;
+  views?: number | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput;
+  candidate?: Prisma.CandidateUncheckedCreateNestedOneWithoutUserInput;
+  company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
+  jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
+  participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
+  participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  userSettings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput;
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput;
+  jobs?: Prisma.JobUncheckedCreateNestedManyWithoutUserInput;
+  eductions?: Prisma.EductionUncheckedCreateNestedManyWithoutUserInput;
+  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput;
+  languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
+  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+};
+
+export type UserCreateOrConnectWithoutCompanyViewsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutCompanyViewsInput,
+    Prisma.UserUncheckedCreateWithoutCompanyViewsInput
   >;
 };
 
@@ -3502,6 +3669,7 @@ export type UserUpdateWithoutCandidateViewsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -3531,6 +3699,87 @@ export type UserUncheckedUpdateWithoutCandidateViewsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+};
+
+export type UserUpsertWithoutCompanyViewsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutCompanyViewsInput,
+    Prisma.UserUncheckedUpdateWithoutCompanyViewsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutCompanyViewsInput,
+    Prisma.UserUncheckedCreateWithoutCompanyViewsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutCompanyViewsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutCompanyViewsInput,
+    Prisma.UserUncheckedUpdateWithoutCompanyViewsInput
+  >;
+};
+
+export type UserUpdateWithoutCompanyViewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput;
+  jobs?: Prisma.JobUpdateManyWithoutUserNestedInput;
+  eductions?: Prisma.EductionUpdateManyWithoutUserNestedInput;
+  skills?: Prisma.SkillUpdateManyWithoutUserNestedInput;
+  languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
+  resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutCompanyViewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  views?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput;
+  candidate?: Prisma.CandidateUncheckedUpdateOneWithoutUserNestedInput;
+  company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
+  jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
+  participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
+  participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  userSettings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput;
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput;
+  jobs?: Prisma.JobUncheckedUpdateManyWithoutUserNestedInput;
+  eductions?: Prisma.EductionUncheckedUpdateManyWithoutUserNestedInput;
+  skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput;
+  languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
+  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -3549,7 +3798,6 @@ export type UserCreateWithoutSkillsInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -3560,6 +3808,8 @@ export type UserCreateWithoutSkillsInput = {
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -3578,7 +3828,6 @@ export type UserUncheckedCreateWithoutSkillsInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -3589,6 +3838,8 @@ export type UserUncheckedCreateWithoutSkillsInput = {
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -3635,7 +3886,6 @@ export type UserUpdateWithoutSkillsInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -3646,6 +3896,8 @@ export type UserUpdateWithoutSkillsInput = {
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -3664,7 +3916,6 @@ export type UserUncheckedUpdateWithoutSkillsInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -3675,6 +3926,8 @@ export type UserUncheckedUpdateWithoutSkillsInput = {
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -3693,7 +3946,6 @@ export type UserCreateWithoutWorkExperiencesInput = {
   company?: Prisma.CompanyCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
@@ -3704,6 +3956,8 @@ export type UserCreateWithoutWorkExperiencesInput = {
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput;
   languages?: Prisma.LanguageCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
 };
@@ -3722,7 +3976,6 @@ export type UserUncheckedCreateWithoutWorkExperiencesInput = {
   company?: Prisma.CompanyUncheckedCreateNestedOneWithoutUserInput;
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput;
   jobViews?: Prisma.JobViewUncheckedCreateNestedManyWithoutUserInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
   participantAConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserAInput;
   participantBConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserBInput;
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
@@ -3733,6 +3986,8 @@ export type UserUncheckedCreateWithoutWorkExperiencesInput = {
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput;
   languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutUserInput;
   resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutUserInput;
+  companyViews?: Prisma.CandidateViewsUncheckedCreateNestedManyWithoutCompanyInput;
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
 };
@@ -3779,7 +4034,6 @@ export type UserUpdateWithoutWorkExperiencesInput = {
   company?: Prisma.CompanyUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
@@ -3790,6 +4044,8 @@ export type UserUpdateWithoutWorkExperiencesInput = {
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput;
   languages?: Prisma.LanguageUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
 };
@@ -3808,7 +4064,6 @@ export type UserUncheckedUpdateWithoutWorkExperiencesInput = {
   company?: Prisma.CompanyUncheckedUpdateOneWithoutUserNestedInput;
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput;
   jobViews?: Prisma.JobViewUncheckedUpdateManyWithoutUserNestedInput;
-  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
   participantAConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserANestedInput;
   participantBConversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserBNestedInput;
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
@@ -3819,6 +4074,8 @@ export type UserUncheckedUpdateWithoutWorkExperiencesInput = {
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput;
   languages?: Prisma.LanguageUncheckedUpdateManyWithoutUserNestedInput;
   resumes?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput;
+  candidateViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutUserNestedInput;
+  companyViews?: Prisma.CandidateViewsUncheckedUpdateManyWithoutCompanyNestedInput;
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
 };
@@ -3831,7 +4088,6 @@ export type UserCountOutputType = {
   applications: number;
   savedJobs: number;
   jobViews: number;
-  candidateViews: number;
   participantAConversations: number;
   participantBConversations: number;
   messages: number;
@@ -3842,6 +4098,8 @@ export type UserCountOutputType = {
   languages: number;
   workExperiences: number;
   resumes: number;
+  candidateViews: number;
+  companyViews: number;
   following: number;
   followers: number;
 };
@@ -3853,7 +4111,6 @@ export type UserCountOutputTypeSelect<
   applications?: boolean | UserCountOutputTypeCountApplicationsArgs;
   savedJobs?: boolean | UserCountOutputTypeCountSavedJobsArgs;
   jobViews?: boolean | UserCountOutputTypeCountJobViewsArgs;
-  candidateViews?: boolean | UserCountOutputTypeCountCandidateViewsArgs;
   participantAConversations?:
     | boolean
     | UserCountOutputTypeCountParticipantAConversationsArgs;
@@ -3868,6 +4125,8 @@ export type UserCountOutputTypeSelect<
   languages?: boolean | UserCountOutputTypeCountLanguagesArgs;
   workExperiences?: boolean | UserCountOutputTypeCountWorkExperiencesArgs;
   resumes?: boolean | UserCountOutputTypeCountResumesArgs;
+  candidateViews?: boolean | UserCountOutputTypeCountCandidateViewsArgs;
+  companyViews?: boolean | UserCountOutputTypeCountCompanyViewsArgs;
   following?: boolean | UserCountOutputTypeCountFollowingArgs;
   followers?: boolean | UserCountOutputTypeCountFollowersArgs;
 };
@@ -3913,16 +4172,6 @@ export type UserCountOutputTypeCountJobViewsArgs<
     runtime.Types.Extensions.DefaultArgs,
 > = {
   where?: Prisma.JobViewWhereInput;
-};
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountCandidateViewsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  where?: Prisma.CandidateViewsWhereInput;
 };
 
 /**
@@ -4028,6 +4277,26 @@ export type UserCountOutputTypeCountResumesArgs<
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountCandidateViewsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.CandidateViewsWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCompanyViewsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.CandidateViewsWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountFollowingArgs<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
@@ -4063,7 +4332,6 @@ export type UserSelect<
     company?: boolean | Prisma.User$companyArgs<ExtArgs>;
     savedJobs?: boolean | Prisma.User$savedJobsArgs<ExtArgs>;
     jobViews?: boolean | Prisma.User$jobViewsArgs<ExtArgs>;
-    candidateViews?: boolean | Prisma.User$candidateViewsArgs<ExtArgs>;
     participantAConversations?:
       | boolean
       | Prisma.User$participantAConversationsArgs<ExtArgs>;
@@ -4079,6 +4347,8 @@ export type UserSelect<
     languages?: boolean | Prisma.User$languagesArgs<ExtArgs>;
     workExperiences?: boolean | Prisma.User$workExperiencesArgs<ExtArgs>;
     resumes?: boolean | Prisma.User$resumesArgs<ExtArgs>;
+    candidateViews?: boolean | Prisma.User$candidateViewsArgs<ExtArgs>;
+    companyViews?: boolean | Prisma.User$companyViewsArgs<ExtArgs>;
     following?: boolean | Prisma.User$followingArgs<ExtArgs>;
     followers?: boolean | Prisma.User$followersArgs<ExtArgs>;
     _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
@@ -4154,7 +4424,6 @@ export type UserInclude<
   company?: boolean | Prisma.User$companyArgs<ExtArgs>;
   savedJobs?: boolean | Prisma.User$savedJobsArgs<ExtArgs>;
   jobViews?: boolean | Prisma.User$jobViewsArgs<ExtArgs>;
-  candidateViews?: boolean | Prisma.User$candidateViewsArgs<ExtArgs>;
   participantAConversations?:
     | boolean
     | Prisma.User$participantAConversationsArgs<ExtArgs>;
@@ -4170,6 +4439,8 @@ export type UserInclude<
   languages?: boolean | Prisma.User$languagesArgs<ExtArgs>;
   workExperiences?: boolean | Prisma.User$workExperiencesArgs<ExtArgs>;
   resumes?: boolean | Prisma.User$resumesArgs<ExtArgs>;
+  candidateViews?: boolean | Prisma.User$candidateViewsArgs<ExtArgs>;
+  companyViews?: boolean | Prisma.User$companyViewsArgs<ExtArgs>;
   following?: boolean | Prisma.User$followingArgs<ExtArgs>;
   followers?: boolean | Prisma.User$followersArgs<ExtArgs>;
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
@@ -4194,7 +4465,6 @@ export type $UserPayload<
     company: Prisma.$CompanyPayload<ExtArgs> | null;
     savedJobs: Prisma.$SavedJobPayload<ExtArgs>[];
     jobViews: Prisma.$JobViewPayload<ExtArgs>[];
-    candidateViews: Prisma.$CandidateViewsPayload<ExtArgs>[];
     participantAConversations: Prisma.$ConversationPayload<ExtArgs>[];
     participantBConversations: Prisma.$ConversationPayload<ExtArgs>[];
     messages: Prisma.$MessagePayload<ExtArgs>[];
@@ -4206,6 +4476,8 @@ export type $UserPayload<
     languages: Prisma.$LanguagePayload<ExtArgs>[];
     workExperiences: Prisma.$WorkExperiencePayload<ExtArgs>[];
     resumes: Prisma.$ResumePayload<ExtArgs>[];
+    candidateViews: Prisma.$CandidateViewsPayload<ExtArgs>[];
+    companyViews: Prisma.$CandidateViewsPayload<ExtArgs>[];
     following: Prisma.$FollowPayload<ExtArgs>[];
     followers: Prisma.$FollowPayload<ExtArgs>[];
   };
@@ -4828,17 +5100,6 @@ export interface Prisma__UserClient<
       >
     | Null
   >;
-  candidateViews<T extends Prisma.User$candidateViewsArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.User$candidateViewsArgs<ExtArgs>>,
-  ): Prisma.PrismaPromise<
-    | runtime.Types.Result.GetResult<
-        Prisma.$CandidateViewsPayload<ExtArgs>,
-        T,
-        "findMany",
-        GlobalOmitOptions
-      >
-    | Null
-  >;
   participantAConversations<
     T extends Prisma.User$participantAConversationsArgs<ExtArgs> = {},
   >(
@@ -4960,6 +5221,28 @@ export interface Prisma__UserClient<
   ): Prisma.PrismaPromise<
     | runtime.Types.Result.GetResult<
         Prisma.$ResumePayload<ExtArgs>,
+        T,
+        "findMany",
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  candidateViews<T extends Prisma.User$candidateViewsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$candidateViewsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$CandidateViewsPayload<ExtArgs>,
+        T,
+        "findMany",
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  companyViews<T extends Prisma.User$companyViewsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$companyViewsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$CandidateViewsPayload<ExtArgs>,
         T,
         "findMany",
         GlobalOmitOptions
@@ -5617,37 +5900,6 @@ export type User$jobViewsArgs<
 };
 
 /**
- * User.candidateViews
- */
-export type User$candidateViewsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the CandidateViews
-   */
-  select?: Prisma.CandidateViewsSelect<ExtArgs> | null;
-  /**
-   * Omit specific fields from the CandidateViews
-   */
-  omit?: Prisma.CandidateViewsOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CandidateViewsInclude<ExtArgs> | null;
-  where?: Prisma.CandidateViewsWhereInput;
-  orderBy?:
-    | Prisma.CandidateViewsOrderByWithRelationInput
-    | Prisma.CandidateViewsOrderByWithRelationInput[];
-  cursor?: Prisma.CandidateViewsWhereUniqueInput;
-  take?: number;
-  skip?: number;
-  distinct?:
-    | Prisma.CandidateViewsScalarFieldEnum
-    | Prisma.CandidateViewsScalarFieldEnum[];
-};
-
-/**
  * User.participantAConversations
  */
 export type User$participantAConversationsArgs<
@@ -5965,6 +6217,68 @@ export type User$resumesArgs<
   take?: number;
   skip?: number;
   distinct?: Prisma.ResumeScalarFieldEnum | Prisma.ResumeScalarFieldEnum[];
+};
+
+/**
+ * User.candidateViews
+ */
+export type User$candidateViewsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the CandidateViews
+   */
+  select?: Prisma.CandidateViewsSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the CandidateViews
+   */
+  omit?: Prisma.CandidateViewsOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CandidateViewsInclude<ExtArgs> | null;
+  where?: Prisma.CandidateViewsWhereInput;
+  orderBy?:
+    | Prisma.CandidateViewsOrderByWithRelationInput
+    | Prisma.CandidateViewsOrderByWithRelationInput[];
+  cursor?: Prisma.CandidateViewsWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.CandidateViewsScalarFieldEnum
+    | Prisma.CandidateViewsScalarFieldEnum[];
+};
+
+/**
+ * User.companyViews
+ */
+export type User$companyViewsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the CandidateViews
+   */
+  select?: Prisma.CandidateViewsSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the CandidateViews
+   */
+  omit?: Prisma.CandidateViewsOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CandidateViewsInclude<ExtArgs> | null;
+  where?: Prisma.CandidateViewsWhereInput;
+  orderBy?:
+    | Prisma.CandidateViewsOrderByWithRelationInput
+    | Prisma.CandidateViewsOrderByWithRelationInput[];
+  cursor?: Prisma.CandidateViewsWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.CandidateViewsScalarFieldEnum
+    | Prisma.CandidateViewsScalarFieldEnum[];
 };
 
 /**
