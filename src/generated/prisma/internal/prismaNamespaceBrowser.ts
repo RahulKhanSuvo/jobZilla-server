@@ -166,7 +166,14 @@ export const CandidateScalarFieldEnum = {
   avatar: "avatar",
   facebook: "facebook",
   linkedin: "linkedin",
-  twitter: "twitter",
+  github: "github",
+  preferredCategory: "preferredCategory",
+  preferredJobType: "preferredJobType",
+  preferredLocation: "preferredLocation",
+  expectedSalaryMin: "expectedSalaryMin",
+  expectedSalaryMax: "expectedSalaryMax",
+  availabilityStatus: "availabilityStatus",
+  experienceYears: "experienceYears",
 } as const;
 
 export type CandidateScalarFieldEnum =

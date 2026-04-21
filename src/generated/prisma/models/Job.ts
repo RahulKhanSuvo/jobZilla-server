@@ -919,14 +919,6 @@ export type JobUpdateOneRequiredWithoutApplicationsNestedInput = {
   >;
 };
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null;
-  increment?: number;
-  decrement?: number;
-  multiply?: number;
-  divide?: number;
-};
-
 export type NullableEnumJobStatusFieldUpdateOperationsInput = {
   set?: $Enums.JobStatus | null;
 };
