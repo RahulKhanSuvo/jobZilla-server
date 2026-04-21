@@ -1,25 +1,26 @@
 model Candidate {
-  id                 String    @id @default(uuid())
-  userId             String    @unique
-  phone              String
-  location           String?
-  dob                DateTime?
-  gender             String?
-  maritalStatus      String?
-  aboutMe            String?   @db.Text
-  avatar             String?
-  facebook           String?
-  linkedin           String?
-  github             String?
-  preferredCategory  preferredCategory?
-  preferredJobType   preferredJobType?
-  preferredLocation  String?
-  expectedSalaryMin  Int?
-  expectedSalaryMax  Int?
-  availabilityStatus Boolean @default(false)
-  experienceYears    Int?
-  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                   String                @id @default(uuid())
+  userId               String                @unique
+  phone                String
+  location             String?
+  dob                  DateTime?
+  gender               String?
+  maritalStatus        String?
+  aboutMe              String?               @db.Text
+  avatar               String?
+  facebook             String?
+  linkedin             String?
+  github               String?
+  preferredCategory    preferredCategory?
+  preferredJobType     preferredJobType?
+  preferredCareerLevel preferredCareerLevel?
+  expectedSalaryMin    Int?
+  expectedSalaryMax    Int?
+  availabilityStatus   Boolean               @default(false)
+  experienceYears      Int?
+  user                 User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
 enum preferredCategory {
   TECHNOLOGY
   DESIGN
@@ -34,12 +35,17 @@ enum preferredCategory {
   LEGAL
   OTHER
 }
+
 enum preferredJobType {
   FULL_TIME
   PART_TIME
-  FREELANCE
-  CONTRACT
-  INTERN
   REMOTE
   HYBRID
+}
+
+enum preferredCareerLevel {
+  ENTRY_LEVEL
+  MID_LEVEL
+  SENIOR_LEVEL
+  EXECUTIVE_LEVEL
 }

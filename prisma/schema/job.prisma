@@ -45,6 +45,7 @@ enum JobType {
     PART_TIME
     CONTRACT
     INTERN
+    FREELANCE
 }
 
 enum JobStatus {
