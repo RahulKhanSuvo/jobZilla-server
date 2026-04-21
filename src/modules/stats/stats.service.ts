@@ -41,7 +41,9 @@ const getJobStats = async (userId: string) => {
   const applications = await prisma.application.groupBy({
     by: ["status"],
     where: {
-      companyId: userId,
+      job: {
+        companyId: userId,
+      },
     },
     _count: {
       id: true,
@@ -126,7 +128,6 @@ const getEmployerDashboardStats = async (userId: string) => {
     },
   });
   if (!company?.id) new ApiError("user not found", 404);
-  const companyId = company?.id;
   // 1. Total jobs
   const totalJobs = await prisma.job.count({
     where: {
@@ -148,7 +149,9 @@ const getEmployerDashboardStats = async (userId: string) => {
   // 3. Total applicants
   const totalApplicants = await prisma.application.count({
     where: {
-      companyId,
+      job: {
+        companyId: userId,
+      },
     },
   });
 
@@ -156,7 +159,9 @@ const getEmployerDashboardStats = async (userId: string) => {
   const applications = await prisma.application.groupBy({
     by: ["status"],
     where: {
-      companyId,
+      job: {
+        companyId: userId,
+      },
     },
     _count: {
       id: true,
@@ -204,7 +209,9 @@ const getEmployerDashboardStats = async (userId: string) => {
   const trendDataRaw = await prisma.application.groupBy({
     by: ["createdAt"],
     where: {
-      companyId,
+      job: {
+        companyId: userId,
+      },
       createdAt: {
         gte: sevenDaysAgo,
       },
@@ -289,7 +296,9 @@ const getEmployerDashboardStats = async (userId: string) => {
   // 7. Recent Applicants
   const recentApplicants = await prisma.application.findMany({
     where: {
-      companyId,
+      job: {
+        companyId: userId,
+      },
     },
     orderBy: {
       createdAt: "desc",
