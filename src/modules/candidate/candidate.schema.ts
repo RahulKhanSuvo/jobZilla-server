@@ -35,7 +35,7 @@ export const candidateSchema = z.object({
   careerFinding: z.string().optional(),
   facebook: z.string().optional(),
   linkedin: z.string().optional(),
-  twitter: z.string().optional(),
+  github: z.string().optional(),
   avatar: z.string().optional(),
   educationList: z.array(
     z.object({
