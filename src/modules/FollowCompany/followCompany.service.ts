@@ -14,23 +14,14 @@ const getAllFollwedCompany = async (userId: string, pagination: Pagination) => {
   }
 
   const [data, total] = await Promise.all([
-    prisma.followCompany.findMany({
+    prisma.follow.findMany({
       where: {
-        candideId: userId,
+        followerId: userId,
       },
       include: {
-        company: {
+        following: {
           select: {
             id: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-              },
-            },
-            location: true,
-            logo: true,
-            industry: true,
             _count: {
               select: {
                 applications: true,
@@ -40,16 +31,16 @@ const getAllFollwedCompany = async (userId: string, pagination: Pagination) => {
         },
       },
     }),
-    prisma.followCompany.count({
+    prisma.follow.count({
       where: {
-        candideId: userId,
+        followerId: userId,
       },
       skip,
       take: limit,
     }),
-    prisma.followCompany.count({
+    prisma.follow.count({
       where: {
-        candideId: userId,
+        followerId: userId,
       },
     }),
   ]);
@@ -89,10 +80,10 @@ const followACompany = async (userId: string, companyId: string) => {
   if (!company) {
     throw new ApiError("Company not found", 404);
   }
-  const followCompany = await prisma.followCompany.create({
+  const followCompany = await prisma.follow.create({
     data: {
-      candideId: userId,
-      companyId: companyId,
+      followerId: userId,
+      followingId: companyId,
     },
   });
   return followCompany;
@@ -114,11 +105,11 @@ const unFollowACompany = async (userId: string, companyId: string) => {
   if (!company) {
     throw new ApiError("Company not found", 404);
   }
-  const followCompany = await prisma.followCompany.delete({
+  const followCompany = await prisma.follow.delete({
     where: {
-      candideId_companyId: {
-        candideId: userId,
-        companyId: company.id,
+      followerId_followingId: {
+        followerId: userId,
+        followingId: company.id,
       },
     },
   });
