@@ -27,7 +27,6 @@ model User {
   company                   Company?
   savedJobs                 SavedJob[]
   jobViews                  JobView[]
-  candidateViews            CandidateViews[]
   participantAConversations Conversation[]   @relation("ParticipantAConversations")
   participantBConversations Conversation[]   @relation("ParticipantBConversations")
   messages                  Message[]        @relation("UserMessages")
@@ -39,16 +38,25 @@ model User {
   languages                 Language[]
   workExperiences           WorkExperience[]
   resumes                   Resume[]
+  candidateViews            CandidateViews[] @relation("CandidateViewsAsUser")
+  companyViews              CandidateViews[] @relation("CandidateViewsAsCompany")
   following                 Follow[]         @relation("UserFollowing")
   followers                 Follow[]         @relation("UserFollowers")
 }
 
 model CandidateViews {
-  id        String   @id @default(uuid())
+  id String @id @default(uuid())
+
   userId    String
   companyId String
+
+  user    User @relation("CandidateViewsAsUser", fields: [userId], references: [id])
+  company User @relation("CandidateViewsAsCompany", fields: [companyId], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id])
-  company   Company  @relation(fields: [companyId], references: [userId])
+
+  @@unique([userId, companyId])
+  @@index([companyId])
+  @@index([userId])
 }

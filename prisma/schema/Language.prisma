@@ -2,5 +2,5 @@ model Language {
     id       String @id @default(uuid())
     language String
     userId   String
-    user     User   @relation(fields: [userId], references: [id])
+    user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

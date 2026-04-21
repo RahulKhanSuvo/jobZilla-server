@@ -4,8 +4,8 @@ model SavedJob {
     jobId     String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-    job       Job      @relation(fields: [jobId], references: [id])
-    user      User     @relation(fields: [userId], references: [id])
+    job       Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@unique([userId, jobId])
 }
