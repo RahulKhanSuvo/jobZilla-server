@@ -27,38 +27,38 @@ export type AggregateLanguage = {
 export type LanguageMinAggregateOutputType = {
   id: string | null;
   language: string | null;
-  candideId: string | null;
+  userId: string | null;
 };
 
 export type LanguageMaxAggregateOutputType = {
   id: string | null;
   language: string | null;
-  candideId: string | null;
+  userId: string | null;
 };
 
 export type LanguageCountAggregateOutputType = {
   id: number;
   language: number;
-  candideId: number;
+  userId: number;
   _all: number;
 };
 
 export type LanguageMinAggregateInputType = {
   id?: true;
   language?: true;
-  candideId?: true;
+  userId?: true;
 };
 
 export type LanguageMaxAggregateInputType = {
   id?: true;
   language?: true;
-  candideId?: true;
+  userId?: true;
 };
 
 export type LanguageCountAggregateInputType = {
   id?: true;
   language?: true;
-  candideId?: true;
+  userId?: true;
   _all?: true;
 };
 
@@ -144,7 +144,7 @@ export type LanguageGroupByArgs<
 export type LanguageGroupByOutputType = {
   id: string;
   language: string;
-  candideId: string;
+  userId: string;
   _count: LanguageCountAggregateOutputType | null;
   _min: LanguageMinAggregateOutputType | null;
   _max: LanguageMaxAggregateOutputType | null;
@@ -169,18 +169,15 @@ export type LanguageWhereInput = {
   NOT?: Prisma.LanguageWhereInput | Prisma.LanguageWhereInput[];
   id?: Prisma.StringFilter<"Language"> | string;
   language?: Prisma.StringFilter<"Language"> | string;
-  candideId?: Prisma.StringFilter<"Language"> | string;
-  candidate?: Prisma.XOR<
-    Prisma.CandidateScalarRelationFilter,
-    Prisma.CandidateWhereInput
-  >;
+  userId?: Prisma.StringFilter<"Language"> | string;
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 
 export type LanguageOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
   language?: Prisma.SortOrder;
-  candideId?: Prisma.SortOrder;
-  candidate?: Prisma.CandidateOrderByWithRelationInput;
+  userId?: Prisma.SortOrder;
+  user?: Prisma.UserOrderByWithRelationInput;
 };
 
 export type LanguageWhereUniqueInput = Prisma.AtLeast<
@@ -190,11 +187,8 @@ export type LanguageWhereUniqueInput = Prisma.AtLeast<
     OR?: Prisma.LanguageWhereInput[];
     NOT?: Prisma.LanguageWhereInput | Prisma.LanguageWhereInput[];
     language?: Prisma.StringFilter<"Language"> | string;
-    candideId?: Prisma.StringFilter<"Language"> | string;
-    candidate?: Prisma.XOR<
-      Prisma.CandidateScalarRelationFilter,
-      Prisma.CandidateWhereInput
-    >;
+    userId?: Prisma.StringFilter<"Language"> | string;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
   "id"
 >;
@@ -202,7 +196,7 @@ export type LanguageWhereUniqueInput = Prisma.AtLeast<
 export type LanguageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
   language?: Prisma.SortOrder;
-  candideId?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
   _count?: Prisma.LanguageCountOrderByAggregateInput;
   _max?: Prisma.LanguageMaxOrderByAggregateInput;
   _min?: Prisma.LanguageMinOrderByAggregateInput;
@@ -218,37 +212,37 @@ export type LanguageScalarWhereWithAggregatesInput = {
     | Prisma.LanguageScalarWhereWithAggregatesInput[];
   id?: Prisma.StringWithAggregatesFilter<"Language"> | string;
   language?: Prisma.StringWithAggregatesFilter<"Language"> | string;
-  candideId?: Prisma.StringWithAggregatesFilter<"Language"> | string;
+  userId?: Prisma.StringWithAggregatesFilter<"Language"> | string;
 };
 
 export type LanguageCreateInput = {
   id?: string;
   language: string;
-  candidate: Prisma.CandidateCreateNestedOneWithoutLanguagesInput;
+  user: Prisma.UserCreateNestedOneWithoutLanguagesInput;
 };
 
 export type LanguageUncheckedCreateInput = {
   id?: string;
   language: string;
-  candideId: string;
+  userId: string;
 };
 
 export type LanguageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   language?: Prisma.StringFieldUpdateOperationsInput | string;
-  candidate?: Prisma.CandidateUpdateOneRequiredWithoutLanguagesNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutLanguagesNestedInput;
 };
 
 export type LanguageUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   language?: Prisma.StringFieldUpdateOperationsInput | string;
-  candideId?: Prisma.StringFieldUpdateOperationsInput | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
 export type LanguageCreateManyInput = {
   id?: string;
   language: string;
-  candideId: string;
+  userId: string;
 };
 
 export type LanguageUpdateManyMutationInput = {
@@ -259,25 +253,25 @@ export type LanguageUpdateManyMutationInput = {
 export type LanguageUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   language?: Prisma.StringFieldUpdateOperationsInput | string;
-  candideId?: Prisma.StringFieldUpdateOperationsInput | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
 export type LanguageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   language?: Prisma.SortOrder;
-  candideId?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type LanguageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   language?: Prisma.SortOrder;
-  candideId?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type LanguageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   language?: Prisma.SortOrder;
-  candideId?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type LanguageListRelationFilter = {
@@ -290,55 +284,51 @@ export type LanguageOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder;
 };
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string;
-};
-
-export type LanguageCreateNestedManyWithoutCandidateInput = {
+export type LanguageCreateNestedManyWithoutUserInput = {
   create?:
     | Prisma.XOR<
-        Prisma.LanguageCreateWithoutCandidateInput,
-        Prisma.LanguageUncheckedCreateWithoutCandidateInput
+        Prisma.LanguageCreateWithoutUserInput,
+        Prisma.LanguageUncheckedCreateWithoutUserInput
       >
-    | Prisma.LanguageCreateWithoutCandidateInput[]
-    | Prisma.LanguageUncheckedCreateWithoutCandidateInput[];
+    | Prisma.LanguageCreateWithoutUserInput[]
+    | Prisma.LanguageUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
-    | Prisma.LanguageCreateOrConnectWithoutCandidateInput
-    | Prisma.LanguageCreateOrConnectWithoutCandidateInput[];
-  createMany?: Prisma.LanguageCreateManyCandidateInputEnvelope;
+    | Prisma.LanguageCreateOrConnectWithoutUserInput
+    | Prisma.LanguageCreateOrConnectWithoutUserInput[];
+  createMany?: Prisma.LanguageCreateManyUserInputEnvelope;
   connect?: Prisma.LanguageWhereUniqueInput | Prisma.LanguageWhereUniqueInput[];
 };
 
-export type LanguageUncheckedCreateNestedManyWithoutCandidateInput = {
+export type LanguageUncheckedCreateNestedManyWithoutUserInput = {
   create?:
     | Prisma.XOR<
-        Prisma.LanguageCreateWithoutCandidateInput,
-        Prisma.LanguageUncheckedCreateWithoutCandidateInput
+        Prisma.LanguageCreateWithoutUserInput,
+        Prisma.LanguageUncheckedCreateWithoutUserInput
       >
-    | Prisma.LanguageCreateWithoutCandidateInput[]
-    | Prisma.LanguageUncheckedCreateWithoutCandidateInput[];
+    | Prisma.LanguageCreateWithoutUserInput[]
+    | Prisma.LanguageUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
-    | Prisma.LanguageCreateOrConnectWithoutCandidateInput
-    | Prisma.LanguageCreateOrConnectWithoutCandidateInput[];
-  createMany?: Prisma.LanguageCreateManyCandidateInputEnvelope;
+    | Prisma.LanguageCreateOrConnectWithoutUserInput
+    | Prisma.LanguageCreateOrConnectWithoutUserInput[];
+  createMany?: Prisma.LanguageCreateManyUserInputEnvelope;
   connect?: Prisma.LanguageWhereUniqueInput | Prisma.LanguageWhereUniqueInput[];
 };
 
-export type LanguageUpdateManyWithoutCandidateNestedInput = {
+export type LanguageUpdateManyWithoutUserNestedInput = {
   create?:
     | Prisma.XOR<
-        Prisma.LanguageCreateWithoutCandidateInput,
-        Prisma.LanguageUncheckedCreateWithoutCandidateInput
+        Prisma.LanguageCreateWithoutUserInput,
+        Prisma.LanguageUncheckedCreateWithoutUserInput
       >
-    | Prisma.LanguageCreateWithoutCandidateInput[]
-    | Prisma.LanguageUncheckedCreateWithoutCandidateInput[];
+    | Prisma.LanguageCreateWithoutUserInput[]
+    | Prisma.LanguageUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
-    | Prisma.LanguageCreateOrConnectWithoutCandidateInput
-    | Prisma.LanguageCreateOrConnectWithoutCandidateInput[];
+    | Prisma.LanguageCreateOrConnectWithoutUserInput
+    | Prisma.LanguageCreateOrConnectWithoutUserInput[];
   upsert?:
-    | Prisma.LanguageUpsertWithWhereUniqueWithoutCandidateInput
-    | Prisma.LanguageUpsertWithWhereUniqueWithoutCandidateInput[];
-  createMany?: Prisma.LanguageCreateManyCandidateInputEnvelope;
+    | Prisma.LanguageUpsertWithWhereUniqueWithoutUserInput
+    | Prisma.LanguageUpsertWithWhereUniqueWithoutUserInput[];
+  createMany?: Prisma.LanguageCreateManyUserInputEnvelope;
   set?: Prisma.LanguageWhereUniqueInput | Prisma.LanguageWhereUniqueInput[];
   disconnect?:
     | Prisma.LanguageWhereUniqueInput
@@ -346,31 +336,31 @@ export type LanguageUpdateManyWithoutCandidateNestedInput = {
   delete?: Prisma.LanguageWhereUniqueInput | Prisma.LanguageWhereUniqueInput[];
   connect?: Prisma.LanguageWhereUniqueInput | Prisma.LanguageWhereUniqueInput[];
   update?:
-    | Prisma.LanguageUpdateWithWhereUniqueWithoutCandidateInput
-    | Prisma.LanguageUpdateWithWhereUniqueWithoutCandidateInput[];
+    | Prisma.LanguageUpdateWithWhereUniqueWithoutUserInput
+    | Prisma.LanguageUpdateWithWhereUniqueWithoutUserInput[];
   updateMany?:
-    | Prisma.LanguageUpdateManyWithWhereWithoutCandidateInput
-    | Prisma.LanguageUpdateManyWithWhereWithoutCandidateInput[];
+    | Prisma.LanguageUpdateManyWithWhereWithoutUserInput
+    | Prisma.LanguageUpdateManyWithWhereWithoutUserInput[];
   deleteMany?:
     | Prisma.LanguageScalarWhereInput
     | Prisma.LanguageScalarWhereInput[];
 };
 
-export type LanguageUncheckedUpdateManyWithoutCandidateNestedInput = {
+export type LanguageUncheckedUpdateManyWithoutUserNestedInput = {
   create?:
     | Prisma.XOR<
-        Prisma.LanguageCreateWithoutCandidateInput,
-        Prisma.LanguageUncheckedCreateWithoutCandidateInput
+        Prisma.LanguageCreateWithoutUserInput,
+        Prisma.LanguageUncheckedCreateWithoutUserInput
       >
-    | Prisma.LanguageCreateWithoutCandidateInput[]
-    | Prisma.LanguageUncheckedCreateWithoutCandidateInput[];
+    | Prisma.LanguageCreateWithoutUserInput[]
+    | Prisma.LanguageUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
-    | Prisma.LanguageCreateOrConnectWithoutCandidateInput
-    | Prisma.LanguageCreateOrConnectWithoutCandidateInput[];
+    | Prisma.LanguageCreateOrConnectWithoutUserInput
+    | Prisma.LanguageCreateOrConnectWithoutUserInput[];
   upsert?:
-    | Prisma.LanguageUpsertWithWhereUniqueWithoutCandidateInput
-    | Prisma.LanguageUpsertWithWhereUniqueWithoutCandidateInput[];
-  createMany?: Prisma.LanguageCreateManyCandidateInputEnvelope;
+    | Prisma.LanguageUpsertWithWhereUniqueWithoutUserInput
+    | Prisma.LanguageUpsertWithWhereUniqueWithoutUserInput[];
+  createMany?: Prisma.LanguageCreateManyUserInputEnvelope;
   set?: Prisma.LanguageWhereUniqueInput | Prisma.LanguageWhereUniqueInput[];
   disconnect?:
     | Prisma.LanguageWhereUniqueInput
@@ -378,66 +368,66 @@ export type LanguageUncheckedUpdateManyWithoutCandidateNestedInput = {
   delete?: Prisma.LanguageWhereUniqueInput | Prisma.LanguageWhereUniqueInput[];
   connect?: Prisma.LanguageWhereUniqueInput | Prisma.LanguageWhereUniqueInput[];
   update?:
-    | Prisma.LanguageUpdateWithWhereUniqueWithoutCandidateInput
-    | Prisma.LanguageUpdateWithWhereUniqueWithoutCandidateInput[];
+    | Prisma.LanguageUpdateWithWhereUniqueWithoutUserInput
+    | Prisma.LanguageUpdateWithWhereUniqueWithoutUserInput[];
   updateMany?:
-    | Prisma.LanguageUpdateManyWithWhereWithoutCandidateInput
-    | Prisma.LanguageUpdateManyWithWhereWithoutCandidateInput[];
+    | Prisma.LanguageUpdateManyWithWhereWithoutUserInput
+    | Prisma.LanguageUpdateManyWithWhereWithoutUserInput[];
   deleteMany?:
     | Prisma.LanguageScalarWhereInput
     | Prisma.LanguageScalarWhereInput[];
 };
 
-export type LanguageCreateWithoutCandidateInput = {
+export type LanguageCreateWithoutUserInput = {
   id?: string;
   language: string;
 };
 
-export type LanguageUncheckedCreateWithoutCandidateInput = {
+export type LanguageUncheckedCreateWithoutUserInput = {
   id?: string;
   language: string;
 };
 
-export type LanguageCreateOrConnectWithoutCandidateInput = {
+export type LanguageCreateOrConnectWithoutUserInput = {
   where: Prisma.LanguageWhereUniqueInput;
   create: Prisma.XOR<
-    Prisma.LanguageCreateWithoutCandidateInput,
-    Prisma.LanguageUncheckedCreateWithoutCandidateInput
+    Prisma.LanguageCreateWithoutUserInput,
+    Prisma.LanguageUncheckedCreateWithoutUserInput
   >;
 };
 
-export type LanguageCreateManyCandidateInputEnvelope = {
+export type LanguageCreateManyUserInputEnvelope = {
   data:
-    | Prisma.LanguageCreateManyCandidateInput
-    | Prisma.LanguageCreateManyCandidateInput[];
+    | Prisma.LanguageCreateManyUserInput
+    | Prisma.LanguageCreateManyUserInput[];
   skipDuplicates?: boolean;
 };
 
-export type LanguageUpsertWithWhereUniqueWithoutCandidateInput = {
+export type LanguageUpsertWithWhereUniqueWithoutUserInput = {
   where: Prisma.LanguageWhereUniqueInput;
   update: Prisma.XOR<
-    Prisma.LanguageUpdateWithoutCandidateInput,
-    Prisma.LanguageUncheckedUpdateWithoutCandidateInput
+    Prisma.LanguageUpdateWithoutUserInput,
+    Prisma.LanguageUncheckedUpdateWithoutUserInput
   >;
   create: Prisma.XOR<
-    Prisma.LanguageCreateWithoutCandidateInput,
-    Prisma.LanguageUncheckedCreateWithoutCandidateInput
+    Prisma.LanguageCreateWithoutUserInput,
+    Prisma.LanguageUncheckedCreateWithoutUserInput
   >;
 };
 
-export type LanguageUpdateWithWhereUniqueWithoutCandidateInput = {
+export type LanguageUpdateWithWhereUniqueWithoutUserInput = {
   where: Prisma.LanguageWhereUniqueInput;
   data: Prisma.XOR<
-    Prisma.LanguageUpdateWithoutCandidateInput,
-    Prisma.LanguageUncheckedUpdateWithoutCandidateInput
+    Prisma.LanguageUpdateWithoutUserInput,
+    Prisma.LanguageUncheckedUpdateWithoutUserInput
   >;
 };
 
-export type LanguageUpdateManyWithWhereWithoutCandidateInput = {
+export type LanguageUpdateManyWithWhereWithoutUserInput = {
   where: Prisma.LanguageScalarWhereInput;
   data: Prisma.XOR<
     Prisma.LanguageUpdateManyMutationInput,
-    Prisma.LanguageUncheckedUpdateManyWithoutCandidateInput
+    Prisma.LanguageUncheckedUpdateManyWithoutUserInput
   >;
 };
 
@@ -447,25 +437,25 @@ export type LanguageScalarWhereInput = {
   NOT?: Prisma.LanguageScalarWhereInput | Prisma.LanguageScalarWhereInput[];
   id?: Prisma.StringFilter<"Language"> | string;
   language?: Prisma.StringFilter<"Language"> | string;
-  candideId?: Prisma.StringFilter<"Language"> | string;
+  userId?: Prisma.StringFilter<"Language"> | string;
 };
 
-export type LanguageCreateManyCandidateInput = {
+export type LanguageCreateManyUserInput = {
   id?: string;
   language: string;
 };
 
-export type LanguageUpdateWithoutCandidateInput = {
+export type LanguageUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   language?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
-export type LanguageUncheckedUpdateWithoutCandidateInput = {
+export type LanguageUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   language?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
-export type LanguageUncheckedUpdateManyWithoutCandidateInput = {
+export type LanguageUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   language?: Prisma.StringFieldUpdateOperationsInput | string;
 };
@@ -477,8 +467,8 @@ export type LanguageSelect<
   {
     id?: boolean;
     language?: boolean;
-    candideId?: boolean;
-    candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["language"]
 >;
@@ -490,8 +480,8 @@ export type LanguageSelectCreateManyAndReturn<
   {
     id?: boolean;
     language?: boolean;
-    candideId?: boolean;
-    candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["language"]
 >;
@@ -503,8 +493,8 @@ export type LanguageSelectUpdateManyAndReturn<
   {
     id?: boolean;
     language?: boolean;
-    candideId?: boolean;
-    candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["language"]
 >;
@@ -512,33 +502,33 @@ export type LanguageSelectUpdateManyAndReturn<
 export type LanguageSelectScalar = {
   id?: boolean;
   language?: boolean;
-  candideId?: boolean;
+  userId?: boolean;
 };
 
 export type LanguageOmit<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  "id" | "language" | "candideId",
+  "id" | "language" | "userId",
   ExtArgs["result"]["language"]
 >;
 export type LanguageInclude<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type LanguageIncludeCreateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type LanguageIncludeUpdateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 
 export type $LanguagePayload<
@@ -547,13 +537,13 @@ export type $LanguagePayload<
 > = {
   name: "Language";
   objects: {
-    candidate: Prisma.$CandidatePayload<ExtArgs>;
+    user: Prisma.$UserPayload<ExtArgs>;
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
       id: string;
       language: string;
-      candideId: string;
+      userId: string;
     },
     ExtArgs["result"]["language"]
   >;
@@ -1104,11 +1094,11 @@ export interface Prisma__LanguageClient<
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise";
-  candidate<T extends Prisma.CandidateDefaultArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.CandidateDefaultArgs<ExtArgs>>,
-  ): Prisma.Prisma__CandidateClient<
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>,
+  ): Prisma.Prisma__UserClient<
     | runtime.Types.Result.GetResult<
-        Prisma.$CandidatePayload<ExtArgs>,
+        Prisma.$UserPayload<ExtArgs>,
         T,
         "findUniqueOrThrow",
         GlobalOmitOptions
@@ -1162,7 +1152,7 @@ export interface Prisma__LanguageClient<
 export interface LanguageFieldRefs {
   readonly id: Prisma.FieldRef<"Language", "String">;
   readonly language: Prisma.FieldRef<"Language", "String">;
-  readonly candideId: Prisma.FieldRef<"Language", "String">;
+  readonly userId: Prisma.FieldRef<"Language", "String">;
 }
 
 // Custom InputTypes

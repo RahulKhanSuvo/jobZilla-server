@@ -412,6 +412,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never
   : FieldRef<Model, FieldType>;
 
 export const ModelName = {
+  Follow: "Follow",
   Language: "Language",
   UserSettings: "UserSettings",
   NotificationSettings: "NotificationSettings",
@@ -421,7 +422,6 @@ export const ModelName = {
   Message: "Message",
   Company: "Company",
   Eduction: "Eduction",
-  FollowCompany: "FollowCompany",
   Job: "Job",
   JobView: "JobView",
   Notification: "Notification",
@@ -453,6 +453,7 @@ export type TypeMap<
   };
   meta: {
     modelProps:
+      | "follow"
       | "language"
       | "userSettings"
       | "notificationSettings"
@@ -462,7 +463,6 @@ export type TypeMap<
       | "message"
       | "company"
       | "eduction"
-      | "followCompany"
       | "job"
       | "jobView"
       | "notification"
@@ -475,6 +475,82 @@ export type TypeMap<
     txIsolationLevel: TransactionIsolationLevel;
   };
   model: {
+    Follow: {
+      payload: Prisma.$FollowPayload<ExtArgs>;
+      fields: Prisma.FollowFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.FollowFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.FollowFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>;
+        };
+        findFirst: {
+          args: Prisma.FollowFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.FollowFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>;
+        };
+        findMany: {
+          args: Prisma.FollowFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>[];
+        };
+        create: {
+          args: Prisma.FollowCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>;
+        };
+        createMany: {
+          args: Prisma.FollowCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.FollowCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>[];
+        };
+        delete: {
+          args: Prisma.FollowDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>;
+        };
+        update: {
+          args: Prisma.FollowUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>;
+        };
+        deleteMany: {
+          args: Prisma.FollowDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.FollowUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.FollowUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>[];
+        };
+        upsert: {
+          args: Prisma.FollowUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowPayload>;
+        };
+        aggregate: {
+          args: Prisma.FollowAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFollow>;
+        };
+        groupBy: {
+          args: Prisma.FollowGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.FollowGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.FollowCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.FollowCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
     Language: {
       payload: Prisma.$LanguagePayload<ExtArgs>;
       fields: Prisma.LanguageFieldRefs;
@@ -1155,82 +1231,6 @@ export type TypeMap<
           args: Prisma.EductionCountArgs<ExtArgs>;
           result:
             | runtime.Types.Utils.Optional<Prisma.EductionCountAggregateOutputType>
-            | number;
-        };
-      };
-    };
-    FollowCompany: {
-      payload: Prisma.$FollowCompanyPayload<ExtArgs>;
-      fields: Prisma.FollowCompanyFieldRefs;
-      operations: {
-        findUnique: {
-          args: Prisma.FollowCompanyFindUniqueArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload> | null;
-        };
-        findUniqueOrThrow: {
-          args: Prisma.FollowCompanyFindUniqueOrThrowArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
-        };
-        findFirst: {
-          args: Prisma.FollowCompanyFindFirstArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload> | null;
-        };
-        findFirstOrThrow: {
-          args: Prisma.FollowCompanyFindFirstOrThrowArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
-        };
-        findMany: {
-          args: Prisma.FollowCompanyFindManyArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>[];
-        };
-        create: {
-          args: Prisma.FollowCompanyCreateArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
-        };
-        createMany: {
-          args: Prisma.FollowCompanyCreateManyArgs<ExtArgs>;
-          result: BatchPayload;
-        };
-        createManyAndReturn: {
-          args: Prisma.FollowCompanyCreateManyAndReturnArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>[];
-        };
-        delete: {
-          args: Prisma.FollowCompanyDeleteArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
-        };
-        update: {
-          args: Prisma.FollowCompanyUpdateArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
-        };
-        deleteMany: {
-          args: Prisma.FollowCompanyDeleteManyArgs<ExtArgs>;
-          result: BatchPayload;
-        };
-        updateMany: {
-          args: Prisma.FollowCompanyUpdateManyArgs<ExtArgs>;
-          result: BatchPayload;
-        };
-        updateManyAndReturn: {
-          args: Prisma.FollowCompanyUpdateManyAndReturnArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>[];
-        };
-        upsert: {
-          args: Prisma.FollowCompanyUpsertArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FollowCompanyPayload>;
-        };
-        aggregate: {
-          args: Prisma.FollowCompanyAggregateArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.AggregateFollowCompany>;
-        };
-        groupBy: {
-          args: Prisma.FollowCompanyGroupByArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.FollowCompanyGroupByOutputType>[];
-        };
-        count: {
-          args: Prisma.FollowCompanyCountArgs<ExtArgs>;
-          result:
-            | runtime.Types.Utils.Optional<Prisma.FollowCompanyCountAggregateOutputType>
             | number;
         };
       };
@@ -1958,10 +1958,20 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel =
   (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
 
+export const FollowScalarFieldEnum = {
+  id: "id",
+  followerId: "followerId",
+  followingId: "followingId",
+  createdAt: "createdAt",
+} as const;
+
+export type FollowScalarFieldEnum =
+  (typeof FollowScalarFieldEnum)[keyof typeof FollowScalarFieldEnum];
+
 export const LanguageScalarFieldEnum = {
   id: "id",
   language: "language",
-  candideId: "candideId",
+  userId: "userId",
 } as const;
 
 export type LanguageScalarFieldEnum =
@@ -2087,22 +2097,11 @@ export const EductionScalarFieldEnum = {
   endData: "endData",
   isStudying: "isStudying",
   createdId: "createdId",
-  candideId: "candideId",
+  userId: "userId",
 } as const;
 
 export type EductionScalarFieldEnum =
   (typeof EductionScalarFieldEnum)[keyof typeof EductionScalarFieldEnum];
-
-export const FollowCompanyScalarFieldEnum = {
-  id: "id",
-  candideId: "candideId",
-  companyId: "companyId",
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
-} as const;
-
-export type FollowCompanyScalarFieldEnum =
-  (typeof FollowCompanyScalarFieldEnum)[keyof typeof FollowCompanyScalarFieldEnum];
 
 export const JobScalarFieldEnum = {
   id: "id",
@@ -2121,7 +2120,7 @@ export const JobScalarFieldEnum = {
   qualification: "qualification",
   views: "views",
   deadline: "deadline",
-  companyId: "companyId",
+  userId: "userId",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
 } as const;
@@ -2162,7 +2161,7 @@ export const ResumeScalarFieldEnum = {
   fileUrl: "fileUrl",
   isPrimary: "isPrimary",
   isDraft: "isDraft",
-  candidateId: "candidateId",
+  userId: "userId",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
 } as const;
@@ -2209,7 +2208,7 @@ export type CandidateViewsScalarFieldEnum =
 export const SkillScalarFieldEnum = {
   id: "id",
   skill: "skill",
-  candideId: "candideId",
+  userId: "userId",
 } as const;
 
 export type SkillScalarFieldEnum =
@@ -2217,7 +2216,7 @@ export type SkillScalarFieldEnum =
 
 export const WorkExperienceScalarFieldEnum = {
   id: "id",
-  candideId: "candideId",
+  userId: "userId",
   jobTitle: "jobTitle",
   companyName: "companyName",
   industry: "industry",
@@ -2225,7 +2224,8 @@ export const WorkExperienceScalarFieldEnum = {
   endData: "endData",
   Description: "Description",
   isWorking: "isWorking",
-  createdId: "createdId",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
 } as const;
 
 export type WorkExperienceScalarFieldEnum =
@@ -2273,14 +2273,6 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<
 >;
 
 /**
- * Reference to a field of type 'Boolean'
- */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<
-  $PrismaModel,
-  "Boolean"
->;
-
-/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
@@ -2294,6 +2286,14 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
   "DateTime[]"
+>;
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "Boolean"
 >;
 
 /**
@@ -2525,6 +2525,7 @@ export type PrismaClientOptions = (
   comments?: runtime.SqlCommenterPlugin[];
 };
 export type GlobalOmitConfig = {
+  follow?: Prisma.FollowOmit;
   language?: Prisma.LanguageOmit;
   userSettings?: Prisma.UserSettingsOmit;
   notificationSettings?: Prisma.NotificationSettingsOmit;
@@ -2534,7 +2535,6 @@ export type GlobalOmitConfig = {
   message?: Prisma.MessageOmit;
   company?: Prisma.CompanyOmit;
   eduction?: Prisma.EductionOmit;
-  followCompany?: Prisma.FollowCompanyOmit;
   job?: Prisma.JobOmit;
   jobView?: Prisma.JobViewOmit;
   notification?: Prisma.NotificationOmit;

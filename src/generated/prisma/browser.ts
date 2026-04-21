@@ -17,6 +17,11 @@ export { Prisma };
 export * as $Enums from "./enums";
 export * from "./enums";
 /**
+ * Model Follow
+ *
+ */
+export type Follow = Prisma.FollowModel;
+/**
  * Model Language
  *
  */
@@ -61,11 +66,6 @@ export type Company = Prisma.CompanyModel;
  *
  */
 export type Eduction = Prisma.EductionModel;
-/**
- * Model FollowCompany
- *
- */
-export type FollowCompany = Prisma.FollowCompanyModel;
 /**
  * Model Job
  *

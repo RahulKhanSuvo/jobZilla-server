@@ -33,7 +33,7 @@ export type EductionMinAggregateOutputType = {
   endData: Date | null;
   isStudying: boolean | null;
   createdId: Date | null;
-  candideId: string | null;
+  userId: string | null;
 };
 
 export type EductionMaxAggregateOutputType = {
@@ -45,7 +45,7 @@ export type EductionMaxAggregateOutputType = {
   endData: Date | null;
   isStudying: boolean | null;
   createdId: Date | null;
-  candideId: string | null;
+  userId: string | null;
 };
 
 export type EductionCountAggregateOutputType = {
@@ -57,7 +57,7 @@ export type EductionCountAggregateOutputType = {
   endData: number;
   isStudying: number;
   createdId: number;
-  candideId: number;
+  userId: number;
   _all: number;
 };
 
@@ -70,7 +70,7 @@ export type EductionMinAggregateInputType = {
   endData?: true;
   isStudying?: true;
   createdId?: true;
-  candideId?: true;
+  userId?: true;
 };
 
 export type EductionMaxAggregateInputType = {
@@ -82,7 +82,7 @@ export type EductionMaxAggregateInputType = {
   endData?: true;
   isStudying?: true;
   createdId?: true;
-  candideId?: true;
+  userId?: true;
 };
 
 export type EductionCountAggregateInputType = {
@@ -94,7 +94,7 @@ export type EductionCountAggregateInputType = {
   endData?: true;
   isStudying?: true;
   createdId?: true;
-  candideId?: true;
+  userId?: true;
   _all?: true;
 };
 
@@ -186,7 +186,7 @@ export type EductionGroupByOutputType = {
   endData: Date | null;
   isStudying: boolean;
   createdId: Date;
-  candideId: string;
+  userId: string;
   _count: EductionCountAggregateOutputType | null;
   _min: EductionMinAggregateOutputType | null;
   _max: EductionMaxAggregateOutputType | null;
@@ -217,11 +217,8 @@ export type EductionWhereInput = {
   endData?: Prisma.DateTimeNullableFilter<"Eduction"> | Date | string | null;
   isStudying?: Prisma.BoolFilter<"Eduction"> | boolean;
   createdId?: Prisma.DateTimeFilter<"Eduction"> | Date | string;
-  candideId?: Prisma.StringFilter<"Eduction"> | string;
-  candidate?: Prisma.XOR<
-    Prisma.CandidateScalarRelationFilter,
-    Prisma.CandidateWhereInput
-  >;
+  userId?: Prisma.StringFilter<"Eduction"> | string;
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 
 export type EductionOrderByWithRelationInput = {
@@ -233,8 +230,8 @@ export type EductionOrderByWithRelationInput = {
   endData?: Prisma.SortOrderInput | Prisma.SortOrder;
   isStudying?: Prisma.SortOrder;
   createdId?: Prisma.SortOrder;
-  candideId?: Prisma.SortOrder;
-  candidate?: Prisma.CandidateOrderByWithRelationInput;
+  userId?: Prisma.SortOrder;
+  user?: Prisma.UserOrderByWithRelationInput;
 };
 
 export type EductionWhereUniqueInput = Prisma.AtLeast<
@@ -250,11 +247,8 @@ export type EductionWhereUniqueInput = Prisma.AtLeast<
     endData?: Prisma.DateTimeNullableFilter<"Eduction"> | Date | string | null;
     isStudying?: Prisma.BoolFilter<"Eduction"> | boolean;
     createdId?: Prisma.DateTimeFilter<"Eduction"> | Date | string;
-    candideId?: Prisma.StringFilter<"Eduction"> | string;
-    candidate?: Prisma.XOR<
-      Prisma.CandidateScalarRelationFilter,
-      Prisma.CandidateWhereInput
-    >;
+    userId?: Prisma.StringFilter<"Eduction"> | string;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
   "id"
 >;
@@ -268,7 +262,7 @@ export type EductionOrderByWithAggregationInput = {
   endData?: Prisma.SortOrderInput | Prisma.SortOrder;
   isStudying?: Prisma.SortOrder;
   createdId?: Prisma.SortOrder;
-  candideId?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
   _count?: Prisma.EductionCountOrderByAggregateInput;
   _max?: Prisma.EductionMaxOrderByAggregateInput;
   _min?: Prisma.EductionMinOrderByAggregateInput;
@@ -294,7 +288,7 @@ export type EductionScalarWhereWithAggregatesInput = {
     | null;
   isStudying?: Prisma.BoolWithAggregatesFilter<"Eduction"> | boolean;
   createdId?: Prisma.DateTimeWithAggregatesFilter<"Eduction"> | Date | string;
-  candideId?: Prisma.StringWithAggregatesFilter<"Eduction"> | string;
+  userId?: Prisma.StringWithAggregatesFilter<"Eduction"> | string;
 };
 
 export type EductionCreateInput = {
@@ -306,7 +300,7 @@ export type EductionCreateInput = {
   endData?: Date | string | null;
   isStudying?: boolean;
   createdId?: Date | string;
-  candidate: Prisma.CandidateCreateNestedOneWithoutEductionsInput;
+  user: Prisma.UserCreateNestedOneWithoutEductionsInput;
 };
 
 export type EductionUncheckedCreateInput = {
@@ -318,7 +312,7 @@ export type EductionUncheckedCreateInput = {
   endData?: Date | string | null;
   isStudying?: boolean;
   createdId?: Date | string;
-  candideId: string;
+  userId: string;
 };
 
 export type EductionUpdateInput = {
@@ -334,7 +328,7 @@ export type EductionUpdateInput = {
     | null;
   isStudying?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdId?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  candidate?: Prisma.CandidateUpdateOneRequiredWithoutEductionsNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutEductionsNestedInput;
 };
 
 export type EductionUncheckedUpdateInput = {
@@ -350,7 +344,7 @@ export type EductionUncheckedUpdateInput = {
     | null;
   isStudying?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdId?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  candideId?: Prisma.StringFieldUpdateOperationsInput | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
 export type EductionCreateManyInput = {
@@ -362,7 +356,7 @@ export type EductionCreateManyInput = {
   endData?: Date | string | null;
   isStudying?: boolean;
   createdId?: Date | string;
-  candideId: string;
+  userId: string;
 };
 
 export type EductionUpdateManyMutationInput = {
@@ -393,7 +387,43 @@ export type EductionUncheckedUpdateManyInput = {
     | null;
   isStudying?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdId?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  candideId?: Prisma.StringFieldUpdateOperationsInput | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
+};
+
+export type EductionCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder;
+  institution?: Prisma.SortOrder;
+  major?: Prisma.SortOrder;
+  field?: Prisma.SortOrder;
+  startData?: Prisma.SortOrder;
+  endData?: Prisma.SortOrder;
+  isStudying?: Prisma.SortOrder;
+  createdId?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
+};
+
+export type EductionMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder;
+  institution?: Prisma.SortOrder;
+  major?: Prisma.SortOrder;
+  field?: Prisma.SortOrder;
+  startData?: Prisma.SortOrder;
+  endData?: Prisma.SortOrder;
+  isStudying?: Prisma.SortOrder;
+  createdId?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
+};
+
+export type EductionMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder;
+  institution?: Prisma.SortOrder;
+  major?: Prisma.SortOrder;
+  field?: Prisma.SortOrder;
+  startData?: Prisma.SortOrder;
+  endData?: Prisma.SortOrder;
+  isStudying?: Prisma.SortOrder;
+  createdId?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type EductionListRelationFilter = {
@@ -406,87 +436,51 @@ export type EductionOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder;
 };
 
-export type EductionCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder;
-  institution?: Prisma.SortOrder;
-  major?: Prisma.SortOrder;
-  field?: Prisma.SortOrder;
-  startData?: Prisma.SortOrder;
-  endData?: Prisma.SortOrder;
-  isStudying?: Prisma.SortOrder;
-  createdId?: Prisma.SortOrder;
-  candideId?: Prisma.SortOrder;
-};
-
-export type EductionMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder;
-  institution?: Prisma.SortOrder;
-  major?: Prisma.SortOrder;
-  field?: Prisma.SortOrder;
-  startData?: Prisma.SortOrder;
-  endData?: Prisma.SortOrder;
-  isStudying?: Prisma.SortOrder;
-  createdId?: Prisma.SortOrder;
-  candideId?: Prisma.SortOrder;
-};
-
-export type EductionMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder;
-  institution?: Prisma.SortOrder;
-  major?: Prisma.SortOrder;
-  field?: Prisma.SortOrder;
-  startData?: Prisma.SortOrder;
-  endData?: Prisma.SortOrder;
-  isStudying?: Prisma.SortOrder;
-  createdId?: Prisma.SortOrder;
-  candideId?: Prisma.SortOrder;
-};
-
-export type EductionCreateNestedManyWithoutCandidateInput = {
+export type EductionCreateNestedManyWithoutUserInput = {
   create?:
     | Prisma.XOR<
-        Prisma.EductionCreateWithoutCandidateInput,
-        Prisma.EductionUncheckedCreateWithoutCandidateInput
+        Prisma.EductionCreateWithoutUserInput,
+        Prisma.EductionUncheckedCreateWithoutUserInput
       >
-    | Prisma.EductionCreateWithoutCandidateInput[]
-    | Prisma.EductionUncheckedCreateWithoutCandidateInput[];
+    | Prisma.EductionCreateWithoutUserInput[]
+    | Prisma.EductionUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
-    | Prisma.EductionCreateOrConnectWithoutCandidateInput
-    | Prisma.EductionCreateOrConnectWithoutCandidateInput[];
-  createMany?: Prisma.EductionCreateManyCandidateInputEnvelope;
+    | Prisma.EductionCreateOrConnectWithoutUserInput
+    | Prisma.EductionCreateOrConnectWithoutUserInput[];
+  createMany?: Prisma.EductionCreateManyUserInputEnvelope;
   connect?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
 };
 
-export type EductionUncheckedCreateNestedManyWithoutCandidateInput = {
+export type EductionUncheckedCreateNestedManyWithoutUserInput = {
   create?:
     | Prisma.XOR<
-        Prisma.EductionCreateWithoutCandidateInput,
-        Prisma.EductionUncheckedCreateWithoutCandidateInput
+        Prisma.EductionCreateWithoutUserInput,
+        Prisma.EductionUncheckedCreateWithoutUserInput
       >
-    | Prisma.EductionCreateWithoutCandidateInput[]
-    | Prisma.EductionUncheckedCreateWithoutCandidateInput[];
+    | Prisma.EductionCreateWithoutUserInput[]
+    | Prisma.EductionUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
-    | Prisma.EductionCreateOrConnectWithoutCandidateInput
-    | Prisma.EductionCreateOrConnectWithoutCandidateInput[];
-  createMany?: Prisma.EductionCreateManyCandidateInputEnvelope;
+    | Prisma.EductionCreateOrConnectWithoutUserInput
+    | Prisma.EductionCreateOrConnectWithoutUserInput[];
+  createMany?: Prisma.EductionCreateManyUserInputEnvelope;
   connect?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
 };
 
-export type EductionUpdateManyWithoutCandidateNestedInput = {
+export type EductionUpdateManyWithoutUserNestedInput = {
   create?:
     | Prisma.XOR<
-        Prisma.EductionCreateWithoutCandidateInput,
-        Prisma.EductionUncheckedCreateWithoutCandidateInput
+        Prisma.EductionCreateWithoutUserInput,
+        Prisma.EductionUncheckedCreateWithoutUserInput
       >
-    | Prisma.EductionCreateWithoutCandidateInput[]
-    | Prisma.EductionUncheckedCreateWithoutCandidateInput[];
+    | Prisma.EductionCreateWithoutUserInput[]
+    | Prisma.EductionUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
-    | Prisma.EductionCreateOrConnectWithoutCandidateInput
-    | Prisma.EductionCreateOrConnectWithoutCandidateInput[];
+    | Prisma.EductionCreateOrConnectWithoutUserInput
+    | Prisma.EductionCreateOrConnectWithoutUserInput[];
   upsert?:
-    | Prisma.EductionUpsertWithWhereUniqueWithoutCandidateInput
-    | Prisma.EductionUpsertWithWhereUniqueWithoutCandidateInput[];
-  createMany?: Prisma.EductionCreateManyCandidateInputEnvelope;
+    | Prisma.EductionUpsertWithWhereUniqueWithoutUserInput
+    | Prisma.EductionUpsertWithWhereUniqueWithoutUserInput[];
+  createMany?: Prisma.EductionCreateManyUserInputEnvelope;
   set?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
   disconnect?:
     | Prisma.EductionWhereUniqueInput
@@ -494,31 +488,31 @@ export type EductionUpdateManyWithoutCandidateNestedInput = {
   delete?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
   connect?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
   update?:
-    | Prisma.EductionUpdateWithWhereUniqueWithoutCandidateInput
-    | Prisma.EductionUpdateWithWhereUniqueWithoutCandidateInput[];
+    | Prisma.EductionUpdateWithWhereUniqueWithoutUserInput
+    | Prisma.EductionUpdateWithWhereUniqueWithoutUserInput[];
   updateMany?:
-    | Prisma.EductionUpdateManyWithWhereWithoutCandidateInput
-    | Prisma.EductionUpdateManyWithWhereWithoutCandidateInput[];
+    | Prisma.EductionUpdateManyWithWhereWithoutUserInput
+    | Prisma.EductionUpdateManyWithWhereWithoutUserInput[];
   deleteMany?:
     | Prisma.EductionScalarWhereInput
     | Prisma.EductionScalarWhereInput[];
 };
 
-export type EductionUncheckedUpdateManyWithoutCandidateNestedInput = {
+export type EductionUncheckedUpdateManyWithoutUserNestedInput = {
   create?:
     | Prisma.XOR<
-        Prisma.EductionCreateWithoutCandidateInput,
-        Prisma.EductionUncheckedCreateWithoutCandidateInput
+        Prisma.EductionCreateWithoutUserInput,
+        Prisma.EductionUncheckedCreateWithoutUserInput
       >
-    | Prisma.EductionCreateWithoutCandidateInput[]
-    | Prisma.EductionUncheckedCreateWithoutCandidateInput[];
+    | Prisma.EductionCreateWithoutUserInput[]
+    | Prisma.EductionUncheckedCreateWithoutUserInput[];
   connectOrCreate?:
-    | Prisma.EductionCreateOrConnectWithoutCandidateInput
-    | Prisma.EductionCreateOrConnectWithoutCandidateInput[];
+    | Prisma.EductionCreateOrConnectWithoutUserInput
+    | Prisma.EductionCreateOrConnectWithoutUserInput[];
   upsert?:
-    | Prisma.EductionUpsertWithWhereUniqueWithoutCandidateInput
-    | Prisma.EductionUpsertWithWhereUniqueWithoutCandidateInput[];
-  createMany?: Prisma.EductionCreateManyCandidateInputEnvelope;
+    | Prisma.EductionUpsertWithWhereUniqueWithoutUserInput
+    | Prisma.EductionUpsertWithWhereUniqueWithoutUserInput[];
+  createMany?: Prisma.EductionCreateManyUserInputEnvelope;
   set?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
   disconnect?:
     | Prisma.EductionWhereUniqueInput
@@ -526,17 +520,17 @@ export type EductionUncheckedUpdateManyWithoutCandidateNestedInput = {
   delete?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
   connect?: Prisma.EductionWhereUniqueInput | Prisma.EductionWhereUniqueInput[];
   update?:
-    | Prisma.EductionUpdateWithWhereUniqueWithoutCandidateInput
-    | Prisma.EductionUpdateWithWhereUniqueWithoutCandidateInput[];
+    | Prisma.EductionUpdateWithWhereUniqueWithoutUserInput
+    | Prisma.EductionUpdateWithWhereUniqueWithoutUserInput[];
   updateMany?:
-    | Prisma.EductionUpdateManyWithWhereWithoutCandidateInput
-    | Prisma.EductionUpdateManyWithWhereWithoutCandidateInput[];
+    | Prisma.EductionUpdateManyWithWhereWithoutUserInput
+    | Prisma.EductionUpdateManyWithWhereWithoutUserInput[];
   deleteMany?:
     | Prisma.EductionScalarWhereInput
     | Prisma.EductionScalarWhereInput[];
 };
 
-export type EductionCreateWithoutCandidateInput = {
+export type EductionCreateWithoutUserInput = {
   id?: string;
   institution: string;
   major: string;
@@ -547,7 +541,7 @@ export type EductionCreateWithoutCandidateInput = {
   createdId?: Date | string;
 };
 
-export type EductionUncheckedCreateWithoutCandidateInput = {
+export type EductionUncheckedCreateWithoutUserInput = {
   id?: string;
   institution: string;
   major: string;
@@ -558,46 +552,46 @@ export type EductionUncheckedCreateWithoutCandidateInput = {
   createdId?: Date | string;
 };
 
-export type EductionCreateOrConnectWithoutCandidateInput = {
+export type EductionCreateOrConnectWithoutUserInput = {
   where: Prisma.EductionWhereUniqueInput;
   create: Prisma.XOR<
-    Prisma.EductionCreateWithoutCandidateInput,
-    Prisma.EductionUncheckedCreateWithoutCandidateInput
+    Prisma.EductionCreateWithoutUserInput,
+    Prisma.EductionUncheckedCreateWithoutUserInput
   >;
 };
 
-export type EductionCreateManyCandidateInputEnvelope = {
+export type EductionCreateManyUserInputEnvelope = {
   data:
-    | Prisma.EductionCreateManyCandidateInput
-    | Prisma.EductionCreateManyCandidateInput[];
+    | Prisma.EductionCreateManyUserInput
+    | Prisma.EductionCreateManyUserInput[];
   skipDuplicates?: boolean;
 };
 
-export type EductionUpsertWithWhereUniqueWithoutCandidateInput = {
+export type EductionUpsertWithWhereUniqueWithoutUserInput = {
   where: Prisma.EductionWhereUniqueInput;
   update: Prisma.XOR<
-    Prisma.EductionUpdateWithoutCandidateInput,
-    Prisma.EductionUncheckedUpdateWithoutCandidateInput
+    Prisma.EductionUpdateWithoutUserInput,
+    Prisma.EductionUncheckedUpdateWithoutUserInput
   >;
   create: Prisma.XOR<
-    Prisma.EductionCreateWithoutCandidateInput,
-    Prisma.EductionUncheckedCreateWithoutCandidateInput
+    Prisma.EductionCreateWithoutUserInput,
+    Prisma.EductionUncheckedCreateWithoutUserInput
   >;
 };
 
-export type EductionUpdateWithWhereUniqueWithoutCandidateInput = {
+export type EductionUpdateWithWhereUniqueWithoutUserInput = {
   where: Prisma.EductionWhereUniqueInput;
   data: Prisma.XOR<
-    Prisma.EductionUpdateWithoutCandidateInput,
-    Prisma.EductionUncheckedUpdateWithoutCandidateInput
+    Prisma.EductionUpdateWithoutUserInput,
+    Prisma.EductionUncheckedUpdateWithoutUserInput
   >;
 };
 
-export type EductionUpdateManyWithWhereWithoutCandidateInput = {
+export type EductionUpdateManyWithWhereWithoutUserInput = {
   where: Prisma.EductionScalarWhereInput;
   data: Prisma.XOR<
     Prisma.EductionUpdateManyMutationInput,
-    Prisma.EductionUncheckedUpdateManyWithoutCandidateInput
+    Prisma.EductionUncheckedUpdateManyWithoutUserInput
   >;
 };
 
@@ -613,10 +607,10 @@ export type EductionScalarWhereInput = {
   endData?: Prisma.DateTimeNullableFilter<"Eduction"> | Date | string | null;
   isStudying?: Prisma.BoolFilter<"Eduction"> | boolean;
   createdId?: Prisma.DateTimeFilter<"Eduction"> | Date | string;
-  candideId?: Prisma.StringFilter<"Eduction"> | string;
+  userId?: Prisma.StringFilter<"Eduction"> | string;
 };
 
-export type EductionCreateManyCandidateInput = {
+export type EductionCreateManyUserInput = {
   id?: string;
   institution: string;
   major: string;
@@ -627,7 +621,7 @@ export type EductionCreateManyCandidateInput = {
   createdId?: Date | string;
 };
 
-export type EductionUpdateWithoutCandidateInput = {
+export type EductionUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   institution?: Prisma.StringFieldUpdateOperationsInput | string;
   major?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -642,7 +636,7 @@ export type EductionUpdateWithoutCandidateInput = {
   createdId?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
-export type EductionUncheckedUpdateWithoutCandidateInput = {
+export type EductionUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   institution?: Prisma.StringFieldUpdateOperationsInput | string;
   major?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -657,7 +651,7 @@ export type EductionUncheckedUpdateWithoutCandidateInput = {
   createdId?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
-export type EductionUncheckedUpdateManyWithoutCandidateInput = {
+export type EductionUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   institution?: Prisma.StringFieldUpdateOperationsInput | string;
   major?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -685,8 +679,8 @@ export type EductionSelect<
     endData?: boolean;
     isStudying?: boolean;
     createdId?: boolean;
-    candideId?: boolean;
-    candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["eduction"]
 >;
@@ -704,8 +698,8 @@ export type EductionSelectCreateManyAndReturn<
     endData?: boolean;
     isStudying?: boolean;
     createdId?: boolean;
-    candideId?: boolean;
-    candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["eduction"]
 >;
@@ -723,8 +717,8 @@ export type EductionSelectUpdateManyAndReturn<
     endData?: boolean;
     isStudying?: boolean;
     createdId?: boolean;
-    candideId?: boolean;
-    candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["eduction"]
 >;
@@ -738,7 +732,7 @@ export type EductionSelectScalar = {
   endData?: boolean;
   isStudying?: boolean;
   createdId?: boolean;
-  candideId?: boolean;
+  userId?: boolean;
 };
 
 export type EductionOmit<
@@ -753,26 +747,26 @@ export type EductionOmit<
   | "endData"
   | "isStudying"
   | "createdId"
-  | "candideId",
+  | "userId",
   ExtArgs["result"]["eduction"]
 >;
 export type EductionInclude<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type EductionIncludeCreateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type EductionIncludeUpdateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  candidate?: boolean | Prisma.CandidateDefaultArgs<ExtArgs>;
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 
 export type $EductionPayload<
@@ -781,7 +775,7 @@ export type $EductionPayload<
 > = {
   name: "Eduction";
   objects: {
-    candidate: Prisma.$CandidatePayload<ExtArgs>;
+    user: Prisma.$UserPayload<ExtArgs>;
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
@@ -793,7 +787,7 @@ export type $EductionPayload<
       endData: Date | null;
       isStudying: boolean;
       createdId: Date;
-      candideId: string;
+      userId: string;
     },
     ExtArgs["result"]["eduction"]
   >;
@@ -1344,11 +1338,11 @@ export interface Prisma__EductionClient<
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise";
-  candidate<T extends Prisma.CandidateDefaultArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.CandidateDefaultArgs<ExtArgs>>,
-  ): Prisma.Prisma__CandidateClient<
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>,
+  ): Prisma.Prisma__UserClient<
     | runtime.Types.Result.GetResult<
-        Prisma.$CandidatePayload<ExtArgs>,
+        Prisma.$UserPayload<ExtArgs>,
         T,
         "findUniqueOrThrow",
         GlobalOmitOptions
@@ -1408,7 +1402,7 @@ export interface EductionFieldRefs {
   readonly endData: Prisma.FieldRef<"Eduction", "DateTime">;
   readonly isStudying: Prisma.FieldRef<"Eduction", "Boolean">;
   readonly createdId: Prisma.FieldRef<"Eduction", "DateTime">;
-  readonly candideId: Prisma.FieldRef<"Eduction", "String">;
+  readonly userId: Prisma.FieldRef<"Eduction", "String">;
 }
 
 // Custom InputTypes

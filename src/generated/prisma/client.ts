@@ -30,8 +30,8 @@ export * from "./enums";
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Languages
- * const languages = await prisma.language.findMany()
+ * // Fetch zero or more Follows
+ * const follows = await prisma.follow.findMany()
  * ```
  *
  * Read more in our [docs](https://pris.ly/d/client).
@@ -46,6 +46,11 @@ export type PrismaClient<
 > = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>;
 export { Prisma };
 
+/**
+ * Model Follow
+ *
+ */
+export type Follow = Prisma.FollowModel;
 /**
  * Model Language
  *
@@ -91,11 +96,6 @@ export type Company = Prisma.CompanyModel;
  *
  */
 export type Eduction = Prisma.EductionModel;
-/**
- * Model FollowCompany
- *
- */
-export type FollowCompany = Prisma.FollowCompanyModel;
 /**
  * Model Job
  *

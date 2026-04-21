@@ -242,13 +242,7 @@ export type CandidateWhereInput = {
   facebook?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   linkedin?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   twitter?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-  workExperiences?: Prisma.WorkExperienceListRelationFilter;
-  skills?: Prisma.SkillListRelationFilter;
-  eductions?: Prisma.EductionListRelationFilter;
-  resumes?: Prisma.ResumeListRelationFilter;
-  languages?: Prisma.LanguageListRelationFilter;
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
-  followCompanies?: Prisma.FollowCompanyListRelationFilter;
 };
 
 export type CandidateOrderByWithRelationInput = {
@@ -264,13 +258,7 @@ export type CandidateOrderByWithRelationInput = {
   facebook?: Prisma.SortOrderInput | Prisma.SortOrder;
   linkedin?: Prisma.SortOrderInput | Prisma.SortOrder;
   twitter?: Prisma.SortOrderInput | Prisma.SortOrder;
-  workExperiences?: Prisma.WorkExperienceOrderByRelationAggregateInput;
-  skills?: Prisma.SkillOrderByRelationAggregateInput;
-  eductions?: Prisma.EductionOrderByRelationAggregateInput;
-  resumes?: Prisma.ResumeOrderByRelationAggregateInput;
-  languages?: Prisma.LanguageOrderByRelationAggregateInput;
   user?: Prisma.UserOrderByWithRelationInput;
-  followCompanies?: Prisma.FollowCompanyOrderByRelationAggregateInput;
 };
 
 export type CandidateWhereUniqueInput = Prisma.AtLeast<
@@ -290,13 +278,7 @@ export type CandidateWhereUniqueInput = Prisma.AtLeast<
     facebook?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     linkedin?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     twitter?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-    workExperiences?: Prisma.WorkExperienceListRelationFilter;
-    skills?: Prisma.SkillListRelationFilter;
-    eductions?: Prisma.EductionListRelationFilter;
-    resumes?: Prisma.ResumeListRelationFilter;
-    languages?: Prisma.LanguageListRelationFilter;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
-    followCompanies?: Prisma.FollowCompanyListRelationFilter;
   },
   "id" | "userId"
 >;
@@ -381,13 +363,7 @@ export type CandidateCreateInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageCreateNestedManyWithoutCandidateInput;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyCreateNestedManyWithoutCandidateInput;
 };
 
 export type CandidateUncheckedCreateInput = {
@@ -403,12 +379,6 @@ export type CandidateUncheckedCreateInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionUncheckedCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedCreateNestedManyWithoutCandidateInput;
 };
 
 export type CandidateUpdateInput = {
@@ -430,13 +400,7 @@ export type CandidateUpdateInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUpdateManyWithoutCandidateNestedInput;
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUpdateManyWithoutCandidateNestedInput;
 };
 
 export type CandidateUncheckedUpdateInput = {
@@ -459,12 +423,6 @@ export type CandidateUncheckedUpdateInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUncheckedUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUncheckedUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUncheckedUpdateManyWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedUpdateManyWithoutCandidateNestedInput;
 };
 
 export type CandidateCreateManyInput = {
@@ -525,11 +483,6 @@ export type CandidateUncheckedUpdateManyInput = {
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 
-export type CandidateScalarRelationFilter = {
-  is?: Prisma.CandidateWhereInput;
-  isNot?: Prisma.CandidateWhereInput;
-};
-
 export type CandidateCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   userId?: Prisma.SortOrder;
@@ -580,116 +533,12 @@ export type CandidateNullableScalarRelationFilter = {
   isNot?: Prisma.CandidateWhereInput | null;
 };
 
-export type CandidateCreateNestedOneWithoutLanguagesInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutLanguagesInput,
-    Prisma.CandidateUncheckedCreateWithoutLanguagesInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutLanguagesInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-};
-
-export type CandidateUpdateOneRequiredWithoutLanguagesNestedInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutLanguagesInput,
-    Prisma.CandidateUncheckedCreateWithoutLanguagesInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutLanguagesInput;
-  upsert?: Prisma.CandidateUpsertWithoutLanguagesInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-  update?: Prisma.XOR<
-    Prisma.XOR<
-      Prisma.CandidateUpdateToOneWithWhereWithoutLanguagesInput,
-      Prisma.CandidateUpdateWithoutLanguagesInput
-    >,
-    Prisma.CandidateUncheckedUpdateWithoutLanguagesInput
-  >;
-};
-
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null;
 };
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null;
-};
-
-export type CandidateCreateNestedOneWithoutEductionsInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutEductionsInput,
-    Prisma.CandidateUncheckedCreateWithoutEductionsInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutEductionsInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-};
-
-export type CandidateUpdateOneRequiredWithoutEductionsNestedInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutEductionsInput,
-    Prisma.CandidateUncheckedCreateWithoutEductionsInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutEductionsInput;
-  upsert?: Prisma.CandidateUpsertWithoutEductionsInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-  update?: Prisma.XOR<
-    Prisma.XOR<
-      Prisma.CandidateUpdateToOneWithWhereWithoutEductionsInput,
-      Prisma.CandidateUpdateWithoutEductionsInput
-    >,
-    Prisma.CandidateUncheckedUpdateWithoutEductionsInput
-  >;
-};
-
-export type CandidateCreateNestedOneWithoutFollowCompaniesInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutFollowCompaniesInput,
-    Prisma.CandidateUncheckedCreateWithoutFollowCompaniesInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutFollowCompaniesInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-};
-
-export type CandidateUpdateOneRequiredWithoutFollowCompaniesNestedInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutFollowCompaniesInput,
-    Prisma.CandidateUncheckedCreateWithoutFollowCompaniesInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutFollowCompaniesInput;
-  upsert?: Prisma.CandidateUpsertWithoutFollowCompaniesInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-  update?: Prisma.XOR<
-    Prisma.XOR<
-      Prisma.CandidateUpdateToOneWithWhereWithoutFollowCompaniesInput,
-      Prisma.CandidateUpdateWithoutFollowCompaniesInput
-    >,
-    Prisma.CandidateUncheckedUpdateWithoutFollowCompaniesInput
-  >;
-};
-
-export type CandidateCreateNestedOneWithoutResumesInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutResumesInput,
-    Prisma.CandidateUncheckedCreateWithoutResumesInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutResumesInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-};
-
-export type CandidateUpdateOneRequiredWithoutResumesNestedInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutResumesInput,
-    Prisma.CandidateUncheckedCreateWithoutResumesInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutResumesInput;
-  upsert?: Prisma.CandidateUpsertWithoutResumesInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-  update?: Prisma.XOR<
-    Prisma.XOR<
-      Prisma.CandidateUpdateToOneWithWhereWithoutResumesInput,
-      Prisma.CandidateUpdateWithoutResumesInput
-    >,
-    Prisma.CandidateUncheckedUpdateWithoutResumesInput
-  >;
 };
 
 export type CandidateCreateNestedOneWithoutUserInput = {
@@ -748,546 +597,6 @@ export type CandidateUncheckedUpdateOneWithoutUserNestedInput = {
   >;
 };
 
-export type CandidateCreateNestedOneWithoutSkillsInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutSkillsInput,
-    Prisma.CandidateUncheckedCreateWithoutSkillsInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutSkillsInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-};
-
-export type CandidateUpdateOneRequiredWithoutSkillsNestedInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutSkillsInput,
-    Prisma.CandidateUncheckedCreateWithoutSkillsInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutSkillsInput;
-  upsert?: Prisma.CandidateUpsertWithoutSkillsInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-  update?: Prisma.XOR<
-    Prisma.XOR<
-      Prisma.CandidateUpdateToOneWithWhereWithoutSkillsInput,
-      Prisma.CandidateUpdateWithoutSkillsInput
-    >,
-    Prisma.CandidateUncheckedUpdateWithoutSkillsInput
-  >;
-};
-
-export type CandidateCreateNestedOneWithoutWorkExperiencesInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutWorkExperiencesInput,
-    Prisma.CandidateUncheckedCreateWithoutWorkExperiencesInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutWorkExperiencesInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-};
-
-export type CandidateUpdateOneRequiredWithoutWorkExperiencesNestedInput = {
-  create?: Prisma.XOR<
-    Prisma.CandidateCreateWithoutWorkExperiencesInput,
-    Prisma.CandidateUncheckedCreateWithoutWorkExperiencesInput
-  >;
-  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutWorkExperiencesInput;
-  upsert?: Prisma.CandidateUpsertWithoutWorkExperiencesInput;
-  connect?: Prisma.CandidateWhereUniqueInput;
-  update?: Prisma.XOR<
-    Prisma.XOR<
-      Prisma.CandidateUpdateToOneWithWhereWithoutWorkExperiencesInput,
-      Prisma.CandidateUpdateWithoutWorkExperiencesInput
-    >,
-    Prisma.CandidateUncheckedUpdateWithoutWorkExperiencesInput
-  >;
-};
-
-export type CandidateCreateWithoutLanguagesInput = {
-  id?: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
-  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateUncheckedCreateWithoutLanguagesInput = {
-  id?: string;
-  userId: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionUncheckedCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateCreateOrConnectWithoutLanguagesInput = {
-  where: Prisma.CandidateWhereUniqueInput;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutLanguagesInput,
-    Prisma.CandidateUncheckedCreateWithoutLanguagesInput
-  >;
-};
-
-export type CandidateUpsertWithoutLanguagesInput = {
-  update: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutLanguagesInput,
-    Prisma.CandidateUncheckedUpdateWithoutLanguagesInput
-  >;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutLanguagesInput,
-    Prisma.CandidateUncheckedCreateWithoutLanguagesInput
-  >;
-  where?: Prisma.CandidateWhereInput;
-};
-
-export type CandidateUpdateToOneWithWhereWithoutLanguagesInput = {
-  where?: Prisma.CandidateWhereInput;
-  data: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutLanguagesInput,
-    Prisma.CandidateUncheckedUpdateWithoutLanguagesInput
-  >;
-};
-
-export type CandidateUpdateWithoutLanguagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
-  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateUncheckedUpdateWithoutLanguagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUncheckedUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUncheckedUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateCreateWithoutEductionsInput = {
-  id?: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageCreateNestedManyWithoutCandidateInput;
-  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateUncheckedCreateWithoutEductionsInput = {
-  id?: string;
-  userId: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateCreateOrConnectWithoutEductionsInput = {
-  where: Prisma.CandidateWhereUniqueInput;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutEductionsInput,
-    Prisma.CandidateUncheckedCreateWithoutEductionsInput
-  >;
-};
-
-export type CandidateUpsertWithoutEductionsInput = {
-  update: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutEductionsInput,
-    Prisma.CandidateUncheckedUpdateWithoutEductionsInput
-  >;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutEductionsInput,
-    Prisma.CandidateUncheckedCreateWithoutEductionsInput
-  >;
-  where?: Prisma.CandidateWhereInput;
-};
-
-export type CandidateUpdateToOneWithWhereWithoutEductionsInput = {
-  where?: Prisma.CandidateWhereInput;
-  data: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutEductionsInput,
-    Prisma.CandidateUncheckedUpdateWithoutEductionsInput
-  >;
-};
-
-export type CandidateUpdateWithoutEductionsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUpdateManyWithoutCandidateNestedInput;
-  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateUncheckedUpdateWithoutEductionsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUncheckedUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUncheckedUpdateManyWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateCreateWithoutFollowCompaniesInput = {
-  id?: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageCreateNestedManyWithoutCandidateInput;
-  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
-};
-
-export type CandidateUncheckedCreateWithoutFollowCompaniesInput = {
-  id?: string;
-  userId: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionUncheckedCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateCreateOrConnectWithoutFollowCompaniesInput = {
-  where: Prisma.CandidateWhereUniqueInput;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutFollowCompaniesInput,
-    Prisma.CandidateUncheckedCreateWithoutFollowCompaniesInput
-  >;
-};
-
-export type CandidateUpsertWithoutFollowCompaniesInput = {
-  update: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutFollowCompaniesInput,
-    Prisma.CandidateUncheckedUpdateWithoutFollowCompaniesInput
-  >;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutFollowCompaniesInput,
-    Prisma.CandidateUncheckedCreateWithoutFollowCompaniesInput
-  >;
-  where?: Prisma.CandidateWhereInput;
-};
-
-export type CandidateUpdateToOneWithWhereWithoutFollowCompaniesInput = {
-  where?: Prisma.CandidateWhereInput;
-  data: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutFollowCompaniesInput,
-    Prisma.CandidateUncheckedUpdateWithoutFollowCompaniesInput
-  >;
-};
-
-export type CandidateUpdateWithoutFollowCompaniesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUpdateManyWithoutCandidateNestedInput;
-  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
-};
-
-export type CandidateUncheckedUpdateWithoutFollowCompaniesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUncheckedUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUncheckedUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUncheckedUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateCreateWithoutResumesInput = {
-  id?: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageCreateNestedManyWithoutCandidateInput;
-  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateUncheckedCreateWithoutResumesInput = {
-  id?: string;
-  userId: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionUncheckedCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateCreateOrConnectWithoutResumesInput = {
-  where: Prisma.CandidateWhereUniqueInput;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutResumesInput,
-    Prisma.CandidateUncheckedCreateWithoutResumesInput
-  >;
-};
-
-export type CandidateUpsertWithoutResumesInput = {
-  update: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutResumesInput,
-    Prisma.CandidateUncheckedUpdateWithoutResumesInput
-  >;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutResumesInput,
-    Prisma.CandidateUncheckedCreateWithoutResumesInput
-  >;
-  where?: Prisma.CandidateWhereInput;
-};
-
-export type CandidateUpdateToOneWithWhereWithoutResumesInput = {
-  where?: Prisma.CandidateWhereInput;
-  data: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutResumesInput,
-    Prisma.CandidateUncheckedUpdateWithoutResumesInput
-  >;
-};
-
-export type CandidateUpdateWithoutResumesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUpdateManyWithoutCandidateNestedInput;
-  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateUncheckedUpdateWithoutResumesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUncheckedUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUncheckedUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUncheckedUpdateManyWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedUpdateManyWithoutCandidateNestedInput;
-};
-
 export type CandidateCreateWithoutUserInput = {
   id?: string;
   phone: string;
@@ -1300,12 +609,6 @@ export type CandidateCreateWithoutUserInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageCreateNestedManyWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyCreateNestedManyWithoutCandidateInput;
 };
 
 export type CandidateUncheckedCreateWithoutUserInput = {
@@ -1320,12 +623,6 @@ export type CandidateUncheckedCreateWithoutUserInput = {
   facebook?: string | null;
   linkedin?: string | null;
   twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutCandidateInput;
-  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionUncheckedCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedCreateNestedManyWithoutCandidateInput;
 };
 
 export type CandidateCreateOrConnectWithoutUserInput = {
@@ -1375,12 +672,6 @@ export type CandidateUpdateWithoutUserInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUpdateManyWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUpdateManyWithoutCandidateNestedInput;
 };
 
 export type CandidateUncheckedUpdateWithoutUserInput = {
@@ -1402,354 +693,6 @@ export type CandidateUncheckedUpdateWithoutUserInput = {
   facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
-  skills?: Prisma.SkillUncheckedUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUncheckedUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUncheckedUpdateManyWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateCreateWithoutSkillsInput = {
-  id?: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageCreateNestedManyWithoutCandidateInput;
-  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateUncheckedCreateWithoutSkillsInput = {
-  id?: string;
-  userId: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionUncheckedCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateCreateOrConnectWithoutSkillsInput = {
-  where: Prisma.CandidateWhereUniqueInput;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutSkillsInput,
-    Prisma.CandidateUncheckedCreateWithoutSkillsInput
-  >;
-};
-
-export type CandidateUpsertWithoutSkillsInput = {
-  update: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutSkillsInput,
-    Prisma.CandidateUncheckedUpdateWithoutSkillsInput
-  >;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutSkillsInput,
-    Prisma.CandidateUncheckedCreateWithoutSkillsInput
-  >;
-  where?: Prisma.CandidateWhereInput;
-};
-
-export type CandidateUpdateToOneWithWhereWithoutSkillsInput = {
-  where?: Prisma.CandidateWhereInput;
-  data: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutSkillsInput,
-    Prisma.CandidateUncheckedUpdateWithoutSkillsInput
-  >;
-};
-
-export type CandidateUpdateWithoutSkillsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUpdateManyWithoutCandidateNestedInput;
-  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateUncheckedUpdateWithoutSkillsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUncheckedUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUncheckedUpdateManyWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateCreateWithoutWorkExperiencesInput = {
-  id?: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  skills?: Prisma.SkillCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageCreateNestedManyWithoutCandidateInput;
-  user: Prisma.UserCreateNestedOneWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateUncheckedCreateWithoutWorkExperiencesInput = {
-  id?: string;
-  userId: string;
-  phone: string;
-  location?: string | null;
-  dob?: Date | string | null;
-  gender?: string | null;
-  maritalStatus?: string | null;
-  aboutMe?: string | null;
-  avatar?: string | null;
-  facebook?: string | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutCandidateInput;
-  eductions?: Prisma.EductionUncheckedCreateNestedManyWithoutCandidateInput;
-  resumes?: Prisma.ResumeUncheckedCreateNestedManyWithoutCandidateInput;
-  languages?: Prisma.LanguageUncheckedCreateNestedManyWithoutCandidateInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedCreateNestedManyWithoutCandidateInput;
-};
-
-export type CandidateCreateOrConnectWithoutWorkExperiencesInput = {
-  where: Prisma.CandidateWhereUniqueInput;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutWorkExperiencesInput,
-    Prisma.CandidateUncheckedCreateWithoutWorkExperiencesInput
-  >;
-};
-
-export type CandidateUpsertWithoutWorkExperiencesInput = {
-  update: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutWorkExperiencesInput,
-    Prisma.CandidateUncheckedUpdateWithoutWorkExperiencesInput
-  >;
-  create: Prisma.XOR<
-    Prisma.CandidateCreateWithoutWorkExperiencesInput,
-    Prisma.CandidateUncheckedCreateWithoutWorkExperiencesInput
-  >;
-  where?: Prisma.CandidateWhereInput;
-};
-
-export type CandidateUpdateToOneWithWhereWithoutWorkExperiencesInput = {
-  where?: Prisma.CandidateWhereInput;
-  data: Prisma.XOR<
-    Prisma.CandidateUpdateWithoutWorkExperiencesInput,
-    Prisma.CandidateUncheckedUpdateWithoutWorkExperiencesInput
-  >;
-};
-
-export type CandidateUpdateWithoutWorkExperiencesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  skills?: Prisma.SkillUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUpdateManyWithoutCandidateNestedInput;
-  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUpdateManyWithoutCandidateNestedInput;
-};
-
-export type CandidateUncheckedUpdateWithoutWorkExperiencesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  dob?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
-    | string
-    | null;
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  maritalStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  aboutMe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  twitter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  skills?: Prisma.SkillUncheckedUpdateManyWithoutCandidateNestedInput;
-  eductions?: Prisma.EductionUncheckedUpdateManyWithoutCandidateNestedInput;
-  resumes?: Prisma.ResumeUncheckedUpdateManyWithoutCandidateNestedInput;
-  languages?: Prisma.LanguageUncheckedUpdateManyWithoutCandidateNestedInput;
-  followCompanies?: Prisma.FollowCompanyUncheckedUpdateManyWithoutCandidateNestedInput;
-};
-
-/**
- * Count Type CandidateCountOutputType
- */
-
-export type CandidateCountOutputType = {
-  workExperiences: number;
-  skills: number;
-  eductions: number;
-  resumes: number;
-  languages: number;
-  followCompanies: number;
-};
-
-export type CandidateCountOutputTypeSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  workExperiences?: boolean | CandidateCountOutputTypeCountWorkExperiencesArgs;
-  skills?: boolean | CandidateCountOutputTypeCountSkillsArgs;
-  eductions?: boolean | CandidateCountOutputTypeCountEductionsArgs;
-  resumes?: boolean | CandidateCountOutputTypeCountResumesArgs;
-  languages?: boolean | CandidateCountOutputTypeCountLanguagesArgs;
-  followCompanies?: boolean | CandidateCountOutputTypeCountFollowCompaniesArgs;
-};
-
-/**
- * CandidateCountOutputType without action
- */
-export type CandidateCountOutputTypeDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the CandidateCountOutputType
-   */
-  select?: Prisma.CandidateCountOutputTypeSelect<ExtArgs> | null;
-};
-
-/**
- * CandidateCountOutputType without action
- */
-export type CandidateCountOutputTypeCountWorkExperiencesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  where?: Prisma.WorkExperienceWhereInput;
-};
-
-/**
- * CandidateCountOutputType without action
- */
-export type CandidateCountOutputTypeCountSkillsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  where?: Prisma.SkillWhereInput;
-};
-
-/**
- * CandidateCountOutputType without action
- */
-export type CandidateCountOutputTypeCountEductionsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  where?: Prisma.EductionWhereInput;
-};
-
-/**
- * CandidateCountOutputType without action
- */
-export type CandidateCountOutputTypeCountResumesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  where?: Prisma.ResumeWhereInput;
-};
-
-/**
- * CandidateCountOutputType without action
- */
-export type CandidateCountOutputTypeCountLanguagesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  where?: Prisma.LanguageWhereInput;
-};
-
-/**
- * CandidateCountOutputType without action
- */
-export type CandidateCountOutputTypeCountFollowCompaniesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  where?: Prisma.FollowCompanyWhereInput;
 };
 
 export type CandidateSelect<
@@ -1769,14 +712,7 @@ export type CandidateSelect<
     facebook?: boolean;
     linkedin?: boolean;
     twitter?: boolean;
-    workExperiences?: boolean | Prisma.Candidate$workExperiencesArgs<ExtArgs>;
-    skills?: boolean | Prisma.Candidate$skillsArgs<ExtArgs>;
-    eductions?: boolean | Prisma.Candidate$eductionsArgs<ExtArgs>;
-    resumes?: boolean | Prisma.Candidate$resumesArgs<ExtArgs>;
-    languages?: boolean | Prisma.Candidate$languagesArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
-    followCompanies?: boolean | Prisma.Candidate$followCompaniesArgs<ExtArgs>;
-    _count?: boolean | Prisma.CandidateCountOutputTypeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["candidate"]
 >;
@@ -1862,14 +798,7 @@ export type CandidateInclude<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  workExperiences?: boolean | Prisma.Candidate$workExperiencesArgs<ExtArgs>;
-  skills?: boolean | Prisma.Candidate$skillsArgs<ExtArgs>;
-  eductions?: boolean | Prisma.Candidate$eductionsArgs<ExtArgs>;
-  resumes?: boolean | Prisma.Candidate$resumesArgs<ExtArgs>;
-  languages?: boolean | Prisma.Candidate$languagesArgs<ExtArgs>;
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
-  followCompanies?: boolean | Prisma.Candidate$followCompaniesArgs<ExtArgs>;
-  _count?: boolean | Prisma.CandidateCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type CandidateIncludeCreateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
@@ -1890,13 +819,7 @@ export type $CandidatePayload<
 > = {
   name: "Candidate";
   objects: {
-    workExperiences: Prisma.$WorkExperiencePayload<ExtArgs>[];
-    skills: Prisma.$SkillPayload<ExtArgs>[];
-    eductions: Prisma.$EductionPayload<ExtArgs>[];
-    resumes: Prisma.$ResumePayload<ExtArgs>[];
-    languages: Prisma.$LanguagePayload<ExtArgs>[];
     user: Prisma.$UserPayload<ExtArgs>;
-    followCompanies: Prisma.$FollowCompanyPayload<ExtArgs>[];
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
@@ -2462,61 +1385,6 @@ export interface Prisma__CandidateClient<
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise";
-  workExperiences<T extends Prisma.Candidate$workExperiencesArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.Candidate$workExperiencesArgs<ExtArgs>>,
-  ): Prisma.PrismaPromise<
-    | runtime.Types.Result.GetResult<
-        Prisma.$WorkExperiencePayload<ExtArgs>,
-        T,
-        "findMany",
-        GlobalOmitOptions
-      >
-    | Null
-  >;
-  skills<T extends Prisma.Candidate$skillsArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.Candidate$skillsArgs<ExtArgs>>,
-  ): Prisma.PrismaPromise<
-    | runtime.Types.Result.GetResult<
-        Prisma.$SkillPayload<ExtArgs>,
-        T,
-        "findMany",
-        GlobalOmitOptions
-      >
-    | Null
-  >;
-  eductions<T extends Prisma.Candidate$eductionsArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.Candidate$eductionsArgs<ExtArgs>>,
-  ): Prisma.PrismaPromise<
-    | runtime.Types.Result.GetResult<
-        Prisma.$EductionPayload<ExtArgs>,
-        T,
-        "findMany",
-        GlobalOmitOptions
-      >
-    | Null
-  >;
-  resumes<T extends Prisma.Candidate$resumesArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.Candidate$resumesArgs<ExtArgs>>,
-  ): Prisma.PrismaPromise<
-    | runtime.Types.Result.GetResult<
-        Prisma.$ResumePayload<ExtArgs>,
-        T,
-        "findMany",
-        GlobalOmitOptions
-      >
-    | Null
-  >;
-  languages<T extends Prisma.Candidate$languagesArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.Candidate$languagesArgs<ExtArgs>>,
-  ): Prisma.PrismaPromise<
-    | runtime.Types.Result.GetResult<
-        Prisma.$LanguagePayload<ExtArgs>,
-        T,
-        "findMany",
-        GlobalOmitOptions
-      >
-    | Null
-  >;
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(
     args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>,
   ): Prisma.Prisma__UserClient<
@@ -2530,17 +1398,6 @@ export interface Prisma__CandidateClient<
     Null,
     ExtArgs,
     GlobalOmitOptions
-  >;
-  followCompanies<T extends Prisma.Candidate$followCompaniesArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.Candidate$followCompaniesArgs<ExtArgs>>,
-  ): Prisma.PrismaPromise<
-    | runtime.Types.Result.GetResult<
-        Prisma.$FollowCompanyPayload<ExtArgs>,
-        T,
-        "findMany",
-        GlobalOmitOptions
-      >
-    | Null
   >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3065,184 +1922,6 @@ export type CandidateDeleteManyArgs<
    * Limit how many Candidates to delete.
    */
   limit?: number;
-};
-
-/**
- * Candidate.workExperiences
- */
-export type Candidate$workExperiencesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the WorkExperience
-   */
-  select?: Prisma.WorkExperienceSelect<ExtArgs> | null;
-  /**
-   * Omit specific fields from the WorkExperience
-   */
-  omit?: Prisma.WorkExperienceOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.WorkExperienceInclude<ExtArgs> | null;
-  where?: Prisma.WorkExperienceWhereInput;
-  orderBy?:
-    | Prisma.WorkExperienceOrderByWithRelationInput
-    | Prisma.WorkExperienceOrderByWithRelationInput[];
-  cursor?: Prisma.WorkExperienceWhereUniqueInput;
-  take?: number;
-  skip?: number;
-  distinct?:
-    | Prisma.WorkExperienceScalarFieldEnum
-    | Prisma.WorkExperienceScalarFieldEnum[];
-};
-
-/**
- * Candidate.skills
- */
-export type Candidate$skillsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the Skill
-   */
-  select?: Prisma.SkillSelect<ExtArgs> | null;
-  /**
-   * Omit specific fields from the Skill
-   */
-  omit?: Prisma.SkillOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SkillInclude<ExtArgs> | null;
-  where?: Prisma.SkillWhereInput;
-  orderBy?:
-    | Prisma.SkillOrderByWithRelationInput
-    | Prisma.SkillOrderByWithRelationInput[];
-  cursor?: Prisma.SkillWhereUniqueInput;
-  take?: number;
-  skip?: number;
-  distinct?: Prisma.SkillScalarFieldEnum | Prisma.SkillScalarFieldEnum[];
-};
-
-/**
- * Candidate.eductions
- */
-export type Candidate$eductionsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the Eduction
-   */
-  select?: Prisma.EductionSelect<ExtArgs> | null;
-  /**
-   * Omit specific fields from the Eduction
-   */
-  omit?: Prisma.EductionOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.EductionInclude<ExtArgs> | null;
-  where?: Prisma.EductionWhereInput;
-  orderBy?:
-    | Prisma.EductionOrderByWithRelationInput
-    | Prisma.EductionOrderByWithRelationInput[];
-  cursor?: Prisma.EductionWhereUniqueInput;
-  take?: number;
-  skip?: number;
-  distinct?: Prisma.EductionScalarFieldEnum | Prisma.EductionScalarFieldEnum[];
-};
-
-/**
- * Candidate.resumes
- */
-export type Candidate$resumesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the Resume
-   */
-  select?: Prisma.ResumeSelect<ExtArgs> | null;
-  /**
-   * Omit specific fields from the Resume
-   */
-  omit?: Prisma.ResumeOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ResumeInclude<ExtArgs> | null;
-  where?: Prisma.ResumeWhereInput;
-  orderBy?:
-    | Prisma.ResumeOrderByWithRelationInput
-    | Prisma.ResumeOrderByWithRelationInput[];
-  cursor?: Prisma.ResumeWhereUniqueInput;
-  take?: number;
-  skip?: number;
-  distinct?: Prisma.ResumeScalarFieldEnum | Prisma.ResumeScalarFieldEnum[];
-};
-
-/**
- * Candidate.languages
- */
-export type Candidate$languagesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the Language
-   */
-  select?: Prisma.LanguageSelect<ExtArgs> | null;
-  /**
-   * Omit specific fields from the Language
-   */
-  omit?: Prisma.LanguageOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.LanguageInclude<ExtArgs> | null;
-  where?: Prisma.LanguageWhereInput;
-  orderBy?:
-    | Prisma.LanguageOrderByWithRelationInput
-    | Prisma.LanguageOrderByWithRelationInput[];
-  cursor?: Prisma.LanguageWhereUniqueInput;
-  take?: number;
-  skip?: number;
-  distinct?: Prisma.LanguageScalarFieldEnum | Prisma.LanguageScalarFieldEnum[];
-};
-
-/**
- * Candidate.followCompanies
- */
-export type Candidate$followCompaniesArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the FollowCompany
-   */
-  select?: Prisma.FollowCompanySelect<ExtArgs> | null;
-  /**
-   * Omit specific fields from the FollowCompany
-   */
-  omit?: Prisma.FollowCompanyOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.FollowCompanyInclude<ExtArgs> | null;
-  where?: Prisma.FollowCompanyWhereInput;
-  orderBy?:
-    | Prisma.FollowCompanyOrderByWithRelationInput
-    | Prisma.FollowCompanyOrderByWithRelationInput[];
-  cursor?: Prisma.FollowCompanyWhereUniqueInput;
-  take?: number;
-  skip?: number;
-  distinct?:
-    | Prisma.FollowCompanyScalarFieldEnum
-    | Prisma.FollowCompanyScalarFieldEnum[];
 };
 
 /**

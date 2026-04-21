@@ -502,10 +502,6 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean;
 };
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string;
-};
-
 export type UserSettingsCreateNestedOneWithoutNotificationSettingsInput = {
   create?: Prisma.XOR<
     Prisma.UserSettingsCreateWithoutNotificationSettingsInput,
