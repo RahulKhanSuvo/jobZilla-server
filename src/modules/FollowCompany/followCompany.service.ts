@@ -22,6 +22,7 @@ const getAllFollwedCompany = async (userId: string, pagination: Pagination) => {
         id: true,
         following: {
           select: {
+            id: true,
             _count: {
               select: {
                 jobs: true,
