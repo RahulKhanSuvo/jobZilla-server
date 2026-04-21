@@ -230,18 +230,10 @@ const getAllApplications = async (
 };
 
 const getApplicationById = async (userId: string, applicationId: string) => {
-  const company = await prisma.company.findUnique({ where: { userId } });
-  if (!company) throw new ApiError("Company not found", 404);
-
   const application = await prisma.application.findUnique({
-    where: { id: applicationId, companyId: company.id },
+    where: { id: applicationId },
     include: {
-      job: {
-        select: {
-          title: true,
-          company: { include: { user: true } },
-        },
-      },
+      job: true,
       user: {
         select: {
           name: true,
@@ -250,12 +242,13 @@ const getApplicationById = async (userId: string, applicationId: string) => {
             select: {
               location: true,
               avatar: true,
-              skills: true,
-              eductions: true,
-              workExperiences: true,
               aboutMe: true,
             },
           },
+          languages: true,
+          skills: true,
+          eductions: true,
+          workExperiences: true,
         },
       },
       resume: {
