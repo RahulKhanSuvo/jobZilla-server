@@ -5,9 +5,6 @@ export const JobTypeEnum = z.enum([
   "PART_TIME",
   "CONTRACT",
   "INTERN",
-  "REMOTE",
-  "ON_SITE",
-  "HYBRID",
 ]);
 export const CareerLevelEnum = z.enum([
   "ENTRY_LEVEL",
@@ -17,19 +14,21 @@ export const CareerLevelEnum = z.enum([
 ]);
 export const GenderEnum = z.enum(["MALE", "FEMALE", "OTHER", "ANY"]);
 export const SalaryTypeEnum = z.enum(["MONTHLY", "YEARLY", "HOURLY"]);
-
+export const LocationTypeEnum = z.enum(["REMOTE", "ON_SITE", "HYBRID"]);
 export const JobSchema = z.object({
   title: z.string().min(1, "Job title is required"),
   description: z.string().min(1, "Job description is required"),
   category: z.string().min(1, "Job category is required"),
   gender: GenderEnum,
   salaryType: SalaryTypeEnum,
-  salaryMin: z.coerce.number().int(),
-  salaryMax: z.coerce.number().int(),
+  salaryMin: z.coerce.number().int().min(1, "Salary min is required"),
+  salaryMax: z.coerce.number().int().min(1, "Salary max is required"),
   jobType: JobTypeEnum,
-  experience: z.string().max(100),
+  locationType: LocationTypeEnum,
+  location: z.string().min(1, "Location is required"),
+  experience: z.string().max(100).min(1, "Experience is required"),
   careerLevel: CareerLevelEnum,
-  qualification: z.string(),
+  qualification: z.string().min(1, "Qualification is required"),
   deadline: z.preprocess(
     (val) => (val === "" ? undefined : val),
     z.coerce.date().refine((date) => date >= new Date(), {

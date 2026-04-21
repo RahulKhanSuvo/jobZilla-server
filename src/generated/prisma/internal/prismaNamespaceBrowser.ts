@@ -248,6 +248,7 @@ export const JobScalarFieldEnum = {
   status: "status",
   jobType: "jobType",
   locationType: "locationType",
+  location: "location",
   experience: "experience",
   careerLevel: "careerLevel",
   qualification: "qualification",

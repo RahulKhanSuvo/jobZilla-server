@@ -11,6 +11,7 @@ model Job {
     status            JobStatus?    @default(OPEN)
     jobType           JobType?
     locationType      LocationType?
+    location          String?
     experience        String?       @db.VarChar(100)
     careerLevel       CareerLevel?
     qualification     String?
