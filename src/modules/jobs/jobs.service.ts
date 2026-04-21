@@ -19,6 +19,18 @@ const createJob = async (userId: string, payload: IJob) => {
     throw new ApiError("Company profile not found for this user", 404);
   }
 
+  // Profile completeness check
+  if (!company.description || company.description.length < 10) {
+    throw new ApiError(
+      "Your company description must be at least 10 characters long to post a job",
+      400,
+    );
+  }
+
+  if (!company.industry) {
+    throw new ApiError("Your company industry is required to post a job", 400);
+  }
+
   const result = await prisma.job.create({
     data: {
       ...payload,
