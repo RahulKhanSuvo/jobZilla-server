@@ -1,27 +1,27 @@
 model UserSettings {
-  id String @id @default(cuid())
-  userId String @unique
-  theme String @default("light")
-  language String @default("en")
-  timezone String @default("UTC")
-  privacy String @default("public")
-  openToWork Boolean @default(false)
-  twoFactorAuthentication Boolean @default(false)
-  emailVerified Boolean @default(false)
-  phoneVerified Boolean @default(false)
-  user User @relation(fields: [userId], references: [id])
-  notificationSettings NotificationSettings[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                      String                 @id @default(cuid())
+  userId                  String                 @unique
+  theme                   String                 @default("light")
+  language                String                 @default("en")
+  timezone                String                 @default("UTC")
+  privacy                 String                 @default("public")
+  openToWork              Boolean                @default(false)
+  twoFactorAuthentication Boolean                @default(false)
+  emailVerified           Boolean                @default(false)
+  phoneVerified           Boolean                @default(false)
+  user                    User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notificationSettings    NotificationSettings[]
+  createdAt               DateTime               @default(now())
+  updatedAt               DateTime               @updatedAt
 }
 
 model NotificationSettings {
-  id String @id @default(cuid())
-  userSettingsId String
-  userSettings UserSettings @relation(fields: [userSettingsId], references: [id])
-  emailNotification Boolean @default(true)
-  pushNotification Boolean @default(true)
-  inAppNotification Boolean @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                String       @id @default(cuid())
+  userSettingsId    String
+  userSettings      UserSettings @relation(fields: [userSettingsId], references: [id])
+  emailNotification Boolean      @default(true)
+  pushNotification  Boolean      @default(true)
+  inAppNotification Boolean      @default(true)
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
 }

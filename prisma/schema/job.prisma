@@ -15,8 +15,8 @@ model Job {
     qualification     String?
     views             Int?          @default(0)
     deadline          DateTime?
-    userId            String
-    user              User          @relation(fields: [userId], references: [id])
+    companyId         String
+    user              User          @relation(fields: [companyId], references: [id], onDelete: Cascade)
     createdAt         DateTime      @default(now())
     updatedAt         DateTime      @updatedAt
     applications      Application[]

@@ -2,10 +2,10 @@ model Follow {
     id String @id @default(uuid())
 
     followerId String
-    follower   User   @relation("UserFollowing", fields: [followerId], references: [id])
+    follower   User   @relation("UserFollowing", fields: [followerId], references: [id], onDelete: Cascade)
 
     followingId String
-    following   User   @relation("UserFollowers", fields: [followingId], references: [id])
+    following   User   @relation("UserFollowers", fields: [followingId], references: [id], onDelete: Cascade)
 
     createdAt DateTime @default(now())
 

@@ -2,5 +2,5 @@ model Skill {
     id     String @id @default(uuid())
     skill  String
     userId String
-    user   User   @relation(fields: [userId], references: [id])
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

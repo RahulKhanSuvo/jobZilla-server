@@ -11,5 +11,5 @@ model Candidate {
   facebook      String?
   linkedin      String?
   twitter       String?
-  user          User      @relation(fields: [userId], references: [id])
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
