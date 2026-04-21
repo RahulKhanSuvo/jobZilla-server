@@ -236,6 +236,7 @@ const getApplicationById = async (userId: string, applicationId: string) => {
       job: true,
       user: {
         select: {
+          id: true,
           name: true,
           email: true,
           candidate: {
