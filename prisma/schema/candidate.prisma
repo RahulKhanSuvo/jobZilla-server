@@ -20,3 +20,8 @@ model Candidate {
   experienceYears    Int?
   user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+enum AvailabilityStatus {
+  ACTIVE
+  OPEN_TO_WORK
+  NOT_LOOKING
+}
