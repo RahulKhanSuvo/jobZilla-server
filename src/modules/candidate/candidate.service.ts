@@ -9,6 +9,41 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
     },
     data: {
       name: payload.fullName,
+      languages: {
+        deleteMany: {},
+        create: payload.language?.map((lang) => ({
+          language: lang,
+        })),
+      },
+      skills: {
+        deleteMany: {},
+        create: payload.skills?.map((skill) => ({
+          skill: skill,
+        })),
+      },
+      eductions: {
+        deleteMany: {},
+        create: payload.educationList.map((education) => ({
+          institution: education.institution,
+          major: education.major,
+          field: education.field,
+          startData: new Date(education.startData),
+          endData: education.endData ? new Date(education.endData) : null,
+          isStudying: education.isStudying,
+        })),
+      },
+      workExperiences: {
+        deleteMany: {},
+        create: payload.experienceList.map((experience) => ({
+          jobTitle: experience.jobTitle,
+          companyName: experience.companyName,
+          industry: experience.industry,
+          startData: new Date(experience.startData),
+          endData: experience.endData ? new Date(experience.endData) : null,
+          isWorking: experience.isWorking,
+          Description: experience.Description,
+        })),
+      },
     },
   });
   const result = await prisma.candidate.upsert({
@@ -19,46 +54,11 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       dob: payload.dob ? new Date(payload.dob) : null,
       gender: payload.gender,
       maritalStatus: payload.maritalStatus,
-      languages: {
-        deleteMany: {},
-        create: payload.language?.map((lang) => ({
-          language: lang,
-        })),
-      },
       aboutMe: payload.aboutMe,
       avatar: payload.avatar,
       facebook: payload.facebook,
       linkedin: payload.linkedin,
       twitter: payload.twitter,
-      skills: {
-        deleteMany: {},
-        create: payload.skills?.map((skill) => ({
-          skill: skill,
-        })),
-      },
-      eductions: {
-        deleteMany: {},
-        create: payload.educationList.map((education) => ({
-          institution: education.institution,
-          major: education.major,
-          field: education.field,
-          startData: new Date(education.startData),
-          endData: education.endData ? new Date(education.endData) : null,
-          isStudying: education.isStudying,
-        })),
-      },
-      workExperiences: {
-        deleteMany: {},
-        create: payload.experienceList.map((experience) => ({
-          jobTitle: experience.jobTitle,
-          companyName: experience.companyName,
-          industry: experience.industry,
-          startData: new Date(experience.startData),
-          endData: experience.endData ? new Date(experience.endData) : null,
-          isWorking: experience.isWorking,
-          Description: experience.Description,
-        })),
-      },
     },
 
     create: {
@@ -68,42 +68,12 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       dob: payload.dob ? new Date(payload.dob) : null,
       gender: payload.gender,
       maritalStatus: payload.maritalStatus,
-      languages: {
-        create: payload.language?.map((language) => ({
-          language: language,
-        })),
-      },
+
       aboutMe: payload.aboutMe,
       avatar: payload.avatar,
       facebook: payload.facebook,
       linkedin: payload.linkedin,
       twitter: payload.twitter,
-      skills: {
-        create: payload.skills?.map((skill) => ({
-          skill: skill,
-        })),
-      },
-      eductions: {
-        create: payload.educationList.map((education) => ({
-          institution: education.institution,
-          major: education.major,
-          field: education.field,
-          startData: new Date(education.startData),
-          endData: education.endData ? new Date(education.endData) : null,
-          isStudying: education.isStudying,
-        })),
-      },
-      workExperiences: {
-        create: payload.experienceList.map((experience) => ({
-          jobTitle: experience.jobTitle,
-          companyName: experience.companyName,
-          industry: experience.industry,
-          startData: new Date(experience.startData),
-          endData: experience.endData ? new Date(experience.endData) : null,
-          isWorking: experience.isWorking,
-          Description: experience.Description,
-        })),
-      },
     },
   });
   return { ...user, candidate: result };
