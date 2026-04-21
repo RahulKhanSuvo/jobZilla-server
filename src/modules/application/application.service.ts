@@ -115,15 +115,17 @@ const getAllApplications = async (
   skip: number,
   limit: number,
 ) => {
-  const company = await prisma.company.findUnique({
-    where: { userId },
+  const company = await prisma.user.findUnique({
+    where: { id: userId },
   });
   if (!company) throw new ApiError("Company not found", 404);
 
   const { searchTerm, status, jobFilter, sortBy } = filters;
 
   const where: Prisma.ApplicationWhereInput = {
-    companyId: company.id,
+    job: {
+      companyId: userId,
+    },
   };
 
   if (searchTerm) {
@@ -157,9 +159,7 @@ const getAllApplications = async (
       job: {
         select: {
           title: true,
-          company: {
-            include: { user: true },
-          },
+          user: true,
         },
       },
       user: {
@@ -192,12 +192,14 @@ const getAllApplications = async (
   // Stats (counts for each status for this company)
   const stats = await prisma.application.groupBy({
     by: ["status"],
-    where: { companyId: company.id },
+    where: { job: { companyId: userId } },
     _count: { _all: true },
   });
 
   const statsFormatted = {
-    ALL: await prisma.application.count({ where: { companyId: company.id } }),
+    ALL: await prisma.application.count({
+      where: { job: { companyId: userId } },
+    }),
     PENDING: stats.find((s) => s.status === "PENDING")?._count._all || 0,
     SHORTLISTED:
       stats.find((s) => s.status === "SHORTLISTED")?._count._all || 0,
