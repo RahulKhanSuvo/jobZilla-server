@@ -84,7 +84,7 @@ const createApplication = async (
 
     // Send notification to recruiter
     await notificationService.createNotification({
-      userId,
+      userId: job.companyId,
       type: NotificationType.APPLICATION,
       title: "New Job Application",
       message: `${candidateUser?.name || "A candidate"} has applied for "${job.title}"`,
