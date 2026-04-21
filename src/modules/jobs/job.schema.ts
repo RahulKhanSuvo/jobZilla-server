@@ -31,8 +31,8 @@ export const JobSchema = z.object({
   qualification: z.string().min(1, "Qualification is required"),
   deadline: z.preprocess(
     (val) => (val === "" ? undefined : val),
-    z.coerce.date().refine((date) => date >= new Date(), {
-      message: "Deadline cannot be in the past",
+    z.coerce.date().refine((date) => date > new Date(), {
+      message: "Deadline must be a future date",
     }),
   ),
 });
