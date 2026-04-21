@@ -11,17 +11,35 @@ model Candidate {
   facebook           String?
   linkedin           String?
   github             String?
-  preferredCategory  String?
-  preferredJobType   String?
+  preferredCategory  preferredCategory?
+  preferredJobType   preferredJobType?
   preferredLocation  String?
   expectedSalaryMin  Int?
   expectedSalaryMax  Int?
-  availabilityStatus AvailabilityStatus?
+  availabilityStatus Boolean @default(false)
   experienceYears    Int?
   user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-enum AvailabilityStatus {
-  ACTIVE
-  OPEN_TO_WORK
-  NOT_LOOKING
+enum preferredCategory {
+  TECHNOLOGY
+  DESIGN
+  MARKETING
+  SALES
+  FINANCE
+  HR
+  OPERATIONS
+  CUSTOMER_SUPPORT
+  EDUCATION
+  HEALTHCARE
+  LEGAL
+  OTHER
+}
+enum preferredJobType {
+  FULL_TIME
+  PART_TIME
+  FREELANCE
+  CONTRACT
+  INTERN
+  REMOTE
+  HYBRID
 }
