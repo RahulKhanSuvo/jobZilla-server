@@ -2013,7 +2013,6 @@ export const ApplicationScalarFieldEnum = {
   userId: "userId",
   jobId: "jobId",
   resumeId: "resumeId",
-  companyId: "companyId",
   status: "status",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
@@ -2120,7 +2119,7 @@ export const JobScalarFieldEnum = {
   qualification: "qualification",
   views: "views",
   deadline: "deadline",
-  userId: "userId",
+  companyId: "companyId",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
 } as const;
