@@ -1,5 +1,18 @@
 import z from "zod";
-
+export const preferredCategory = z.enum([
+  "TECHNOLOGY",
+  "DESIGN",
+  "MARKETING",
+  "SALES",
+  "FINANCE",
+  "HR",
+  "OPERATIONS",
+  "CUSTOMER_SUPPORT",
+  "EDUCATION",
+  "HEALTHCARE",
+  "LEGAL",
+  "OTHER",
+]);
 export const candidateSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
   email: z.string().email(),
@@ -8,10 +21,14 @@ export const candidateSchema = z.object({
   dob: z.string().min(1, "Date of birth is required"),
   gender: z.string().min(1, "Gender is required"),
   maritalStatus: z.string().min(1, "Marital status is required"),
-  preferredLocation: z.string().optional(),
-  preferredJobType: z.string().optional(),
-  preferredCareerLevel: z.string().optional(),
-  preferredCategory: z.string().optional(),
+  preferredJobType: z.enum(["FULL_TIME", "PART_TIME", "REMOTE", "HYBRID"]),
+  preferredCareerLevel: z.enum([
+    "ENTRY_LEVEL",
+    "MID_LEVEL",
+    "SENIOR_LEVEL",
+    "EXECUTIVE_LEVEL",
+  ]),
+  preferredCategory: preferredCategory,
   language: z.array(z.string()).optional(),
   skills: z.array(z.string()).optional(),
   aboutMe: z.string().optional(),
