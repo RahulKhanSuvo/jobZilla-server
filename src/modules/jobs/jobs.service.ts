@@ -57,10 +57,12 @@ const getAllJobs = async (
   // Location filter - search in company location
   if (location && location !== "all") {
     andConditions.push({
-      company: {
-        location: {
-          contains: location,
-          mode: "insensitive",
+      user: {
+        company: {
+          location: {
+            contains: location,
+            mode: "insensitive",
+          },
         },
       },
     });
@@ -135,16 +137,16 @@ const getAllJobs = async (
   const result = await prisma.job.findMany({
     where: whereCondition,
     include: {
-      company: {
+      user: {
         select: {
-          user: {
+          name: true,
+          email: true,
+          company: {
             select: {
-              name: true,
-              email: true,
+              location: true,
+              logo: true,
             },
           },
-          location: true,
-          logo: true,
         },
       },
       ...(userId
@@ -301,17 +303,17 @@ const getJobById = async (userId: string, jobId: string) => {
       id: jobId,
     },
     include: {
-      company: {
+      user: {
         select: {
-          user: {
+          id: true,
+          name: true,
+          email: true,
+          company: {
             select: {
-              id: true,
-              name: true,
-              email: true,
+              location: true,
+              logo: true,
             },
           },
-          location: true,
-          logo: true,
         },
       },
       ...(userId
@@ -325,7 +327,7 @@ const getJobById = async (userId: string, jobId: string) => {
         : {}),
     },
   });
-  if (!jobView && job?.company.user.id !== userId) {
+  if (!jobView && job?.user.id !== userId) {
     await prisma.jobView.create({
       data: {
         userId,
@@ -348,11 +350,11 @@ const getJobById = async (userId: string, jobId: string) => {
     throw new ApiError("Job not found", 404);
   }
   if (userId) {
-    const followedCompany = await prisma.followCompany.findUnique({
+    const followedCompany = await prisma.follow.findUnique({
       where: {
-        candideId_companyId: {
-          candideId: userId,
-          companyId: job.company.user.id,
+        followerId_followingId: {
+          followerId: userId,
+          followingId: job.user.id,
         },
       },
     });
@@ -394,16 +396,16 @@ const getSaveJob = async (userId: string, options: IJobOptions) => {
     include: {
       job: {
         include: {
-          company: {
+          user: {
             select: {
-              user: {
+              name: true,
+              email: true,
+              company: {
                 select: {
-                  name: true,
-                  email: true,
+                  logo: true,
+                  location: true,
                 },
               },
-              location: true,
-              logo: true,
             },
           },
         },
@@ -438,16 +440,16 @@ const getCompanyJobs = async (companyId: string) => {
       companyId,
     },
     include: {
-      company: {
+      user: {
         select: {
-          user: {
+          name: true,
+          email: true,
+          company: {
             select: {
-              name: true,
-              email: true,
+              logo: true,
+              location: true,
             },
           },
-          location: true,
-          logo: true,
         },
       },
     },
@@ -527,8 +529,8 @@ const deleteJob = async (userId: string, jobId: string) => {
 };
 const getRecommendedJobs = async (userId: string) => {
   // 1. Get candidate skills
-  const candidate = await prisma.candidate.findUnique({
-    where: { userId },
+  const candidate = await prisma.user.findUnique({
+    where: { id: userId },
     include: {
       skills: true,
     },
@@ -570,15 +572,16 @@ const getRecommendedJobs = async (userId: string) => {
   let jobs = await prisma.job.findMany({
     where: whereCondition,
     include: {
-      company: {
+      user: {
         select: {
-          user: {
+          name: true,
+          email: true,
+          company: {
             select: {
-              name: true,
+              logo: true,
+              location: true,
             },
           },
-          location: true,
-          logo: true,
         },
       },
     },
@@ -593,15 +596,16 @@ const getRecommendedJobs = async (userId: string) => {
     jobs = await prisma.job.findMany({
       where: { status: JobStatus.OPEN },
       include: {
-        company: {
+        user: {
           select: {
-            user: {
+            name: true,
+            email: true,
+            company: {
               select: {
-                name: true,
+                logo: true,
+                location: true,
               },
             },
-            location: true,
-            logo: true,
           },
         },
       },
