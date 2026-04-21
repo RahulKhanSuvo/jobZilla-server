@@ -156,11 +156,13 @@ const getAllApplications = async (
 
   const applications = await prisma.application.findMany({
     where,
-    include: {
+    select: {
+      id: true,
+      status: true,
+      createdAt: true,
       job: {
         select: {
           title: true,
-          user: true,
         },
       },
       user: {
@@ -208,18 +210,6 @@ const getAllApplications = async (
     REJECTED: stats.find((s) => s.status === "REJECTED")?._count._all || 0,
   };
 
-  // Unique job titles for filtering
-  const jobs = await prisma.job.findMany({
-    where: {
-      companyId: userId,
-      applications: { some: {} },
-    },
-    select: { title: true },
-    distinct: ["title"],
-  });
-
-  const uniqueJobs = jobs.map((j) => j.title).sort();
-
   return {
     applications,
     meta: {
@@ -227,7 +217,6 @@ const getAllApplications = async (
       skip,
       limit,
       stats: statsFormatted,
-      uniqueJobs,
     },
   };
 };
