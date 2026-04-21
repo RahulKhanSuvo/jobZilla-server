@@ -19,7 +19,6 @@ const createApplication = async (
   }
   const job = await prisma.job.findUnique({
     where: { id: jobId },
-    include: { company: true },
   });
   if (!job) throw new ApiError("Job not found", 404);
 
@@ -45,7 +44,7 @@ const createApplication = async (
 
     // 2. Check if this is the first resume
     const resumeCount = await prisma.resume.count({
-      where: { candidateId: candidate.id },
+      where: { userId },
     });
 
     // 3. Save metadata to DB
@@ -53,7 +52,7 @@ const createApplication = async (
       data: {
         title: file.originalname.replace(/\.pdf$/i, ""),
         fileUrl: uploadResult.secure_url,
-        candidateId: candidate.id,
+        userId,
         isPrimary: resumeCount === 0,
       },
     });
@@ -62,7 +61,6 @@ const createApplication = async (
       data: {
         userId,
         jobId,
-        companyId: job.company.id,
         resumeId: resume.id,
       },
     });
@@ -71,7 +69,6 @@ const createApplication = async (
       data: {
         userId,
         jobId,
-        companyId: job.company.id,
         resumeId: resumeId!,
       },
     });
@@ -87,7 +84,7 @@ const createApplication = async (
 
     // Send notification to recruiter
     await notificationService.createNotification({
-      userId: job.company.userId,
+      userId,
       type: NotificationType.APPLICATION,
       title: "New Job Application",
       message: `${candidateUser?.name || "A candidate"} has applied for "${job.title}"`,
@@ -96,7 +93,7 @@ const createApplication = async (
 
     // Send confirmation notification to candidate
     await notificationService.createNotification({
-      userId: userId,
+      userId,
       type: NotificationType.APPLICATION,
       title: "Application Submitted",
       message: `You have successfully applied for "${job.title}"`,
