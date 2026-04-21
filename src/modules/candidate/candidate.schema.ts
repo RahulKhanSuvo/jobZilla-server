@@ -13,6 +13,18 @@ export const preferredCategory = z.enum([
   "LEGAL",
   "OTHER",
 ]);
+export const preferredJobType = z.enum([
+  "FULL_TIME",
+  "PART_TIME",
+  "REMOTE",
+  "HYBRID",
+]);
+export const preferredCareerLevel = z.enum([
+  "ENTRY_LEVEL",
+  "MID_LEVEL",
+  "SENIOR_LEVEL",
+  "EXECUTIVE_LEVEL",
+]);
 export const candidateSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
   email: z.string().email(),
