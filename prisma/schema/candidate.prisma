@@ -16,7 +16,7 @@ model Candidate {
   preferredLocation  String?
   expectedSalaryMin  Int?
   expectedSalaryMax  Int?
-  availabilityStatus String? // ACTIVE, OPEN_TO_WORK, NOT_LOOKING
+  availabilityStatus AvailabilityStatus?
   experienceYears    Int?
   user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
