@@ -14,7 +14,7 @@ const createResume = async (userId: string, file: Express.Multer.File) => {
 
   // 2. Check if this is the first resume
   const resumeCount = await prisma.resume.count({
-    where: { candidateId: candidate.id },
+    where: { userId },
   });
 
   // 3. Save metadata to DB
@@ -22,7 +22,7 @@ const createResume = async (userId: string, file: Express.Multer.File) => {
     data: {
       title: file.originalname.replace(/\.pdf$/i, ""),
       fileUrl: uploadResult.secure_url,
-      candidateId: candidate.id,
+      userId,
       isPrimary: resumeCount === 0,
     },
   });
@@ -31,14 +31,8 @@ const createResume = async (userId: string, file: Express.Multer.File) => {
 };
 
 const getResumes = async (userId: string) => {
-  const candidate = await prisma.candidate.findUnique({
-    where: { userId },
-  });
-
-  if (!candidate) return [];
-
   return await prisma.resume.findMany({
-    where: { candidateId: candidate.id },
+    where: { userId },
     orderBy: { createdAt: "desc" },
   });
 };
@@ -51,7 +45,7 @@ const deleteResume = async (userId: string, id: string) => {
   if (!candidate) throw new ApiError("Candidate not found", 404);
 
   return await prisma.resume.delete({
-    where: { id, candidateId: candidate.id },
+    where: { id, userId },
   });
 };
 
@@ -64,13 +58,13 @@ const setPrimaryResume = async (userId: string, id: string) => {
 
   // Unset current primary
   await prisma.resume.updateMany({
-    where: { candidateId: candidate.id, isPrimary: true },
+    where: { userId, isPrimary: true },
     data: { isPrimary: false },
   });
 
   // Set new primary
   return await prisma.resume.update({
-    where: { id, candidateId: candidate.id },
+    where: { id, userId },
     data: { isPrimary: true },
   });
 };
