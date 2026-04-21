@@ -162,6 +162,7 @@ const getAllApplications = async (
       createdAt: true,
       job: {
         select: {
+          id: true,
           title: true,
         },
       },
@@ -217,6 +218,13 @@ const getAllApplications = async (
       skip,
       limit,
       stats: statsFormatted,
+      uniqueJobs: (
+        await prisma.job.findMany({
+          where: { companyId: userId },
+          select: { title: true },
+          distinct: ["title"],
+        })
+      ).map((j) => j.title),
     },
   };
 };
