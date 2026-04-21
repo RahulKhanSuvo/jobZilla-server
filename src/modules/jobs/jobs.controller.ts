@@ -28,9 +28,6 @@ const getAllJobs = catchAsync(async (req, res) => {
     postedAnytime,
     seniorityLevel,
   } = req.query;
-  const query = req.query;
-  console.log(query);
-
   const result = await jobsService.getAllJobs(
     userId,
     page as string,
