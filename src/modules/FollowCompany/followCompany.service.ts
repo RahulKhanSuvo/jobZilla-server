@@ -21,6 +21,7 @@ const getAllFollwedCompany = async (userId: string, pagination: Pagination) => {
       include: {
         following: {
           select: {
+            company: true,
             id: true,
             _count: {
               select: {
