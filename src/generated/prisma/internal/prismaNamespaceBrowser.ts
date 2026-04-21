@@ -169,7 +169,7 @@ export const CandidateScalarFieldEnum = {
   github: "github",
   preferredCategory: "preferredCategory",
   preferredJobType: "preferredJobType",
-  preferredLocation: "preferredLocation",
+  preferredCareerLevel: "preferredCareerLevel",
   expectedSalaryMin: "expectedSalaryMin",
   expectedSalaryMax: "expectedSalaryMax",
   availabilityStatus: "availabilityStatus",

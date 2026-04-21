@@ -2036,7 +2036,7 @@ export const CandidateScalarFieldEnum = {
   github: "github",
   preferredCategory: "preferredCategory",
   preferredJobType: "preferredJobType",
-  preferredLocation: "preferredLocation",
+  preferredCareerLevel: "preferredCareerLevel",
   expectedSalaryMin: "expectedSalaryMin",
   expectedSalaryMax: "expectedSalaryMax",
   availabilityStatus: "availabilityStatus",
@@ -2319,6 +2319,44 @@ export type ListEnumAppStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
   "AppStatus[]"
 >;
+
+/**
+ * Reference to a field of type 'preferredCategory'
+ */
+export type EnumpreferredCategoryFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, "preferredCategory">;
+
+/**
+ * Reference to a field of type 'preferredCategory[]'
+ */
+export type ListEnumpreferredCategoryFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, "preferredCategory[]">;
+
+/**
+ * Reference to a field of type 'preferredJobType'
+ */
+export type EnumpreferredJobTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "preferredJobType"
+>;
+
+/**
+ * Reference to a field of type 'preferredJobType[]'
+ */
+export type ListEnumpreferredJobTypeFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, "preferredJobType[]">;
+
+/**
+ * Reference to a field of type 'preferredCareerLevel'
+ */
+export type EnumpreferredCareerLevelFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, "preferredCareerLevel">;
+
+/**
+ * Reference to a field of type 'preferredCareerLevel[]'
+ */
+export type ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, "preferredCareerLevel[]">;
 
 /**
  * Reference to a field of type 'Int'

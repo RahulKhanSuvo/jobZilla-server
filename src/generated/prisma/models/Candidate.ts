@@ -51,12 +51,12 @@ export type CandidateMinAggregateOutputType = {
   facebook: string | null;
   linkedin: string | null;
   github: string | null;
-  preferredCategory: string | null;
-  preferredJobType: string | null;
-  preferredLocation: string | null;
+  preferredCategory: $Enums.preferredCategory | null;
+  preferredJobType: $Enums.preferredJobType | null;
+  preferredCareerLevel: $Enums.preferredCareerLevel | null;
   expectedSalaryMin: number | null;
   expectedSalaryMax: number | null;
-  availabilityStatus: string | null;
+  availabilityStatus: boolean | null;
   experienceYears: number | null;
 };
 
@@ -73,12 +73,12 @@ export type CandidateMaxAggregateOutputType = {
   facebook: string | null;
   linkedin: string | null;
   github: string | null;
-  preferredCategory: string | null;
-  preferredJobType: string | null;
-  preferredLocation: string | null;
+  preferredCategory: $Enums.preferredCategory | null;
+  preferredJobType: $Enums.preferredJobType | null;
+  preferredCareerLevel: $Enums.preferredCareerLevel | null;
   expectedSalaryMin: number | null;
   expectedSalaryMax: number | null;
-  availabilityStatus: string | null;
+  availabilityStatus: boolean | null;
   experienceYears: number | null;
 };
 
@@ -97,7 +97,7 @@ export type CandidateCountAggregateOutputType = {
   github: number;
   preferredCategory: number;
   preferredJobType: number;
-  preferredLocation: number;
+  preferredCareerLevel: number;
   expectedSalaryMin: number;
   expectedSalaryMax: number;
   availabilityStatus: number;
@@ -132,7 +132,7 @@ export type CandidateMinAggregateInputType = {
   github?: true;
   preferredCategory?: true;
   preferredJobType?: true;
-  preferredLocation?: true;
+  preferredCareerLevel?: true;
   expectedSalaryMin?: true;
   expectedSalaryMax?: true;
   availabilityStatus?: true;
@@ -154,7 +154,7 @@ export type CandidateMaxAggregateInputType = {
   github?: true;
   preferredCategory?: true;
   preferredJobType?: true;
-  preferredLocation?: true;
+  preferredCareerLevel?: true;
   expectedSalaryMin?: true;
   expectedSalaryMax?: true;
   availabilityStatus?: true;
@@ -176,7 +176,7 @@ export type CandidateCountAggregateInputType = {
   github?: true;
   preferredCategory?: true;
   preferredJobType?: true;
-  preferredLocation?: true;
+  preferredCareerLevel?: true;
   expectedSalaryMin?: true;
   expectedSalaryMax?: true;
   availabilityStatus?: true;
@@ -290,12 +290,12 @@ export type CandidateGroupByOutputType = {
   facebook: string | null;
   linkedin: string | null;
   github: string | null;
-  preferredCategory: string | null;
-  preferredJobType: string | null;
-  preferredLocation: string | null;
+  preferredCategory: $Enums.preferredCategory | null;
+  preferredJobType: $Enums.preferredJobType | null;
+  preferredCareerLevel: $Enums.preferredCareerLevel | null;
   expectedSalaryMin: number | null;
   expectedSalaryMax: number | null;
-  availabilityStatus: string | null;
+  availabilityStatus: boolean;
   experienceYears: number | null;
   _count: CandidateCountAggregateOutputType | null;
   _avg: CandidateAvgAggregateOutputType | null;
@@ -333,12 +333,21 @@ export type CandidateWhereInput = {
   facebook?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   linkedin?: Prisma.StringNullableFilter<"Candidate"> | string | null;
   github?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-  preferredCategory?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-  preferredJobType?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-  preferredLocation?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  preferredCategory?:
+    | Prisma.EnumpreferredCategoryNullableFilter<"Candidate">
+    | $Enums.preferredCategory
+    | null;
+  preferredJobType?:
+    | Prisma.EnumpreferredJobTypeNullableFilter<"Candidate">
+    | $Enums.preferredJobType
+    | null;
+  preferredCareerLevel?:
+    | Prisma.EnumpreferredCareerLevelNullableFilter<"Candidate">
+    | $Enums.preferredCareerLevel
+    | null;
   expectedSalaryMin?: Prisma.IntNullableFilter<"Candidate"> | number | null;
   expectedSalaryMax?: Prisma.IntNullableFilter<"Candidate"> | number | null;
-  availabilityStatus?: Prisma.StringNullableFilter<"Candidate"> | string | null;
+  availabilityStatus?: Prisma.BoolFilter<"Candidate"> | boolean;
   experienceYears?: Prisma.IntNullableFilter<"Candidate"> | number | null;
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
@@ -358,10 +367,10 @@ export type CandidateOrderByWithRelationInput = {
   github?: Prisma.SortOrderInput | Prisma.SortOrder;
   preferredCategory?: Prisma.SortOrderInput | Prisma.SortOrder;
   preferredJobType?: Prisma.SortOrderInput | Prisma.SortOrder;
-  preferredLocation?: Prisma.SortOrderInput | Prisma.SortOrder;
+  preferredCareerLevel?: Prisma.SortOrderInput | Prisma.SortOrder;
   expectedSalaryMin?: Prisma.SortOrderInput | Prisma.SortOrder;
   expectedSalaryMax?: Prisma.SortOrderInput | Prisma.SortOrder;
-  availabilityStatus?: Prisma.SortOrderInput | Prisma.SortOrder;
+  availabilityStatus?: Prisma.SortOrder;
   experienceYears?: Prisma.SortOrderInput | Prisma.SortOrder;
   user?: Prisma.UserOrderByWithRelationInput;
 };
@@ -384,20 +393,20 @@ export type CandidateWhereUniqueInput = Prisma.AtLeast<
     linkedin?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     github?: Prisma.StringNullableFilter<"Candidate"> | string | null;
     preferredCategory?:
-      | Prisma.StringNullableFilter<"Candidate">
-      | string
+      | Prisma.EnumpreferredCategoryNullableFilter<"Candidate">
+      | $Enums.preferredCategory
       | null;
-    preferredJobType?: Prisma.StringNullableFilter<"Candidate"> | string | null;
-    preferredLocation?:
-      | Prisma.StringNullableFilter<"Candidate">
-      | string
+    preferredJobType?:
+      | Prisma.EnumpreferredJobTypeNullableFilter<"Candidate">
+      | $Enums.preferredJobType
+      | null;
+    preferredCareerLevel?:
+      | Prisma.EnumpreferredCareerLevelNullableFilter<"Candidate">
+      | $Enums.preferredCareerLevel
       | null;
     expectedSalaryMin?: Prisma.IntNullableFilter<"Candidate"> | number | null;
     expectedSalaryMax?: Prisma.IntNullableFilter<"Candidate"> | number | null;
-    availabilityStatus?:
-      | Prisma.StringNullableFilter<"Candidate">
-      | string
-      | null;
+    availabilityStatus?: Prisma.BoolFilter<"Candidate"> | boolean;
     experienceYears?: Prisma.IntNullableFilter<"Candidate"> | number | null;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
@@ -419,10 +428,10 @@ export type CandidateOrderByWithAggregationInput = {
   github?: Prisma.SortOrderInput | Prisma.SortOrder;
   preferredCategory?: Prisma.SortOrderInput | Prisma.SortOrder;
   preferredJobType?: Prisma.SortOrderInput | Prisma.SortOrder;
-  preferredLocation?: Prisma.SortOrderInput | Prisma.SortOrder;
+  preferredCareerLevel?: Prisma.SortOrderInput | Prisma.SortOrder;
   expectedSalaryMin?: Prisma.SortOrderInput | Prisma.SortOrder;
   expectedSalaryMax?: Prisma.SortOrderInput | Prisma.SortOrder;
-  availabilityStatus?: Prisma.SortOrderInput | Prisma.SortOrder;
+  availabilityStatus?: Prisma.SortOrder;
   experienceYears?: Prisma.SortOrderInput | Prisma.SortOrder;
   _count?: Prisma.CandidateCountOrderByAggregateInput;
   _avg?: Prisma.CandidateAvgOrderByAggregateInput;
@@ -480,16 +489,16 @@ export type CandidateScalarWhereWithAggregatesInput = {
     | string
     | null;
   preferredCategory?:
-    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
-    | string
+    | Prisma.EnumpreferredCategoryNullableWithAggregatesFilter<"Candidate">
+    | $Enums.preferredCategory
     | null;
   preferredJobType?:
-    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
-    | string
+    | Prisma.EnumpreferredJobTypeNullableWithAggregatesFilter<"Candidate">
+    | $Enums.preferredJobType
     | null;
-  preferredLocation?:
-    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
-    | string
+  preferredCareerLevel?:
+    | Prisma.EnumpreferredCareerLevelNullableWithAggregatesFilter<"Candidate">
+    | $Enums.preferredCareerLevel
     | null;
   expectedSalaryMin?:
     | Prisma.IntNullableWithAggregatesFilter<"Candidate">
@@ -499,10 +508,7 @@ export type CandidateScalarWhereWithAggregatesInput = {
     | Prisma.IntNullableWithAggregatesFilter<"Candidate">
     | number
     | null;
-  availabilityStatus?:
-    | Prisma.StringNullableWithAggregatesFilter<"Candidate">
-    | string
-    | null;
+  availabilityStatus?: Prisma.BoolWithAggregatesFilter<"Candidate"> | boolean;
   experienceYears?:
     | Prisma.IntNullableWithAggregatesFilter<"Candidate">
     | number
@@ -521,12 +527,12 @@ export type CandidateCreateInput = {
   facebook?: string | null;
   linkedin?: string | null;
   github?: string | null;
-  preferredCategory?: string | null;
-  preferredJobType?: string | null;
-  preferredLocation?: string | null;
+  preferredCategory?: $Enums.preferredCategory | null;
+  preferredJobType?: $Enums.preferredJobType | null;
+  preferredCareerLevel?: $Enums.preferredCareerLevel | null;
   expectedSalaryMin?: number | null;
   expectedSalaryMax?: number | null;
-  availabilityStatus?: string | null;
+  availabilityStatus?: boolean;
   experienceYears?: number | null;
   user: Prisma.UserCreateNestedOneWithoutCandidateInput;
 };
@@ -544,12 +550,12 @@ export type CandidateUncheckedCreateInput = {
   facebook?: string | null;
   linkedin?: string | null;
   github?: string | null;
-  preferredCategory?: string | null;
-  preferredJobType?: string | null;
-  preferredLocation?: string | null;
+  preferredCategory?: $Enums.preferredCategory | null;
+  preferredJobType?: $Enums.preferredJobType | null;
+  preferredCareerLevel?: $Enums.preferredCareerLevel | null;
   expectedSalaryMin?: number | null;
   expectedSalaryMax?: number | null;
-  availabilityStatus?: string | null;
+  availabilityStatus?: boolean;
   experienceYears?: number | null;
 };
 
@@ -573,16 +579,16 @@ export type CandidateUpdateInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   github?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   preferredCategory?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredCategoryFieldUpdateOperationsInput
+    | $Enums.preferredCategory
     | null;
   preferredJobType?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredJobTypeFieldUpdateOperationsInput
+    | $Enums.preferredJobType
     | null;
-  preferredLocation?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+  preferredCareerLevel?:
+    | Prisma.NullableEnumpreferredCareerLevelFieldUpdateOperationsInput
+    | $Enums.preferredCareerLevel
     | null;
   expectedSalaryMin?:
     | Prisma.NullableIntFieldUpdateOperationsInput
@@ -592,10 +598,7 @@ export type CandidateUpdateInput = {
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
     | null;
-  availabilityStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  availabilityStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   experienceYears?:
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
@@ -624,16 +627,16 @@ export type CandidateUncheckedUpdateInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   github?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   preferredCategory?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredCategoryFieldUpdateOperationsInput
+    | $Enums.preferredCategory
     | null;
   preferredJobType?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredJobTypeFieldUpdateOperationsInput
+    | $Enums.preferredJobType
     | null;
-  preferredLocation?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+  preferredCareerLevel?:
+    | Prisma.NullableEnumpreferredCareerLevelFieldUpdateOperationsInput
+    | $Enums.preferredCareerLevel
     | null;
   expectedSalaryMin?:
     | Prisma.NullableIntFieldUpdateOperationsInput
@@ -643,10 +646,7 @@ export type CandidateUncheckedUpdateInput = {
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
     | null;
-  availabilityStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  availabilityStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   experienceYears?:
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
@@ -666,12 +666,12 @@ export type CandidateCreateManyInput = {
   facebook?: string | null;
   linkedin?: string | null;
   github?: string | null;
-  preferredCategory?: string | null;
-  preferredJobType?: string | null;
-  preferredLocation?: string | null;
+  preferredCategory?: $Enums.preferredCategory | null;
+  preferredJobType?: $Enums.preferredJobType | null;
+  preferredCareerLevel?: $Enums.preferredCareerLevel | null;
   expectedSalaryMin?: number | null;
   expectedSalaryMax?: number | null;
-  availabilityStatus?: string | null;
+  availabilityStatus?: boolean;
   experienceYears?: number | null;
 };
 
@@ -695,16 +695,16 @@ export type CandidateUpdateManyMutationInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   github?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   preferredCategory?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredCategoryFieldUpdateOperationsInput
+    | $Enums.preferredCategory
     | null;
   preferredJobType?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredJobTypeFieldUpdateOperationsInput
+    | $Enums.preferredJobType
     | null;
-  preferredLocation?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+  preferredCareerLevel?:
+    | Prisma.NullableEnumpreferredCareerLevelFieldUpdateOperationsInput
+    | $Enums.preferredCareerLevel
     | null;
   expectedSalaryMin?:
     | Prisma.NullableIntFieldUpdateOperationsInput
@@ -714,10 +714,7 @@ export type CandidateUpdateManyMutationInput = {
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
     | null;
-  availabilityStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  availabilityStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   experienceYears?:
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
@@ -745,16 +742,16 @@ export type CandidateUncheckedUpdateManyInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   github?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   preferredCategory?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredCategoryFieldUpdateOperationsInput
+    | $Enums.preferredCategory
     | null;
   preferredJobType?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredJobTypeFieldUpdateOperationsInput
+    | $Enums.preferredJobType
     | null;
-  preferredLocation?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+  preferredCareerLevel?:
+    | Prisma.NullableEnumpreferredCareerLevelFieldUpdateOperationsInput
+    | $Enums.preferredCareerLevel
     | null;
   expectedSalaryMin?:
     | Prisma.NullableIntFieldUpdateOperationsInput
@@ -764,10 +761,7 @@ export type CandidateUncheckedUpdateManyInput = {
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
     | null;
-  availabilityStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  availabilityStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   experienceYears?:
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
@@ -789,7 +783,7 @@ export type CandidateCountOrderByAggregateInput = {
   github?: Prisma.SortOrder;
   preferredCategory?: Prisma.SortOrder;
   preferredJobType?: Prisma.SortOrder;
-  preferredLocation?: Prisma.SortOrder;
+  preferredCareerLevel?: Prisma.SortOrder;
   expectedSalaryMin?: Prisma.SortOrder;
   expectedSalaryMax?: Prisma.SortOrder;
   availabilityStatus?: Prisma.SortOrder;
@@ -817,7 +811,7 @@ export type CandidateMaxOrderByAggregateInput = {
   github?: Prisma.SortOrder;
   preferredCategory?: Prisma.SortOrder;
   preferredJobType?: Prisma.SortOrder;
-  preferredLocation?: Prisma.SortOrder;
+  preferredCareerLevel?: Prisma.SortOrder;
   expectedSalaryMin?: Prisma.SortOrder;
   expectedSalaryMax?: Prisma.SortOrder;
   availabilityStatus?: Prisma.SortOrder;
@@ -839,7 +833,7 @@ export type CandidateMinOrderByAggregateInput = {
   github?: Prisma.SortOrder;
   preferredCategory?: Prisma.SortOrder;
   preferredJobType?: Prisma.SortOrder;
-  preferredLocation?: Prisma.SortOrder;
+  preferredCareerLevel?: Prisma.SortOrder;
   expectedSalaryMin?: Prisma.SortOrder;
   expectedSalaryMax?: Prisma.SortOrder;
   availabilityStatus?: Prisma.SortOrder;
@@ -863,6 +857,18 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null;
+};
+
+export type NullableEnumpreferredCategoryFieldUpdateOperationsInput = {
+  set?: $Enums.preferredCategory | null;
+};
+
+export type NullableEnumpreferredJobTypeFieldUpdateOperationsInput = {
+  set?: $Enums.preferredJobType | null;
+};
+
+export type NullableEnumpreferredCareerLevelFieldUpdateOperationsInput = {
+  set?: $Enums.preferredCareerLevel | null;
 };
 
 export type NullableIntFieldUpdateOperationsInput = {
@@ -941,12 +947,12 @@ export type CandidateCreateWithoutUserInput = {
   facebook?: string | null;
   linkedin?: string | null;
   github?: string | null;
-  preferredCategory?: string | null;
-  preferredJobType?: string | null;
-  preferredLocation?: string | null;
+  preferredCategory?: $Enums.preferredCategory | null;
+  preferredJobType?: $Enums.preferredJobType | null;
+  preferredCareerLevel?: $Enums.preferredCareerLevel | null;
   expectedSalaryMin?: number | null;
   expectedSalaryMax?: number | null;
-  availabilityStatus?: string | null;
+  availabilityStatus?: boolean;
   experienceYears?: number | null;
 };
 
@@ -962,12 +968,12 @@ export type CandidateUncheckedCreateWithoutUserInput = {
   facebook?: string | null;
   linkedin?: string | null;
   github?: string | null;
-  preferredCategory?: string | null;
-  preferredJobType?: string | null;
-  preferredLocation?: string | null;
+  preferredCategory?: $Enums.preferredCategory | null;
+  preferredJobType?: $Enums.preferredJobType | null;
+  preferredCareerLevel?: $Enums.preferredCareerLevel | null;
   expectedSalaryMin?: number | null;
   expectedSalaryMax?: number | null;
-  availabilityStatus?: string | null;
+  availabilityStatus?: boolean;
   experienceYears?: number | null;
 };
 
@@ -1019,16 +1025,16 @@ export type CandidateUpdateWithoutUserInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   github?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   preferredCategory?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredCategoryFieldUpdateOperationsInput
+    | $Enums.preferredCategory
     | null;
   preferredJobType?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredJobTypeFieldUpdateOperationsInput
+    | $Enums.preferredJobType
     | null;
-  preferredLocation?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+  preferredCareerLevel?:
+    | Prisma.NullableEnumpreferredCareerLevelFieldUpdateOperationsInput
+    | $Enums.preferredCareerLevel
     | null;
   expectedSalaryMin?:
     | Prisma.NullableIntFieldUpdateOperationsInput
@@ -1038,10 +1044,7 @@ export type CandidateUpdateWithoutUserInput = {
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
     | null;
-  availabilityStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  availabilityStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   experienceYears?:
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
@@ -1068,16 +1071,16 @@ export type CandidateUncheckedUpdateWithoutUserInput = {
   linkedin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   github?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   preferredCategory?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredCategoryFieldUpdateOperationsInput
+    | $Enums.preferredCategory
     | null;
   preferredJobType?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+    | Prisma.NullableEnumpreferredJobTypeFieldUpdateOperationsInput
+    | $Enums.preferredJobType
     | null;
-  preferredLocation?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
+  preferredCareerLevel?:
+    | Prisma.NullableEnumpreferredCareerLevelFieldUpdateOperationsInput
+    | $Enums.preferredCareerLevel
     | null;
   expectedSalaryMin?:
     | Prisma.NullableIntFieldUpdateOperationsInput
@@ -1087,10 +1090,7 @@ export type CandidateUncheckedUpdateWithoutUserInput = {
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
     | null;
-  availabilityStatus?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  availabilityStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   experienceYears?:
     | Prisma.NullableIntFieldUpdateOperationsInput
     | number
@@ -1116,7 +1116,7 @@ export type CandidateSelect<
     github?: boolean;
     preferredCategory?: boolean;
     preferredJobType?: boolean;
-    preferredLocation?: boolean;
+    preferredCareerLevel?: boolean;
     expectedSalaryMin?: boolean;
     expectedSalaryMax?: boolean;
     availabilityStatus?: boolean;
@@ -1145,7 +1145,7 @@ export type CandidateSelectCreateManyAndReturn<
     github?: boolean;
     preferredCategory?: boolean;
     preferredJobType?: boolean;
-    preferredLocation?: boolean;
+    preferredCareerLevel?: boolean;
     expectedSalaryMin?: boolean;
     expectedSalaryMax?: boolean;
     availabilityStatus?: boolean;
@@ -1174,7 +1174,7 @@ export type CandidateSelectUpdateManyAndReturn<
     github?: boolean;
     preferredCategory?: boolean;
     preferredJobType?: boolean;
-    preferredLocation?: boolean;
+    preferredCareerLevel?: boolean;
     expectedSalaryMin?: boolean;
     expectedSalaryMax?: boolean;
     availabilityStatus?: boolean;
@@ -1199,7 +1199,7 @@ export type CandidateSelectScalar = {
   github?: boolean;
   preferredCategory?: boolean;
   preferredJobType?: boolean;
-  preferredLocation?: boolean;
+  preferredCareerLevel?: boolean;
   expectedSalaryMin?: boolean;
   expectedSalaryMax?: boolean;
   availabilityStatus?: boolean;
@@ -1224,7 +1224,7 @@ export type CandidateOmit<
   | "github"
   | "preferredCategory"
   | "preferredJobType"
-  | "preferredLocation"
+  | "preferredCareerLevel"
   | "expectedSalaryMin"
   | "expectedSalaryMax"
   | "availabilityStatus"
@@ -1272,12 +1272,12 @@ export type $CandidatePayload<
       facebook: string | null;
       linkedin: string | null;
       github: string | null;
-      preferredCategory: string | null;
-      preferredJobType: string | null;
-      preferredLocation: string | null;
+      preferredCategory: $Enums.preferredCategory | null;
+      preferredJobType: $Enums.preferredJobType | null;
+      preferredCareerLevel: $Enums.preferredCareerLevel | null;
       expectedSalaryMin: number | null;
       expectedSalaryMax: number | null;
-      availabilityStatus: string | null;
+      availabilityStatus: boolean;
       experienceYears: number | null;
     },
     ExtArgs["result"]["candidate"]
@@ -1897,12 +1897,15 @@ export interface CandidateFieldRefs {
   readonly facebook: Prisma.FieldRef<"Candidate", "String">;
   readonly linkedin: Prisma.FieldRef<"Candidate", "String">;
   readonly github: Prisma.FieldRef<"Candidate", "String">;
-  readonly preferredCategory: Prisma.FieldRef<"Candidate", "String">;
-  readonly preferredJobType: Prisma.FieldRef<"Candidate", "String">;
-  readonly preferredLocation: Prisma.FieldRef<"Candidate", "String">;
+  readonly preferredCategory: Prisma.FieldRef<"Candidate", "preferredCategory">;
+  readonly preferredJobType: Prisma.FieldRef<"Candidate", "preferredJobType">;
+  readonly preferredCareerLevel: Prisma.FieldRef<
+    "Candidate",
+    "preferredCareerLevel"
+  >;
   readonly expectedSalaryMin: Prisma.FieldRef<"Candidate", "Int">;
   readonly expectedSalaryMax: Prisma.FieldRef<"Candidate", "Int">;
-  readonly availabilityStatus: Prisma.FieldRef<"Candidate", "String">;
+  readonly availabilityStatus: Prisma.FieldRef<"Candidate", "Boolean">;
   readonly experienceYears: Prisma.FieldRef<"Candidate", "Int">;
 }
 

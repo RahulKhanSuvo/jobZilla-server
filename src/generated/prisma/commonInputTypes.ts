@@ -144,6 +144,63 @@ export type DateTimeNullableFilter<$PrismaModel = never> = {
     | null;
 };
 
+export type EnumpreferredCategoryNullableFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.preferredCategory
+    | Prisma.EnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredCategory[]
+    | Prisma.ListEnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredCategory[]
+    | Prisma.ListEnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredCategoryNullableFilter<$PrismaModel>
+    | $Enums.preferredCategory
+    | null;
+};
+
+export type EnumpreferredJobTypeNullableFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.preferredJobType
+    | Prisma.EnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredJobType[]
+    | Prisma.ListEnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredJobType[]
+    | Prisma.ListEnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredJobTypeNullableFilter<$PrismaModel>
+    | $Enums.preferredJobType
+    | null;
+};
+
+export type EnumpreferredCareerLevelNullableFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.preferredCareerLevel
+    | Prisma.EnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredCareerLevel[]
+    | Prisma.ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredCareerLevel[]
+    | Prisma.ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredCareerLevelNullableFilter<$PrismaModel>
+    | $Enums.preferredCareerLevel
+    | null;
+};
+
 export type IntNullableFilter<$PrismaModel = never> = {
   equals?: number | Prisma.IntFieldRefInput<$PrismaModel> | null;
   in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null;
@@ -205,6 +262,78 @@ export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
   _min?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>;
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>;
+};
+
+export type EnumpreferredCategoryNullableWithAggregatesFilter<
+  $PrismaModel = never,
+> = {
+  equals?:
+    | $Enums.preferredCategory
+    | Prisma.EnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredCategory[]
+    | Prisma.ListEnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredCategory[]
+    | Prisma.ListEnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredCategoryNullableWithAggregatesFilter<$PrismaModel>
+    | $Enums.preferredCategory
+    | null;
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumpreferredCategoryNullableFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumpreferredCategoryNullableFilter<$PrismaModel>;
+};
+
+export type EnumpreferredJobTypeNullableWithAggregatesFilter<
+  $PrismaModel = never,
+> = {
+  equals?:
+    | $Enums.preferredJobType
+    | Prisma.EnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredJobType[]
+    | Prisma.ListEnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredJobType[]
+    | Prisma.ListEnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredJobTypeNullableWithAggregatesFilter<$PrismaModel>
+    | $Enums.preferredJobType
+    | null;
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumpreferredJobTypeNullableFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumpreferredJobTypeNullableFilter<$PrismaModel>;
+};
+
+export type EnumpreferredCareerLevelNullableWithAggregatesFilter<
+  $PrismaModel = never,
+> = {
+  equals?:
+    | $Enums.preferredCareerLevel
+    | Prisma.EnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredCareerLevel[]
+    | Prisma.ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredCareerLevel[]
+    | Prisma.ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredCareerLevelNullableWithAggregatesFilter<$PrismaModel>
+    | $Enums.preferredCareerLevel
+    | null;
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumpreferredCareerLevelNullableFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumpreferredCareerLevelNullableFilter<$PrismaModel>;
 };
 
 export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -588,6 +717,64 @@ export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     | null;
 };
 
+export type NestedEnumpreferredCategoryNullableFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.preferredCategory
+    | Prisma.EnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredCategory[]
+    | Prisma.ListEnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredCategory[]
+    | Prisma.ListEnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredCategoryNullableFilter<$PrismaModel>
+    | $Enums.preferredCategory
+    | null;
+};
+
+export type NestedEnumpreferredJobTypeNullableFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.preferredJobType
+    | Prisma.EnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredJobType[]
+    | Prisma.ListEnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredJobType[]
+    | Prisma.ListEnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredJobTypeNullableFilter<$PrismaModel>
+    | $Enums.preferredJobType
+    | null;
+};
+
+export type NestedEnumpreferredCareerLevelNullableFilter<$PrismaModel = never> =
+  {
+    equals?:
+      | $Enums.preferredCareerLevel
+      | Prisma.EnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+      | null;
+    in?:
+      | $Enums.preferredCareerLevel[]
+      | Prisma.ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+      | null;
+    notIn?:
+      | $Enums.preferredCareerLevel[]
+      | Prisma.ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+      | null;
+    not?:
+      | Prisma.NestedEnumpreferredCareerLevelNullableFilter<$PrismaModel>
+      | $Enums.preferredCareerLevel
+      | null;
+  };
+
 export type NestedIntNullableFilter<$PrismaModel = never> = {
   equals?: number | Prisma.IntFieldRefInput<$PrismaModel> | null;
   in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null;
@@ -643,6 +830,78 @@ export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
   _min?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>;
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>;
+};
+
+export type NestedEnumpreferredCategoryNullableWithAggregatesFilter<
+  $PrismaModel = never,
+> = {
+  equals?:
+    | $Enums.preferredCategory
+    | Prisma.EnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredCategory[]
+    | Prisma.ListEnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredCategory[]
+    | Prisma.ListEnumpreferredCategoryFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredCategoryNullableWithAggregatesFilter<$PrismaModel>
+    | $Enums.preferredCategory
+    | null;
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumpreferredCategoryNullableFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumpreferredCategoryNullableFilter<$PrismaModel>;
+};
+
+export type NestedEnumpreferredJobTypeNullableWithAggregatesFilter<
+  $PrismaModel = never,
+> = {
+  equals?:
+    | $Enums.preferredJobType
+    | Prisma.EnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredJobType[]
+    | Prisma.ListEnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredJobType[]
+    | Prisma.ListEnumpreferredJobTypeFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredJobTypeNullableWithAggregatesFilter<$PrismaModel>
+    | $Enums.preferredJobType
+    | null;
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumpreferredJobTypeNullableFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumpreferredJobTypeNullableFilter<$PrismaModel>;
+};
+
+export type NestedEnumpreferredCareerLevelNullableWithAggregatesFilter<
+  $PrismaModel = never,
+> = {
+  equals?:
+    | $Enums.preferredCareerLevel
+    | Prisma.EnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.preferredCareerLevel[]
+    | Prisma.ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.preferredCareerLevel[]
+    | Prisma.ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumpreferredCareerLevelNullableWithAggregatesFilter<$PrismaModel>
+    | $Enums.preferredCareerLevel
+    | null;
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumpreferredCareerLevelNullableFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumpreferredCareerLevelNullableFilter<$PrismaModel>;
 };
 
 export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {

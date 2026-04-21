@@ -17,11 +17,50 @@ export const AppStatus = {
 
 export type AppStatus = (typeof AppStatus)[keyof typeof AppStatus];
 
+export const preferredCategory = {
+  TECHNOLOGY: "TECHNOLOGY",
+  DESIGN: "DESIGN",
+  MARKETING: "MARKETING",
+  SALES: "SALES",
+  FINANCE: "FINANCE",
+  HR: "HR",
+  OPERATIONS: "OPERATIONS",
+  CUSTOMER_SUPPORT: "CUSTOMER_SUPPORT",
+  EDUCATION: "EDUCATION",
+  HEALTHCARE: "HEALTHCARE",
+  LEGAL: "LEGAL",
+  OTHER: "OTHER",
+} as const;
+
+export type preferredCategory =
+  (typeof preferredCategory)[keyof typeof preferredCategory];
+
+export const preferredJobType = {
+  FULL_TIME: "FULL_TIME",
+  PART_TIME: "PART_TIME",
+  REMOTE: "REMOTE",
+  HYBRID: "HYBRID",
+} as const;
+
+export type preferredJobType =
+  (typeof preferredJobType)[keyof typeof preferredJobType];
+
+export const preferredCareerLevel = {
+  ENTRY_LEVEL: "ENTRY_LEVEL",
+  MID_LEVEL: "MID_LEVEL",
+  SENIOR_LEVEL: "SENIOR_LEVEL",
+  EXECUTIVE_LEVEL: "EXECUTIVE_LEVEL",
+} as const;
+
+export type preferredCareerLevel =
+  (typeof preferredCareerLevel)[keyof typeof preferredCareerLevel];
+
 export const JobType = {
   FULL_TIME: "FULL_TIME",
   PART_TIME: "PART_TIME",
   CONTRACT: "CONTRACT",
   INTERN: "INTERN",
+  FREELANCE: "FREELANCE",
 } as const;
 
 export type JobType = (typeof JobType)[keyof typeof JobType];
