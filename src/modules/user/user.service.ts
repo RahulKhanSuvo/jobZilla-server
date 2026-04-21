@@ -70,14 +70,11 @@ const currentUserById = async (id: string, userRole: string) => {
     },
     include: {
       ...(userRole === "CANDIDATE" && {
-        candidate: {
-          include: {
-            skills: true,
-            eductions: true,
-            workExperiences: true,
-            languages: true,
-          },
-        },
+        candidate: true,
+        skills: true,
+        eductions: true,
+        workExperiences: true,
+        languages: true,
       }),
       ...(userRole === "EMPLOYER" && {
         company: true,
