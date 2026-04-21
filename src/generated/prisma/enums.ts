@@ -22,9 +22,6 @@ export const JobType = {
   PART_TIME: "PART_TIME",
   CONTRACT: "CONTRACT",
   INTERN: "INTERN",
-  REMOTE: "REMOTE",
-  ON_SITE: "ON_SITE",
-  HYBRID: "HYBRID",
 } as const;
 
 export type JobType = (typeof JobType)[keyof typeof JobType];
@@ -45,6 +42,14 @@ export const CareerLevel = {
 } as const;
 
 export type CareerLevel = (typeof CareerLevel)[keyof typeof CareerLevel];
+
+export const LocationType = {
+  REMOTE: "REMOTE",
+  ON_SITE: "ON_SITE",
+  HYBRID: "HYBRID",
+} as const;
+
+export type LocationType = (typeof LocationType)[keyof typeof LocationType];
 
 export const NotificationType = {
   APPLICATION: "APPLICATION",

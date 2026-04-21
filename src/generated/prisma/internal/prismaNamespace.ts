@@ -2114,6 +2114,7 @@ export const JobScalarFieldEnum = {
   totalApplications: "totalApplications",
   status: "status",
   jobType: "jobType",
+  locationType: "locationType",
   experience: "experience",
   careerLevel: "careerLevel",
   qualification: "qualification",
@@ -2357,6 +2358,22 @@ export type EnumJobTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
 export type ListEnumJobTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
   "JobType[]"
+>;
+
+/**
+ * Reference to a field of type 'LocationType'
+ */
+export type EnumLocationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "LocationType"
+>;
+
+/**
+ * Reference to a field of type 'LocationType[]'
+ */
+export type ListEnumLocationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "LocationType[]"
 >;
 
 /**

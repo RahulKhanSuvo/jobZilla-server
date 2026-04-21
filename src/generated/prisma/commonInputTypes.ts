@@ -245,6 +245,25 @@ export type EnumJobTypeNullableFilter<$PrismaModel = never> = {
     | null;
 };
 
+export type EnumLocationTypeNullableFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.LocationType
+    | Prisma.EnumLocationTypeFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.LocationType[]
+    | Prisma.ListEnumLocationTypeFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.LocationType[]
+    | Prisma.ListEnumLocationTypeFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumLocationTypeNullableFilter<$PrismaModel>
+    | $Enums.LocationType
+    | null;
+};
+
 export type EnumCareerLevelNullableFilter<$PrismaModel = never> = {
   equals?:
     | $Enums.CareerLevel
@@ -326,6 +345,29 @@ export type EnumJobTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _min?: Prisma.NestedEnumJobTypeNullableFilter<$PrismaModel>;
   _max?: Prisma.NestedEnumJobTypeNullableFilter<$PrismaModel>;
 };
+
+export type EnumLocationTypeNullableWithAggregatesFilter<$PrismaModel = never> =
+  {
+    equals?:
+      | $Enums.LocationType
+      | Prisma.EnumLocationTypeFieldRefInput<$PrismaModel>
+      | null;
+    in?:
+      | $Enums.LocationType[]
+      | Prisma.ListEnumLocationTypeFieldRefInput<$PrismaModel>
+      | null;
+    notIn?:
+      | $Enums.LocationType[]
+      | Prisma.ListEnumLocationTypeFieldRefInput<$PrismaModel>
+      | null;
+    not?:
+      | Prisma.NestedEnumLocationTypeNullableWithAggregatesFilter<$PrismaModel>
+      | $Enums.LocationType
+      | null;
+    _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+    _min?: Prisma.NestedEnumLocationTypeNullableFilter<$PrismaModel>;
+    _max?: Prisma.NestedEnumLocationTypeNullableFilter<$PrismaModel>;
+  };
 
 export type EnumCareerLevelNullableWithAggregatesFilter<$PrismaModel = never> =
   {
@@ -641,6 +683,25 @@ export type NestedEnumJobTypeNullableFilter<$PrismaModel = never> = {
     | null;
 };
 
+export type NestedEnumLocationTypeNullableFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.LocationType
+    | Prisma.EnumLocationTypeFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.LocationType[]
+    | Prisma.ListEnumLocationTypeFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.LocationType[]
+    | Prisma.ListEnumLocationTypeFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumLocationTypeNullableFilter<$PrismaModel>
+    | $Enums.LocationType
+    | null;
+};
+
 export type NestedEnumCareerLevelNullableFilter<$PrismaModel = never> = {
   equals?:
     | $Enums.CareerLevel
@@ -736,6 +797,30 @@ export type NestedEnumJobTypeNullableWithAggregatesFilter<
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
   _min?: Prisma.NestedEnumJobTypeNullableFilter<$PrismaModel>;
   _max?: Prisma.NestedEnumJobTypeNullableFilter<$PrismaModel>;
+};
+
+export type NestedEnumLocationTypeNullableWithAggregatesFilter<
+  $PrismaModel = never,
+> = {
+  equals?:
+    | $Enums.LocationType
+    | Prisma.EnumLocationTypeFieldRefInput<$PrismaModel>
+    | null;
+  in?:
+    | $Enums.LocationType[]
+    | Prisma.ListEnumLocationTypeFieldRefInput<$PrismaModel>
+    | null;
+  notIn?:
+    | $Enums.LocationType[]
+    | Prisma.ListEnumLocationTypeFieldRefInput<$PrismaModel>
+    | null;
+  not?:
+    | Prisma.NestedEnumLocationTypeNullableWithAggregatesFilter<$PrismaModel>
+    | $Enums.LocationType
+    | null;
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumLocationTypeNullableFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumLocationTypeNullableFilter<$PrismaModel>;
 };
 
 export type NestedEnumCareerLevelNullableWithAggregatesFilter<
