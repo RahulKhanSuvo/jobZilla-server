@@ -19,6 +19,7 @@ const createApplication = async (
   }
   const job = await prisma.job.findUnique({
     where: { id: jobId },
+    select: { companyId: true, title: true },
   });
   if (!job) throw new ApiError("Job not found", 404);
 
@@ -328,30 +329,28 @@ const updateApplicationStatus = async (
 const getCandidateAppliedJobs = async (userId: string) => {
   const applications = await prisma.application.findMany({
     where: { userId },
-    include: {
+    select: {
+      id: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
       job: {
         select: {
           title: true,
-          company: {
-            include: { user: true },
-          },
-        },
-      },
-      user: {
-        select: {
-          name: true,
-          candidate: {
+          user: {
             select: {
-              location: true,
-              avatar: true,
+              name: true,
+              company: {
+                select: {
+                  logo: true,
+                  location: true,
+                },
+              },
             },
           },
-        },
-      },
-      resume: {
-        select: {
-          title: true,
-          fileUrl: true,
+          id: true,
+          category: true,
+          jobType: true,
         },
       },
     },
