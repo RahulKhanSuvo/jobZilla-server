@@ -4,7 +4,6 @@ import { catchAsync } from "../../shared/catchAsync";
 import { sendResponse } from "../../shared/sendResponse";
 import { envConfig } from "../../config/env";
 import { ApiError } from "../../errors/ApiError";
-import { UserRole } from "../../generated/prisma/enums";
 const createUser: RequestHandler = catchAsync(async (req, res) => {
   const result = await userService.createUser(req.body);
   return sendResponse(res, {
@@ -73,12 +72,10 @@ const userLogout = catchAsync(async (req, res) => {
 });
 const changePassword = catchAsync(async (req, res) => {
   const userId = req.user?.id;
-  const userRole = req.user?.role;
-  const { oldPassword, newPassword } = req.body;
+  const { currentPassword, newPassword } = req.body;
   const result = await userService.changePassword(
     userId as string,
-    userRole as UserRole,
-    oldPassword as string,
+    currentPassword as string,
     newPassword as string,
   );
   sendResponse(res, {

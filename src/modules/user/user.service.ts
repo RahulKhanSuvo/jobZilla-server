@@ -86,15 +86,14 @@ const currentUserById = async (id: string, userRole: string) => {
 };
 const changePassword = async (
   id: string,
-  userRole: UserRole,
-  oldPassword: string,
+  currentPassword: string,
   newPassword: string,
 ) => {
   const user = await prisma.user.findUnique({
     where: { id },
   });
   if (!user) throw new ApiError("user not found ", 404);
-  const passwordValid = await bcrypt.compare(oldPassword, user.password);
+  const passwordValid = await bcrypt.compare(currentPassword, user.password);
   if (!passwordValid) throw new ApiError("invalid credentials", 401);
   const hashPassword = await bcrypt.hash(newPassword, 10);
   return await prisma.user.update({
