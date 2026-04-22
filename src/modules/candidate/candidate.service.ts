@@ -49,6 +49,9 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
   const result = await prisma.candidate.upsert({
     where: { userId: userId },
     update: {
+      preferredCareerLevel: payload.preferredCareerLevel,
+      preferredCategory: payload.preferredCategory,
+      preferredJobType: payload.preferredJobType,
       phone: payload.phone,
       location: payload.location,
       dob: payload.dob ? new Date(payload.dob) : null,
@@ -58,7 +61,7 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       avatar: payload.avatar,
       facebook: payload.facebook,
       linkedin: payload.linkedin,
-      twitter: payload.twitter,
+      github: payload.github,
     },
 
     create: {
@@ -68,12 +71,14 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
       dob: payload.dob ? new Date(payload.dob) : null,
       gender: payload.gender,
       maritalStatus: payload.maritalStatus,
-
+      preferredCareerLevel: payload.preferredCareerLevel,
+      preferredCategory: payload.preferredCategory,
+      preferredJobType: payload.preferredJobType,
       aboutMe: payload.aboutMe,
       avatar: payload.avatar,
       facebook: payload.facebook,
       linkedin: payload.linkedin,
-      twitter: payload.twitter,
+      github: payload.github,
     },
   });
   return { ...user, candidate: result };
