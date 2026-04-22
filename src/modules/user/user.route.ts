@@ -21,9 +21,14 @@ userRouter.get("/me", authGard(), userController.currentUser);
 userRouter.post("/logout", userController.userLogout);
 userRouter.put(
   "/change-password",
-  authGard(),
+  authGard({ roles: ["CANDIDATE", "EMPLOYER", "ADMIN"] }),
   validate(changePasswordSchema),
   userController.changePassword,
+);
+userRouter.delete(
+  "/delete-account",
+  authGard({ roles: ["CANDIDATE", "EMPLOYER", "ADMIN"] }),
+  userController.deleteAccount,
 );
 
 export default userRouter;

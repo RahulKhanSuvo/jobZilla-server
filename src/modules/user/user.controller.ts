@@ -84,6 +84,20 @@ const changePassword = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const deleteAccount = catchAsync(async (req, res) => {
+  const userId = req.user?.id;
+  const result = await userService.deleteAccount(userId as string);
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+  });
+  sendResponse(res, {
+    statusCode: 200,
+    message: "account deleted successfully",
+    data: result,
+  });
+});
 export const userController = {
   createUser,
   loginUser,
@@ -91,4 +105,5 @@ export const userController = {
   currentUser,
   userLogout,
   changePassword,
+  deleteAccount,
 };

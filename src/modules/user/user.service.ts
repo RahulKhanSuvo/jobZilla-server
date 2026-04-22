@@ -111,10 +111,20 @@ const changePassword = async (
     },
   });
 };
+const deleteAccount = async (id: string) => {
+  const user = await prisma.user.findUnique({
+    where: { id },
+  });
+  if (!user) throw new ApiError("user not found ", 404);
+  return await prisma.user.delete({
+    where: { id },
+  });
+};
 export const userService = {
   createUser,
   loginUser,
   refreshTokenAuth,
   currentUserById,
   changePassword,
+  deleteAccount,
 };
