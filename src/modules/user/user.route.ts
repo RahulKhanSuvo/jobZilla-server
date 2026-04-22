@@ -20,7 +20,7 @@ userRouter.post("/refresh", userController.userTokenRefresh);
 userRouter.get("/me", authGard(), userController.currentUser);
 userRouter.post("/logout", userController.userLogout);
 userRouter.put(
-  "change-password",
+  "/change-password",
   authGard(),
   validate(changePasswordSchema),
   userController.changePassword,
