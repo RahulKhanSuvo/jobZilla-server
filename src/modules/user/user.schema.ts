@@ -15,7 +15,7 @@ export const loginSchema = z.object({
 export type LoginFormData = z.infer<typeof loginSchema>;
 
 export const changePasswordSchema = z.object({
-  oldPassword: z.string().min(6, "Password must be 6 character"),
+  currentPassword: z.string().min(6, "Password must be 6 character"),
   newPassword: z.string().min(6, "Password must be 6 character"),
 });
 export type ChangePasswordInput = z.infer<typeof changePasswordSchema>;
