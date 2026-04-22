@@ -25,10 +25,6 @@ userRouter.put(
   validate(changePasswordSchema),
   userController.changePassword,
 );
-userRouter.delete(
-  "/delete-account",
-  authGard({ roles: ["CANDIDATE", "EMPLOYER", "ADMIN"] }),
-  userController.deleteAccount,
-);
+userRouter.delete("/delete-account", authGard(), userController.deleteAccount);
 
 export default userRouter;
