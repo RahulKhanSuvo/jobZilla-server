@@ -19,7 +19,7 @@ const loginUser = catchAsync(async (req, res) => {
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
     secure: envConfig.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: envConfig.NODE_ENV === "production" ? "none" : "strict",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
   return sendResponse(res, {
@@ -36,7 +36,7 @@ const userTokenRefresh = catchAsync(async (req, res) => {
   res.cookie("refreshToken", newRefreshToken, {
     httpOnly: true,
     secure: envConfig.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: envConfig.NODE_ENV === "production" ? "none" : "strict",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
   return res.status(200).json({
@@ -62,8 +62,8 @@ const userLogout = catchAsync(async (req, res) => {
   if (!refreshToken) throw new ApiError("no user found", 400);
   res.clearCookie("refreshToken", {
     httpOnly: true,
-    secure: true,
-    sameSite: "strict",
+    secure: envConfig.NODE_ENV === "production",
+    sameSite: envConfig.NODE_ENV === "production" ? "none" : "strict",
   });
   sendResponse(res, {
     statusCode: 200,
@@ -89,8 +89,8 @@ const deleteAccount = catchAsync(async (req, res) => {
   const result = await userService.deleteAccount(userId as string);
   res.clearCookie("refreshToken", {
     httpOnly: true,
-    secure: true,
-    sameSite: "strict",
+    secure: envConfig.NODE_ENV === "production",
+    sameSite: envConfig.NODE_ENV === "production" ? "none" : "strict",
   });
   sendResponse(res, {
     statusCode: 200,
