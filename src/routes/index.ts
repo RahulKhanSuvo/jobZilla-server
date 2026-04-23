@@ -9,6 +9,7 @@ import saveJobRouter from "../modules/saveJobs/saveJob.routes";
 import statsRoutes from "../modules/stats/stats.routes";
 import { chatRoutes } from "../modules/chat/chat.route";
 import { NotificationRoutes } from "../modules/notification/notification.route";
+import planRoute from "../modules/plans/paln.route";
 
 const routes = Router();
 routes.use("/auth", userRouter);
@@ -21,4 +22,5 @@ routes.use("/save-job", saveJobRouter);
 routes.use("/stats", statsRoutes);
 routes.use("/chat", chatRoutes);
 routes.use("/notifications", NotificationRoutes);
+routes.use("/plans", planRoute);
 export default routes;
