@@ -28,10 +28,12 @@ export type AggregatePlan = {
 
 export type PlanAvgAggregateOutputType = {
   price: number | null;
+  maxPostings: number | null;
 };
 
 export type PlanSumAggregateOutputType = {
   price: number | null;
+  maxPostings: number | null;
 };
 
 export type PlanMinAggregateOutputType = {
@@ -39,9 +41,14 @@ export type PlanMinAggregateOutputType = {
   name: string | null;
   description: string | null;
   price: number | null;
+  maxPostings: number | null;
+  isActive: boolean | null;
+  isHighlight: boolean | null;
   currency: $Enums.CurrencyType | null;
   billingInterval: $Enums.IntervalType | null;
   status: $Enums.PlanStatus | null;
+  stripeProductId: string | null;
+  stripePriceId: string | null;
   createdAt: Date | null;
   updatedAt: Date | null;
 };
@@ -51,9 +58,14 @@ export type PlanMaxAggregateOutputType = {
   name: string | null;
   description: string | null;
   price: number | null;
+  maxPostings: number | null;
+  isActive: boolean | null;
+  isHighlight: boolean | null;
   currency: $Enums.CurrencyType | null;
   billingInterval: $Enums.IntervalType | null;
   status: $Enums.PlanStatus | null;
+  stripeProductId: string | null;
+  stripePriceId: string | null;
   createdAt: Date | null;
   updatedAt: Date | null;
 };
@@ -63,9 +75,14 @@ export type PlanCountAggregateOutputType = {
   name: number;
   description: number;
   price: number;
+  maxPostings: number;
+  isActive: number;
+  isHighlight: number;
   currency: number;
   billingInterval: number;
   status: number;
+  stripeProductId: number;
+  stripePriceId: number;
   createdAt: number;
   updatedAt: number;
   _all: number;
@@ -73,10 +90,12 @@ export type PlanCountAggregateOutputType = {
 
 export type PlanAvgAggregateInputType = {
   price?: true;
+  maxPostings?: true;
 };
 
 export type PlanSumAggregateInputType = {
   price?: true;
+  maxPostings?: true;
 };
 
 export type PlanMinAggregateInputType = {
@@ -84,9 +103,14 @@ export type PlanMinAggregateInputType = {
   name?: true;
   description?: true;
   price?: true;
+  maxPostings?: true;
+  isActive?: true;
+  isHighlight?: true;
   currency?: true;
   billingInterval?: true;
   status?: true;
+  stripeProductId?: true;
+  stripePriceId?: true;
   createdAt?: true;
   updatedAt?: true;
 };
@@ -96,9 +120,14 @@ export type PlanMaxAggregateInputType = {
   name?: true;
   description?: true;
   price?: true;
+  maxPostings?: true;
+  isActive?: true;
+  isHighlight?: true;
   currency?: true;
   billingInterval?: true;
   status?: true;
+  stripeProductId?: true;
+  stripePriceId?: true;
   createdAt?: true;
   updatedAt?: true;
 };
@@ -108,9 +137,14 @@ export type PlanCountAggregateInputType = {
   name?: true;
   description?: true;
   price?: true;
+  maxPostings?: true;
+  isActive?: true;
+  isHighlight?: true;
   currency?: true;
   billingInterval?: true;
   status?: true;
+  stripeProductId?: true;
+  stripePriceId?: true;
   createdAt?: true;
   updatedAt?: true;
   _all?: true;
@@ -214,9 +248,14 @@ export type PlanGroupByOutputType = {
   name: string;
   description: string | null;
   price: number;
+  maxPostings: number;
+  isActive: boolean;
+  isHighlight: boolean;
   currency: $Enums.CurrencyType;
   billingInterval: $Enums.IntervalType;
   status: $Enums.PlanStatus;
+  stripeProductId: string | null;
+  stripePriceId: string | null;
   createdAt: Date;
   updatedAt: Date;
   _count: PlanCountAggregateOutputType | null;
@@ -247,9 +286,14 @@ export type PlanWhereInput = {
   name?: Prisma.StringFilter<"Plan"> | string;
   description?: Prisma.StringNullableFilter<"Plan"> | string | null;
   price?: Prisma.IntFilter<"Plan"> | number;
+  maxPostings?: Prisma.IntFilter<"Plan"> | number;
+  isActive?: Prisma.BoolFilter<"Plan"> | boolean;
+  isHighlight?: Prisma.BoolFilter<"Plan"> | boolean;
   currency?: Prisma.EnumCurrencyTypeFilter<"Plan"> | $Enums.CurrencyType;
   billingInterval?: Prisma.EnumIntervalTypeFilter<"Plan"> | $Enums.IntervalType;
   status?: Prisma.EnumPlanStatusFilter<"Plan"> | $Enums.PlanStatus;
+  stripeProductId?: Prisma.StringNullableFilter<"Plan"> | string | null;
+  stripePriceId?: Prisma.StringNullableFilter<"Plan"> | string | null;
   createdAt?: Prisma.DateTimeFilter<"Plan"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"Plan"> | Date | string;
   subscriptions?: Prisma.SubscriptionListRelationFilter;
@@ -260,9 +304,14 @@ export type PlanOrderByWithRelationInput = {
   name?: Prisma.SortOrder;
   description?: Prisma.SortOrderInput | Prisma.SortOrder;
   price?: Prisma.SortOrder;
+  maxPostings?: Prisma.SortOrder;
+  isActive?: Prisma.SortOrder;
+  isHighlight?: Prisma.SortOrder;
   currency?: Prisma.SortOrder;
   billingInterval?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
+  stripeProductId?: Prisma.SortOrderInput | Prisma.SortOrder;
+  stripePriceId?: Prisma.SortOrderInput | Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
   subscriptions?: Prisma.SubscriptionOrderByRelationAggregateInput;
@@ -277,11 +326,16 @@ export type PlanWhereUniqueInput = Prisma.AtLeast<
     name?: Prisma.StringFilter<"Plan"> | string;
     description?: Prisma.StringNullableFilter<"Plan"> | string | null;
     price?: Prisma.IntFilter<"Plan"> | number;
+    maxPostings?: Prisma.IntFilter<"Plan"> | number;
+    isActive?: Prisma.BoolFilter<"Plan"> | boolean;
+    isHighlight?: Prisma.BoolFilter<"Plan"> | boolean;
     currency?: Prisma.EnumCurrencyTypeFilter<"Plan"> | $Enums.CurrencyType;
     billingInterval?:
       | Prisma.EnumIntervalTypeFilter<"Plan">
       | $Enums.IntervalType;
     status?: Prisma.EnumPlanStatusFilter<"Plan"> | $Enums.PlanStatus;
+    stripeProductId?: Prisma.StringNullableFilter<"Plan"> | string | null;
+    stripePriceId?: Prisma.StringNullableFilter<"Plan"> | string | null;
     createdAt?: Prisma.DateTimeFilter<"Plan"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"Plan"> | Date | string;
     subscriptions?: Prisma.SubscriptionListRelationFilter;
@@ -294,9 +348,14 @@ export type PlanOrderByWithAggregationInput = {
   name?: Prisma.SortOrder;
   description?: Prisma.SortOrderInput | Prisma.SortOrder;
   price?: Prisma.SortOrder;
+  maxPostings?: Prisma.SortOrder;
+  isActive?: Prisma.SortOrder;
+  isHighlight?: Prisma.SortOrder;
   currency?: Prisma.SortOrder;
   billingInterval?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
+  stripeProductId?: Prisma.SortOrderInput | Prisma.SortOrder;
+  stripePriceId?: Prisma.SortOrderInput | Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
   _count?: Prisma.PlanCountOrderByAggregateInput;
@@ -321,6 +380,9 @@ export type PlanScalarWhereWithAggregatesInput = {
     | string
     | null;
   price?: Prisma.IntWithAggregatesFilter<"Plan"> | number;
+  maxPostings?: Prisma.IntWithAggregatesFilter<"Plan"> | number;
+  isActive?: Prisma.BoolWithAggregatesFilter<"Plan"> | boolean;
+  isHighlight?: Prisma.BoolWithAggregatesFilter<"Plan"> | boolean;
   currency?:
     | Prisma.EnumCurrencyTypeWithAggregatesFilter<"Plan">
     | $Enums.CurrencyType;
@@ -330,6 +392,14 @@ export type PlanScalarWhereWithAggregatesInput = {
   status?:
     | Prisma.EnumPlanStatusWithAggregatesFilter<"Plan">
     | $Enums.PlanStatus;
+  stripeProductId?:
+    | Prisma.StringNullableWithAggregatesFilter<"Plan">
+    | string
+    | null;
+  stripePriceId?:
+    | Prisma.StringNullableWithAggregatesFilter<"Plan">
+    | string
+    | null;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Plan"> | Date | string;
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Plan"> | Date | string;
 };
@@ -339,9 +409,14 @@ export type PlanCreateInput = {
   name: string;
   description?: string | null;
   price: number;
+  maxPostings: number;
+  isActive?: boolean;
+  isHighlight?: boolean;
   currency?: $Enums.CurrencyType;
   billingInterval?: $Enums.IntervalType;
   status?: $Enums.PlanStatus;
+  stripeProductId?: string | null;
+  stripePriceId?: string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutPlanInput;
@@ -352,9 +427,14 @@ export type PlanUncheckedCreateInput = {
   name: string;
   description?: string | null;
   price: number;
+  maxPostings: number;
+  isActive?: boolean;
+  isHighlight?: boolean;
   currency?: $Enums.CurrencyType;
   billingInterval?: $Enums.IntervalType;
   status?: $Enums.PlanStatus;
+  stripeProductId?: string | null;
+  stripePriceId?: string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutPlanInput;
@@ -365,6 +445,9 @@ export type PlanUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
+  maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
     | Prisma.EnumCurrencyTypeFieldUpdateOperationsInput
     | $Enums.CurrencyType;
@@ -372,6 +455,14 @@ export type PlanUpdateInput = {
     | Prisma.EnumIntervalTypeFieldUpdateOperationsInput
     | $Enums.IntervalType;
   status?: Prisma.EnumPlanStatusFieldUpdateOperationsInput | $Enums.PlanStatus;
+  stripeProductId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  stripePriceId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutPlanNestedInput;
@@ -382,6 +473,9 @@ export type PlanUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
+  maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
     | Prisma.EnumCurrencyTypeFieldUpdateOperationsInput
     | $Enums.CurrencyType;
@@ -389,6 +483,14 @@ export type PlanUncheckedUpdateInput = {
     | Prisma.EnumIntervalTypeFieldUpdateOperationsInput
     | $Enums.IntervalType;
   status?: Prisma.EnumPlanStatusFieldUpdateOperationsInput | $Enums.PlanStatus;
+  stripeProductId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  stripePriceId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutPlanNestedInput;
@@ -399,9 +501,14 @@ export type PlanCreateManyInput = {
   name: string;
   description?: string | null;
   price: number;
+  maxPostings: number;
+  isActive?: boolean;
+  isHighlight?: boolean;
   currency?: $Enums.CurrencyType;
   billingInterval?: $Enums.IntervalType;
   status?: $Enums.PlanStatus;
+  stripeProductId?: string | null;
+  stripePriceId?: string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
 };
@@ -411,6 +518,9 @@ export type PlanUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
+  maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
     | Prisma.EnumCurrencyTypeFieldUpdateOperationsInput
     | $Enums.CurrencyType;
@@ -418,6 +528,14 @@ export type PlanUpdateManyMutationInput = {
     | Prisma.EnumIntervalTypeFieldUpdateOperationsInput
     | $Enums.IntervalType;
   status?: Prisma.EnumPlanStatusFieldUpdateOperationsInput | $Enums.PlanStatus;
+  stripeProductId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  stripePriceId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -427,6 +545,9 @@ export type PlanUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
+  maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
     | Prisma.EnumCurrencyTypeFieldUpdateOperationsInput
     | $Enums.CurrencyType;
@@ -434,6 +555,14 @@ export type PlanUncheckedUpdateManyInput = {
     | Prisma.EnumIntervalTypeFieldUpdateOperationsInput
     | $Enums.IntervalType;
   status?: Prisma.EnumPlanStatusFieldUpdateOperationsInput | $Enums.PlanStatus;
+  stripeProductId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  stripePriceId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -448,15 +577,21 @@ export type PlanCountOrderByAggregateInput = {
   name?: Prisma.SortOrder;
   description?: Prisma.SortOrder;
   price?: Prisma.SortOrder;
+  maxPostings?: Prisma.SortOrder;
+  isActive?: Prisma.SortOrder;
+  isHighlight?: Prisma.SortOrder;
   currency?: Prisma.SortOrder;
   billingInterval?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
+  stripeProductId?: Prisma.SortOrder;
+  stripePriceId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
 };
 
 export type PlanAvgOrderByAggregateInput = {
   price?: Prisma.SortOrder;
+  maxPostings?: Prisma.SortOrder;
 };
 
 export type PlanMaxOrderByAggregateInput = {
@@ -464,9 +599,14 @@ export type PlanMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder;
   description?: Prisma.SortOrder;
   price?: Prisma.SortOrder;
+  maxPostings?: Prisma.SortOrder;
+  isActive?: Prisma.SortOrder;
+  isHighlight?: Prisma.SortOrder;
   currency?: Prisma.SortOrder;
   billingInterval?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
+  stripeProductId?: Prisma.SortOrder;
+  stripePriceId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
 };
@@ -476,15 +616,21 @@ export type PlanMinOrderByAggregateInput = {
   name?: Prisma.SortOrder;
   description?: Prisma.SortOrder;
   price?: Prisma.SortOrder;
+  maxPostings?: Prisma.SortOrder;
+  isActive?: Prisma.SortOrder;
+  isHighlight?: Prisma.SortOrder;
   currency?: Prisma.SortOrder;
   billingInterval?: Prisma.SortOrder;
   status?: Prisma.SortOrder;
+  stripeProductId?: Prisma.SortOrder;
+  stripePriceId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
 };
 
 export type PlanSumOrderByAggregateInput = {
   price?: Prisma.SortOrder;
+  maxPostings?: Prisma.SortOrder;
 };
 
 export type PlanCreateNestedOneWithoutSubscriptionsInput = {
@@ -538,9 +684,14 @@ export type PlanCreateWithoutSubscriptionsInput = {
   name: string;
   description?: string | null;
   price: number;
+  maxPostings: number;
+  isActive?: boolean;
+  isHighlight?: boolean;
   currency?: $Enums.CurrencyType;
   billingInterval?: $Enums.IntervalType;
   status?: $Enums.PlanStatus;
+  stripeProductId?: string | null;
+  stripePriceId?: string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
 };
@@ -550,9 +701,14 @@ export type PlanUncheckedCreateWithoutSubscriptionsInput = {
   name: string;
   description?: string | null;
   price: number;
+  maxPostings: number;
+  isActive?: boolean;
+  isHighlight?: boolean;
   currency?: $Enums.CurrencyType;
   billingInterval?: $Enums.IntervalType;
   status?: $Enums.PlanStatus;
+  stripeProductId?: string | null;
+  stripePriceId?: string | null;
   createdAt?: Date | string;
   updatedAt?: Date | string;
 };
@@ -590,6 +746,9 @@ export type PlanUpdateWithoutSubscriptionsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
+  maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
     | Prisma.EnumCurrencyTypeFieldUpdateOperationsInput
     | $Enums.CurrencyType;
@@ -597,6 +756,14 @@ export type PlanUpdateWithoutSubscriptionsInput = {
     | Prisma.EnumIntervalTypeFieldUpdateOperationsInput
     | $Enums.IntervalType;
   status?: Prisma.EnumPlanStatusFieldUpdateOperationsInput | $Enums.PlanStatus;
+  stripeProductId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  stripePriceId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -606,6 +773,9 @@ export type PlanUncheckedUpdateWithoutSubscriptionsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
+  maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
     | Prisma.EnumCurrencyTypeFieldUpdateOperationsInput
     | $Enums.CurrencyType;
@@ -613,6 +783,14 @@ export type PlanUncheckedUpdateWithoutSubscriptionsInput = {
     | Prisma.EnumIntervalTypeFieldUpdateOperationsInput
     | $Enums.IntervalType;
   status?: Prisma.EnumPlanStatusFieldUpdateOperationsInput | $Enums.PlanStatus;
+  stripeProductId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  stripePriceId?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -664,9 +842,14 @@ export type PlanSelect<
     name?: boolean;
     description?: boolean;
     price?: boolean;
+    maxPostings?: boolean;
+    isActive?: boolean;
+    isHighlight?: boolean;
     currency?: boolean;
     billingInterval?: boolean;
     status?: boolean;
+    stripeProductId?: boolean;
+    stripePriceId?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     subscriptions?: boolean | Prisma.Plan$subscriptionsArgs<ExtArgs>;
@@ -684,9 +867,14 @@ export type PlanSelectCreateManyAndReturn<
     name?: boolean;
     description?: boolean;
     price?: boolean;
+    maxPostings?: boolean;
+    isActive?: boolean;
+    isHighlight?: boolean;
     currency?: boolean;
     billingInterval?: boolean;
     status?: boolean;
+    stripeProductId?: boolean;
+    stripePriceId?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
   },
@@ -702,9 +890,14 @@ export type PlanSelectUpdateManyAndReturn<
     name?: boolean;
     description?: boolean;
     price?: boolean;
+    maxPostings?: boolean;
+    isActive?: boolean;
+    isHighlight?: boolean;
     currency?: boolean;
     billingInterval?: boolean;
     status?: boolean;
+    stripeProductId?: boolean;
+    stripePriceId?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
   },
@@ -716,9 +909,14 @@ export type PlanSelectScalar = {
   name?: boolean;
   description?: boolean;
   price?: boolean;
+  maxPostings?: boolean;
+  isActive?: boolean;
+  isHighlight?: boolean;
   currency?: boolean;
   billingInterval?: boolean;
   status?: boolean;
+  stripeProductId?: boolean;
+  stripePriceId?: boolean;
   createdAt?: boolean;
   updatedAt?: boolean;
 };
@@ -731,9 +929,14 @@ export type PlanOmit<
   | "name"
   | "description"
   | "price"
+  | "maxPostings"
+  | "isActive"
+  | "isHighlight"
   | "currency"
   | "billingInterval"
   | "status"
+  | "stripeProductId"
+  | "stripePriceId"
   | "createdAt"
   | "updatedAt",
   ExtArgs["result"]["plan"]
@@ -768,9 +971,14 @@ export type $PlanPayload<
       name: string;
       description: string | null;
       price: number;
+      maxPostings: number;
+      isActive: boolean;
+      isHighlight: boolean;
       currency: $Enums.CurrencyType;
       billingInterval: $Enums.IntervalType;
       status: $Enums.PlanStatus;
+      stripeProductId: string | null;
+      stripePriceId: string | null;
       createdAt: Date;
       updatedAt: Date;
     },
@@ -1380,9 +1588,14 @@ export interface PlanFieldRefs {
   readonly name: Prisma.FieldRef<"Plan", "String">;
   readonly description: Prisma.FieldRef<"Plan", "String">;
   readonly price: Prisma.FieldRef<"Plan", "Int">;
+  readonly maxPostings: Prisma.FieldRef<"Plan", "Int">;
+  readonly isActive: Prisma.FieldRef<"Plan", "Boolean">;
+  readonly isHighlight: Prisma.FieldRef<"Plan", "Boolean">;
   readonly currency: Prisma.FieldRef<"Plan", "CurrencyType">;
   readonly billingInterval: Prisma.FieldRef<"Plan", "IntervalType">;
   readonly status: Prisma.FieldRef<"Plan", "PlanStatus">;
+  readonly stripeProductId: Prisma.FieldRef<"Plan", "String">;
+  readonly stripePriceId: Prisma.FieldRef<"Plan", "String">;
   readonly createdAt: Prisma.FieldRef<"Plan", "DateTime">;
   readonly updatedAt: Prisma.FieldRef<"Plan", "DateTime">;
 }
