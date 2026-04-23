@@ -14,6 +14,7 @@ const envSchema = z.object({
   CLOUDINARY_API_SECRET: z.string(),
   ADMIN_EMAIL: z.string(),
   ADMIN_PASSWORD: z.string(),
+  STRIPE_SECRET_KEY: z.string(),
 });
 const parsedEnv = envSchema.safeParse(process.env);
 if (!parsedEnv.success) {
