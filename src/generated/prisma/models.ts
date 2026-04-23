@@ -21,6 +21,7 @@ export type * from "./models/Eduction";
 export type * from "./models/Job";
 export type * from "./models/JobView";
 export type * from "./models/Notification";
+export type * from "./models/Plan";
 export type * from "./models/Resume";
 export type * from "./models/SavedJob";
 export type * from "./models/User";

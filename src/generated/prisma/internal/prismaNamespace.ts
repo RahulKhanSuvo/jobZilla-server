@@ -426,6 +426,7 @@ export const ModelName = {
   Job: "Job",
   JobView: "JobView",
   Notification: "Notification",
+  Plan: "Plan",
   Resume: "Resume",
   SavedJob: "SavedJob",
   User: "User",
@@ -468,6 +469,7 @@ export type TypeMap<
       | "job"
       | "jobView"
       | "notification"
+      | "plan"
       | "resume"
       | "savedJob"
       | "user"
@@ -1541,6 +1543,82 @@ export type TypeMap<
         };
       };
     };
+    Plan: {
+      payload: Prisma.$PlanPayload<ExtArgs>;
+      fields: Prisma.PlanFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.PlanFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.PlanFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload>;
+        };
+        findFirst: {
+          args: Prisma.PlanFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.PlanFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload>;
+        };
+        findMany: {
+          args: Prisma.PlanFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload>[];
+        };
+        create: {
+          args: Prisma.PlanCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload>;
+        };
+        createMany: {
+          args: Prisma.PlanCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.PlanCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload>[];
+        };
+        delete: {
+          args: Prisma.PlanDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload>;
+        };
+        update: {
+          args: Prisma.PlanUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload>;
+        };
+        deleteMany: {
+          args: Prisma.PlanDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.PlanUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.PlanUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload>[];
+        };
+        upsert: {
+          args: Prisma.PlanUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanPayload>;
+        };
+        aggregate: {
+          args: Prisma.PlanAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlan>;
+        };
+        groupBy: {
+          args: Prisma.PlanGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.PlanGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.PlanCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.PlanCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
     Resume: {
       payload: Prisma.$ResumePayload<ExtArgs>;
       fields: Prisma.ResumeFieldRefs;
@@ -2257,6 +2335,21 @@ export const NotificationScalarFieldEnum = {
 export type NotificationScalarFieldEnum =
   (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum];
 
+export const PlanScalarFieldEnum = {
+  id: "id",
+  name: "name",
+  description: "description",
+  price: "price",
+  currency: "currency",
+  billingInterval: "billingInterval",
+  status: "status",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type PlanScalarFieldEnum =
+  (typeof PlanScalarFieldEnum)[keyof typeof PlanScalarFieldEnum];
+
 export const ResumeScalarFieldEnum = {
   id: "id",
   title: "title",
@@ -2575,6 +2668,54 @@ export type ListEnumNotificationTypeFieldRefInput<$PrismaModel> =
   FieldRefInputType<$PrismaModel, "NotificationType[]">;
 
 /**
+ * Reference to a field of type 'CurrencyType'
+ */
+export type EnumCurrencyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "CurrencyType"
+>;
+
+/**
+ * Reference to a field of type 'CurrencyType[]'
+ */
+export type ListEnumCurrencyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "CurrencyType[]"
+>;
+
+/**
+ * Reference to a field of type 'IntervalType'
+ */
+export type EnumIntervalTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "IntervalType"
+>;
+
+/**
+ * Reference to a field of type 'IntervalType[]'
+ */
+export type ListEnumIntervalTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "IntervalType[]"
+>;
+
+/**
+ * Reference to a field of type 'PlanStatus'
+ */
+export type EnumPlanStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "PlanStatus"
+>;
+
+/**
+ * Reference to a field of type 'PlanStatus[]'
+ */
+export type ListEnumPlanStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "PlanStatus[]"
+>;
+
+/**
  * Reference to a field of type 'UserRole'
  */
 export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<
@@ -2723,6 +2864,7 @@ export type GlobalOmitConfig = {
   job?: Prisma.JobOmit;
   jobView?: Prisma.JobViewOmit;
   notification?: Prisma.NotificationOmit;
+  plan?: Prisma.PlanOmit;
   resume?: Prisma.ResumeOmit;
   savedJob?: Prisma.SavedJobOmit;
   user?: Prisma.UserOmit;

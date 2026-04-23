@@ -141,11 +141,26 @@ export type NotificationType =
   (typeof NotificationType)[keyof typeof NotificationType];
 
 export const PlanStatus = {
-  active: "active",
-  inactive: "inactive",
+  ACTIVE: "ACTIVE",
+  INACTIVE: "INACTIVE",
 } as const;
 
 export type PlanStatus = (typeof PlanStatus)[keyof typeof PlanStatus];
+
+export const CurrencyType = {
+  USD: "USD",
+  EUR: "EUR",
+  BDT: "BDT",
+} as const;
+
+export type CurrencyType = (typeof CurrencyType)[keyof typeof CurrencyType];
+
+export const IntervalType = {
+  MONTHLY: "MONTHLY",
+  YEARLY: "YEARLY",
+} as const;
+
+export type IntervalType = (typeof IntervalType)[keyof typeof IntervalType];
 
 export const UserRole = {
   CANDIDATE: "CANDIDATE",

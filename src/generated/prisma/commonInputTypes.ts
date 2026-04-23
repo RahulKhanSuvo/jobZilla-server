@@ -628,6 +628,122 @@ export type EnumNotificationTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumNotificationTypeFilter<$PrismaModel>;
 };
 
+export type IntFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>;
+  notIn?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>;
+  lt?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  lte?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  gt?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  gte?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedIntFilter<$PrismaModel> | number;
+};
+
+export type EnumCurrencyTypeFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.CurrencyType
+    | Prisma.EnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.CurrencyType[]
+    | Prisma.ListEnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.CurrencyType[]
+    | Prisma.ListEnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedEnumCurrencyTypeFilter<$PrismaModel> | $Enums.CurrencyType;
+};
+
+export type EnumIntervalTypeFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.IntervalType
+    | Prisma.EnumIntervalTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.IntervalType[]
+    | Prisma.ListEnumIntervalTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.IntervalType[]
+    | Prisma.ListEnumIntervalTypeFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedEnumIntervalTypeFilter<$PrismaModel> | $Enums.IntervalType;
+};
+
+export type EnumPlanStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.PlanStatus | Prisma.EnumPlanStatusFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.PlanStatus[]
+    | Prisma.ListEnumPlanStatusFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.PlanStatus[]
+    | Prisma.ListEnumPlanStatusFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedEnumPlanStatusFilter<$PrismaModel> | $Enums.PlanStatus;
+};
+
+export type IntWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>;
+  notIn?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>;
+  lt?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  lte?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  gt?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  gte?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedIntWithAggregatesFilter<$PrismaModel> | number;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _avg?: Prisma.NestedFloatFilter<$PrismaModel>;
+  _sum?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedIntFilter<$PrismaModel>;
+  _max?: Prisma.NestedIntFilter<$PrismaModel>;
+};
+
+export type EnumCurrencyTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.CurrencyType
+    | Prisma.EnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.CurrencyType[]
+    | Prisma.ListEnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.CurrencyType[]
+    | Prisma.ListEnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  not?:
+    | Prisma.NestedEnumCurrencyTypeWithAggregatesFilter<$PrismaModel>
+    | $Enums.CurrencyType;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumCurrencyTypeFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumCurrencyTypeFilter<$PrismaModel>;
+};
+
+export type EnumIntervalTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.IntervalType
+    | Prisma.EnumIntervalTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.IntervalType[]
+    | Prisma.ListEnumIntervalTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.IntervalType[]
+    | Prisma.ListEnumIntervalTypeFieldRefInput<$PrismaModel>;
+  not?:
+    | Prisma.NestedEnumIntervalTypeWithAggregatesFilter<$PrismaModel>
+    | $Enums.IntervalType;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumIntervalTypeFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumIntervalTypeFilter<$PrismaModel>;
+};
+
+export type EnumPlanStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PlanStatus | Prisma.EnumPlanStatusFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.PlanStatus[]
+    | Prisma.ListEnumPlanStatusFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.PlanStatus[]
+    | Prisma.ListEnumPlanStatusFieldRefInput<$PrismaModel>;
+  not?:
+    | Prisma.NestedEnumPlanStatusWithAggregatesFilter<$PrismaModel>
+    | $Enums.PlanStatus;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumPlanStatusFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumPlanStatusFilter<$PrismaModel>;
+};
+
 export type EnumUserRoleFilter<$PrismaModel = never> = {
   equals?: $Enums.UserRole | Prisma.EnumUserRoleFieldRefInput<$PrismaModel>;
   in?: $Enums.UserRole[] | Prisma.ListEnumUserRoleFieldRefInput<$PrismaModel>;
@@ -1291,6 +1407,122 @@ export type NestedEnumNotificationTypeWithAggregatesFilter<
   _count?: Prisma.NestedIntFilter<$PrismaModel>;
   _min?: Prisma.NestedEnumNotificationTypeFilter<$PrismaModel>;
   _max?: Prisma.NestedEnumNotificationTypeFilter<$PrismaModel>;
+};
+
+export type NestedEnumCurrencyTypeFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.CurrencyType
+    | Prisma.EnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.CurrencyType[]
+    | Prisma.ListEnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.CurrencyType[]
+    | Prisma.ListEnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedEnumCurrencyTypeFilter<$PrismaModel> | $Enums.CurrencyType;
+};
+
+export type NestedEnumIntervalTypeFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.IntervalType
+    | Prisma.EnumIntervalTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.IntervalType[]
+    | Prisma.ListEnumIntervalTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.IntervalType[]
+    | Prisma.ListEnumIntervalTypeFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedEnumIntervalTypeFilter<$PrismaModel> | $Enums.IntervalType;
+};
+
+export type NestedEnumPlanStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.PlanStatus | Prisma.EnumPlanStatusFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.PlanStatus[]
+    | Prisma.ListEnumPlanStatusFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.PlanStatus[]
+    | Prisma.ListEnumPlanStatusFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedEnumPlanStatusFilter<$PrismaModel> | $Enums.PlanStatus;
+};
+
+export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>;
+  notIn?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>;
+  lt?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  lte?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  gt?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  gte?: number | Prisma.IntFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedIntWithAggregatesFilter<$PrismaModel> | number;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _avg?: Prisma.NestedFloatFilter<$PrismaModel>;
+  _sum?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedIntFilter<$PrismaModel>;
+  _max?: Prisma.NestedIntFilter<$PrismaModel>;
+};
+
+export type NestedFloatFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.FloatFieldRefInput<$PrismaModel>;
+  in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel>;
+  notIn?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel>;
+  lt?: number | Prisma.FloatFieldRefInput<$PrismaModel>;
+  lte?: number | Prisma.FloatFieldRefInput<$PrismaModel>;
+  gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>;
+  gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>;
+  not?: Prisma.NestedFloatFilter<$PrismaModel> | number;
+};
+
+export type NestedEnumCurrencyTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.CurrencyType
+    | Prisma.EnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.CurrencyType[]
+    | Prisma.ListEnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.CurrencyType[]
+    | Prisma.ListEnumCurrencyTypeFieldRefInput<$PrismaModel>;
+  not?:
+    | Prisma.NestedEnumCurrencyTypeWithAggregatesFilter<$PrismaModel>
+    | $Enums.CurrencyType;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumCurrencyTypeFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumCurrencyTypeFilter<$PrismaModel>;
+};
+
+export type NestedEnumIntervalTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?:
+    | $Enums.IntervalType
+    | Prisma.EnumIntervalTypeFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.IntervalType[]
+    | Prisma.ListEnumIntervalTypeFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.IntervalType[]
+    | Prisma.ListEnumIntervalTypeFieldRefInput<$PrismaModel>;
+  not?:
+    | Prisma.NestedEnumIntervalTypeWithAggregatesFilter<$PrismaModel>
+    | $Enums.IntervalType;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumIntervalTypeFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumIntervalTypeFilter<$PrismaModel>;
+};
+
+export type NestedEnumPlanStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PlanStatus | Prisma.EnumPlanStatusFieldRefInput<$PrismaModel>;
+  in?:
+    | $Enums.PlanStatus[]
+    | Prisma.ListEnumPlanStatusFieldRefInput<$PrismaModel>;
+  notIn?:
+    | $Enums.PlanStatus[]
+    | Prisma.ListEnumPlanStatusFieldRefInput<$PrismaModel>;
+  not?:
+    | Prisma.NestedEnumPlanStatusWithAggregatesFilter<$PrismaModel>
+    | $Enums.PlanStatus;
+  _count?: Prisma.NestedIntFilter<$PrismaModel>;
+  _min?: Prisma.NestedEnumPlanStatusFilter<$PrismaModel>;
+  _max?: Prisma.NestedEnumPlanStatusFilter<$PrismaModel>;
 };
 
 export type NestedEnumUserRoleFilter<$PrismaModel = never> = {
