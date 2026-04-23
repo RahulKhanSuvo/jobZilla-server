@@ -1,0 +1,10 @@
+enum currency {
+  USD
+  EUR
+  BDT
+}
+
+enum interval {
+  monthly
+  yearly
+}

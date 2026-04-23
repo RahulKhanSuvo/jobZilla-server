@@ -243,8 +243,8 @@ export type UserSettingsWhereInput = {
   phoneVerified?: Prisma.BoolFilter<"UserSettings"> | boolean;
   createdAt?: Prisma.DateTimeFilter<"UserSettings"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"UserSettings"> | Date | string;
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   notificationSettings?: Prisma.NotificationSettingsListRelationFilter;
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 
 export type UserSettingsOrderByWithRelationInput = {
@@ -260,8 +260,8 @@ export type UserSettingsOrderByWithRelationInput = {
   phoneVerified?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
-  user?: Prisma.UserOrderByWithRelationInput;
   notificationSettings?: Prisma.NotificationSettingsOrderByRelationAggregateInput;
+  user?: Prisma.UserOrderByWithRelationInput;
 };
 
 export type UserSettingsWhereUniqueInput = Prisma.AtLeast<
@@ -281,8 +281,8 @@ export type UserSettingsWhereUniqueInput = Prisma.AtLeast<
     phoneVerified?: Prisma.BoolFilter<"UserSettings"> | boolean;
     createdAt?: Prisma.DateTimeFilter<"UserSettings"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"UserSettings"> | Date | string;
-    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
     notificationSettings?: Prisma.NotificationSettingsListRelationFilter;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
   "id" | "userId"
 >;
@@ -347,8 +347,8 @@ export type UserSettingsCreateInput = {
   phoneVerified?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
-  user: Prisma.UserCreateNestedOneWithoutUserSettingsInput;
   notificationSettings?: Prisma.NotificationSettingsCreateNestedManyWithoutUserSettingsInput;
+  user: Prisma.UserCreateNestedOneWithoutUserSettingsInput;
 };
 
 export type UserSettingsUncheckedCreateInput = {
@@ -379,8 +379,8 @@ export type UserSettingsUpdateInput = {
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  user?: Prisma.UserUpdateOneRequiredWithoutUserSettingsNestedInput;
   notificationSettings?: Prisma.NotificationSettingsUpdateManyWithoutUserSettingsNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutUserSettingsNestedInput;
 };
 
 export type UserSettingsUncheckedUpdateInput = {
@@ -818,10 +818,10 @@ export type UserSettingsSelect<
     phoneVerified?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
-    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     notificationSettings?:
       | boolean
       | Prisma.UserSettings$notificationSettingsArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     _count?: boolean | Prisma.UserSettingsCountOutputTypeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["userSettings"]
@@ -908,10 +908,10 @@ export type UserSettingsInclude<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   notificationSettings?:
     | boolean
     | Prisma.UserSettings$notificationSettingsArgs<ExtArgs>;
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   _count?: boolean | Prisma.UserSettingsCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type UserSettingsIncludeCreateManyAndReturn<
@@ -933,8 +933,8 @@ export type $UserSettingsPayload<
 > = {
   name: "UserSettings";
   objects: {
-    user: Prisma.$UserPayload<ExtArgs>;
     notificationSettings: Prisma.$NotificationSettingsPayload<ExtArgs>[];
+    user: Prisma.$UserPayload<ExtArgs>;
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
@@ -1506,20 +1506,6 @@ export interface Prisma__UserSettingsClient<
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise";
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>,
-  ): Prisma.Prisma__UserClient<
-    | runtime.Types.Result.GetResult<
-        Prisma.$UserPayload<ExtArgs>,
-        T,
-        "findUniqueOrThrow",
-        GlobalOmitOptions
-      >
-    | Null,
-    Null,
-    ExtArgs,
-    GlobalOmitOptions
-  >;
   notificationSettings<
     T extends Prisma.UserSettings$notificationSettingsArgs<ExtArgs> = {},
   >(
@@ -1535,6 +1521,20 @@ export interface Prisma__UserSettingsClient<
         GlobalOmitOptions
       >
     | Null
+  >;
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>,
+  ): Prisma.Prisma__UserClient<
+    | runtime.Types.Result.GetResult<
+        Prisma.$UserPayload<ExtArgs>,
+        T,
+        "findUniqueOrThrow",
+        GlobalOmitOptions
+      >
+    | Null,
+    Null,
+    ExtArgs,
+    GlobalOmitOptions
   >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.

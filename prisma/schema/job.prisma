@@ -1,68 +1,68 @@
 model Job {
-    id                String        @id @default(uuid())
-    title             String        @db.VarChar(100)
-    description       String        @db.Text
-    category          String?
-    gender            String?
-    salaryType        String?
-    salaryMin         Int?
-    salaryMax         Int?
-    totalApplications Int?          @default(0)
-    status            JobStatus?    @default(OPEN)
-    jobType           JobType?
-    locationType      LocationType?
-    location          String?
-    experience        String?       @db.VarChar(100)
-    careerLevel       CareerLevel?
-    qualification     String?
-    views             Int?          @default(0)
-    deadline          DateTime?
-    companyId         String
-    user              User          @relation(fields: [companyId], references: [id], onDelete: Cascade)
-    createdAt         DateTime      @default(now())
-    updatedAt         DateTime      @updatedAt
-    applications      Application[]
-    savedJobs         SavedJob[]
-    jobViews          JobView[]
+  id                String        @id @default(uuid())
+  title             String        @db.VarChar(100)
+  description       String
+  salaryMin         Int?
+  salaryMax         Int?
+  jobType           JobType?
+  experience        String?       @db.VarChar(100)
+  deadline          DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  category          String?
+  gender            String?
+  qualification     String?
+  salaryType        String?
+  status            JobStatus?    @default(OPEN)
+  totalApplications Int?          @default(0)
+  careerLevel       CareerLevel?
+  views             Int?          @default(0)
+  companyId         String
+  locationType      LocationType?
+  location          String?
+  applications      Application[]
+  user              User          @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  jobViews          JobView[]
+  savedJobs         SavedJob[]
 }
 
 model JobView {
-    id          String   @id @default(uuid())
-    jobId       String
-    userId      String?
-    anonymousId String?
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    job         Job      @relation(fields: [jobId], references: [id])
-    user        User?    @relation(fields: [userId], references: [id])
+  id          String   @id @default(uuid())
+  jobId       String
+  userId      String?
+  anonymousId String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  job         Job      @relation(fields: [jobId], references: [id])
+  user        User?    @relation(fields: [userId], references: [id])
 
-    @@unique([jobId, anonymousId])
-    @@unique([jobId, userId])
+  @@unique([jobId, anonymousId])
+  @@unique([jobId, userId])
 }
 
 enum JobType {
-    FULL_TIME
-    PART_TIME
-    CONTRACT
-    INTERN
-    FREELANCE
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERN
+  FREELANCE
 }
 
 enum JobStatus {
-    OPEN
-    CLOSED
-    PUBLISHED
+  OPEN
+  CLOSED
+  PUBLISHED
 }
 
 enum CareerLevel {
-    ENTRY_LEVEL
-    MID_LEVEL
-    SENIOR_LEVEL
-    EXECUTIVE_LEVEL
+  ENTRY_LEVEL
+  MID_LEVEL
+  SENIOR_LEVEL
+  EXECUTIVE_LEVEL
 }
 
 enum LocationType {
-    REMOTE
-    ON_SITE
-    HYBRID
+  REMOTE
+  ON_SITE
+  HYBRID
 }

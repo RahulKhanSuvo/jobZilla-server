@@ -56,6 +56,7 @@ export const AnyNull = runtime.AnyNull;
 export const ModelName = {
   Follow: "Follow",
   Language: "Language",
+  Subscription: "Subscription",
   UserSettings: "UserSettings",
   NotificationSettings: "NotificationSettings",
   Application: "Application",
@@ -110,6 +111,22 @@ export const LanguageScalarFieldEnum = {
 export type LanguageScalarFieldEnum =
   (typeof LanguageScalarFieldEnum)[keyof typeof LanguageScalarFieldEnum];
 
+export const SubscriptionScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  planId: "planId",
+  status: "status",
+  stripeCustomerId: "stripeCustomerId",
+  stripeSubscriptionId: "stripeSubscriptionId",
+  currentPeriodStart: "currentPeriodStart",
+  currentPeriodEnd: "currentPeriodEnd",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type SubscriptionScalarFieldEnum =
+  (typeof SubscriptionScalarFieldEnum)[keyof typeof SubscriptionScalarFieldEnum];
+
 export const UserSettingsScalarFieldEnum = {
   id: "id",
   userId: "userId",
@@ -145,10 +162,10 @@ export const ApplicationScalarFieldEnum = {
   id: "id",
   userId: "userId",
   jobId: "jobId",
-  resumeId: "resumeId",
   status: "status",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  resumeId: "resumeId",
 } as const;
 
 export type ApplicationScalarFieldEnum =
@@ -158,22 +175,22 @@ export const CandidateScalarFieldEnum = {
   id: "id",
   userId: "userId",
   phone: "phone",
-  location: "location",
-  dob: "dob",
-  gender: "gender",
-  maritalStatus: "maritalStatus",
   aboutMe: "aboutMe",
-  avatar: "avatar",
+  dob: "dob",
   facebook: "facebook",
+  gender: "gender",
   linkedin: "linkedin",
+  location: "location",
+  maritalStatus: "maritalStatus",
+  avatar: "avatar",
+  expectedSalaryMax: "expectedSalaryMax",
+  expectedSalaryMin: "expectedSalaryMin",
+  experienceYears: "experienceYears",
   github: "github",
+  preferredCareerLevel: "preferredCareerLevel",
+  availabilityStatus: "availabilityStatus",
   preferredCategory: "preferredCategory",
   preferredJobType: "preferredJobType",
-  preferredCareerLevel: "preferredCareerLevel",
-  expectedSalaryMin: "expectedSalaryMin",
-  expectedSalaryMax: "expectedSalaryMax",
-  availabilityStatus: "availabilityStatus",
-  experienceYears: "experienceYears",
 } as const;
 
 export type CandidateScalarFieldEnum =
@@ -205,23 +222,23 @@ export type MessageScalarFieldEnum =
 
 export const CompanyScalarFieldEnum = {
   id: "id",
-  userId: "userId",
   description: "description",
   website: "website",
-  industry: "industry",
   phone: "phone",
   location: "location",
-  companySize: "companySize",
-  logo: "logo",
-  foundedDate: "foundedDate",
-  coverImage: "coverImage",
-  facebook: "facebook",
-  linkedin: "linkedin",
-  twitter: "twitter",
-  address: "address",
-  showProfile: "showProfile",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  userId: "userId",
+  coverImage: "coverImage",
+  logo: "logo",
+  address: "address",
+  companySize: "companySize",
+  facebook: "facebook",
+  linkedin: "linkedin",
+  showProfile: "showProfile",
+  twitter: "twitter",
+  foundedDate: "foundedDate",
+  industry: "industry",
 } as const;
 
 export type CompanyScalarFieldEnum =
@@ -246,24 +263,24 @@ export const JobScalarFieldEnum = {
   id: "id",
   title: "title",
   description: "description",
-  category: "category",
-  gender: "gender",
-  salaryType: "salaryType",
   salaryMin: "salaryMin",
   salaryMax: "salaryMax",
-  totalApplications: "totalApplications",
-  status: "status",
   jobType: "jobType",
-  locationType: "locationType",
-  location: "location",
   experience: "experience",
-  careerLevel: "careerLevel",
-  qualification: "qualification",
-  views: "views",
   deadline: "deadline",
-  companyId: "companyId",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  category: "category",
+  gender: "gender",
+  qualification: "qualification",
+  salaryType: "salaryType",
+  status: "status",
+  totalApplications: "totalApplications",
+  careerLevel: "careerLevel",
+  views: "views",
+  companyId: "companyId",
+  locationType: "locationType",
+  location: "location",
 } as const;
 
 export type JobScalarFieldEnum =
@@ -302,9 +319,9 @@ export const ResumeScalarFieldEnum = {
   fileUrl: "fileUrl",
   isPrimary: "isPrimary",
   isDraft: "isDraft",
-  userId: "userId",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  userId: "userId",
 } as const;
 
 export type ResumeScalarFieldEnum =
@@ -323,13 +340,13 @@ export type SavedJobScalarFieldEnum =
 
 export const UserScalarFieldEnum = {
   id: "id",
-  name: "name",
   email: "email",
   role: "role",
   password: "password",
-  views: "views",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  name: "name",
+  views: "views",
 } as const;
 
 export type UserScalarFieldEnum =
@@ -357,7 +374,6 @@ export type SkillScalarFieldEnum =
 
 export const WorkExperienceScalarFieldEnum = {
   id: "id",
-  userId: "userId",
   jobTitle: "jobTitle",
   companyName: "companyName",
   industry: "industry",
@@ -367,6 +383,7 @@ export const WorkExperienceScalarFieldEnum = {
   isWorking: "isWorking",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  userId: "userId",
 } as const;
 
 export type WorkExperienceScalarFieldEnum =

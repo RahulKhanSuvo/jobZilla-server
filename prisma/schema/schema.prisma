@@ -7,57 +7,53 @@ datasource db {
   provider = "postgresql"
 }
 
-enum UserRole {
-  CANDIDATE
-  EMPLOYER
-  ADMIN
-}
-
 model User {
   id                        String           @id @default(uuid())
-  name                      String           @db.VarChar(100)
   email                     String           @unique
   role                      UserRole         @default(CANDIDATE)
   password                  String
-  views                     Int?             @default(0)
   createdAt                 DateTime         @default(now())
   updatedAt                 DateTime         @updatedAt
+  name                      String           @db.VarChar(100)
+  views                     Int?             @default(0)
   applications              Application[]
   candidate                 Candidate?
+  companyViews              CandidateViews[] @relation("CandidateViewsAsCompany")
+  candidateViews            CandidateViews[] @relation("CandidateViewsAsUser")
   company                   Company?
-  savedJobs                 SavedJob[]
-  jobViews                  JobView[]
   participantAConversations Conversation[]   @relation("ParticipantAConversations")
   participantBConversations Conversation[]   @relation("ParticipantBConversations")
-  messages                  Message[]        @relation("UserMessages")
-  userSettings              UserSettings?
-  notifications             Notification[]
-  jobs                      Job[]
   eductions                 Eduction[]
-  skills                    Skill[]
-  languages                 Language[]
-  workExperiences           WorkExperience[]
-  resumes                   Resume[]
-  candidateViews            CandidateViews[] @relation("CandidateViewsAsUser")
-  companyViews              CandidateViews[] @relation("CandidateViewsAsCompany")
   following                 Follow[]         @relation("UserFollowing")
   followers                 Follow[]         @relation("UserFollowers")
-  subscriptions             Subscription[]
+  jobs                      Job[]
+  jobViews                  JobView[]
+  languages                 Language[]
+  messages                  Message[]        @relation("UserMessages")
+  notifications             Notification[]
+  resumes                   Resume[]
+  savedJobs                 SavedJob[]
+  skills                    Skill[]
+  userSettings              UserSettings?
+  workExperiences           WorkExperience[]
 }
 
 model CandidateViews {
-  id String @id @default(uuid())
-
+  id        String   @id @default(uuid())
   userId    String
   companyId String
-
-  user    User @relation("CandidateViewsAsUser", fields: [userId], references: [id])
-  company User @relation("CandidateViewsAsCompany", fields: [companyId], references: [id])
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  company   User     @relation("CandidateViewsAsCompany", fields: [companyId], references: [id])
+  user      User     @relation("CandidateViewsAsUser", fields: [userId], references: [id])
 
   @@unique([userId, companyId])
   @@index([companyId])
   @@index([userId])
+}
+
+enum UserRole {
+  CANDIDATE
+  EMPLOYER
+  ADMIN
 }

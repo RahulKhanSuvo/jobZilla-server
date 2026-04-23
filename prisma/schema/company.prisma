@@ -1,24 +1,25 @@
 model Company {
-  id          String   @id @default(uuid())
-  userId      String   @unique
+  id          String    @id @default(uuid())
   description String?
   website     String
-  industry    Industry? @default(IT)
   phone       String
-  location    String   @db.VarChar(150)
-  companySize String
-  logo        String?
-  foundedDate String?
+  location    String    @db.VarChar(150)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  userId      String    @unique
   coverImage  String?
+  logo        String?
+  address     String?
+  companySize String
   facebook    String?
   linkedin    String?
+  showProfile Boolean   @default(true)
   twitter     String?
-  address     String?
-  showProfile Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  foundedDate String?
+  industry    Industry? @default(IT)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
 enum Industry {
   IT
   HR

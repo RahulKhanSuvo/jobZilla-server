@@ -27,6 +27,11 @@ export type Follow = Prisma.FollowModel;
  */
 export type Language = Prisma.LanguageModel;
 /**
+ * Model Subscription
+ *
+ */
+export type Subscription = Prisma.SubscriptionModel;
+/**
  * Model UserSettings
  *
  */

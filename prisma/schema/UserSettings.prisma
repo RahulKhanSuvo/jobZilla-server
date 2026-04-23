@@ -9,19 +9,19 @@ model UserSettings {
   twoFactorAuthentication Boolean                @default(false)
   emailVerified           Boolean                @default(false)
   phoneVerified           Boolean                @default(false)
-  user                    User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  notificationSettings    NotificationSettings[]
   createdAt               DateTime               @default(now())
   updatedAt               DateTime               @updatedAt
+  notificationSettings    NotificationSettings[]
+  user                    User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model NotificationSettings {
   id                String       @id @default(cuid())
   userSettingsId    String
-  userSettings      UserSettings @relation(fields: [userSettingsId], references: [id])
   emailNotification Boolean      @default(true)
   pushNotification  Boolean      @default(true)
   inAppNotification Boolean      @default(true)
   createdAt         DateTime     @default(now())
   updatedAt         DateTime     @updatedAt
+  userSettings      UserSettings @relation(fields: [userSettingsId], references: [id])
 }

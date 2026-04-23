@@ -4,23 +4,21 @@ model Conversation {
   participantB String
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+  userA        User      @relation("ParticipantAConversations", fields: [participantA], references: [id], onDelete: Cascade)
+  userB        User      @relation("ParticipantBConversations", fields: [participantB], references: [id], onDelete: Cascade)
   messages     Message[]
-
-  userA User @relation("ParticipantAConversations", fields: [participantA], references: [id], onDelete: Cascade)
-  userB User @relation("ParticipantBConversations", fields: [participantB], references: [id], onDelete: Cascade)
 
   @@unique([participantA, participantB])
 }
 
 model Message {
-  id             String   @id @default(uuid())
+  id             String       @id @default(uuid())
   conversationId String
   senderId       String
   content        String
-  isRead         Boolean  @default(false)
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-
-  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  sender       User         @relation("UserMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  isRead         Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender         User         @relation("UserMessages", fields: [senderId], references: [id], onDelete: Cascade)
 }

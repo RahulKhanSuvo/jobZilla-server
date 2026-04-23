@@ -414,6 +414,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never
 export const ModelName = {
   Follow: "Follow",
   Language: "Language",
+  Subscription: "Subscription",
   UserSettings: "UserSettings",
   NotificationSettings: "NotificationSettings",
   Application: "Application",
@@ -455,6 +456,7 @@ export type TypeMap<
     modelProps:
       | "follow"
       | "language"
+      | "subscription"
       | "userSettings"
       | "notificationSettings"
       | "application"
@@ -623,6 +625,82 @@ export type TypeMap<
           args: Prisma.LanguageCountArgs<ExtArgs>;
           result:
             | runtime.Types.Utils.Optional<Prisma.LanguageCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
+    Subscription: {
+      payload: Prisma.$SubscriptionPayload<ExtArgs>;
+      fields: Prisma.SubscriptionFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.SubscriptionFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.SubscriptionFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>;
+        };
+        findFirst: {
+          args: Prisma.SubscriptionFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.SubscriptionFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>;
+        };
+        findMany: {
+          args: Prisma.SubscriptionFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>[];
+        };
+        create: {
+          args: Prisma.SubscriptionCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>;
+        };
+        createMany: {
+          args: Prisma.SubscriptionCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.SubscriptionCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>[];
+        };
+        delete: {
+          args: Prisma.SubscriptionDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>;
+        };
+        update: {
+          args: Prisma.SubscriptionUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>;
+        };
+        deleteMany: {
+          args: Prisma.SubscriptionDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.SubscriptionUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.SubscriptionUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>[];
+        };
+        upsert: {
+          args: Prisma.SubscriptionUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>;
+        };
+        aggregate: {
+          args: Prisma.SubscriptionAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSubscription>;
+        };
+        groupBy: {
+          args: Prisma.SubscriptionGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.SubscriptionGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.SubscriptionCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.SubscriptionCountAggregateOutputType>
             | number;
         };
       };
@@ -1977,6 +2055,22 @@ export const LanguageScalarFieldEnum = {
 export type LanguageScalarFieldEnum =
   (typeof LanguageScalarFieldEnum)[keyof typeof LanguageScalarFieldEnum];
 
+export const SubscriptionScalarFieldEnum = {
+  id: "id",
+  userId: "userId",
+  planId: "planId",
+  status: "status",
+  stripeCustomerId: "stripeCustomerId",
+  stripeSubscriptionId: "stripeSubscriptionId",
+  currentPeriodStart: "currentPeriodStart",
+  currentPeriodEnd: "currentPeriodEnd",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+} as const;
+
+export type SubscriptionScalarFieldEnum =
+  (typeof SubscriptionScalarFieldEnum)[keyof typeof SubscriptionScalarFieldEnum];
+
 export const UserSettingsScalarFieldEnum = {
   id: "id",
   userId: "userId",
@@ -2012,10 +2106,10 @@ export const ApplicationScalarFieldEnum = {
   id: "id",
   userId: "userId",
   jobId: "jobId",
-  resumeId: "resumeId",
   status: "status",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  resumeId: "resumeId",
 } as const;
 
 export type ApplicationScalarFieldEnum =
@@ -2025,22 +2119,22 @@ export const CandidateScalarFieldEnum = {
   id: "id",
   userId: "userId",
   phone: "phone",
-  location: "location",
-  dob: "dob",
-  gender: "gender",
-  maritalStatus: "maritalStatus",
   aboutMe: "aboutMe",
-  avatar: "avatar",
+  dob: "dob",
   facebook: "facebook",
+  gender: "gender",
   linkedin: "linkedin",
+  location: "location",
+  maritalStatus: "maritalStatus",
+  avatar: "avatar",
+  expectedSalaryMax: "expectedSalaryMax",
+  expectedSalaryMin: "expectedSalaryMin",
+  experienceYears: "experienceYears",
   github: "github",
+  preferredCareerLevel: "preferredCareerLevel",
+  availabilityStatus: "availabilityStatus",
   preferredCategory: "preferredCategory",
   preferredJobType: "preferredJobType",
-  preferredCareerLevel: "preferredCareerLevel",
-  expectedSalaryMin: "expectedSalaryMin",
-  expectedSalaryMax: "expectedSalaryMax",
-  availabilityStatus: "availabilityStatus",
-  experienceYears: "experienceYears",
 } as const;
 
 export type CandidateScalarFieldEnum =
@@ -2072,23 +2166,23 @@ export type MessageScalarFieldEnum =
 
 export const CompanyScalarFieldEnum = {
   id: "id",
-  userId: "userId",
   description: "description",
   website: "website",
-  industry: "industry",
   phone: "phone",
   location: "location",
-  companySize: "companySize",
-  logo: "logo",
-  foundedDate: "foundedDate",
-  coverImage: "coverImage",
-  facebook: "facebook",
-  linkedin: "linkedin",
-  twitter: "twitter",
-  address: "address",
-  showProfile: "showProfile",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  userId: "userId",
+  coverImage: "coverImage",
+  logo: "logo",
+  address: "address",
+  companySize: "companySize",
+  facebook: "facebook",
+  linkedin: "linkedin",
+  showProfile: "showProfile",
+  twitter: "twitter",
+  foundedDate: "foundedDate",
+  industry: "industry",
 } as const;
 
 export type CompanyScalarFieldEnum =
@@ -2113,24 +2207,24 @@ export const JobScalarFieldEnum = {
   id: "id",
   title: "title",
   description: "description",
-  category: "category",
-  gender: "gender",
-  salaryType: "salaryType",
   salaryMin: "salaryMin",
   salaryMax: "salaryMax",
-  totalApplications: "totalApplications",
-  status: "status",
   jobType: "jobType",
-  locationType: "locationType",
-  location: "location",
   experience: "experience",
-  careerLevel: "careerLevel",
-  qualification: "qualification",
-  views: "views",
   deadline: "deadline",
-  companyId: "companyId",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  category: "category",
+  gender: "gender",
+  qualification: "qualification",
+  salaryType: "salaryType",
+  status: "status",
+  totalApplications: "totalApplications",
+  careerLevel: "careerLevel",
+  views: "views",
+  companyId: "companyId",
+  locationType: "locationType",
+  location: "location",
 } as const;
 
 export type JobScalarFieldEnum =
@@ -2169,9 +2263,9 @@ export const ResumeScalarFieldEnum = {
   fileUrl: "fileUrl",
   isPrimary: "isPrimary",
   isDraft: "isDraft",
-  userId: "userId",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  userId: "userId",
 } as const;
 
 export type ResumeScalarFieldEnum =
@@ -2190,13 +2284,13 @@ export type SavedJobScalarFieldEnum =
 
 export const UserScalarFieldEnum = {
   id: "id",
-  name: "name",
   email: "email",
   role: "role",
   password: "password",
-  views: "views",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  name: "name",
+  views: "views",
 } as const;
 
 export type UserScalarFieldEnum =
@@ -2224,7 +2318,6 @@ export type SkillScalarFieldEnum =
 
 export const WorkExperienceScalarFieldEnum = {
   id: "id",
-  userId: "userId",
   jobTitle: "jobTitle",
   companyName: "companyName",
   industry: "industry",
@@ -2234,6 +2327,7 @@ export const WorkExperienceScalarFieldEnum = {
   isWorking: "isWorking",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
+  userId: "userId",
 } as const;
 
 export type WorkExperienceScalarFieldEnum =
@@ -2297,6 +2391,18 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
 >;
 
 /**
+ * Reference to a field of type 'SubscriptionStatus'
+ */
+export type EnumSubscriptionStatusFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, "SubscriptionStatus">;
+
+/**
+ * Reference to a field of type 'SubscriptionStatus[]'
+ */
+export type ListEnumSubscriptionStatusFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, "SubscriptionStatus[]">;
+
+/**
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<
@@ -2319,6 +2425,34 @@ export type ListEnumAppStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
   "AppStatus[]"
 >;
+
+/**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "Int"
+>;
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "Int[]"
+>;
+
+/**
+ * Reference to a field of type 'preferredCareerLevel'
+ */
+export type EnumpreferredCareerLevelFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, "preferredCareerLevel">;
+
+/**
+ * Reference to a field of type 'preferredCareerLevel[]'
+ */
+export type ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel> =
+  FieldRefInputType<$PrismaModel, "preferredCareerLevel[]">;
 
 /**
  * Reference to a field of type 'preferredCategory'
@@ -2347,47 +2481,19 @@ export type ListEnumpreferredJobTypeFieldRefInput<$PrismaModel> =
   FieldRefInputType<$PrismaModel, "preferredJobType[]">;
 
 /**
- * Reference to a field of type 'preferredCareerLevel'
+ * Reference to a field of type 'Industry'
  */
-export type EnumpreferredCareerLevelFieldRefInput<$PrismaModel> =
-  FieldRefInputType<$PrismaModel, "preferredCareerLevel">;
-
-/**
- * Reference to a field of type 'preferredCareerLevel[]'
- */
-export type ListEnumpreferredCareerLevelFieldRefInput<$PrismaModel> =
-  FieldRefInputType<$PrismaModel, "preferredCareerLevel[]">;
-
-/**
- * Reference to a field of type 'Int'
- */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<
+export type EnumIndustryFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "Int"
+  "Industry"
 >;
 
 /**
- * Reference to a field of type 'Int[]'
+ * Reference to a field of type 'Industry[]'
  */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<
+export type ListEnumIndustryFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "Int[]"
->;
-
-/**
- * Reference to a field of type 'JobStatus'
- */
-export type EnumJobStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
-  $PrismaModel,
-  "JobStatus"
->;
-
-/**
- * Reference to a field of type 'JobStatus[]'
- */
-export type ListEnumJobStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
-  $PrismaModel,
-  "JobStatus[]"
+  "Industry[]"
 >;
 
 /**
@@ -2407,19 +2513,19 @@ export type ListEnumJobTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
 >;
 
 /**
- * Reference to a field of type 'LocationType'
+ * Reference to a field of type 'JobStatus'
  */
-export type EnumLocationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+export type EnumJobStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "LocationType"
+  "JobStatus"
 >;
 
 /**
- * Reference to a field of type 'LocationType[]'
+ * Reference to a field of type 'JobStatus[]'
  */
-export type ListEnumLocationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+export type ListEnumJobStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
-  "LocationType[]"
+  "JobStatus[]"
 >;
 
 /**
@@ -2436,6 +2542,22 @@ export type EnumCareerLevelFieldRefInput<$PrismaModel> = FieldRefInputType<
 export type ListEnumCareerLevelFieldRefInput<$PrismaModel> = FieldRefInputType<
   $PrismaModel,
   "CareerLevel[]"
+>;
+
+/**
+ * Reference to a field of type 'LocationType'
+ */
+export type EnumLocationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "LocationType"
+>;
+
+/**
+ * Reference to a field of type 'LocationType[]'
+ */
+export type ListEnumLocationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
+  $PrismaModel,
+  "LocationType[]"
 >;
 
 /**
@@ -2589,6 +2711,7 @@ export type PrismaClientOptions = (
 export type GlobalOmitConfig = {
   follow?: Prisma.FollowOmit;
   language?: Prisma.LanguageOmit;
+  subscription?: Prisma.SubscriptionOmit;
   userSettings?: Prisma.UserSettingsOmit;
   notificationSettings?: Prisma.NotificationSettingsOmit;
   application?: Prisma.ApplicationOmit;

@@ -26,7 +26,6 @@ export type AggregateWorkExperience = {
 
 export type WorkExperienceMinAggregateOutputType = {
   id: string | null;
-  userId: string | null;
   jobTitle: string | null;
   companyName: string | null;
   industry: string | null;
@@ -36,11 +35,11 @@ export type WorkExperienceMinAggregateOutputType = {
   isWorking: boolean | null;
   createdAt: Date | null;
   updatedAt: Date | null;
+  userId: string | null;
 };
 
 export type WorkExperienceMaxAggregateOutputType = {
   id: string | null;
-  userId: string | null;
   jobTitle: string | null;
   companyName: string | null;
   industry: string | null;
@@ -50,11 +49,11 @@ export type WorkExperienceMaxAggregateOutputType = {
   isWorking: boolean | null;
   createdAt: Date | null;
   updatedAt: Date | null;
+  userId: string | null;
 };
 
 export type WorkExperienceCountAggregateOutputType = {
   id: number;
-  userId: number;
   jobTitle: number;
   companyName: number;
   industry: number;
@@ -64,12 +63,12 @@ export type WorkExperienceCountAggregateOutputType = {
   isWorking: number;
   createdAt: number;
   updatedAt: number;
+  userId: number;
   _all: number;
 };
 
 export type WorkExperienceMinAggregateInputType = {
   id?: true;
-  userId?: true;
   jobTitle?: true;
   companyName?: true;
   industry?: true;
@@ -79,11 +78,11 @@ export type WorkExperienceMinAggregateInputType = {
   isWorking?: true;
   createdAt?: true;
   updatedAt?: true;
+  userId?: true;
 };
 
 export type WorkExperienceMaxAggregateInputType = {
   id?: true;
-  userId?: true;
   jobTitle?: true;
   companyName?: true;
   industry?: true;
@@ -93,11 +92,11 @@ export type WorkExperienceMaxAggregateInputType = {
   isWorking?: true;
   createdAt?: true;
   updatedAt?: true;
+  userId?: true;
 };
 
 export type WorkExperienceCountAggregateInputType = {
   id?: true;
-  userId?: true;
   jobTitle?: true;
   companyName?: true;
   industry?: true;
@@ -107,6 +106,7 @@ export type WorkExperienceCountAggregateInputType = {
   isWorking?: true;
   createdAt?: true;
   updatedAt?: true;
+  userId?: true;
   _all?: true;
 };
 
@@ -195,7 +195,6 @@ export type WorkExperienceGroupByArgs<
 
 export type WorkExperienceGroupByOutputType = {
   id: string;
-  userId: string;
   jobTitle: string;
   companyName: string;
   industry: string;
@@ -205,6 +204,7 @@ export type WorkExperienceGroupByOutputType = {
   isWorking: boolean;
   createdAt: Date;
   updatedAt: Date;
+  userId: string;
   _count: WorkExperienceCountAggregateOutputType | null;
   _min: WorkExperienceMinAggregateOutputType | null;
   _max: WorkExperienceMaxAggregateOutputType | null;
@@ -229,7 +229,6 @@ export type WorkExperienceWhereInput = {
   OR?: Prisma.WorkExperienceWhereInput[];
   NOT?: Prisma.WorkExperienceWhereInput | Prisma.WorkExperienceWhereInput[];
   id?: Prisma.StringFilter<"WorkExperience"> | string;
-  userId?: Prisma.StringFilter<"WorkExperience"> | string;
   jobTitle?: Prisma.StringFilter<"WorkExperience"> | string;
   companyName?: Prisma.StringFilter<"WorkExperience"> | string;
   industry?: Prisma.StringFilter<"WorkExperience"> | string;
@@ -243,12 +242,12 @@ export type WorkExperienceWhereInput = {
   isWorking?: Prisma.BoolFilter<"WorkExperience"> | boolean;
   createdAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string;
+  userId?: Prisma.StringFilter<"WorkExperience"> | string;
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 
 export type WorkExperienceOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
-  userId?: Prisma.SortOrder;
   jobTitle?: Prisma.SortOrder;
   companyName?: Prisma.SortOrder;
   industry?: Prisma.SortOrder;
@@ -258,6 +257,7 @@ export type WorkExperienceOrderByWithRelationInput = {
   isWorking?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
   user?: Prisma.UserOrderByWithRelationInput;
 };
 
@@ -267,7 +267,6 @@ export type WorkExperienceWhereUniqueInput = Prisma.AtLeast<
     AND?: Prisma.WorkExperienceWhereInput | Prisma.WorkExperienceWhereInput[];
     OR?: Prisma.WorkExperienceWhereInput[];
     NOT?: Prisma.WorkExperienceWhereInput | Prisma.WorkExperienceWhereInput[];
-    userId?: Prisma.StringFilter<"WorkExperience"> | string;
     jobTitle?: Prisma.StringFilter<"WorkExperience"> | string;
     companyName?: Prisma.StringFilter<"WorkExperience"> | string;
     industry?: Prisma.StringFilter<"WorkExperience"> | string;
@@ -281,6 +280,7 @@ export type WorkExperienceWhereUniqueInput = Prisma.AtLeast<
     isWorking?: Prisma.BoolFilter<"WorkExperience"> | boolean;
     createdAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string;
+    userId?: Prisma.StringFilter<"WorkExperience"> | string;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
   "id"
@@ -288,7 +288,6 @@ export type WorkExperienceWhereUniqueInput = Prisma.AtLeast<
 
 export type WorkExperienceOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
-  userId?: Prisma.SortOrder;
   jobTitle?: Prisma.SortOrder;
   companyName?: Prisma.SortOrder;
   industry?: Prisma.SortOrder;
@@ -298,6 +297,7 @@ export type WorkExperienceOrderByWithAggregationInput = {
   isWorking?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
   _count?: Prisma.WorkExperienceCountOrderByAggregateInput;
   _max?: Prisma.WorkExperienceMaxOrderByAggregateInput;
   _min?: Prisma.WorkExperienceMinOrderByAggregateInput;
@@ -312,7 +312,6 @@ export type WorkExperienceScalarWhereWithAggregatesInput = {
     | Prisma.WorkExperienceScalarWhereWithAggregatesInput
     | Prisma.WorkExperienceScalarWhereWithAggregatesInput[];
   id?: Prisma.StringWithAggregatesFilter<"WorkExperience"> | string;
-  userId?: Prisma.StringWithAggregatesFilter<"WorkExperience"> | string;
   jobTitle?: Prisma.StringWithAggregatesFilter<"WorkExperience"> | string;
   companyName?: Prisma.StringWithAggregatesFilter<"WorkExperience"> | string;
   industry?: Prisma.StringWithAggregatesFilter<"WorkExperience"> | string;
@@ -335,6 +334,7 @@ export type WorkExperienceScalarWhereWithAggregatesInput = {
     | Prisma.DateTimeWithAggregatesFilter<"WorkExperience">
     | Date
     | string;
+  userId?: Prisma.StringWithAggregatesFilter<"WorkExperience"> | string;
 };
 
 export type WorkExperienceCreateInput = {
@@ -353,7 +353,6 @@ export type WorkExperienceCreateInput = {
 
 export type WorkExperienceUncheckedCreateInput = {
   id?: string;
-  userId: string;
   jobTitle: string;
   companyName: string;
   industry: string;
@@ -363,6 +362,7 @@ export type WorkExperienceUncheckedCreateInput = {
   isWorking?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
+  userId: string;
 };
 
 export type WorkExperienceUpdateInput = {
@@ -385,7 +385,6 @@ export type WorkExperienceUpdateInput = {
 
 export type WorkExperienceUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
   jobTitle?: Prisma.StringFieldUpdateOperationsInput | string;
   companyName?: Prisma.StringFieldUpdateOperationsInput | string;
   industry?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -399,11 +398,11 @@ export type WorkExperienceUncheckedUpdateInput = {
   isWorking?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
 export type WorkExperienceCreateManyInput = {
   id?: string;
-  userId: string;
   jobTitle: string;
   companyName: string;
   industry: string;
@@ -413,6 +412,7 @@ export type WorkExperienceCreateManyInput = {
   isWorking?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
+  userId: string;
 };
 
 export type WorkExperienceUpdateManyMutationInput = {
@@ -434,7 +434,6 @@ export type WorkExperienceUpdateManyMutationInput = {
 
 export type WorkExperienceUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
   jobTitle?: Prisma.StringFieldUpdateOperationsInput | string;
   companyName?: Prisma.StringFieldUpdateOperationsInput | string;
   industry?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -448,6 +447,7 @@ export type WorkExperienceUncheckedUpdateManyInput = {
   isWorking?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
 export type WorkExperienceListRelationFilter = {
@@ -462,7 +462,6 @@ export type WorkExperienceOrderByRelationAggregateInput = {
 
 export type WorkExperienceCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
-  userId?: Prisma.SortOrder;
   jobTitle?: Prisma.SortOrder;
   companyName?: Prisma.SortOrder;
   industry?: Prisma.SortOrder;
@@ -472,11 +471,11 @@ export type WorkExperienceCountOrderByAggregateInput = {
   isWorking?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type WorkExperienceMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
-  userId?: Prisma.SortOrder;
   jobTitle?: Prisma.SortOrder;
   companyName?: Prisma.SortOrder;
   industry?: Prisma.SortOrder;
@@ -486,11 +485,11 @@ export type WorkExperienceMaxOrderByAggregateInput = {
   isWorking?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type WorkExperienceMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
-  userId?: Prisma.SortOrder;
   jobTitle?: Prisma.SortOrder;
   companyName?: Prisma.SortOrder;
   industry?: Prisma.SortOrder;
@@ -500,6 +499,7 @@ export type WorkExperienceMinOrderByAggregateInput = {
   isWorking?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type WorkExperienceCreateNestedManyWithoutUserInput = {
@@ -690,7 +690,6 @@ export type WorkExperienceScalarWhereInput = {
     | Prisma.WorkExperienceScalarWhereInput
     | Prisma.WorkExperienceScalarWhereInput[];
   id?: Prisma.StringFilter<"WorkExperience"> | string;
-  userId?: Prisma.StringFilter<"WorkExperience"> | string;
   jobTitle?: Prisma.StringFilter<"WorkExperience"> | string;
   companyName?: Prisma.StringFilter<"WorkExperience"> | string;
   industry?: Prisma.StringFilter<"WorkExperience"> | string;
@@ -704,6 +703,7 @@ export type WorkExperienceScalarWhereInput = {
   isWorking?: Prisma.BoolFilter<"WorkExperience"> | boolean;
   createdAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string;
+  userId?: Prisma.StringFilter<"WorkExperience"> | string;
 };
 
 export type WorkExperienceCreateManyUserInput = {
@@ -776,7 +776,6 @@ export type WorkExperienceSelect<
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
-    userId?: boolean;
     jobTitle?: boolean;
     companyName?: boolean;
     industry?: boolean;
@@ -786,6 +785,7 @@ export type WorkExperienceSelect<
     isWorking?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
+    userId?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["workExperience"]
@@ -797,7 +797,6 @@ export type WorkExperienceSelectCreateManyAndReturn<
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
-    userId?: boolean;
     jobTitle?: boolean;
     companyName?: boolean;
     industry?: boolean;
@@ -807,6 +806,7 @@ export type WorkExperienceSelectCreateManyAndReturn<
     isWorking?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
+    userId?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["workExperience"]
@@ -818,7 +818,6 @@ export type WorkExperienceSelectUpdateManyAndReturn<
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
-    userId?: boolean;
     jobTitle?: boolean;
     companyName?: boolean;
     industry?: boolean;
@@ -828,6 +827,7 @@ export type WorkExperienceSelectUpdateManyAndReturn<
     isWorking?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
+    userId?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["workExperience"]
@@ -835,7 +835,6 @@ export type WorkExperienceSelectUpdateManyAndReturn<
 
 export type WorkExperienceSelectScalar = {
   id?: boolean;
-  userId?: boolean;
   jobTitle?: boolean;
   companyName?: boolean;
   industry?: boolean;
@@ -845,6 +844,7 @@ export type WorkExperienceSelectScalar = {
   isWorking?: boolean;
   createdAt?: boolean;
   updatedAt?: boolean;
+  userId?: boolean;
 };
 
 export type WorkExperienceOmit<
@@ -852,7 +852,6 @@ export type WorkExperienceOmit<
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | "id"
-  | "userId"
   | "jobTitle"
   | "companyName"
   | "industry"
@@ -861,7 +860,8 @@ export type WorkExperienceOmit<
   | "Description"
   | "isWorking"
   | "createdAt"
-  | "updatedAt",
+  | "updatedAt"
+  | "userId",
   ExtArgs["result"]["workExperience"]
 >;
 export type WorkExperienceInclude<
@@ -894,7 +894,6 @@ export type $WorkExperiencePayload<
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
       id: string;
-      userId: string;
       jobTitle: string;
       companyName: string;
       industry: string;
@@ -904,6 +903,7 @@ export type $WorkExperiencePayload<
       isWorking: boolean;
       createdAt: Date;
       updatedAt: Date;
+      userId: string;
     },
     ExtArgs["result"]["workExperience"]
   >;
@@ -1523,7 +1523,6 @@ export interface Prisma__WorkExperienceClient<
  */
 export interface WorkExperienceFieldRefs {
   readonly id: Prisma.FieldRef<"WorkExperience", "String">;
-  readonly userId: Prisma.FieldRef<"WorkExperience", "String">;
   readonly jobTitle: Prisma.FieldRef<"WorkExperience", "String">;
   readonly companyName: Prisma.FieldRef<"WorkExperience", "String">;
   readonly industry: Prisma.FieldRef<"WorkExperience", "String">;
@@ -1533,6 +1532,7 @@ export interface WorkExperienceFieldRefs {
   readonly isWorking: Prisma.FieldRef<"WorkExperience", "Boolean">;
   readonly createdAt: Prisma.FieldRef<"WorkExperience", "DateTime">;
   readonly updatedAt: Prisma.FieldRef<"WorkExperience", "DateTime">;
+  readonly userId: Prisma.FieldRef<"WorkExperience", "String">;
 }
 
 // Custom InputTypes

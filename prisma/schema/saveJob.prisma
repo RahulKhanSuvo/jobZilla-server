@@ -1,11 +1,11 @@
 model SavedJob {
-    id        String   @id @default(uuid())
-    userId    String
-    jobId     String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    job       Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
-    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id @default(uuid())
+  userId    String
+  jobId     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  job       Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    @@unique([userId, jobId])
+  @@unique([userId, jobId])
 }

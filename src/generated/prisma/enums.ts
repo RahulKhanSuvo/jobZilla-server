@@ -8,6 +8,14 @@
  * 🟢 You can import this file directly.
  */
 
+export const SubscriptionStatus = {
+  active: "active",
+  inactive: "inactive",
+} as const;
+
+export type SubscriptionStatus =
+  (typeof SubscriptionStatus)[keyof typeof SubscriptionStatus];
+
 export const AppStatus = {
   PENDING: "PENDING",
   SHORTLISTED: "SHORTLISTED",
@@ -55,6 +63,37 @@ export const preferredCareerLevel = {
 export type preferredCareerLevel =
   (typeof preferredCareerLevel)[keyof typeof preferredCareerLevel];
 
+export const Industry = {
+  IT: "IT",
+  HR: "HR",
+  MARKETING: "MARKETING",
+  FINANCE: "FINANCE",
+  EDUCATION: "EDUCATION",
+  HEALTHCARE: "HEALTHCARE",
+  HOSPITALITY: "HOSPITALITY",
+  CONSTRUCTION: "CONSTRUCTION",
+  MANUFACTURING: "MANUFACTURING",
+  TRANSPORTATION: "TRANSPORTATION",
+  OTHER: "OTHER",
+} as const;
+
+export type Industry = (typeof Industry)[keyof typeof Industry];
+
+export const currency = {
+  USD: "USD",
+  EUR: "EUR",
+  BDT: "BDT",
+} as const;
+
+export type currency = (typeof currency)[keyof typeof currency];
+
+export const interval = {
+  monthly: "monthly",
+  yearly: "yearly",
+} as const;
+
+export type interval = (typeof interval)[keyof typeof interval];
+
 export const JobType = {
   FULL_TIME: "FULL_TIME",
   PART_TIME: "PART_TIME",
@@ -100,6 +139,13 @@ export const NotificationType = {
 
 export type NotificationType =
   (typeof NotificationType)[keyof typeof NotificationType];
+
+export const PlanStatus = {
+  active: "active",
+  inactive: "inactive",
+} as const;
+
+export type PlanStatus = (typeof PlanStatus)[keyof typeof PlanStatus];
 
 export const UserRole = {
   CANDIDATE: "CANDIDATE",

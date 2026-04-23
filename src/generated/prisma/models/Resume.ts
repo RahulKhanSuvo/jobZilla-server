@@ -30,9 +30,9 @@ export type ResumeMinAggregateOutputType = {
   fileUrl: string | null;
   isPrimary: boolean | null;
   isDraft: boolean | null;
-  userId: string | null;
   createdAt: Date | null;
   updatedAt: Date | null;
+  userId: string | null;
 };
 
 export type ResumeMaxAggregateOutputType = {
@@ -41,9 +41,9 @@ export type ResumeMaxAggregateOutputType = {
   fileUrl: string | null;
   isPrimary: boolean | null;
   isDraft: boolean | null;
-  userId: string | null;
   createdAt: Date | null;
   updatedAt: Date | null;
+  userId: string | null;
 };
 
 export type ResumeCountAggregateOutputType = {
@@ -52,9 +52,9 @@ export type ResumeCountAggregateOutputType = {
   fileUrl: number;
   isPrimary: number;
   isDraft: number;
-  userId: number;
   createdAt: number;
   updatedAt: number;
+  userId: number;
   _all: number;
 };
 
@@ -64,9 +64,9 @@ export type ResumeMinAggregateInputType = {
   fileUrl?: true;
   isPrimary?: true;
   isDraft?: true;
-  userId?: true;
   createdAt?: true;
   updatedAt?: true;
+  userId?: true;
 };
 
 export type ResumeMaxAggregateInputType = {
@@ -75,9 +75,9 @@ export type ResumeMaxAggregateInputType = {
   fileUrl?: true;
   isPrimary?: true;
   isDraft?: true;
-  userId?: true;
   createdAt?: true;
   updatedAt?: true;
+  userId?: true;
 };
 
 export type ResumeCountAggregateInputType = {
@@ -86,9 +86,9 @@ export type ResumeCountAggregateInputType = {
   fileUrl?: true;
   isPrimary?: true;
   isDraft?: true;
-  userId?: true;
   createdAt?: true;
   updatedAt?: true;
+  userId?: true;
   _all?: true;
 };
 
@@ -177,9 +177,9 @@ export type ResumeGroupByOutputType = {
   fileUrl: string;
   isPrimary: boolean;
   isDraft: boolean;
-  userId: string;
   createdAt: Date;
   updatedAt: Date;
+  userId: string;
   _count: ResumeCountAggregateOutputType | null;
   _min: ResumeMinAggregateOutputType | null;
   _max: ResumeMaxAggregateOutputType | null;
@@ -207,11 +207,11 @@ export type ResumeWhereInput = {
   fileUrl?: Prisma.StringFilter<"Resume"> | string;
   isPrimary?: Prisma.BoolFilter<"Resume"> | boolean;
   isDraft?: Prisma.BoolFilter<"Resume"> | boolean;
-  userId?: Prisma.StringFilter<"Resume"> | string;
   createdAt?: Prisma.DateTimeFilter<"Resume"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"Resume"> | Date | string;
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+  userId?: Prisma.StringFilter<"Resume"> | string;
   applications?: Prisma.ApplicationListRelationFilter;
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 
 export type ResumeOrderByWithRelationInput = {
@@ -220,11 +220,11 @@ export type ResumeOrderByWithRelationInput = {
   fileUrl?: Prisma.SortOrder;
   isPrimary?: Prisma.SortOrder;
   isDraft?: Prisma.SortOrder;
-  userId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
-  user?: Prisma.UserOrderByWithRelationInput;
+  userId?: Prisma.SortOrder;
   applications?: Prisma.ApplicationOrderByRelationAggregateInput;
+  user?: Prisma.UserOrderByWithRelationInput;
 };
 
 export type ResumeWhereUniqueInput = Prisma.AtLeast<
@@ -237,11 +237,11 @@ export type ResumeWhereUniqueInput = Prisma.AtLeast<
     fileUrl?: Prisma.StringFilter<"Resume"> | string;
     isPrimary?: Prisma.BoolFilter<"Resume"> | boolean;
     isDraft?: Prisma.BoolFilter<"Resume"> | boolean;
-    userId?: Prisma.StringFilter<"Resume"> | string;
     createdAt?: Prisma.DateTimeFilter<"Resume"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"Resume"> | Date | string;
-    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    userId?: Prisma.StringFilter<"Resume"> | string;
     applications?: Prisma.ApplicationListRelationFilter;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
   },
   "id"
 >;
@@ -252,9 +252,9 @@ export type ResumeOrderByWithAggregationInput = {
   fileUrl?: Prisma.SortOrder;
   isPrimary?: Prisma.SortOrder;
   isDraft?: Prisma.SortOrder;
-  userId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
   _count?: Prisma.ResumeCountOrderByAggregateInput;
   _max?: Prisma.ResumeMaxOrderByAggregateInput;
   _min?: Prisma.ResumeMinOrderByAggregateInput;
@@ -273,9 +273,9 @@ export type ResumeScalarWhereWithAggregatesInput = {
   fileUrl?: Prisma.StringWithAggregatesFilter<"Resume"> | string;
   isPrimary?: Prisma.BoolWithAggregatesFilter<"Resume"> | boolean;
   isDraft?: Prisma.BoolWithAggregatesFilter<"Resume"> | boolean;
-  userId?: Prisma.StringWithAggregatesFilter<"Resume"> | string;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Resume"> | Date | string;
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Resume"> | Date | string;
+  userId?: Prisma.StringWithAggregatesFilter<"Resume"> | string;
 };
 
 export type ResumeCreateInput = {
@@ -286,8 +286,8 @@ export type ResumeCreateInput = {
   isDraft?: boolean;
   createdAt?: Date | string;
   updatedAt?: Date | string;
-  user: Prisma.UserCreateNestedOneWithoutResumesInput;
   applications?: Prisma.ApplicationCreateNestedManyWithoutResumeInput;
+  user: Prisma.UserCreateNestedOneWithoutResumesInput;
 };
 
 export type ResumeUncheckedCreateInput = {
@@ -296,9 +296,9 @@ export type ResumeUncheckedCreateInput = {
   fileUrl: string;
   isPrimary?: boolean;
   isDraft?: boolean;
-  userId: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
+  userId: string;
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutResumeInput;
 };
 
@@ -310,8 +310,8 @@ export type ResumeUpdateInput = {
   isDraft?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-  user?: Prisma.UserUpdateOneRequiredWithoutResumesNestedInput;
   applications?: Prisma.ApplicationUpdateManyWithoutResumeNestedInput;
+  user?: Prisma.UserUpdateOneRequiredWithoutResumesNestedInput;
 };
 
 export type ResumeUncheckedUpdateInput = {
@@ -320,9 +320,9 @@ export type ResumeUncheckedUpdateInput = {
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string;
   isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   isDraft?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutResumeNestedInput;
 };
 
@@ -332,9 +332,9 @@ export type ResumeCreateManyInput = {
   fileUrl: string;
   isPrimary?: boolean;
   isDraft?: boolean;
-  userId: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
+  userId: string;
 };
 
 export type ResumeUpdateManyMutationInput = {
@@ -353,9 +353,9 @@ export type ResumeUncheckedUpdateManyInput = {
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string;
   isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   isDraft?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
 export type ResumeScalarRelationFilter = {
@@ -369,9 +369,9 @@ export type ResumeCountOrderByAggregateInput = {
   fileUrl?: Prisma.SortOrder;
   isPrimary?: Prisma.SortOrder;
   isDraft?: Prisma.SortOrder;
-  userId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type ResumeMaxOrderByAggregateInput = {
@@ -380,9 +380,9 @@ export type ResumeMaxOrderByAggregateInput = {
   fileUrl?: Prisma.SortOrder;
   isPrimary?: Prisma.SortOrder;
   isDraft?: Prisma.SortOrder;
-  userId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type ResumeMinOrderByAggregateInput = {
@@ -391,9 +391,9 @@ export type ResumeMinOrderByAggregateInput = {
   fileUrl?: Prisma.SortOrder;
   isPrimary?: Prisma.SortOrder;
   isDraft?: Prisma.SortOrder;
-  userId?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type ResumeListRelationFilter = {
@@ -535,9 +535,9 @@ export type ResumeUncheckedCreateWithoutApplicationsInput = {
   fileUrl: string;
   isPrimary?: boolean;
   isDraft?: boolean;
-  userId: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
+  userId: string;
 };
 
 export type ResumeCreateOrConnectWithoutApplicationsInput = {
@@ -585,9 +585,9 @@ export type ResumeUncheckedUpdateWithoutApplicationsInput = {
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string;
   isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   isDraft?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-  userId?: Prisma.StringFieldUpdateOperationsInput | string;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  userId?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 
 export type ResumeCreateWithoutUserInput = {
@@ -662,9 +662,9 @@ export type ResumeScalarWhereInput = {
   fileUrl?: Prisma.StringFilter<"Resume"> | string;
   isPrimary?: Prisma.BoolFilter<"Resume"> | boolean;
   isDraft?: Prisma.BoolFilter<"Resume"> | boolean;
-  userId?: Prisma.StringFilter<"Resume"> | string;
   createdAt?: Prisma.DateTimeFilter<"Resume"> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<"Resume"> | Date | string;
+  userId?: Prisma.StringFilter<"Resume"> | string;
 };
 
 export type ResumeCreateManyUserInput = {
@@ -757,11 +757,11 @@ export type ResumeSelect<
     fileUrl?: boolean;
     isPrimary?: boolean;
     isDraft?: boolean;
-    userId?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
-    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    userId?: boolean;
     applications?: boolean | Prisma.Resume$applicationsArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     _count?: boolean | Prisma.ResumeCountOutputTypeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["resume"]
@@ -777,9 +777,9 @@ export type ResumeSelectCreateManyAndReturn<
     fileUrl?: boolean;
     isPrimary?: boolean;
     isDraft?: boolean;
-    userId?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
+    userId?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["resume"]
@@ -795,9 +795,9 @@ export type ResumeSelectUpdateManyAndReturn<
     fileUrl?: boolean;
     isPrimary?: boolean;
     isDraft?: boolean;
-    userId?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
+    userId?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["resume"]
@@ -809,9 +809,9 @@ export type ResumeSelectScalar = {
   fileUrl?: boolean;
   isPrimary?: boolean;
   isDraft?: boolean;
-  userId?: boolean;
   createdAt?: boolean;
   updatedAt?: boolean;
+  userId?: boolean;
 };
 
 export type ResumeOmit<
@@ -823,17 +823,17 @@ export type ResumeOmit<
   | "fileUrl"
   | "isPrimary"
   | "isDraft"
-  | "userId"
   | "createdAt"
-  | "updatedAt",
+  | "updatedAt"
+  | "userId",
   ExtArgs["result"]["resume"]
 >;
 export type ResumeInclude<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   applications?: boolean | Prisma.Resume$applicationsArgs<ExtArgs>;
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
   _count?: boolean | Prisma.ResumeCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type ResumeIncludeCreateManyAndReturn<
@@ -855,8 +855,8 @@ export type $ResumePayload<
 > = {
   name: "Resume";
   objects: {
-    user: Prisma.$UserPayload<ExtArgs>;
     applications: Prisma.$ApplicationPayload<ExtArgs>[];
+    user: Prisma.$UserPayload<ExtArgs>;
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
@@ -865,9 +865,9 @@ export type $ResumePayload<
       fileUrl: string;
       isPrimary: boolean;
       isDraft: boolean;
-      userId: string;
       createdAt: Date;
       updatedAt: Date;
+      userId: string;
     },
     ExtArgs["result"]["resume"]
   >;
@@ -1418,6 +1418,17 @@ export interface Prisma__ResumeClient<
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise";
+  applications<T extends Prisma.Resume$applicationsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.Resume$applicationsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ApplicationPayload<ExtArgs>,
+        T,
+        "findMany",
+        GlobalOmitOptions
+      >
+    | Null
+  >;
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(
     args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>,
   ): Prisma.Prisma__UserClient<
@@ -1431,17 +1442,6 @@ export interface Prisma__ResumeClient<
     Null,
     ExtArgs,
     GlobalOmitOptions
-  >;
-  applications<T extends Prisma.Resume$applicationsArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.Resume$applicationsArgs<ExtArgs>>,
-  ): Prisma.PrismaPromise<
-    | runtime.Types.Result.GetResult<
-        Prisma.$ApplicationPayload<ExtArgs>,
-        T,
-        "findMany",
-        GlobalOmitOptions
-      >
-    | Null
   >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1490,9 +1490,9 @@ export interface ResumeFieldRefs {
   readonly fileUrl: Prisma.FieldRef<"Resume", "String">;
   readonly isPrimary: Prisma.FieldRef<"Resume", "Boolean">;
   readonly isDraft: Prisma.FieldRef<"Resume", "Boolean">;
-  readonly userId: Prisma.FieldRef<"Resume", "String">;
   readonly createdAt: Prisma.FieldRef<"Resume", "DateTime">;
   readonly updatedAt: Prisma.FieldRef<"Resume", "DateTime">;
+  readonly userId: Prisma.FieldRef<"Resume", "String">;
 }
 
 // Custom InputTypes

@@ -9,6 +9,7 @@
  */
 export type * from "./models/Follow";
 export type * from "./models/Language";
+export type * from "./models/Subscription";
 export type * from "./models/UserSettings";
 export type * from "./models/NotificationSettings";
 export type * from "./models/Application";

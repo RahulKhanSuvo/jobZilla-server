@@ -2,22 +2,22 @@ model Candidate {
   id                   String                @id @default(uuid())
   userId               String                @unique
   phone                String
-  location             String?
+  aboutMe              String?
   dob                  DateTime?
-  gender               String?
-  maritalStatus        String?
-  aboutMe              String?               @db.Text
-  avatar               String?
   facebook             String?
+  gender               String?
   linkedin             String?
+  location             String?
+  maritalStatus        String?
+  avatar               String?
+  expectedSalaryMax    Int?
+  expectedSalaryMin    Int?
+  experienceYears      Int?
   github               String?
+  preferredCareerLevel preferredCareerLevel?
+  availabilityStatus   Boolean               @default(false)
   preferredCategory    preferredCategory?
   preferredJobType     preferredJobType?
-  preferredCareerLevel preferredCareerLevel?
-  expectedSalaryMin    Int?
-  expectedSalaryMax    Int?
-  availabilityStatus   Boolean               @default(false)
-  experienceYears      Int?
   user                 User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 

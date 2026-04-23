@@ -1,12 +1,12 @@
 model Resume {
-    id           String        @id @default(uuid())
-    title        String
-    fileUrl      String
-    isPrimary    Boolean       @default(false)
-    isDraft      Boolean       @default(false)
-    userId       String
-    user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-    createdAt    DateTime      @default(now())
-    updatedAt    DateTime      @updatedAt
-    applications Application[]
+  id           String        @id @default(uuid())
+  title        String
+  fileUrl      String
+  isPrimary    Boolean       @default(false)
+  isDraft      Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  userId       String
+  applications Application[]
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
