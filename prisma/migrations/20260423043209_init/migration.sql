@@ -38,7 +38,13 @@ CREATE TYPE "LocationType" AS ENUM ('REMOTE', 'ON_SITE', 'HYBRID');
 CREATE TYPE "NotificationType" AS ENUM ('APPLICATION', 'MESSAGE', 'ALERT', 'INTERVIEW', 'SUCCESS');
 
 -- CreateEnum
-CREATE TYPE "PlanStatus" AS ENUM ('active', 'inactive');
+CREATE TYPE "PlanStatus" AS ENUM ('ACTIVE', 'INACTIVE');
+
+-- CreateEnum
+CREATE TYPE "CurrencyType" AS ENUM ('USD', 'EUR', 'BDT');
+
+-- CreateEnum
+CREATE TYPE "IntervalType" AS ENUM ('MONTHLY', 'YEARLY');
 
 -- CreateEnum
 CREATE TYPE "UserRole" AS ENUM ('CANDIDATE', 'EMPLOYER', 'ADMIN');
@@ -265,6 +271,21 @@ CREATE TABLE "Notification" (
 );
 
 -- CreateTable
+CREATE TABLE "Plan" (
+    "id" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "description" TEXT,
+    "price" INTEGER NOT NULL,
+    "currency" "CurrencyType" NOT NULL DEFAULT 'USD',
+    "billingInterval" "IntervalType" NOT NULL DEFAULT 'MONTHLY',
+    "status" "PlanStatus" NOT NULL DEFAULT 'ACTIVE',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Plan_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Resume" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
@@ -387,6 +408,12 @@ ALTER TABLE "Follow" ADD CONSTRAINT "Follow_followingId_fkey" FOREIGN KEY ("foll
 
 -- AddForeignKey
 ALTER TABLE "Language" ADD CONSTRAINT "Language_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Subscription" ADD CONSTRAINT "Subscription_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Subscription" ADD CONSTRAINT "Subscription_planId_fkey" FOREIGN KEY ("planId") REFERENCES "Plan"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "UserSettings" ADD CONSTRAINT "UserSettings_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
