@@ -1,0 +1,25 @@
+model Plan {
+    id          String     @id @default(cuid())
+    name        String
+    description String?
+    price       Int
+    currency    currency @default(USD)
+    interval    interval @default(monthly)
+    status      PlanStatus @default(active)
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
+}
+
+enum PlanStatus {
+    active
+    inactive
+}
+enum currency {
+    USD
+    EUR
+    BDT
+}
+enum interval {
+    monthly
+    yearly
+}
