@@ -78,155 +78,253 @@ Server/
 ```mermaid
 erDiagram
     User {
-        String   id        PK
-        String   name
-        String   email
-        String   role
-        String   password
+        String id PK
+        String name
+        String email
+        UserRole role
+        String password
+        Int views
         DateTime createdAt
         DateTime updatedAt
     }
 
     Candidate {
-        String   id            PK
-        String   userId        FK
-        String   phone
-        String   location
+        String id PK
+        String userId FK
+        String phone
+        String location
         DateTime dob
-        String   gender
-        String   maritalStatus
-        String   language
-        String   aboutMe
-        String   profileImage
-        String   careerFinding
-        String   facebook
-        String   linkedin
-        String   twitter
-    }
-
-    Resume {
-        String   id          PK
-        String   title
-        String   fileUrl
-        Boolean  isPrimary
-        Boolean  isDraft
-        String   candidateId FK
-        DateTime createdAt
-        DateTime updatedAt
-    }
-
-    workExperience {
-        String   id          PK
-        String   candideId   FK
-        String   jobTitle
-        String   companyName
-        String   industry
-        DateTime startData
-        DateTime endData
-        String   Description
-        Boolean  isWorking
-        DateTime createdId
-    }
-
-    skill {
-        String id        PK
-        String candideId FK
-        String skillName
-    }
-
-    eduction {
-        String   id          PK
-        String   institution
-        String   major
-        String   field
-        Decimal  gap
-        DateTime startData
-        DateTime endData
-        Boolean  isStudying
-        DateTime createdId
-        String   candideId   FK
+        String gender
+        String maritalStatus
+        String aboutMe
+        String avatar
+        String facebook
+        String linkedin
+        String github
+        String preferredCategory
+        String preferredJobType
+        String preferredCareerLevel
+        Int expectedSalaryMin
+        Int expectedSalaryMax
+        Boolean availabilityStatus
+        Int experienceYears
     }
 
     Company {
-        String   id          PK
-        String   userId      FK
-        String   description
-        String   website
-        String   industry
-        String   phone
-        String   location
-        String   companySize
-        String   logo
-        String   foundedDate
-        String   coverImage
-        String   facebook
-        String   linkedin
-        String   twitter
-        String   address
-        Boolean  showProfile
+        String id PK
+        String userId FK
+        String description
+        String website
+        String industry
+        String phone
+        String location
+        String companySize
+        String logo
+        String foundedDate
+        String coverImage
+        String facebook
+        String linkedin
+        String twitter
+        String address
+        Boolean showProfile
         DateTime createdAt
         DateTime updatedAt
     }
 
     Job {
-        String   id                PK
-        String   title
-        String   description
-        String   category
-        String   tags
-        String   gender
-        String   salaryType
-        Int      salaryMin
-        Int      salaryMax
-        Int      totalApplications
-        String   status
-        String   jobType
-        String   experience
-        String   careerLevel
-        String   qualification
+        String id PK
+        String title
+        String description
+        String category
+        String gender
+        String salaryType
+        Int salaryMin
+        Int salaryMax
+        Int totalApplications
+        JobStatus status
+        JobType jobType
+        LocationType locationType
+        String location
+        String experience
+        CareerLevel careerLevel
+        String qualification
+        Int views
         DateTime deadline
-        String   skills
-        String   companyId         FK
+        String companyId FK
         DateTime createdAt
         DateTime updatedAt
     }
 
     Application {
-        String   id        PK
-        String   userId    FK
-        String   jobId     FK
-        String   resumeId  FK
-        String   companyId FK
-        String   status
+        String id PK
+        String userId FK
+        String jobId FK
+        String resumeId FK
+        AppStatus status
         DateTime createdAt
         DateTime updatedAt
     }
 
     SavedJob {
-        String   id        PK
-        String   userId    FK
-        String   jobId     FK
+        String id PK
+        String userId FK
+        String jobId FK
         DateTime createdAt
         DateTime updatedAt
     }
 
-    User         ||--o|  Candidate      : "has profile"
-    User         ||--o|  Company        : "owns"
-    User         ||--o{  Application    : "submits"
-    User         ||--o{  SavedJob       : "saves"
+    Resume {
+        String id PK
+        String title
+        String fileUrl
+        Boolean isPrimary
+        Boolean isDraft
+        String userId FK
+        DateTime createdAt
+        DateTime updatedAt
+    }
 
-    Candidate    ||--o{  workExperience : "has"
-    Candidate    ||--o{  skill          : "has"
-    Candidate    ||--o{  eduction       : "has"
-    Candidate    ||--o{  Resume         : "uploads"
+    WorkExperience {
+        String id PK
+        String userId FK
+        String jobTitle
+        String companyName
+        String industry
+        DateTime startData
+        DateTime endData
+        String Description
+        Boolean isWorking
+        DateTime createdAt
+        DateTime updatedAt
+    }
 
-    Company      ||--o{  Job            : "posts"
-    Company      ||--o{  Application    : "receives"
+    Eduction {
+        String id PK
+        String userId FK
+        String institution
+        String major
+        String field
+        DateTime startData
+        DateTime endData
+        Boolean isStudying
+        DateTime createdId
+    }
 
-    Job          ||--o{  Application    : "received by"
-    Job          ||--o{  SavedJob       : "saved in"
+    Skill {
+        String id PK
+        String userId FK
+        String skill
+    }
 
-    Resume       ||--o{  Application    : "attached to"
+    Language {
+        String id PK
+        String userId FK
+        String language
+    }
+
+    UserSettings {
+        String id PK
+        String userId FK
+        String theme
+        String language
+        String timezone
+        String privacy
+        Boolean openToWork
+        Boolean twoFactorAuthentication
+        Boolean emailVerified
+        Boolean phoneVerified
+        DateTime createdAt
+        DateTime updatedAt
+    }
+
+    NotificationSettings {
+        String id PK
+        String userSettingsId FK
+        Boolean emailNotification
+        Boolean pushNotification
+        Boolean inAppNotification
+        DateTime createdAt
+        DateTime updatedAt
+    }
+
+    Conversation {
+        String id PK
+        String participantA FK
+        String participantB FK
+        DateTime createdAt
+        DateTime updatedAt
+    }
+
+    Message {
+        String id PK
+        String conversationId FK
+        String senderId FK
+        String content
+        Boolean isRead
+        DateTime createdAt
+        DateTime updatedAt
+    }
+
+    Notification {
+        String id PK
+        String userId FK
+        NotificationType type
+        String title
+        String message
+        Boolean isRead
+        String link
+        DateTime createdAt
+        DateTime updatedAt
+    }
+
+    CandidateViews {
+        String id PK
+        String userId FK
+        String companyId FK
+        DateTime createdAt
+        DateTime updatedAt
+    }
+
+    JobView {
+        String id PK
+        String jobId FK
+        String userId FK
+        String anonymousId
+        DateTime createdAt
+        DateTime updatedAt
+    }
+
+    Follow {
+        String id PK
+        String followerId FK
+        String followingId FK
+        DateTime createdAt
+    }
+
+    User ||--o| Candidate : "has"
+    User ||--o| Company : "owns"
+    User ||--o| UserSettings : "configures"
+    User ||--o{ Application : "submits"
+    User ||--o{ SavedJob : "saves"
+    User ||--o{ Resume : "uploads"
+    User ||--o{ WorkExperience : "has"
+    User ||--o{ Eduction : "has"
+    User ||--o{ Skill : "has"
+    User ||--o{ Language : "has"
+    User ||--o{ Notification : "receives"
+    User ||--o{ Job : "posts / jobs owned"
+    User ||--o{ Conversation : "participates"
+    User ||--o{ Message : "sends"
+    User ||--o{ CandidateViews : "views / is viewed"
+    User ||--o{ JobView : "views"
+    User ||--o{ Follow : "follows / is followed"
+    
+    UserSettings ||--o{ NotificationSettings : "has"
+    Job ||--o{ Application : "receives"
+    Job ||--o{ SavedJob : "is saved"
+    Job ||--o{ JobView : "is viewed"
+    Resume ||--o{ Application : "attached to"
+    Conversation ||--o{ Message : "contains"
 ```
 
 ---
@@ -237,8 +335,11 @@ erDiagram
 |---|---|
 | `UserRole` | `CANDIDATE` · `EMPLOYER` · `ADMIN` |
 | `AppStatus` | `PENDING` · `SHORTLISTED` · `REJECTED` · `HIRED` |
-| `JobType` | `FULL_TIME` · `PART_TIME` · `FREELANCE` · `CONTRACT` · `INTERN` · `REMOTE` |
-| `JobStatus` | `OPEN` · `CLOSED` |
+| `JobType` | `FULL_TIME` · `PART_TIME` · `CONTRACT` · `INTERN` · `FREELANCE` |
+| `JobStatus` | `OPEN` · `CLOSED` · `PUBLISHED` |
+| `CareerLevel` | `ENTRY_LEVEL` · `MID_LEVEL` · `SENIOR_LEVEL` · `EXECUTIVE_LEVEL` |
+| `LocationType`| `REMOTE` · `ON_SITE` · `HYBRID` |
+| `NotificationType`| `APPLICATION` · `MESSAGE` · `ALERT` · `INTERVIEW` · `SUCCESS` |
 
 ---
 
@@ -251,6 +352,11 @@ erDiagram
 | `recruiter` | `/api/recruiter` | Company profile management |
 | `jobs` | `/api/jobs` | Post, fetch, search, close jobs |
 | `application` | `/api/application` | Apply, view applications, update status |
+| `chat` | `/api/chat` | Real-time messaging and conversations |
+| `notification` | `/api/notification` | In-app user notifications and alerts |
+| `saveJobs` | `/api/saveJobs` | Manage saved jobs for candidates |
+| `FollowCompany`| `/api/follow` | Company following mechanism |
+| `stats` | `/api/stats` | Application and platform usage statistics |
 
 ---
 
