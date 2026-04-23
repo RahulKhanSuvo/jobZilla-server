@@ -20,7 +20,7 @@ model Company {
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 enum Industry {
-  IT_AND_SOFTWARE
+  IT 
   HR
   MARKETING
   FINANCE

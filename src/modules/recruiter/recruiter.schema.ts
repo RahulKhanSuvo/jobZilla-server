@@ -13,7 +13,19 @@ export const recruiterSchema = z.object({
     .optional(),
   logo: z.string().optional().or(z.literal("")),
   coverImage: z.string().optional().or(z.literal("")),
-  industry: z.string().min(1, "At least one category is required"),
+  industry: z.enum([
+    "IT",
+    "HR",
+    "MARKETING",
+    "FINANCE",
+    "EDUCATION",
+    "HEALTHCARE",
+    "HOSPITALITY",
+    "CONSTRUCTION",
+    "MANUFACTURING",
+    "TRANSPORTATION",
+    "OTHER",
+  ]),
   description: z
     .string()
     .min(10, "About company description is too short")
