@@ -4,10 +4,15 @@ const createPlanSchema = z.object({
   name: z.string(),
   price: z.number(),
   description: z.string(),
+  maxPostings: z.number(),
   features: z.array(z.string()),
-  duration: z.string(),
-  type: z.enum(["MONTHLY", "YEARLY"]),
+  billingCycle: z.enum(["MONTHLY", "YEARLY"]),
+  currency: z.enum(["USD", "EUR", "BDT"]),
+  duration: z.string().optional(),
   isActive: z.boolean(),
+  isHighlight: z.boolean(),
+  stripeProductId: z.string(),
+  stripePriceId: z.string(),
 });
 
 export const PlanSchema = {
