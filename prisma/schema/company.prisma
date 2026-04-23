@@ -3,7 +3,7 @@ model Company {
   userId      String   @unique
   description String?
   website     String
-  industry    Industry
+  industry    Industry? @default(IT)
   phone       String
   location    String   @db.VarChar(150)
   companySize String
@@ -20,7 +20,7 @@ model Company {
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 enum Industry {
-  IT 
+  IT
   HR
   MARKETING
   FINANCE

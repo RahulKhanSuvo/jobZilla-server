@@ -42,6 +42,7 @@ model User {
   companyViews              CandidateViews[] @relation("CandidateViewsAsCompany")
   following                 Follow[]         @relation("UserFollowing")
   followers                 Follow[]         @relation("UserFollowers")
+  subscriptions             Subscription[]
 }
 
 model CandidateViews {
