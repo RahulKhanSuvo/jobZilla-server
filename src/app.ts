@@ -15,7 +15,7 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 app.use(
   cors({
-    origin: envConfig.FRONTEND_URL,
+    origin: [envConfig.FRONTEND_URL, "https://job-zilla.vercel.app"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
