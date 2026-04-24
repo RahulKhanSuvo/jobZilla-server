@@ -15,10 +15,14 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 app.use(
   cors({
-    origin: [envConfig.FRONTEND_URL, "https://job-zilla.vercel.app"],
+    origin: [
+      envConfig.FRONTEND_URL,
+      "https://job-zilla.vercel.app",
+      "http://localhost:5173",
+    ].filter(Boolean) as string[],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "Origin", "Accept"],
   }),
 );
 app.get("/", (req, res) => {

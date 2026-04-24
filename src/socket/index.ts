@@ -9,7 +9,11 @@ let io: SocketIOServer | null = null;
 export const initSocket = (server: HttpServer) => {
   io = new SocketIOServer(server, {
     cors: {
-      origin: envConfig.FRONTEND_URL,
+      origin: [
+        envConfig.FRONTEND_URL,
+        "https://job-zilla.vercel.app",
+        "http://localhost:5173",
+      ].filter(Boolean) as string[],
       credentials: true,
       methods: ["GET", "POST"],
     },
