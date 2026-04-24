@@ -25,6 +25,12 @@ const createPlan = async (data: IPlan) => {
   return result;
 };
 
+const getAllPlans = async () => {
+  const result = await prisma.plan.findMany();
+  return result;
+};
+
 export const PlanService = {
   createPlan,
+  getAllPlans,
 };

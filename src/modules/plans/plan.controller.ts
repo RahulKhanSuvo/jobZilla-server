@@ -13,6 +13,17 @@ const createPlan = catchAsync(async (req, res) => {
   });
 });
 
+const getAllPlans = catchAsync(async (req, res) => {
+  const result = await PlanService.getAllPlans();
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Plans fetched successfully",
+    data: result,
+  });
+});
+
 export const PlanController = {
   createPlan,
+  getAllPlans,
 };

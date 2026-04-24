@@ -13,4 +13,10 @@ planRoute.post(
   PlanController.createPlan,
 );
 
+planRoute.get(
+  "/admin/all-plans",
+  authGard({ roles: ["ADMIN"] }),
+  PlanController.getAllPlans,
+);
+
 export default planRoute;
