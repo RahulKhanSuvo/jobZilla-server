@@ -6,7 +6,7 @@ const createPlanSchema = z.object({
   description: z.string(),
   maxPostings: z.number(),
   features: z.array(z.string()),
-  billingCycle: z.enum(["MONTHLY", "YEARLY"]),
+  billingInterval: z.enum(["MONTHLY", "YEARLY"]),
   currency: z.enum(["USD", "EUR", "BDT"]),
   duration: z.string().optional(),
   isActive: z.boolean(),
