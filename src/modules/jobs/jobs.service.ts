@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ApiError } from "../../errors/ApiError";
 import { prisma } from "../../lib/prisma";
 import { IJob } from "./job.schema";
@@ -51,6 +52,8 @@ const getAllJobs = async (
   salary: string,
   postedAnytime: string,
   seniorityLevel: string,
+  category: string = "",
+  locationType: string = "",
 ) => {
   const skip = (Number(page) - 1) * Number(limit);
   const take = Number(limit);
@@ -83,6 +86,16 @@ const getAllJobs = async (
   // Job Type filter
   if (jobType && jobType !== "all") {
     andConditions.push({ jobType: jobType as JobType });
+  }
+
+  // Category filter
+  if (category && category !== "all") {
+    andConditions.push({ category: category as any });
+  }
+
+  // Location Type filter (REMOTE, ON_SITE, HYBRID)
+  if (locationType && locationType !== "all") {
+    andConditions.push({ locationType: locationType as any });
   }
 
   // Seniority Level filter
@@ -187,7 +200,7 @@ const getAllJobs = async (
       page: Number(page),
       limit: Number(limit),
       total,
-      totalPage: Math.ceil(total / Number(limit)),
+      totalPages: Math.ceil(total / Number(limit)),
     },
     data: result.map((job) => {
       const { savedJobs, ...jobData } = job;
@@ -377,7 +390,7 @@ const getJobById = async (userId: string, jobId: string) => {
     ...job,
     isSaved,
     isFollowed,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     isApplied: (job as any).applications?.length > 0,
   };
 };

@@ -19,4 +19,18 @@ planRoute.get(
   PlanController.getAllPlans,
 );
 
+planRoute.get("/:id", PlanController.getSinglePlan);
+
+planRoute.patch(
+  "/:id",
+  authGard({ roles: ["ADMIN"] }),
+  PlanController.updatePlan,
+);
+
+planRoute.delete(
+  "/:id",
+  authGard({ roles: ["ADMIN"] }),
+  PlanController.deletePlan,
+);
+
 export default planRoute;

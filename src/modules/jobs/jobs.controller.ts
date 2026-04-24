@@ -27,6 +27,8 @@ const getAllJobs = catchAsync(async (req, res) => {
     salary,
     postedAnytime,
     seniorityLevel,
+    category,
+    locationType,
   } = req.query;
   const result = await jobsService.getAllJobs(
     userId,
@@ -39,6 +41,8 @@ const getAllJobs = catchAsync(async (req, res) => {
     salary as string,
     postedAnytime as string,
     seniorityLevel as string,
+    category as string,
+    locationType as string,
   );
   sendResponse(res, {
     statusCode: 200,

@@ -30,7 +30,32 @@ const getAllPlans = async () => {
   return result;
 };
 
+const getSinglePlan = async (id: string) => {
+  const result = await prisma.plan.findUniqueOrThrow({
+    where: { id },
+  });
+  return result;
+};
+
+const updatePlan = async (id: string, data: Partial<IPlan>) => {
+  const result = await prisma.plan.update({
+    where: { id },
+    data,
+  });
+  return result;
+};
+
+const deletePlan = async (id: string) => {
+  const result = await prisma.plan.delete({
+    where: { id },
+  });
+  return result;
+};
+
 export const PlanService = {
   createPlan,
   getAllPlans,
+  getSinglePlan,
+  updatePlan,
+  deletePlan,
 };

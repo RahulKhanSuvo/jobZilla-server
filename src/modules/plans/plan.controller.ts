@@ -23,7 +23,40 @@ const getAllPlans = catchAsync(async (req, res) => {
   });
 });
 
+const getSinglePlan = catchAsync(async (req, res) => {
+  const result = await PlanService.getSinglePlan(req.params.id);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Plan fetched successfully",
+    data: result,
+  });
+});
+
+const updatePlan = catchAsync(async (req, res) => {
+  const result = await PlanService.updatePlan(req.params.id, req.body);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Plan updated successfully",
+    data: result,
+  });
+});
+
+const deletePlan = catchAsync(async (req, res) => {
+  const result = await PlanService.deletePlan(req.params.id);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Plan deleted successfully",
+    data: result,
+  });
+});
+
 export const PlanController = {
   createPlan,
   getAllPlans,
+  getSinglePlan,
+  updatePlan,
+  deletePlan,
 };
