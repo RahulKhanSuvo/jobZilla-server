@@ -1,21 +1,23 @@
 model Plan {
-  id              String        @id @default(cuid())
+  id              String       @id @default(cuid())
   name            String
   description     String?
   price           Int
   maxPostings     Int
-  isActive        Boolean       @default(true)
-  isHighlight     Boolean       @default(false)
-  currency        CurrencyType  @default(USD)
-  billingInterval IntervalType  @default(MONTHLY)
-  status          PlanStatus    @default(ACTIVE)
+  features        Json
+  isActive        Boolean      @default(true)
+  isHighlight     Boolean      @default(false)
+  currency        CurrencyType @default(USD)
+  billingInterval IntervalType @default(MONTHLY)
+  status          PlanStatus   @default(ACTIVE)
   stripeProductId String?
   stripePriceId   String?
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
 
-  subscriptions   Subscription[]
+  subscriptions Subscription[]
 }
+
 enum PlanStatus {
   ACTIVE
   INACTIVE

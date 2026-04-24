@@ -3,6 +3,7 @@ import { sendResponse } from "../../shared/sendResponse";
 import { PlanService } from "./Plan.service";
 
 const createPlan = catchAsync(async (req, res) => {
+  console.log(req.body);
   const result = await PlanService.createPlan(req.body);
   sendResponse(res, {
     statusCode: 200,

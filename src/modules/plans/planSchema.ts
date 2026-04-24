@@ -11,8 +11,8 @@ const createPlanSchema = z.object({
   duration: z.string().optional(),
   isActive: z.boolean(),
   isHighlight: z.boolean(),
-  stripeProductId: z.string(),
-  stripePriceId: z.string(),
+  stripeProductId: z.string().optional(),
+  stripePriceId: z.string().optional(),
 });
 
 export const PlanSchema = {

@@ -76,6 +76,7 @@ export type PlanCountAggregateOutputType = {
   description: number;
   price: number;
   maxPostings: number;
+  features: number;
   isActive: number;
   isHighlight: number;
   currency: number;
@@ -138,6 +139,7 @@ export type PlanCountAggregateInputType = {
   description?: true;
   price?: true;
   maxPostings?: true;
+  features?: true;
   isActive?: true;
   isHighlight?: true;
   currency?: true;
@@ -249,6 +251,7 @@ export type PlanGroupByOutputType = {
   description: string | null;
   price: number;
   maxPostings: number;
+  features: runtime.JsonValue;
   isActive: boolean;
   isHighlight: boolean;
   currency: $Enums.CurrencyType;
@@ -287,6 +290,7 @@ export type PlanWhereInput = {
   description?: Prisma.StringNullableFilter<"Plan"> | string | null;
   price?: Prisma.IntFilter<"Plan"> | number;
   maxPostings?: Prisma.IntFilter<"Plan"> | number;
+  features?: Prisma.JsonFilter<"Plan">;
   isActive?: Prisma.BoolFilter<"Plan"> | boolean;
   isHighlight?: Prisma.BoolFilter<"Plan"> | boolean;
   currency?: Prisma.EnumCurrencyTypeFilter<"Plan"> | $Enums.CurrencyType;
@@ -305,6 +309,7 @@ export type PlanOrderByWithRelationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder;
   price?: Prisma.SortOrder;
   maxPostings?: Prisma.SortOrder;
+  features?: Prisma.SortOrder;
   isActive?: Prisma.SortOrder;
   isHighlight?: Prisma.SortOrder;
   currency?: Prisma.SortOrder;
@@ -327,6 +332,7 @@ export type PlanWhereUniqueInput = Prisma.AtLeast<
     description?: Prisma.StringNullableFilter<"Plan"> | string | null;
     price?: Prisma.IntFilter<"Plan"> | number;
     maxPostings?: Prisma.IntFilter<"Plan"> | number;
+    features?: Prisma.JsonFilter<"Plan">;
     isActive?: Prisma.BoolFilter<"Plan"> | boolean;
     isHighlight?: Prisma.BoolFilter<"Plan"> | boolean;
     currency?: Prisma.EnumCurrencyTypeFilter<"Plan"> | $Enums.CurrencyType;
@@ -349,6 +355,7 @@ export type PlanOrderByWithAggregationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder;
   price?: Prisma.SortOrder;
   maxPostings?: Prisma.SortOrder;
+  features?: Prisma.SortOrder;
   isActive?: Prisma.SortOrder;
   isHighlight?: Prisma.SortOrder;
   currency?: Prisma.SortOrder;
@@ -381,6 +388,7 @@ export type PlanScalarWhereWithAggregatesInput = {
     | null;
   price?: Prisma.IntWithAggregatesFilter<"Plan"> | number;
   maxPostings?: Prisma.IntWithAggregatesFilter<"Plan"> | number;
+  features?: Prisma.JsonWithAggregatesFilter<"Plan">;
   isActive?: Prisma.BoolWithAggregatesFilter<"Plan"> | boolean;
   isHighlight?: Prisma.BoolWithAggregatesFilter<"Plan"> | boolean;
   currency?:
@@ -410,6 +418,7 @@ export type PlanCreateInput = {
   description?: string | null;
   price: number;
   maxPostings: number;
+  features: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: boolean;
   isHighlight?: boolean;
   currency?: $Enums.CurrencyType;
@@ -428,6 +437,7 @@ export type PlanUncheckedCreateInput = {
   description?: string | null;
   price: number;
   maxPostings: number;
+  features: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: boolean;
   isHighlight?: boolean;
   currency?: $Enums.CurrencyType;
@@ -446,6 +456,7 @@ export type PlanUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
   maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  features?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
@@ -474,6 +485,7 @@ export type PlanUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
   maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  features?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
@@ -502,6 +514,7 @@ export type PlanCreateManyInput = {
   description?: string | null;
   price: number;
   maxPostings: number;
+  features: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: boolean;
   isHighlight?: boolean;
   currency?: $Enums.CurrencyType;
@@ -519,6 +532,7 @@ export type PlanUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
   maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  features?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
@@ -546,6 +560,7 @@ export type PlanUncheckedUpdateManyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
   maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  features?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
@@ -578,6 +593,7 @@ export type PlanCountOrderByAggregateInput = {
   description?: Prisma.SortOrder;
   price?: Prisma.SortOrder;
   maxPostings?: Prisma.SortOrder;
+  features?: Prisma.SortOrder;
   isActive?: Prisma.SortOrder;
   isHighlight?: Prisma.SortOrder;
   currency?: Prisma.SortOrder;
@@ -685,6 +701,7 @@ export type PlanCreateWithoutSubscriptionsInput = {
   description?: string | null;
   price: number;
   maxPostings: number;
+  features: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: boolean;
   isHighlight?: boolean;
   currency?: $Enums.CurrencyType;
@@ -702,6 +719,7 @@ export type PlanUncheckedCreateWithoutSubscriptionsInput = {
   description?: string | null;
   price: number;
   maxPostings: number;
+  features: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: boolean;
   isHighlight?: boolean;
   currency?: $Enums.CurrencyType;
@@ -747,6 +765,7 @@ export type PlanUpdateWithoutSubscriptionsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
   maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  features?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
@@ -774,6 +793,7 @@ export type PlanUncheckedUpdateWithoutSubscriptionsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   price?: Prisma.IntFieldUpdateOperationsInput | number;
   maxPostings?: Prisma.IntFieldUpdateOperationsInput | number;
+  features?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   isHighlight?: Prisma.BoolFieldUpdateOperationsInput | boolean;
   currency?:
@@ -843,6 +863,7 @@ export type PlanSelect<
     description?: boolean;
     price?: boolean;
     maxPostings?: boolean;
+    features?: boolean;
     isActive?: boolean;
     isHighlight?: boolean;
     currency?: boolean;
@@ -868,6 +889,7 @@ export type PlanSelectCreateManyAndReturn<
     description?: boolean;
     price?: boolean;
     maxPostings?: boolean;
+    features?: boolean;
     isActive?: boolean;
     isHighlight?: boolean;
     currency?: boolean;
@@ -891,6 +913,7 @@ export type PlanSelectUpdateManyAndReturn<
     description?: boolean;
     price?: boolean;
     maxPostings?: boolean;
+    features?: boolean;
     isActive?: boolean;
     isHighlight?: boolean;
     currency?: boolean;
@@ -910,6 +933,7 @@ export type PlanSelectScalar = {
   description?: boolean;
   price?: boolean;
   maxPostings?: boolean;
+  features?: boolean;
   isActive?: boolean;
   isHighlight?: boolean;
   currency?: boolean;
@@ -930,6 +954,7 @@ export type PlanOmit<
   | "description"
   | "price"
   | "maxPostings"
+  | "features"
   | "isActive"
   | "isHighlight"
   | "currency"
@@ -972,6 +997,7 @@ export type $PlanPayload<
       description: string | null;
       price: number;
       maxPostings: number;
+      features: runtime.JsonValue;
       isActive: boolean;
       isHighlight: boolean;
       currency: $Enums.CurrencyType;
@@ -1589,6 +1615,7 @@ export interface PlanFieldRefs {
   readonly description: Prisma.FieldRef<"Plan", "String">;
   readonly price: Prisma.FieldRef<"Plan", "Int">;
   readonly maxPostings: Prisma.FieldRef<"Plan", "Int">;
+  readonly features: Prisma.FieldRef<"Plan", "Json">;
   readonly isActive: Prisma.FieldRef<"Plan", "Boolean">;
   readonly isHighlight: Prisma.FieldRef<"Plan", "Boolean">;
   readonly currency: Prisma.FieldRef<"Plan", "CurrencyType">;

@@ -6,6 +6,8 @@ type Source = "body" | "params" | "query";
 export const validate =
   <T>(schema: ZodType<T>, source: Source = "body") =>
   (req: Request, res: Response, next: NextFunction) => {
+    console.log(req.body);
+
     const result = schema.safeParse(req[source]);
     if (!result.success) {
       const errors = result.error.issues.map((err) => ({
