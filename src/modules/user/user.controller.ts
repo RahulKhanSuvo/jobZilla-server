@@ -98,6 +98,26 @@ const deleteAccount = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const forgotPassword = catchAsync(async (req, res) => {
+  const { email } = req.body;
+  await userService.forgotPassword(email);
+  sendResponse(res, {
+    statusCode: 200,
+    message: "Password reset link sent to your email",
+    success: true,
+  });
+});
+
+const resetPassword = catchAsync(async (req, res) => {
+  const { token, password } = req.body;
+  await userService.resetPassword(token, password);
+  sendResponse(res, {
+    statusCode: 200,
+    message: "Password reset successfully",
+    success: true,
+  });
+});
+
 export const userController = {
   createUser,
   loginUser,
@@ -106,4 +126,6 @@ export const userController = {
   userLogout,
   changePassword,
   deleteAccount,
+  forgotPassword,
+  resetPassword,
 };

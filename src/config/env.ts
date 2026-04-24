@@ -15,6 +15,11 @@ const envSchema = z.object({
   ADMIN_EMAIL: z.string(),
   ADMIN_PASSWORD: z.string(),
   STRIPE_SECRET_KEY: z.string(),
+  SMTP_HOST: z.string().optional(),
+  SMTP_PORT: z.string().optional(),
+  SMTP_USER: z.string().optional(),
+  SMTP_PASS: z.string().optional(),
+  RESET_LINK_BASE_URL: z.string().optional(),
 });
 const parsedEnv = envSchema.safeParse(process.env);
 if (!parsedEnv.success) {

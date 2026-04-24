@@ -4,7 +4,9 @@ import { validate } from "../../middleware/validate.middleware";
 import {
   changePasswordSchema,
   createUserSchema,
+  forgotPasswordSchema,
   loginSchema,
+  resetPasswordSchema,
 } from "./user.schema";
 
 import { authGard } from "../../middleware/authGard";
@@ -16,6 +18,16 @@ userRouter.post(
   userController.createUser,
 );
 userRouter.post("/login", validate(loginSchema), userController.loginUser);
+userRouter.post(
+  "/forgot-password",
+  validate(forgotPasswordSchema),
+  userController.forgotPassword,
+);
+userRouter.post(
+  "/reset-password",
+  validate(resetPasswordSchema),
+  userController.resetPassword,
+);
 userRouter.post("/refresh", userController.userTokenRefresh);
 userRouter.get("/me", authGard(), userController.currentUser);
 userRouter.post("/logout", userController.userLogout);
