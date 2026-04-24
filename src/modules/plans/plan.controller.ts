@@ -24,7 +24,7 @@ const getAllPlans = catchAsync(async (req, res) => {
 });
 
 const getSinglePlan = catchAsync(async (req, res) => {
-  const result = await PlanService.getSinglePlan(req.params.id);
+  const result = await PlanService.getSinglePlan(req.params.id as string);
   sendResponse(res, {
     statusCode: 200,
     success: true,
@@ -34,7 +34,10 @@ const getSinglePlan = catchAsync(async (req, res) => {
 });
 
 const updatePlan = catchAsync(async (req, res) => {
-  const result = await PlanService.updatePlan(req.params.id, req.body);
+  const result = await PlanService.updatePlan(
+    req.params.id as string,
+    req.body,
+  );
   sendResponse(res, {
     statusCode: 200,
     success: true,
@@ -44,7 +47,7 @@ const updatePlan = catchAsync(async (req, res) => {
 });
 
 const deletePlan = catchAsync(async (req, res) => {
-  const result = await PlanService.deletePlan(req.params.id);
+  const result = await PlanService.deletePlan(req.params.id as string);
   sendResponse(res, {
     statusCode: 200,
     success: true,
