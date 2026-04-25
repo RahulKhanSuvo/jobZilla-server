@@ -9,41 +9,49 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
     },
     data: {
       name: payload.fullName,
-      languages: {
-        deleteMany: {},
-        create: payload.language?.map((lang) => ({
-          language: lang,
-        })),
-      },
-      skills: {
-        deleteMany: {},
-        create: payload.skills?.map((skill) => ({
-          skill: skill,
-        })),
-      },
-      eductions: {
-        deleteMany: {},
-        create: payload.educationList.map((education) => ({
-          institution: education.institution,
-          major: education.major,
-          field: education.field,
-          startData: new Date(education.startData),
-          endData: education.endData ? new Date(education.endData) : null,
-          isStudying: education.isStudying,
-        })),
-      },
-      workExperiences: {
-        deleteMany: {},
-        create: payload.experienceList.map((experience) => ({
-          jobTitle: experience.jobTitle,
-          companyName: experience.companyName,
-          industry: experience.industry,
-          startData: new Date(experience.startData),
-          endData: experience.endData ? new Date(experience.endData) : null,
-          isWorking: experience.isWorking,
-          Description: experience.Description,
-        })),
-      },
+      ...(payload.language && {
+        languages: {
+          deleteMany: {},
+          create: payload.language.map((lang) => ({
+            language: lang,
+          })),
+        },
+      }),
+      ...(payload.skills && {
+        skills: {
+          deleteMany: {},
+          create: payload.skills.map((skill) => ({
+            skill: skill,
+          })),
+        },
+      }),
+      ...(payload.educationList && {
+        eductions: {
+          deleteMany: {},
+          create: payload.educationList.map((education) => ({
+            institution: education.institution,
+            major: education.major,
+            field: education.field,
+            startData: new Date(education.startData),
+            endData: education.endData ? new Date(education.endData) : null,
+            isStudying: education.isStudying,
+          })),
+        },
+      }),
+      ...(payload.experienceList && {
+        workExperiences: {
+          deleteMany: {},
+          create: payload.experienceList.map((experience) => ({
+            jobTitle: experience.jobTitle,
+            companyName: experience.companyName,
+            industry: experience.industry,
+            startData: new Date(experience.startData),
+            endData: experience.endData ? new Date(experience.endData) : null,
+            isWorking: experience.isWorking,
+            Description: experience.Description,
+          })),
+        },
+      }),
     },
   });
   const result = await prisma.candidate.upsert({
@@ -84,6 +92,27 @@ const updateCandidate = async (userId: string, payload: ICandidate) => {
   return { ...user, candidate: result };
 };
 
+const getCandidateById = async (id: string) => {
+  return await prisma.candidate.findUnique({
+    where: { id },
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          role: true,
+          languages: true,
+          skills: true,
+          eductions: true,
+          workExperiences: true,
+        },
+      },
+    },
+  });
+};
+
 export const candidateService = {
   updateCandidate,
+  getCandidateById,
 };

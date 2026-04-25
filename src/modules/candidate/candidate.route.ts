@@ -10,7 +10,7 @@ import resumeRoutes from "./resume/resume.route";
 
 const candidateRouter = Router();
 
-candidateRouter.get("/", candidateController.getCandidate);
+candidateRouter.get("/:id", candidateController.getCandidate);
 candidateRouter.patch(
   "/update",
   authGard({ roles: [UserRole.CANDIDATE] }),

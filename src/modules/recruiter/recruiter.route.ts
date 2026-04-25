@@ -8,9 +8,7 @@ import { upload } from "../../middleware/upload";
 
 const recruiterRouter = Router();
 
-recruiterRouter.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+recruiterRouter.get("/:id", recruiterController.getCompany);
 recruiterRouter.patch(
   "/update",
   authGard({ roles: [UserRole.EMPLOYER] }),

@@ -5,12 +5,12 @@ import { uploadToImgBB } from "../../utils/imgbb";
 
 const getCandidate = catchAsync(async (req, res) => {
   const { id } = req.params;
-  console.log("candidate controller", id);
+  const result = await candidateService.getCandidateById(id);
   sendResponse(res, {
     statusCode: 200,
     success: true,
     message: "Candidate fetched successfully",
-    data: id,
+    data: result,
   });
 });
 

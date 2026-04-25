@@ -52,6 +52,27 @@ const updateRecruiter = async (userId: string, payload: IRecruiter) => {
   return { ...result, company: recruiter };
 };
 
+const getCompanyById = async (id: string) => {
+  return await prisma.company.findUnique({
+    where: { id },
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          jobs: {
+            take: 5,
+            orderBy: { createdAt: "desc" },
+            where: { status: "PUBLISHED" },
+          },
+        },
+      },
+    },
+  });
+};
+
 export const recruiterService = {
   updateRecruiter,
+  getCompanyById,
 };

@@ -48,6 +48,18 @@ const updateRecruiter = catchAsync(async (req, res) => {
   });
 });
 
+const getCompany = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await recruiterService.getCompanyById(id as string);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Company fetched successfully",
+    data: result,
+  });
+});
+
 export const recruiterController = {
   updateRecruiter,
+  getCompany,
 };
