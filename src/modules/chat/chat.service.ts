@@ -71,6 +71,16 @@ export const chatService = {
           orderBy: { createdAt: "desc" },
           take: 1, // Get the latest message for the list
         },
+        _count: {
+          select: {
+            messages: {
+              where: {
+                isRead: false,
+                senderId: { not: userId },
+              },
+            },
+          },
+        },
       },
       orderBy: { updatedAt: "desc" },
     });
