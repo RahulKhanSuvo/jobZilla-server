@@ -43,4 +43,22 @@ export const chatSocketHandlers = (socket: Socket, io: SocketIOServer) => {
   socket.on("typing", (data: { conversationId: string; senderId: string }) => {
     socket.to(data.conversationId).emit("typing", data);
   });
+
+  // Handle marking messages as read
+  socket.on(
+    "mark_as_read",
+    async (data: { conversationId: string; userId: string }) => {
+      try {
+        await chatService.markAsRead(data.conversationId, data.userId);
+        // We could emit back to the user to update their local UI if needed,
+        // but often the sender needs to know too.
+        io.to(data.conversationId).emit("messages_read", {
+          conversationId: data.conversationId,
+          userId: data.userId,
+        });
+      } catch (error) {
+        console.error("Error marking messages as read via socket:", error);
+      }
+    },
+  );
 };

@@ -16,7 +16,11 @@ const getMyConversations: RequestHandler = catchAsync(async (req, res) => {
 
 const getConversationMessages: RequestHandler = catchAsync(async (req, res) => {
   const { conversationId } = req.params;
-  const messages = await chatService.getMessages(conversationId as string);
+  const userId = req.user?.id;
+  const messages = await chatService.getMessages(
+    conversationId as string,
+    userId as string,
+  );
 
   sendResponse(res, {
     statusCode: 200,
@@ -41,8 +45,20 @@ const startConversation: RequestHandler = catchAsync(async (req, res) => {
   });
 });
 
+const markAsRead: RequestHandler = catchAsync(async (req, res) => {
+  const { conversationId } = req.params;
+  const userId = req.user?.id;
+  await chatService.markAsRead(conversationId as string, userId as string);
+
+  sendResponse(res, {
+    statusCode: 200,
+    message: "Messages marked as read",
+  });
+});
+
 export const chatController = {
   getMyConversations,
   getConversationMessages,
   startConversation,
+  markAsRead,
 };

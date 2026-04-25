@@ -86,7 +86,19 @@ export const chatService = {
     });
   },
 
-  async getMessages(conversationId: string) {
+  async getMessages(conversationId: string, userId: string) {
+    // Mark as read when fetching
+    await prisma.message.updateMany({
+      where: {
+        conversationId,
+        senderId: { not: userId },
+        isRead: false,
+      },
+      data: {
+        isRead: true,
+      },
+    });
+
     return prisma.message.findMany({
       where: { conversationId },
       orderBy: { createdAt: "asc" },
@@ -123,5 +135,18 @@ export const chatService = {
     });
 
     return message;
+  },
+
+  async markAsRead(conversationId: string, userId: string) {
+    return prisma.message.updateMany({
+      where: {
+        conversationId,
+        senderId: { not: userId },
+        isRead: false,
+      },
+      data: {
+        isRead: true,
+      },
+    });
   },
 };

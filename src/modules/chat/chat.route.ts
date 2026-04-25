@@ -26,4 +26,10 @@ router.post(
   chatController.startConversation,
 );
 
+router.patch(
+  "/conversations/:conversationId/read",
+  authGard({ roles: [UserRole.CANDIDATE, UserRole.EMPLOYER] }),
+  chatController.markAsRead,
+);
+
 export const chatRoutes = router;
