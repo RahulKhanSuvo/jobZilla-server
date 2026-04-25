@@ -10,7 +10,8 @@ import resumeRoutes from "./resume/resume.route";
 
 const candidateRouter = Router();
 
-candidateRouter.get("/:id", candidateController.getCandidate);
+candidateRouter.use("/resume", resumeRoutes);
+
 candidateRouter.patch(
   "/update",
   authGard({ roles: [UserRole.CANDIDATE] }),
@@ -20,6 +21,6 @@ candidateRouter.patch(
   candidateController.updateCandidate,
 );
 
-candidateRouter.use("/resume", resumeRoutes);
+candidateRouter.get("/:id", candidateController.getCandidate);
 
 export default candidateRouter;

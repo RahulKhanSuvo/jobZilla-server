@@ -8,7 +8,6 @@ import { upload } from "../../middleware/upload";
 
 const recruiterRouter = Router();
 
-recruiterRouter.get("/:id", recruiterController.getCompany);
 recruiterRouter.patch(
   "/update",
   authGard({ roles: [UserRole.EMPLOYER] }),
@@ -19,5 +18,7 @@ recruiterRouter.patch(
   validate(recruiterSchema),
   recruiterController.updateRecruiter,
 );
+
+recruiterRouter.get("/:id", recruiterController.getCompany);
 
 export default recruiterRouter;
