@@ -49,7 +49,8 @@ const getAllJobs = async (
   sortBy: SortOrder = "desc",
   location: string,
   jobType: string = "",
-  salary: string,
+  salaryMin: string,
+  salaryMax: string,
   postedAnytime: string,
   seniorityLevel: string,
   category: string = "",
@@ -106,36 +107,14 @@ const getAllJobs = async (
       },
     });
   }
-  // Salary Range filter (s1, s2, s3, s4, s5)
-  if (salary) {
-    const salaryRanges: Record<string, { min: number; max: number }> = {
-      s1: { min: 0, max: 5000 },
-      s2: { min: 5000, max: 10000 },
-      s3: { min: 10000, max: 15000 },
-      s4: { min: 15000, max: 20000 },
-      s5: { min: 20000, max: 1000000 },
-    };
+  // Salary Range filter
+  if (salaryMin || salaryMax) {
+    const min = Number(salaryMin) || 0;
+    const max = Number(salaryMax) || 1000000;
 
-    // Handle multiple salaries if passed as string "s1,s2"
-    const ids = salary.split(",");
-    const salaryConditions = ids
-      .map((id) => {
-        const range = salaryRanges[id];
-        if (range) {
-          return {
-            AND: [
-              { salaryMin: { lte: range.max } },
-              { salaryMax: { gte: range.min } },
-            ],
-          };
-        }
-        return null;
-      })
-      .filter(Boolean) as Prisma.JobWhereInput[];
-
-    if (salaryConditions.length > 0) {
-      andConditions.push({ OR: salaryConditions });
-    }
+    andConditions.push({
+      AND: [{ salaryMin: { lte: max } }, { salaryMax: { gte: min } }],
+    });
   }
 
   // Posted Anytime (today, week, month)
