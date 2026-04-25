@@ -37,10 +37,15 @@ export const chatService = {
             name: true,
             role: true,
             candidate: {
-              select: { avatar: true, aboutMe: true, location: true },
+              select: { id: true, avatar: true, aboutMe: true, location: true },
             },
             company: {
-              select: { logo: true, description: true, location: true },
+              select: {
+                id: true,
+                logo: true,
+                description: true,
+                location: true,
+              },
             },
           },
         },
@@ -50,10 +55,15 @@ export const chatService = {
             name: true,
             role: true,
             candidate: {
-              select: { avatar: true, aboutMe: true, location: true },
+              select: { id: true, avatar: true, aboutMe: true, location: true },
             },
             company: {
-              select: { logo: true, description: true, location: true },
+              select: {
+                id: true,
+                logo: true,
+                description: true,
+                location: true,
+              },
             },
           },
         },
